@@ -1,57 +1,71 @@
+# Projeto Grupo de Mães
 
-Aprendizagem por Projetos Integrados 2023-2 
+<p align="center">
+  <a href="#projeto">Projeto</a>  •
+  <a href="#📌-proposta">Proposta</a>  •
+  <a href ="#📆-cronograma-das-entregas"> Cronograma das Entregas </a>  • 
+  <a href ="#🛠️-tecnologias"> Tecnologias Utilizadas </a>  • 
+  <a href ="#backlog-do-produto">Backlog do Produto </a>  •
+  <a href ="#👥-equipe"> Equipe </a> 
+</p>
 
-Cliente: 
+## 📌 Proposta
+**Desenvolver um website para auxiliar mães que possuem filhos com a doença Insuficiência Renal Crônica**<br><br>
 
-Shirlene Giló – Grupo de mães – Nefrologia Pediátrica 
+> **Requisitos Funcionais**
+- ![afazer](./docs/readme/box.jpeg) Tela de Login
+- ![afazer](./docs/readme/box.jpeg) Tela de Cadastro
+- ![afazer](./docs/readme/box.jpeg) Tela de Recuperação de Senha 
+- ![afazer](./docs/readme/box.jpeg) Home com Cards de Redirecionamento
+- ![afazer](./docs/readme/box.jpeg) Blog
+- ![afazer](./docs/readme/box.jpeg) Area do ADM
+- ![afazer](./docs/readme/box.jpeg) Area do User
+- ![afazer](./docs/readme/box.jpeg) Página com Localidades dos hospitais
+- ![afazer](./docs/readme/box.jpeg) Página com Sintomas Comuns e formulário
+- ![afazer](./docs/readme/box.jpeg) Filtro para o Blog
+- ![afazer](./docs/readme/box.jpeg) Área de Comentários
+- ![afazer](./docs/readme/box.jpeg) Graficos de Dados Levantados IRC
 
-Período / Curso: 
+<br>
 
-1º DSM (Desenvolvimento Software Multiplataforma) 
+> **Requisitos Não Funcionais**
+- ![afazer](./docs/readme/box.jpeg) Framework Python Flask
+- ![afazer](./docs/readme/box.jpeg) Linguagem Python, Html e CSS
+- ![afazer](./docs/readme/box.jpeg) Banco de Dados Relacional - MySQL
+- ![afazer](./docs/readme/box.jpeg) Levantamento de Dados (Raspagem)
+- ![feito](./docs/readme/check.jpeg) Arquitetura no Figma
 
-Professor M2: 
+<br>
 
-Jean Costa 
 
-jean.costa4@fatec.sp.gov.br  
+## 📆 Cronograma das Entregas
+- ![afazer](./docs/readme/box.jpeg) Sprint 1 (Kick Off) - 04/09/23 a 25/09/23 
 
-Professor P2: 
+<br>
 
-Fernando Masanori 
+## Projeto
+<br>
 
-fmasanori@fatec.sp.gov.br 
+## 🛠️ Tecnologias
+<br>
 
-Contato do Cliente: 
+## Backlog do Produto
+<br>
 
-Shirlene Giló  
+## 👥 Equipe
 
-shirlenegilo@hotmail.com 
+| Nome                   | Função         | Linkedin                                                                                      | GitHub                                        |
+| ---------------------- | -------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| **Kauê Francisco**     | Scrum Master   | [@LinkedIn](https://www.linkedin.com/in/kau%C3%AA-francisco-3b13aa255/?originalSubdomain=br)  | [@GitHub](https://github.com/Kaue-Francisco)  | 
+| **Diogo Palharini**    | Product Owner  | [@LinkedIn](https://www.linkedin.com/in/diogo-palharini-10b803275/)                           | [@GitHub](https://github.com/DiogoPalharini)  | 
+| **Daiene Batagioti**   | Desenvolvedora | [@LinkedIn](https://www.linkedin.com/in/daiene-batagioti/)                                    | [@GitHub](https://github.com/Daiene)          | 
+| **Arthur Karnas**      | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/arthur-karnas-da-rocha-b90433271/)                    | [@GitHub](https://github.com/Karnas01)        | 
+| **José Eduardo**       | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/jos%C3%A9-eduardo-fernandes-pereira-b26517284/)       | [@GitHub](https://github.com/ZduardoPereira)  | 
+| **Eduardo Fonseca**    | Desenvolvedor  | [@LinkedIn](https://br.linkedin.com/in/eduardo-namiuti-5641b627b)                             | [@GitHub](https://github.com/eduardofsn)      | 
+| **Erik Yokota**        | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/vin%C3%ADcius-barbosa-78111a206/)                     | [@GitHub](https://github.com/yokotaerik)      | 
+| **Kathellyn Caroline** | Desenvolvedora | [@LinkedIn]()                                                                                 | [@GitHub]()                                   |
+| **Juan Soares**        | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/ojuansoares/)                                         | [@GitHub](https://github.com/ojuansoares)     | 
 
-Tema do Semestre 
+<br>
 
-Análise de Dados, do Tabnet DATASUS, sobre o tema Nefrologia Pediátrica, para o grupo de mães, com objetivo de: 
-
-Orientar mães com filhos que tenham Insuficiência Renal Crônica 
-
-Dar subsídios para a Frente Parlamentar de Nefrologia, com Dados de Nefrologia Pediátrica 
-
-Ter um blog com histórias de mães com filhos com IRC, ou notícias relevantes sobre Nefrologia Pediátrica  
-
-Competências trabalhadas no semestre 
-
-Documentação de Software (backlog de produto, de sprint, briefing, etc.)  
-
-Controle de versão   
-
-Processo de desenvolvimento ágil   
-
-Fundamentos de sistemas Web  
-
-Lógica de programação básica  
-
-Persistência de dados em BD relacional  
-
-Arquitetura de Informação e boas práticas no projeto de interfaces  
-
-Desafio (problema) 
-
+<a href="#projeto-grupo-de-mães">Voltar ao Topo</a>
