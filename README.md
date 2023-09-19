@@ -44,6 +44,7 @@
 <br>
 
 ## Projeto
+![Objetivo](./docs/readme/objetivo.png)
 <br>
 
 ## 🛠️ Tecnologias
