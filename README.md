@@ -51,6 +51,7 @@
 <br>
 
 ## Backlog do Produto
+<img src="./docs/readme/backlog.png">
 <br>
 
 ## 👥 Equipe
