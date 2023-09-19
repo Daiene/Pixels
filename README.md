@@ -48,6 +48,7 @@
 <br>
 
 ## 🛠️ Tecnologias
+<img src="./docs/readme/tecnologias.png">
 <br>
 
 ## Backlog do Produto
