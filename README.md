@@ -39,7 +39,10 @@
 
 
 ## 📆 Cronograma das Entregas
-- ![afazer](./docs/readme/box.jpeg) Sprint 1 (Kick Off) - 04/09/23 a 25/09/23 
+- ![afazer](./docs/readme/box.jpeg) Sprint 1 - 04/09/23 a 24/09/23 
+- ![afazer](./docs/readme/box.jpeg) Sprint 2 - 25/09/23 a 15/10/23 
+- ![afazer](./docs/readme/box.jpeg) Sprint 3 - 16/10/23 a 05/11/23 
+- ![afazer](./docs/readme/box.jpeg) Sprint 4 - 06/11/23 a 26/11/23 
 
 <br>
 
@@ -48,11 +51,11 @@
 <br>
 
 ## 🛠️ Tecnologias
-<img src="./docs/readme/tecnologias.png">
+![Tecnologias](./docs/readme/tecnologias.png)
 <br>
 
 ## Backlog do Produto
-<img src="./docs/readme/backlog.png">
+
 <br>
 
 ## 👥 Equipe
