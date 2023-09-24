@@ -46,6 +46,10 @@
 
 <br>
 
+## MVP Sprint 1
+[FIGMA](https://www.figma.com/file/c1qNDHxN1TmBP6tWEOKZ63/Pixels?type=design&node-id=312%3A407&mode=design&t=r9D4xpK02DmMHwIT-1)<br>
+<br>
+
 ## Projeto
 ![Objetivo](./docs/readme/objetivo.png)
 <br>
