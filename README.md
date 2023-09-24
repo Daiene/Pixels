@@ -3,10 +3,10 @@
 <p align="center">
   <a href="#projeto">Projeto</a>  •
   <a href="#📌-proposta">Proposta</a>  •
-  <a href ="#📆-cronograma-das-entregas"> Cronograma das Entregas </a>  • 
-  <a href ="#🛠️-tecnologias"> Tecnologias Utilizadas </a>  • 
-  <a href ="#backlog-do-produto">Backlog do Produto </a>  •
-  <a href ="#👥-equipe"> Equipe </a> 
+  <a href="#📆-cronograma-das-entregas">Cronograma das Entregas</a> • 
+  <a href="#🛠️-tecnologias">Tecnologias Utilizadas </a>  • 
+  <a href="#backlog-do-produto">Backlog do Produto </a>  •
+  <a href="#👥-equipe"> Equipe </a> 
 </p>
 
 ## 📌 Proposta
