@@ -2,14 +2,14 @@
 
 <p align="center">
   <a href="#projeto">Projeto</a>  •
-  <a href="#📌-proposta">Proposta</a>  •
-  <a href="#📆-cronograma-das-entregas">Cronograma das Entregas</a> • 
-  <a href="#🛠️-tecnologias">Tecnologias Utilizadas </a>  • 
+  <a href="#proposta">Proposta</a>  •
+  <a href="#cronograma-das-entregas">Cronograma das Entregas</a> • 
+  <a href="#tecnologias">Tecnologias Utilizadas </a>  • 
   <a href="#backlog-do-produto">Backlog do Produto </a>  •
-  <a href="#👥-equipe"> Equipe </a> 
+  <a href="#equipe"> Equipe </a> 
 </p>
 
-## 📌 Proposta
+## Proposta
 **Desenvolver um website para auxiliar mães que possuem filhos com a doença Insuficiência Renal Crônica**<br><br>
 
 > **Requisitos Funcionais**
@@ -38,7 +38,7 @@
 <br>
 
 
-## 📆 Cronograma das Entregas
+## Cronograma das Entregas
 - ![feito](./docs/readme/check.jpeg) Sprint 1 - 04/09/23 a 24/09/23 
 - ![afazer](./docs/readme/box.jpeg) Sprint 2 - 25/09/23 a 15/10/23 
 - ![afazer](./docs/readme/box.jpeg) Sprint 3 - 16/10/23 a 05/11/23 
@@ -50,7 +50,7 @@
 ![Objetivo](./docs/readme/objetivo.png)
 <br>
 
-## 🛠️ Tecnologias
+## Tecnologias
 ![Tecnologias](./docs/readme/tecnologias.png)
 <br>
 
@@ -61,7 +61,7 @@
 ![Backlog_por_sprint](./docs/readme/Sprint%20backlog.png)
 <br>
 
-## 👥 Equipe
+## Equipe
 
 | Avatar                                            | Nome                   | Função         | Linkedin                                                                                      | GitHub                                          |
 | ------------------------------------------------- | ---------------------- | -------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------- |
