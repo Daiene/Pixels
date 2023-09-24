@@ -39,7 +39,7 @@
 
 
 ## 📆 Cronograma das Entregas
-- ![afazer](./docs/readme/box.jpeg) Sprint 1 - 04/09/23 a 24/09/23 
+- ![feito](./docs/readme/check.jpeg) Sprint 1 - 04/09/23 a 24/09/23 
 - ![afazer](./docs/readme/box.jpeg) Sprint 2 - 25/09/23 a 15/10/23 
 - ![afazer](./docs/readme/box.jpeg) Sprint 3 - 16/10/23 a 05/11/23 
 - ![afazer](./docs/readme/box.jpeg) Sprint 4 - 06/11/23 a 26/11/23 
@@ -55,22 +55,25 @@
 <br>
 
 ## Backlog do Produto
+![Backlog](./docs/readme/backlog%20cortado.png)
 
+### Backlog por Sprint
+![Backlog_por_sprint](./docs/readme/Sprint%20backlog.png)
 <br>
 
 ## 👥 Equipe
 
-| Nome                   | Função         | Linkedin                                                                                      | GitHub                                        |
-| ---------------------- | -------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| **Kauê Francisco**     | Scrum Master   | [@LinkedIn](https://www.linkedin.com/in/kau%C3%AA-francisco-3b13aa255/?originalSubdomain=br)  | [@GitHub](https://github.com/Kaue-Francisco)  | 
-| **Diogo Palharini**    | Product Owner  | [@LinkedIn](https://www.linkedin.com/in/diogo-palharini-10b803275/)                           | [@GitHub](https://github.com/DiogoPalharini)  | 
-| **Daiene Batagioti**   | Desenvolvedora | [@LinkedIn](https://www.linkedin.com/in/daiene-batagioti/)                                    | [@GitHub](https://github.com/Daiene)          | 
-| **Arthur Karnas**      | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/arthur-karnas-da-rocha-b90433271/)                    | [@GitHub](https://github.com/Karnas01)        | 
-| **José Eduardo**       | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/jos%C3%A9-eduardo-fernandes-pereira-b26517284/)       | [@GitHub](https://github.com/ZduardoPereira)  | 
-| **Eduardo Fonseca**    | Desenvolvedor  | [@LinkedIn](https://br.linkedin.com/in/eduardo-namiuti-5641b627b)                             | [@GitHub](https://github.com/eduardofsn)      | 
-| **Erik Yokota**        | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/vin%C3%ADcius-barbosa-78111a206/)                     | [@GitHub](https://github.com/yokotaerik)      | 
-| **Kathellyn Caroline** | Desenvolvedora | [@LinkedIn]()                                                                                 | [@GitHub]()                                   |
-| **Juan Soares**        | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/ojuansoares/)                                         | [@GitHub](https://github.com/ojuansoares)     | 
+| Avatar                                            | Nome                   | Função         | Linkedin                                                                                      | GitHub                                          |
+| ------------------------------------------------- | ---------------------- | -------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+|![Kaue](./docs/readme/avatares/kaue.png)           | **Kauê Francisco**     | Scrum Master   | [@LinkedIn](https://www.linkedin.com/in/kau%C3%AA-francisco-3b13aa255/?originalSubdomain=br)  | [@GitHub](https://github.com/Kaue-Francisco)    | 
+|![Diogo](./docs/readme/avatares/diogo.png)         | **Diogo Palharini**    | Product Owner  | [@LinkedIn](https://www.linkedin.com/in/diogo-palharini-10b803275/)                           | [@GitHub](https://github.com/DiogoPalharini)    | 
+|![Daiene](./docs/readme/avatares/daiene.png)       | **Daiene Batagioti**   | Desenvolvedora | [@LinkedIn](https://www.linkedin.com/in/daiene-batagioti/)                                    | [@GitHub](https://github.com/Daiene)            | 
+|![Arthur](/docs/readme/avatares/arthur.png)        | **Arthur Karnas**      | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/arthur-karnas-da-rocha-b90433271/)                    | [@GitHub](https://github.com/Karnas01)          | 
+|![Jose](./docs/readme/avatares/jose.png)           | **José Eduardo**       | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/jos%C3%A9-eduardo-fernandes-pereira-b26517284/)       | [@GitHub](https://github.com/ZduardoPereira)    | 
+|![Eduardo](./docs/readme/avatares/eduardo.png)     | **Eduardo Fonseca**    | Desenvolvedor  | [@LinkedIn](https://br.linkedin.com/in/eduardo-namiuti-5641b627b)                             | [@GitHub](https://github.com/eduardofsn)        | 
+|![Erik](./docs/readme/avatares/erik.png)           | **Erik Yokota**        | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/vin%C3%ADcius-barbosa-78111a206/)                     | [@GitHub](https://github.com/yokotaerik)        | 
+|![Kathellyn](./docs/readme/avatares/kathellyn.png) | **Kathellyn Caroline** | Desenvolvedora | [@LinkedIn](https://www.linkedin.com/in/kathellyn-caroline-a562101b9/)                        | [@GitHub](https://github.com/CarolineKathellyn) |
+|![Juan](./docs/readme/avatares/juan.png)           | **Juan Soares**        | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/ojuansoares/)                                         | [@GitHub](https://github.com/ojuansoares)       | 
 
 <br>
 
