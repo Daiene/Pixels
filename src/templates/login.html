@@ -1,30 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/style/style.css">
     <title>Login</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="../static/style/style.css">
+      <title>Registro</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        .login-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner {
+            flex: 1;
+            background-image: url(../static/img/placeholder.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-form {
+            padding: 50px;
+        }
+    </style>
 </head>
 <body>
-  <div class="main">
-  <form id="form">
-    <h1>Bem Vindo!</h1>
-    <p>Insira seu email para acessar sua conta.</p>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email*</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="usuario@dominio.com">
+    <div class="login-container">
+        <div class="login-form">
+            <form>
+              <h1>Bem Vindo!</h1>
+              <p>Insira seu email para acessar sua conta.</p>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email*</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="usuario@dominio.com">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Senha*</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+                <p align="right"><a href="./password.html">Esqueceu sua senha?</a></p>
+              </div>
+              <button type="button" class="btn btn-custom btn-block">Entrar</button>
+              <p>Ainda não tem uma conta? <a class="hyperlink" href="./cadastro.html">Registre-se</a></p>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Senha*</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
-      <p align="right"><a href="./password.html">Esqueceu sua senha?</a></p>
-    </div>
-    <button type="button" class="btn btn-custom btn-block">Entrar</button>
-    <p>Ainda não tem uma conta? <a class="hyperlink" href="./cadastro.html">Registre-se</a></p>
-  </form>
-  <img id="capa" src="../static/img/placeholder.jpg">
-  </div>
+    <div class="banner"></div>
 </body>
 </html>
