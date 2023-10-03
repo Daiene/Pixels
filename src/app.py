@@ -19,4 +19,4 @@ def esqueceu_senha():
     return render_template('esqueceu_senha.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
