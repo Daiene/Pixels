@@ -1,0 +1,33 @@
+#form{
+    display: block;
+    justify-content: space-around;
+    /* border: 1px solid red; */
+    padding-left: 150px;
+    padding-top: 200px;
+}
+
+#usericon{
+    width: 125px;
+}
+
+.btn-custom{
+    background-color: #004618;
+    color: white;
+}
+
+h1{
+    color: #004618;
+}
+
+.main{
+    display: flex;  
+    justify-content: space-between;
+    margin: auto;
+    
+}
+
+#capa{
+    /* border: 1px solid red; */
+    max-width: 70%;
+    height: auto;
+}
