@@ -1,5 +1,3 @@
-/* copiar o import e o root em todos arquivos CSS */
-
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&family=Roboto:wght@400;500;700&family=Ubuntu:wght@400;500;700&display=swap');
 
 /* variáveis */
@@ -14,8 +12,8 @@
     --borda: #BFBFBF;
     --palceholder: #9D9D9D;
     --label: #7C7C7C;
-    --titulo: #111827;
     --texto: #374151;
+    --titulo: #111827;
 
     /* fontes */
 
@@ -24,7 +22,14 @@
     --raleway: 'Raleway', sans-serif ;
 }
 
-#form{
+/* normalização do layout do navegador */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.form{
     display: block;
     justify-content: space-around;
     /* border: 1px solid red; */
@@ -32,27 +37,62 @@
     padding-top: 200px;
 }
 
-#usericon{
+.usericon{
     width: 125px;
 }
 
 .btn-custom{
-    background-color: #004618;
-    color: white;
+    background-color: var(--fundo-principal, #004618);
+    color: var(--background-principal, #F4F4F4);
+    
 }
 
-h1{
-    color: #004618;
+.navbar{
+    /* layout */
+    display: flex;
+    width: auto;
+    height: auto;
+    padding: 10px 30px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    /* estilos */ 
+    background: var(--Fundo-Principal, #004618);
 }
 
-.main{
+.navbar__logo{
+    width: 28px;
+    height: 36.167px;
+    flex-shrink: 0;
+}
+
+.navbar__links{
+    display: flex;
+    padding-right: 0px;
+    align-items: center;
+    gap: 22px;
+}
+
+.navbar__links__link{
+        /* estilizando fontes */
+        text-decoration: none;
+        color: var(--Background-secundrio, #F4F4F4);
+        font-family: var(--roboto);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%; /* 16.8px */
+        letter-spacing: -0.14px;
+}
+
+.conteudo{
     display: flex;  
     justify-content: space-between;
     margin: auto;
     
 }
 
-#capa{
+.capa{
     /* border: 1px solid red; */
     max-width: 70%;
     height: auto;
