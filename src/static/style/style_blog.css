@@ -1,0 +1,8 @@
+.card-custom{
+    margin-top: 20px;
+}
+
+.cards{
+    display: flexbox;
+    justify-content: start;
+}
