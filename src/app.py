@@ -6,13 +6,10 @@ app = Flask(__name__)
 def home():
      return render_template('index.html')
 
-@app.route('/cadastro', methods=['post'])
+@app.route('/cadastro', methods = ['POST', 'GET'])
 def cadastro():
-    email = request.form.get['email']
-    password = request.form.get['password']
-    confirmPassword = request.get['confirmPassword']        
-
-    return render_template('cadastro.html')
+    if request.method == 'GET':
+        return render_template('cadastro.html')
 
 @app.route('/login')
 def login():

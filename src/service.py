@@ -30,6 +30,3 @@ def createUser(name, email, password, confirmPassword):
     val = (name, email, password)
     mycursor.execute(sql, val)
     mydb.commit()
-
-
-createUser('mari', 'mari@gmail.com', '123', '122')
