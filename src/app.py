@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -6,8 +6,12 @@ app = Flask(__name__)
 def home():
      return render_template('index.html')
 
-@app.route('/cadastro')
+@app.route('/cadastro', methods=['post'])
 def cadastro():
+    email = request.form.get['email']
+    password = request.form.get['password']
+    confirmPassword = request.get['confirmPassword']        
+
     return render_template('cadastro.html')
 
 @app.route('/login')
