@@ -14,8 +14,8 @@ mycursor = mydb.cursor()
 def findUserByEmail(email):
     sql = f"SELECT * FROM usuario WHERE user_email = '{email}'"
     mycursor.execute(sql)   
-    myresult = mycursor.fetchone()
-    return myresult
+    user = mycursor.fetchone()
+    return user
 
 
 def createUser(name, email, password, confirmPassword):
@@ -29,4 +29,13 @@ def createUser(name, email, password, confirmPassword):
     sql = "INSERT INTO usuario (user_name, user_email, user_password) VALUES (%s, %s, %s)"
     val = (name, email, password)
     mycursor.execute(sql, val)
-    mydb.commit()
+
+def login(email, password):
+    user = findUserByEmail(email)
+    if user[3] != password:
+        print('Senha incorreta')
+        return
+    print('Usuario logado')
+    
+    
+login('erik@gmail.com', '223')
