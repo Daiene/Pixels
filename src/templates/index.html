@@ -5,25 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/style/main.css">
+    {% block head %} {% endblock %}
     <title>{{title}}</title>
 </head>
 <body>
-    <header class="navbar">
-        <img class="navbar__logo" src="../static/img/logoph.png" alt="logo do site">
-        <nav class="navbar__links">
-            <a class="navbar__links__link" href="">Início</a>
-            <a class="navbar__links__link" href="">Hospitais</a>
-            <a class="navbar__links__link" href="">Dados gerais</a>
-            <a class="navbar__links__link" href="">Blog</a>
-            <a class="navbar__links__link" style="border-right: 1px solid #FFF; padding-right: 50px;" href="">Proadi-SUS</a>
-            <a class="navbar__links__link" href="/login">Entrar</a>
-        </nav>
-    </header>
-    <main>
-
-    </main>
-    <footer>
-        <p class="copyright">Todos os direitos reservados</p>
-    </footer>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header class="navbar">
+                <img class="navbar__logo" src="../static/img/logoph.png" alt="logo do site">
+                <nav class="navbar__links">
+                    <a class="navbar__links__link" href="">Início</a>
+                    <a class="navbar__links__link" href="">Hospitais</a>
+                    <a class="navbar__links__link" href="">Dados gerais</a>
+                    <a class="navbar__links__link" href="">Blog</a>
+                    <a class="navbar__links__link" style="border-right: 1px solid #FFF; padding-right: 50px;" href="">Proadi-SUS</a>
+                    <a class="navbar__links__link" href="/login">Entrar</a>
+                </nav>
+            </header>
+            <main>
+                <div>
+        
+                </div>
+                {% block main %} {% endblock %}
+            </main>
+        </div>
+        <footer>
+            <p class="copyright">Todos os direitos reservados</p>
+        </footer>
+    </div>
 </body>
 </html>

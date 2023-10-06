@@ -1,0 +1,43 @@
+.link {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.conteudo {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: center;
+    box-shadow:rgba(0, 0, 0, 0.905);
+
+}
+
+.fundoescuro{
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.205);
+    width: 100%;
+    height: 70vh;
+}
+
+.proadi_IMG {
+    width: 70%;
+    height: 70vh;
+}
+
+.titulo {
+    position: absolute;
+    top: 35.5rem;
+    width: 60%;
+    left: 10rem;
+}
+
+
+
+
+

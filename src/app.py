@@ -23,5 +23,9 @@ def esqueceu_senha():
 def blog():
     return render_template('blog.html')
 
+@app.route('/proadisus')
+def proadi_sus():
+    return render_template('proadisus.html')
+
 if __name__ == '__main__':
     app.run()

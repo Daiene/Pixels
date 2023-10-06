@@ -113,3 +113,13 @@ footer{
     text-align: center;
     color:  var(--background-principal);
 }
+
+#page-container {
+    position: relative;
+    min-height: 100%;
+  }
+
+#content-wrap {
+    padding-bottom: 170px;  
+  }
+  
