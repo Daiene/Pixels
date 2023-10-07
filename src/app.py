@@ -27,5 +27,9 @@ def blog():
 def proadi_sus():
     return render_template('proadisus.html')
 
+@app.route('/dados')
+def dados():
+    return render_template('dados_nefrologia.html')
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
