@@ -1,0 +1,23 @@
+.conteudo{
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteudo__capa{
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.conteudo__capa__texto{
+    align-self: stretch;
+    color: var(--Background-secundrio, #FFF);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Raleway;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: -0.32px;
+}
