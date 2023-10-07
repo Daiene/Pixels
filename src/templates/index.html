@@ -1,37 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style   /style_home.css') }}"><!-- Essa linha é pra substituir o CSS quem estiver mexendo no flask, arruma aí, por favor-->
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
 
-    <header class="navbar">
-        <img class="navbar__logo" src="../static/img/logoph.png" alt="logo do site">
-        <nav class="navbar__links">
-            <a class="navbar__links__link" href="/">Início</a>
-            <a class="navbar__links__link" href="">Hospitais</a>
-            <a class="navbar__links__link" href="/dados">Dados gerais</a>
+    {% block style %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/style_home.css') }}">
+    {% endblock %}
 
-            <a class="navbar__links__link" href="/blog">Blog</a>
-            <a class="navbar__links__link" style="border-right: 1px solid #FFF; padding-right: 50px;" href="/proadisus">Proadi-SUS</a>
-            <a class="navbar__links__link" href="/login">Entrar</a>
-        </nav>
-    </header>
+    {% block content %}
+        <main class="conteudo" style="background: url(../img/capa_home.png), lightgray 50% / cover no-repeat;">
+            <h1 class="conteudo__capa__texto">Conheça mais sobre a Insuficiência Renal Crônica (IRC), com foco no meio pediátrico.</h1>
+        </main>
+    {% endblock %}
 
-
-    <main class="conteudo" style="background: url(../img/capa_home.png), lightgray 50% / cover no-repeat;">
-        <h1 class="conteudo__capa__texto">Conheça mais sobre a Insuficiência Renal Crônica (IRC), com foco no meio pediátrico.</h1>
-    </main>
-
-
-    <footer class="footer">
-        <p class="copyright"> &copy; Todos os direitos reservados</p>
-    </footer>
-
-</body>
-</html>
+    

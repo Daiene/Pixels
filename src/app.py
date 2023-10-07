@@ -4,10 +4,9 @@ from service import *
 app = Flask(__name__)
 
 
-
 @app.route('/')
 def home():
-     return render_template('index.html')
+     return render_template('index.html', logado=True)
 
 
 
@@ -20,7 +19,7 @@ def cadastro():
             password = request.form['password']
             confirmPassword = request.form['confirmPassword']
             createUser(name, email, password, confirmPassword)
-            return render_template('index.html')
+            return render_template('base.html')
     if request.method == 'GET':
         return render_template('cadastro.html')
 
@@ -33,7 +32,7 @@ def login():
         email = request.form['email']
         password = request.form['password']
         dblogin(email, password)
-        return render_template('index.html')
+        return render_template('base.html')
     if request.method == "GET":
         return render_template('login.html')
 
@@ -67,4 +66,4 @@ def dados():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

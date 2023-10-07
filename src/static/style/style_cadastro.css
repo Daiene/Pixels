@@ -15,7 +15,7 @@ body {
 
 .banner {
     flex: 1;
-    background-image: url(../img/placeholder.jpg);
+    background-image: url(../img/logar.png);
     background-size: cover;
     background-position: center;
 }
