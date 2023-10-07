@@ -61,5 +61,10 @@ def proadi_sus():
 
 
 
+@app.route('/dados')
+def dados():
+    return render_template('dados_nefrologia.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
