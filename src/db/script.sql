@@ -14,12 +14,12 @@ CREATE TABLE IF NOT EXISTS usuario(
 
 
 
-CREATE TABLE IF NOT EXISTS postagens(
+CREATE TABLE IF NOT EXISTS post(
     post_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     post_title VARCHAR(255) NOT NULL,
     post_content TEXT NOT NULL,
     post_date DATE NOT NULL,
-    post_img VARCHAR(255) NOT NULL,
+    post_img VARCHAR(255),
     post_status TINYINT(1) NOT NULL,
     user_id BIGINT NOT NULL
 );
@@ -39,11 +39,11 @@ CREATE TABLE IF NOT EXISTS comentario(
 
 ALTER TABLE comentario ADD (
     FOREIGN KEY (user_id) REFERENCES usuario(user_id),
-    FOREIGN KEY (post_id) REFERENCES postagens(post_id)
+    FOREIGN KEY (post_id) REFERENCES post(post_id)
 );
 
 
 
-ALTER TABLE postagens ADD (
+ALTER TABLE post ADD (
     FOREIGN KEY (user_id) REFERENCES usuario(user_id)
 );
