@@ -1,4 +1,4 @@
 env/
 venv/
-/src/__pycache__/
-flask_session/
+src/__pycache__/
+src/flask_session/
