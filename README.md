@@ -76,7 +76,6 @@
 |![Jose](./docs/readme/avatares/jose.png)           | **José Eduardo**       | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/jos%C3%A9-eduardo-fernandes-pereira-b26517284/)       | [@GitHub](https://github.com/ZduardoPereira)    | 
 |![Eduardo](./docs/readme/avatares/eduardo.png)     | **Eduardo Fonseca**    | Desenvolvedor  | [@LinkedIn](https://br.linkedin.com/in/eduardo-namiuti-5641b627b)                             | [@GitHub](https://github.com/eduardofsn)        | 
 |![Erik](./docs/readme/avatares/erik.png)           | **Erik Yokota**        | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/vin%C3%ADcius-barbosa-78111a206/)                     | [@GitHub](https://github.com/yokotaerik)        | 
-|![Kathellyn](./docs/readme/avatares/kathellyn.png) | **Kathellyn Caroline** | Desenvolvedora | [@LinkedIn](https://www.linkedin.com/in/kathellyn-caroline-a562101b9/)                        | [@GitHub](https://github.com/CarolineKathellyn) |
 |![Juan](./docs/readme/avatares/juan.png)           | **Juan Soares**        | Desenvolvedor  | [@LinkedIn](https://www.linkedin.com/in/ojuansoares/)                                         | [@GitHub](https://github.com/ojuansoares)       | 
 
 <br>
