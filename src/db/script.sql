@@ -46,5 +46,3 @@ ALTER TABLE comentario ADD (
 ALTER TABLE post ADD (
     FOREIGN KEY (user_id) REFERENCES usuario(user_id)
 );
-
-INSERT INTO usuario(user_name, user_email, user_password) VALUES ('administrador', 'admin@admin.com', 'admin123');
