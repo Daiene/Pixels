@@ -1,14 +1,1159 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='style/style_home.css') }}"
+/>
+{% endblock %} {% block content %}
+<main style="margin-top: 56.16px">
+  <div class="conteudo">
+    <section class="conteudo__capa">
+      <img
+        style="height: 100%; width: 100%"
+        src="{{ url_for('static', filename='img/capa_home.png') }}"
+        alt="Foto de capa da página home"
+      />
+      <section class="conteudo__capa__texto">
+        <h1>
+          Conheça mais sobre a Insuficiência Renal Crônica <br />
+          (IRC), com foco no meio pediátrico.
+        </h1>
 
-    {% block style %}
-        <link rel="stylesheet" href="{{ url_for('static', filename='style/style_home.css') }}">
-    {% endblock %}
-
-
-    {% block content %}
-        <main class="conteudo" style="background-image: url(../img/capa_home.png), lightgray 50% / cover no-repeat;">
-            <h1 class="conteudo__capa__texto">Conheça mais sobre a Insuficiência Renal Crônica (IRC), com foco no meio pediátrico.</h1>
-        </main>
-    {% endblock %}
-
-    
+        <button class="conteudo__capa__botao">Leia Mais</button>
+      </section>
+    </section>
+  </div>
+  <div
+    class="icones"
+    style="
+      width: 100%;
+      height: 100%;
+      padding-left: 150px;
+      padding-right: 150px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background: #f4f4f4;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 25px;
+      display: inline-flex;
+    "
+  >
+    <div
+      style="
+        align-self: stretch;
+        height: 163px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        display: flex;
+      "
+    >
+      <div
+        style="
+          align-self: stretch;
+          color: #111827;
+          font-size: 28px;
+          font-family: Raleway;
+          font-weight: 700;
+          line-height: 28px;
+          word-wrap: break-word;
+        "
+      >
+        Sobre o projeto
+      </div>
+      <div
+        style="
+          align-self: stretch;
+          text-align: justify;
+          color: #374151;
+          font-size: 16px;
+          font-family: Roboto;
+          font-weight: 400;
+          line-height: 19.2px;
+          word-wrap: break-word;
+        "
+      >
+        O projeto “nome” consiste em um site criado primordialmente a fim de
+        disponibilizar informações acerca da nefrologia, que é a área da
+        medicina especializada no tratamento e prevenção de doenças renais. Além
+        disso, o projeto busca chamar atenção para a Insuficiência Renal Crônica
+        Pediátrica (IRC), também chamada de Doença Renal Crônica Pediátrica
+        (DRC), a fim de orientar mães, pais ou responsáveis que lidam com
+        crianças diagnosticadas com a doença. O site tem como objetivos
+        secundários informar sobre a doença, dados referentes aos casos e locais
+        que são capazes de tratar a IRC. Ademais também existe um blog destinado
+        a comunidade para a disseminação de notícias relevantes e publicação de
+        histórias.
+      </div>
+    </div>
+    <div
+      style="
+        align-self: stretch;
+        height: 971.95px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 30px;
+        display: flex;
+      "
+    >
+      <div
+        style="
+          align-self: stretch;
+          height: 124px;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 20px;
+          display: flex;
+        "
+      >
+        <div
+          style="
+            align-self: stretch;
+            text-align: justify;
+            color: #111827;
+            font-size: 28px;
+            font-family: Raleway;
+            font-weight: 700;
+            line-height: 28px;
+            word-wrap: break-word;
+          "
+        >
+          Primeiros passos ao descobrir que seu filho possui IRC
+        </div>
+        <div
+          style="
+            align-self: stretch;
+            text-align: justify;
+            color: #374151;
+            font-size: 16px;
+            font-family: Roboto;
+            font-weight: 400;
+            line-height: 19.2px;
+            word-wrap: break-word;
+          "
+        >
+          Descobrir que seu filho possui a doença renal crônica (IRC) é uma
+          notícia que pode abalar profundamente qualquer mãe. A preocupação com
+          o bem-estar do filho e a incerteza sobre o que o futuro reserva podem
+          ser esmagadoras. No entanto, é importante lembrar que, com o apoio
+          adequado e ações bem orientadas, é possível enfrentar essa situação
+          desafiadora e proporcionar o melhor cuidado possível para o seu filho.
+          Aqui estão os primeiros passos que uma mãe pode considerar ao receber
+          o diagnóstico de IRC em seu filho:
+        </div>
+      </div>
+      <div
+        style="
+          align-self: stretch;
+          height: 749.95px;
+          padding-left: 25px;
+          padding-right: 25px;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 25px;
+          display: flex;
+        "
+      >
+        <div
+          style="
+            align-self: stretch;
+            justify-content: center;
+            align-items: center;
+            gap: 45px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              flex: 1 1 0;
+              height: 134px;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="height: 109.77px"
+              src="{{ url_for('static', filename='img/home_img/info_sec.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                align-self: stretch;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Busque Informações Confiáveis:
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                A primeira coisa a fazer é obter informações sobre a IRC.
+                Consulte o médico do seu filho para entender a condição, causas,
+                sintomas e opções de tratamento. Educar-se sobre a doença
+                ajudará você a tomar decisões informadas.
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              flex: 1 1 0;
+              align-self: stretch;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="width: 94px; height: 105.95px"
+              src="{{ url_for('static', filename='img/home_img/med_team.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                align-self: stretch;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Comunique-se com a Equipe Médica:
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                Estabeleça uma comunicação aberta e eficaz com a equipe médica
+                que cuidará do seu filho. Faça perguntas, esclareça dúvidas e
+                participe ativamente do plano de tratamento.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="
+            align-self: stretch;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 45px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              flex: 1 1 0;
+              height: 141px;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="width: 94px; height: 105.95px"
+              src="{{ url_for('static', filename='img/home_img/med_log.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                align-self: stretch;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Mantenha Registros Médicos:
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                Mantenha um registro detalhado das consultas médicas, resultados
+                de exames e tratamentos. Isso facilitará o acompanhamento da
+                evolução da condição do seu filho.
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              flex: 1 1 0;
+              align-self: stretch;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="width: 94px; height: 105.95px"
+              src="{{ url_for('static', filename='img/home_img/help_net.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                align-self: stretch;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Crie uma Rede de Apoio:
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                Procure grupos de apoio local ou online onde você possa se
+                conectar com outras mães e pais que estão passando pela mesma
+                situação. O compartilhamento de experiências pode ser
+                reconfortante e informativo.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="
+            align-self: stretch;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 45px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              flex: 1 1 0;
+              align-self: stretch;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="width: 94px; height: 105.95px"
+              src="{{ url_for('static', filename='img/home_img/care_plan.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                align-self: stretch;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Desenvolva um Plano de Cuidados:
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                Trabalhe com a equipe médica para criar um plano de cuidados
+                abrangente para o seu filho. Isso pode incluir mudanças na
+                dieta, medicações e acompanhamento médico regular.
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              flex: 1 1 0;
+              align-self: stretch;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="width: 94px; height: 105.95px"
+              src="{{ url_for('static', filename='img/home_img/open_comm.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Mantenha uma Comunicação Aberta com Seu Filho:
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                Dependendo da idade do seu filho, explique de maneira adequada à
+                sua compreensão o que é a IRC e o que esperar. Mantenha um
+                ambiente aberto para que ele possa compartilhar sentimentos e
+                preocupações.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="
+            align-self: stretch;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              flex: 1 1 0;
+              align-self: stretch;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="width: 94px; height: 105.95px"
+              src="{{ url_for('static', filename='img/home_img/care_opt.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                align-self: stretch;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Pesquise Opções de Tratamento:
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                Dependendo do estágio da IRC, pode ser necessário considerar
+                opções de tratamento, como diálise ou transplante renal.
+                Converse com a equipe médica sobre as melhores opções para o seu
+                filho.
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              flex: 1 1 0;
+              align-self: stretch;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="width: 94px; height: 105.95px"
+              src="{{ url_for('static', filename='img/home_img/care_ys.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                align-self: stretch;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Cuide de Si Mesma.
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                A saúde emocional e física da mãe desempenha um papel importante
+                no bem-estar da família. Tire tempo para descansar e procurar
+                apoio emocional quando necessário.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="
+            align-self: stretch;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              flex: 1 1 0;
+              align-self: stretch;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="width: 94px; height: 105.95px"
+              src="{{ url_for('static', filename='img/home_img/child_dev.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Apoie o Desenvolvimento do seu Filho:
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                Certifique-se de que seu filho possa continuar a se desenvolver
+                e crescer normalmente, dentro do possível. Isso inclui educação
+                e atividades adequadas à sua idade.
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              flex: 1 1 0;
+              align-self: stretch;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 20px;
+              display: flex;
+            "
+          >
+            <img
+              style="width: 94px; height: 105.95px"
+              src="{{ url_for('static', filename='img/home_img/keep_faith.png') }}"
+            />
+            <div
+              style="
+                flex: 1 1 0;
+                align-self: stretch;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 10px;
+                display: inline-flex;
+              "
+            >
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #111827;
+                  font-size: 24px;
+                  font-family: Raleway;
+                  font-weight: 700;
+                  line-height: 28.8px;
+                  word-wrap: break-word;
+                "
+              >
+                Mantenha a Esperança:
+              </div>
+              <div
+                style="
+                  align-self: stretch;
+                  text-align: justify;
+                  color: #374151;
+                  font-size: 16px;
+                  font-family: Roboto;
+                  font-weight: 400;
+                  line-height: 19.2px;
+                  word-wrap: break-word;
+                "
+              >
+                Lembre-se de que muitas crianças com IRC levam vidas saudáveis e
+                produtivas com o tratamento adequado. Mantenha a esperança e a
+                positividade.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="
+          align-self: stretch;
+          text-align: justify;
+          color: #374151;
+          font-size: 16px;
+          font-family: Roboto;
+          font-weight: 400;
+          line-height: 19.2px;
+          word-wrap: break-word;
+        "
+      >
+        Enfrentar a IRC em um filho é uma jornada desafiadora, mas com amor,
+        informação e apoio, você pode desempenhar um papel fundamental em ajudar
+        seu filho a levar uma vida plena e feliz. Lembre-se de que você não está
+        sozinha e que muitas mães passaram por essa jornada com sucesso.
+      </div>
+    </div>
+  </div>
+  <div
+    style="
+      width: 100%;
+      height: 100%;
+      padding-left: 150px;
+      padding-right: 150px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background: rgba(0, 70, 24, 0.05);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      display: inline-flex;
+    "
+  >
+    <div
+      style="
+        align-self: stretch;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        display: inline-flex;
+      "
+    >
+      <div style="flex: 1 1 0; height: 0px; border: 2px #004618 solid"></div>
+      <div
+        style="
+          text-align: justify;
+          color: #004618;
+          font-size: 28px;
+          font-family: Raleway;
+          font-weight: 700;
+          line-height: 28px;
+          word-wrap: break-word;
+        "
+      >
+        Perguntas Frequentes
+      </div>
+      <div style="flex: 1 1 0; height: 0px; border: 2px #004618 solid"></div>
+    </div>
+    <div
+      style="
+        align-self: stretch;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        display: inline-flex;
+      "
+    >
+      <div
+        style="
+          flex: 1 1 0;
+          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+          border-radius: 10px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          display: inline-flex;
+        "
+      >
+        <div
+          style="
+            align-self: stretch;
+            height: 39px;
+            padding-left: 15px;
+            padding-right: 15px;
+            background: #004618;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              text-align: justify;
+              color: white;
+              font-size: 16px;
+              font-family: Raleway;
+              font-weight: 700;
+              line-height: 16px;
+              word-wrap: break-word;
+            "
+          >
+            O que é a DRC?
+          </div>
+        </div>
+        <div
+          style="
+            align-self: stretch;
+            padding: 15px;
+            background: #f4f4f4;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              flex: 1 1 0;
+              text-align: justify;
+              color: #374151;
+              font-size: 16px;
+              font-family: Roboto;
+              font-weight: 400;
+              line-height: 19.2px;
+              word-wrap: break-word;
+            "
+          >
+            A DRC é uma condição médica em que os rins não funcionam de maneira
+            eficaz ao longo do tempo, resultando na perda gradual da função
+            renal.
+          </div>
+        </div>
+      </div>
+      <div
+        style="
+          flex: 1 1 0;
+          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+          border-radius: 10px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          display: inline-flex;
+        "
+      >
+        <div
+          style="
+            align-self: stretch;
+            height: 39px;
+            padding-left: 15px;
+            padding-right: 15px;
+            background: #004618;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              text-align: justify;
+              color: white;
+              font-size: 16px;
+              font-family: Raleway;
+              font-weight: 700;
+              line-height: 16px;
+              word-wrap: break-word;
+            "
+          >
+            Tem cura?
+          </div>
+        </div>
+        <div
+          style="
+            align-self: stretch;
+            padding: 15px;
+            background: #f4f4f4;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              flex: 1 1 0;
+              text-align: justify;
+              color: #374151;
+              font-size: 16px;
+              font-family: Roboto;
+              font-weight: 400;
+              line-height: 19.2px;
+              word-wrap: break-word;
+            "
+          >
+            Em muitos casos, a DRC não tem cura completa, mas o tratamento pode
+            ajudar a retardar a progressão da doença e melhorar a qualidade de
+            vida.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      style="
+        align-self: stretch;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 25px;
+        display: inline-flex;
+      "
+    >
+      <div
+        style="
+          flex: 1 1 0;
+          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+          border-radius: 10px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          display: inline-flex;
+        "
+      >
+        <div
+          style="
+            align-self: stretch;
+            height: 39px;
+            padding-left: 15px;
+            padding-right: 15px;
+            background: #004618;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              text-align: justify;
+              color: white;
+              font-size: 16px;
+              font-family: Raleway;
+              font-weight: 700;
+              line-height: 16px;
+              word-wrap: break-word;
+            "
+          >
+            Qual o tratamento?
+          </div>
+        </div>
+        <div
+          style="
+            align-self: stretch;
+            padding: 15px;
+            background: #f4f4f4;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              flex: 1 1 0;
+              text-align: justify;
+              color: #374151;
+              font-size: 16px;
+              font-family: Roboto;
+              font-weight: 400;
+              line-height: 19.2px;
+              word-wrap: break-word;
+            "
+          >
+            O tratamento da DRC em crianças depende da causa subjacente, do
+            estágio da doença e das necessidades individuais da criança. Pode
+            incluir medicamentos para controlar a pressão arterial, dieta
+            controlada, tratamento de doenças subjacentes, diálise (peritoneal
+            ou hemodiálise) e, em alguns casos, transplante renal.
+          </div>
+        </div>
+      </div>
+      <div
+        style="
+          flex: 1 1 0;
+          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+          border-radius: 10px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          display: inline-flex;
+        "
+      >
+        <div
+          style="
+            align-self: stretch;
+            height: 39px;
+            padding-left: 15px;
+            padding-right: 15px;
+            background: #004618;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              text-align: justify;
+              color: white;
+              font-size: 16px;
+              font-family: Raleway;
+              font-weight: 700;
+              line-height: 16px;
+              word-wrap: break-word;
+            "
+          >
+            Qual sua origem? Motivo?
+          </div>
+        </div>
+        <div
+          style="
+            align-self: stretch;
+            padding: 15px;
+            background: #f4f4f4;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow: hidden;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+            display: inline-flex;
+          "
+        >
+          <div
+            style="
+              flex: 1 1 0;
+              text-align: justify;
+              color: #374151;
+              font-size: 16px;
+              font-family: Roboto;
+              font-weight: 400;
+              line-height: 19.2px;
+              word-wrap: break-word;
+            "
+          >
+            As causas da DRC pediátrica podem variar, mas algumas origens comuns
+            incluem doenças renais congênitas, infecções renais, lesões nos
+            rins, doenças autoimunes, anomalias do trato urinário, entre outras.
+            A origem específica da DRC pode ser determinada por exames médicos.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
