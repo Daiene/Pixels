@@ -33,17 +33,12 @@ def findUserByEmail(email):
 
 
 def createUser(name, email, password, confirmPassword):
-    user = findUserByEmail(email)
-    if user:
-        print("email ja cadastrado")
-        return
-    if password != confirmPassword:
-        print("senha nao confere") 
-        return
+
     sql = "INSERT INTO usuario (user_name, user_email, user_password) VALUES (%s, %s, %s)"
     val = (name, email, password)
     print("USUARIO CADASTRADO COM SUCESSO!")
     mycursor.execute(sql, val)
+    return True
 
 
 
@@ -64,31 +59,41 @@ def check_session(session):
     return access
 
 
-def check_info(page, name, email, password, confirmPassword):
+def check_cadastro(name, email, password, confirmPassword):
+    
+    user = findUserByEmail(email)
+    
+    if name == "" or email == "" or password == "" or confirmPassword == "":
+        warn = "Preencha todos os campos!"
+        return False, warn
+        
+    if password != confirmPassword:
+        warn = "As senhas não estão iguais!"
+        return False, warn
+
+    if user == None:
+        warn = "email ja cadastrado"
+        return False, warn
+    
+    if password != confirmPassword:
+        warn = "senha nao confere" 
+        return False, warn
+        
+    warn=""
+    return True, warn
+    
+
+def check_login(email, password):
     user = findUserByEmail(email)
 
-    if page == "cadastro":
-        if name == "" or email == "" or password == "" or confirmPassword == "":
-            warn = "Preencha todos os campos!"
-            return False, warn
+    if email == "" or password == "":
+        warn = "Preencha todos os campos!"
+        return False, warn
         
-        elif password != confirmPassword:
-            warn = "As senhas não estão iguais!"
-            return False, warn
+    elif user == None or user[3] != password:
+        warn = "Email ou Senha incorreta!"
+        return False, warn
         
-        else:
-            warn=""
-            return True, warn
-    
-    elif page == "login":
-        if email == "" or password == "":
-            warn = "Preencha todos os campos!"
-            return False, warn
-        
-        elif user == None or user[3] != password:
-            warn = "Email ou Senha incorreta!"
-            return False, warn
-        
-        else:
-            warn=""
-            return True, warn
+    else:
+        warn=""
+        return True, warn
