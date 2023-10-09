@@ -14,6 +14,8 @@ def home():
         access=check_session(session["email"])
         if access == True:
             name = findUserByEmail(session["email"])
+            if name is not None:
+                name=name[1]
             return render_template('index.html', access=access, title="Home", name=name)
         else:
             return render_template('index.html', access=access, title="Home", name=name)
@@ -30,7 +32,7 @@ def cadastro():
             confirmPassword = request.form['confirmPassword']
             info, warn = check_cadastro(name, email, password, confirmPassword)
             if info == True:
-                createUser(name, email, password, confirmPassword)
+                createUser(name, email, password)
             else:
                 return render_template('cadastro.html', title="Cadastro", warn=warn)
             return redirect('/login')
@@ -73,8 +75,12 @@ def esqueceu_senha():
 
 @app.route('/blog')
 def blog():
+    name = ""
     access=check_session( session["email"])
-    return render_template('blog.html', access=access, title="Blog")
+    name = findUserByEmail(session["email"])
+    if name is not None:
+        name = name[1]
+    return render_template('blog.html', access=access, title="Blog", name=name)
 
 
 

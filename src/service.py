@@ -4,7 +4,7 @@ from datetime import datetime
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="fatec",
+passwd="",
 )
 mycursor = db.cursor()
 now = datetime.now()
@@ -59,21 +59,21 @@ def check_session(session):
 def check_cadastro(name, email, password, confirmPassword):
     
     user = findUserByEmail(email)
-    
-    if name == "" or email == "" or password == "" or confirmPassword == "":
+    print(user)
+    if user != None:
+        warn = "Email já cadastrado!"
+        return False, warn
+
+    elif name == "" or email == "" or password == "" or confirmPassword == "":
         warn = "Preencha todos os campos!"
         return False, warn
     
-    if password != confirmPassword:
+    elif password != confirmPassword:
         warn = "As senhas não estão iguais!"
         return False, warn
-
-    if user != None:
-        warn = "email ja cadastrado"
-        return False, warn
     
-    if password != confirmPassword:
-        warn = "senha nao confere" 
+    elif password != confirmPassword:
+        warn = "Senha não confere!" 
         return False, warn
         
     warn=""
