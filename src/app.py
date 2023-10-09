@@ -7,16 +7,16 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+
 @app.route('/')
 def home():
-    name=""
-    access=check_session(session["email"])
-    if access == True:
-        name = findUserByEmail(session["email"])[1]
-        return render_template('index.html', access=access, title="Home", name=name)
-    else:
-        return render_template('index.html', access=access, title="Home", name=name)
-
+        name=""
+        access=check_session(session["email"])
+        if access == True:
+            name = findUserByEmail(session["email"])[1]
+            return render_template('index.html', access=access, title="Home", name=name)
+        else:
+            return render_template('index.html', access=access, title="Home", name=name)
 
 
 
@@ -98,6 +98,10 @@ def dados():
 
 
 
+def main():
+    session["email"] = None
+    app.run(debug=True)
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    main()
