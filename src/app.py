@@ -24,12 +24,11 @@ def home():
 @app.route('/cadastro', methods = ['POST', 'GET'])
 def cadastro():
     if request.method == "POST":
-            page="cadastro"
             name = request.form['name']
             email = request.form['email']
             password = request.form['password']
             confirmPassword = request.form['confirmPassword']
-            info, warn = check_info(page, name, email, password, confirmPassword)
+            info, warn = check_cadastro(name, email, password, confirmPassword)
             if info == True:
                 createUser(name, email, password, confirmPassword)
             else:
@@ -44,10 +43,9 @@ def cadastro():
 @app.route('/login', methods = ['POST', 'GET'])
 def login():
     if request.method == "POST":
-        page="login"
         email = request.form['email']
         password = request.form['password']
-        info, warn = check_info(page=page, email=email, password=password, name="", confirmPassword="")
+        info, warn = check_login(email, password)
         if info:
             session["email"] = request.form.get("email")
             return redirect("/")
