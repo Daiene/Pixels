@@ -1,0 +1,10 @@
+
+.forma{
+    display: flex;
+    width: 665px;
+    padding: 50px 65px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}

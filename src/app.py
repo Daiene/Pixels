@@ -101,5 +101,16 @@ def dados():
 
 
 
+
+@app.route('/perfil')
+def perfil():
+    access=check_session(session["email"])
+    if access == False:
+        return redirect('/login')
+    else:
+        return render_template('perfil.html', access=access, title="Perfil")
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
