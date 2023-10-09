@@ -116,7 +116,10 @@ def perfil():
     if access == False:
         return redirect('/login')
     else:
-        return render_template('perfil.html', access=access, title="Perfil")
+        name = findUserByEmail(session["email"])
+        if name is not None:
+            name = name[1]
+        return render_template('perfil.html', access=access, title="Perfil", name=name)
 
 
 
