@@ -1,9 +1,6 @@
 import mysql.connector
 from datetime import datetime
 
-
-
-
 db = mysql.connector.connect(
 host="localhost",
 user="root",
@@ -32,7 +29,7 @@ def findUserByEmail(email):
 
 
 
-def createUser(name, email, password, confirmPassword):
+def createUser(name, email, password):
 
     sql = "INSERT INTO usuario (user_name, user_email, user_password) VALUES (%s, %s, %s)"
     val = (name, email, password)
@@ -66,12 +63,12 @@ def check_cadastro(name, email, password, confirmPassword):
     if name == "" or email == "" or password == "" or confirmPassword == "":
         warn = "Preencha todos os campos!"
         return False, warn
-        
+    
     if password != confirmPassword:
         warn = "As senhas não estão iguais!"
         return False, warn
 
-    if user == None:
+    if user != None:
         warn = "email ja cadastrado"
         return False, warn
     

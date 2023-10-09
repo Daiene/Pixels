@@ -13,7 +13,7 @@ def home():
         name=""
         access=check_session(session["email"])
         if access == True:
-            name = findUserByEmail(session["email"])[1]
+            name = findUserByEmail(session["email"])
             return render_template('index.html', access=access, title="Home", name=name)
         else:
             return render_template('index.html', access=access, title="Home", name=name)
