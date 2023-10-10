@@ -8,6 +8,11 @@
 
 .conteudo__capa {
     /* layout */
+
+    position: relative;
+    gap: 25px;
+    flex: 1 0 0;
+
     display: inline-block;
     align-self: stretch;
     width: 100%;
@@ -15,16 +20,14 @@
 
 .conteudo__capa__texto {
     /* layout */
-    position: absolute;
+
     display: flex;
     flex-direction: column;
     gap: 25px;
-    width: 100%;
-    height: 0px;
-    top: 45rem;
-    margin-left: 100px;
-    justify-content: flex-start;
-    align-items: flex-start;
+    
+    position: absolute;
+    top: 548px; 
+    left: 48px;
 
     /* estilo */ 
     color: var(--Background-secundario, #F4F4F4);
