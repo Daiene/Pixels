@@ -113,3 +113,27 @@
     line-height: 16.80px;
     word-wrap: break-word
 }
+
+.tela_perfil_nome{
+    display: none;
+    position: absolute;
+}
+
+.tela_perfil_nome {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+.tela_perfil_nome ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tela_perfil_nome li {
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.tela_perfil_nome li:hover {
+    background-color: #eee;
+}
