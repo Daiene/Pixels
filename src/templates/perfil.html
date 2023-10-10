@@ -1,81 +1,74 @@
 {% extends "base.html" %} {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='style/style_perfil.css') }}">
 {% endblock %} {% block content %}
-<div  style="width: 1440px; height: 1453.50px; padding-top: 30px; padding-bottom: 30px; flex-direction: column; justify-content: center; align-items: center; gap: 30px; display: inline-flex">
-    <div class="forma" style="height: 551.50px; padding-left: 65px; padding-right: 65px; padding-top: 50px; padding-bottom: 50px; background: white; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; border: 1px #BFBFBF solid; flex-direction: column; justify-content: center; align-items: center; gap: 25px; display: flex">
-      <div style="height: 451.50px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 25px; display: flex">
-        <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 15px; display: flex">
-          <div style="color: #004618; font-size: 28px; font-family: Raleway; font-weight: 700; line-height: 28px; word-wrap: break-word">Informações do Perfil</div>
-          <div style="color: #374151; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Atualize as informações de perfil e endereço de e-mail da sua conta</div>
+<div class="content">
+  <div class="container">
+    <div class="forma">
+      <div class="header_h1">
+        <div class="header_p">
+          <div class="titulo">Informações do Perfil</div>
+          <div class="texto">Atualize as informações de perfil e endereço de e-mail da sua conta</div>
         </div>
-        <div style="align-self: stretch; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+        <div class="foto_perfil">
             <img src="{{ url_for('static', filename='img/foto_de_perfil.png') }}" alt="Minha Imagem">
         </div>
-        <div style="align-self: stretch; height: 62px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
-          <div style="color: #7C7C7C; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Nome</div>
+        <div class="input">
+          <div class="form_name">Nome</div>
           <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
-          <div style=" justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
-            <div style="color: #374151; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 16.80px; word-wrap: break-word"></div>
+          <div class="coluna"></div>
+        </div>
+        <div class="input">
+          <div class="form_name">Email</div>
+          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="usuario@dominio.com">
+          <div class="coluna">
 
           </div>
         </div>
-        <div style="align-self: stretch; height: 62px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
-          <div style="color: #7C7C7C; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Email</div>
-          <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
-          <div style="justify-content: space-between; align-items: center; display: inline-flex">
-            <div style="color: #374151; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 16.80px; word-wrap: break-word"></div>
-            <div style="width: 20px; height: 13.33px; background: white"></div>
-          </div>
-        </div>
-        <div style="align-self: stretch; height: 40px; padding: 10px; background: #004618; border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-          <div style="color: white; font-size: 14px; font-family: Roboto; font-weight: 700; line-height: 14px; word-wrap: break-word"></div>
+        <div class="button_save">
           <button type="submit" class="btn btn-block btn-custom">Salvar</button>
         </div>
       </div>
     </div>
-    <div class="forma" style="height: 511px; padding-left: 65px; padding-right: 65px; padding-top: 50px; padding-bottom: 50px; background: white; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; border: 1px #BFBFBF solid; flex-direction: column; justify-content: center; align-items: center; gap: 25px; display: flex">
-      <div style="height: 411px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 25px; display: flex">
-        <div style="align-self: stretch; height: 85px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 15px; display: flex">
-          <div style="color: #004618; font-size: 28px; font-family: Raleway; font-weight: 700; line-height: 28px; word-wrap: break-word">Atualizar Senha</div>
-          <div style="align-self: stretch; color: #374151; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 21px; word-wrap: break-word">Certifique-se de que sua conta esteja usando uma senha longa e aleatória para permanecer segura</div>
+    <div class="forma" >
+      <div class="button_form_save">
+        <div class="form_atualizacao">
+          <div class="titulo">Atualizar Senha</div>
+          <div class="texto">Certifique-se de que sua conta esteja usando uma senha longa e aleatória para permanecer segura</div>
         </div>
-        <div style="align-self: stretch; height: 62px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
-          <div style="color: #7C7C7C; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Senha Atual</div>
+        <div class="form_senha">
+          <div class="form_name">Senha Atual</div>
           <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
-          <div style="justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
-            <div></div>
+          <div>
           </div>
         </div>
-        <div style="align-self: stretch; height: 62px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
-          <div style="color: #7C7C7C; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Nova Senha</div>
+        <div class="form_senha">
+          <div class="form_name">Nova Senha</div>
           <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
-          <div style="justify-content: space-between; align-items: center; display: inline-flex">
-            <div></div>
-            <div style="width: 20px; height: 13.33px; background: white"></div>
-          </div>
-        </div>
-        <div style="align-self: stretch; height: 62px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
-          <div style="color: #7C7C7C; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Confirme sua Nova Senha</div>
-          <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
-          <div style="justify-content: space-between; align-items: center; display: inline-flex">
+          <div class="coluna">
             <div></div>
             <div style="width: 20px; height: 13.33px; background: white"></div>
           </div>
         </div>
-        <div style="align-self: stretch; height: 40px; padding: 10px; background: #004618; border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
-          <div style="color: white; font-size: 14px; font-family: Roboto; font-weight: 700; line-height: 14px; word-wrap: break-word"></div>
+        <div class="form_senha">
+          <div class="form_name">Confirme sua Nova Senha</div>
+          <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
+          <div class="coluna">
+      
+          </div>
+        </div>
+        <div class="button_save">
           
           <button type="submit" class="btn btn-block btn-custom">Salvar</button>
         </div>
       </div>
     </div>
-    <div class="forma" style="height: 271px; padding-left: 65px; padding-right: 65px; padding-top: 50px; padding-bottom: 50px; background: white; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25); border-radius: 10px; overflow: hidden; border: 1px #BFBFBF solid; flex-direction: column; justify-content: center; align-items: center; gap: 25px; display: flex">
-      <div style="height: 171px; flex-direction: column; justify-content: center; align-items: center; gap: 25px; display: flex">
-        <div style="align-self: stretch; height: 106px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 15px; display: flex">
-          <div style="color: #004618; font-size: 28px; font-family: Raleway; font-weight: 700; line-height: 28px; word-wrap: break-word">Deletar Conta</div>
-          <div style="align-self: stretch; text-align: justify; color: #374151; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 21px; word-wrap: break-word">Depois que sua conta for excluida, todos os seus recursos e dados serão excluidos permanentemente. Antes de excluir sua conta, baixe todos os dados ou informações que deseja reter.</div>
+    <div class="forma1">
+      <div class="deletar_conta">
+        <div class="form_deletar">
+          <div class="titulo">Deletar Conta</div>
+          <div class="texto">Depois que sua conta for excluida, todos os seus recursos e dados serão excluidos permanentemente. Antes de excluir sua conta, baixe todos os dados ou informações que deseja reter.</div>
         </div>
-        <div style="align-self: stretch; height: 40px; padding: 10px; background: #D50C0C; border-radius: 10px; overflow: hidden; justify-content: center; align-items: center; gap: 10px; display: inline-flex">   
+        <div class="button_deletar">   
             <button type="submit" class="btn btn-block btn-custom" style="background-color: #D50C0C; color: white;">Deletar Conta</button>
 
 
@@ -83,5 +76,7 @@
         </div>
       </div>
     </div>
-  </div>    
+  </div>
+</div>
+
 {% endblock %}
