@@ -8,22 +8,27 @@
 
 .conteudo__capa {
     /* layout */
+
     position: relative;
-    display: inline-block;
     gap: 25px;
     flex: 1 0 0;
+
+    display: inline-block;
     align-self: stretch;
     width: 100%;
 }
 
 .conteudo__capa__texto {
     /* layout */
+
     display: flex;
     flex-direction: column;
     gap: 25px;
+    
     position: absolute;
     top: 548px; 
     left: 48px;
+
     /* estilo */ 
     color: var(--Background-secundario, #F4F4F4);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

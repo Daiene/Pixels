@@ -60,6 +60,7 @@
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    z-index: 99;
     /* estilos */ 
     background: var(--Fundo-Principal, #004618);
 }
