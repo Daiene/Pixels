@@ -1,5 +1,40 @@
-{% extends "base.html" %}
-    {% block style %}<link rel="stylesheet" href="{{ url_for('static', filename='style/style_home.css') }}">{% endblock %}
+{% extends "base.html" %}{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style_dados.css') }}"/>
+    {% endblock %}{% block content %}
+        <div class="espaçamento_corpo">
+            <div class="formato_capa">
+                <img style="flex: 1 1 0; align-self: stretch" src="{{ url_for('static', filename='img/img_dados.png') }}" />
+                <div class="espaçamento_capa">
+                    <div class="conteudo__capa__texto">
+                        <div class="texto_capa">Conheça alguns dados importantes sobre a <br> Doença Renal Cronica (DRC) em Crianças.</div>
+                        <div class="button_lermais">
+                            <button style="background: #004618; color: #F4F4F4;">Leia Mais</button>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <div class="espaço_texto">
+                <div class="espaço_texto2"> 
+                    <div class="titulo">Crianças em Hemodialise <br/></div>
+                    <div ><span class="style_texto">A Doença Renal Crônica  (DRC) é relativamente rara em crianças, com uma incidência anual de 5 a 15 pacientes por milhão na população infantil</span><span style="color: #374151; font-size: 16px; font-family: Roboto; font-weight: 400; line-height: 19.20px; word-wrap: break-word">1</span><span style="color: #374151; font-size: 16px; font-family: Roboto; font-weight: 400; line-height: 19.20px; word-wrap: break-word">. Em um censo publicado em janeiro de 2006 pela Sociedade Brasileira de Nefrologia, estima-se que há 70.872 pacientes em modalidades dialíticas no país, e, destes, 1.153 são pacientes com idade menor que 18 anos.</span></div>
+                </div>
+                <div class="espaço_texto3">
+                    <div class="titulo">Fila de Transplante</div>
+                    <div class="style_texto">Das 66.273 pessoas que aguardam por um transplante no Brasil, 1.477 são crianças e adolescentes de 0 a 17 anos. A maioria (62%) aguarda por córneas, enquanto 24,2% estão na espera por rins. As informações são do Ministério da Saúde, com dados do Sistema Nacional de Transplantes (SNT).Em 2020, foram realizados no Brasil 242 transplantes de rim em crianças, sendo dez de doadores vivos e 232 de doadores falecidos.<br/></div>
+                </div>
+                <div class="espaço_texto4">
+                    <div class="titulo">Tratamento Conservador</div>
+                    <div class="style_texto">Tratamento conservador: é o tratamento realizado por meio de orientações importantes, medicamentos e dieta, visando conservar a função dos rins que já têm perda crônica e irreversível, tentando evitar, o máximo possível, o início da diálise - tratamento realizado para substituir algumas das funções dos rins.O tratamento conservador consiste em todas as medidas clínicas (remédios, modificações na dieta e estilo de vida) que podem ser utilizadas para retardara piora da função renal, reduzir os sintomas e prevenir complicações ligadas à doença renal crônica. <br/></div>
+                </div>
+                <div class="espaço_texto5">
+                    <img style="width: 952px; height: 383px" src="{{ url_for('static', filename='img/info_dados.png') }}" />
+                </div>
+                <div class="espaço_texto6">
+                    <div class="titulo_mortalidade">MORTALIDADE EM CRIANÇAS COM DOENÇA CRÔNICA RENAL</div>
+                    <div class="style_texto">A taxa de mortalidade em crianças portadoras de DRC em tratamento dialítico é 30 a 150% maior do que a da população pediátrica geral e a expectativa de vida para uma criança de zero a quatorze anos em diálise é de somente 20 anos.</div>
+                </div>
+            </div>
+        </div>
+        
 
-    {% block content %}
-    {% endblock %}
+    {% endblock %}]
