@@ -1,48 +1,40 @@
 from flask import Flask, redirect, render_template, request, session
 from service import *
-from flask_session import Session
 
 app = Flask(__name__)
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
-
+app.secret_key = 'kauegatao'
 
 @app.route('/')
 def home():
-        name=""
-        access=check_session(session["email"])
-        if access == True:
-            name = findUserByEmail(session["email"])
-            if name is not None:
-                name=name[1]
-            return render_template('index.html', access=access, title="Home", name=name)
-        else:
-            return render_template('index.html', access=access, title="Home", name=name)
+    name = ""
+    access = check_session(session.get("email"))
+    if access:
+        name = findUserByEmail(session.get("email"))
+        if name is not None:
+            name = name[1]
+        return render_template('index.html', access=access, title="Home", name=name)
+    else:
+        return render_template('index.html', access=access, title="Home", name=name)
 
-
-
-
-@app.route('/cadastro', methods = ['POST', 'GET'])
+@app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
     if request.method == "POST":
-            name = request.form['name']
-            email = request.form['email']
-            password = request.form['password']
-            confirmPassword = request.form['confirmPassword']
-            info, warn = check_cadastro(name, email, password, confirmPassword)
-            if info == True:
-                createUser(name, email, password)
-            else:
-                return render_template('cadastro.html', title="Cadastro", warn=warn)
-            return redirect('/login')
+        name = request.form['name']
+        email = request.form['email']
+        password = request.form['password']
+        confirmPassword = request.form['confirmPassword']
+        info, warn = check_cadastro(name, email, password, confirmPassword)
+        if info:
+            createUser(name, email, password)
+        else:
+            return render_template('cadastro.html', title="Cadastro", warn=warn)
+        return redirect('/login')
     if request.method == 'GET':
         return render_template('cadastro.html', title="Cadastro", warn="")
 
 
 
-
-@app.route('/login', methods = ['POST', 'GET'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == "POST":
         email = request.form['email']
@@ -57,12 +49,10 @@ def login():
 
 
 
-
 @app.route("/logout")
 def logout():
     session["email"] = None
     return redirect("/")
-
 
 
 
@@ -72,12 +62,11 @@ def esqueceu_senha():
 
 
 
-
 @app.route('/blog')
 def blog():
     name = ""
-    access=check_session( session["email"])
-    name = findUserByEmail(session["email"])
+    access = check_session(session.get("email"))
+    name = findUserByEmail(session.get("email"))
     if name is not None:
         name = name[1]
     return render_template('blog.html', access=access, title="Blog", name=name)
@@ -88,8 +77,8 @@ def blog():
 # ROTA DE TESTE
 @app.route('/proadisus')
 def proadi_sus():
-    access=check_session( session["email"])
-    if access == False:
+    access = check_session(session.get("email"))
+    if not access:
         return redirect('/login')
     else:
         return render_template('proadisus.html', access=access, title="ProadiSUS")
@@ -99,29 +88,23 @@ def proadi_sus():
 
 @app.route('/dados')
 def dados():
-    access=check_session( session["email"])
+    access = check_session(session.get("email"))
     return render_template('dados_nefrologia.html', access=access, title="Dados")
 
-
-
-def main():
-    session["email"] = None
-    app.run(debug=True)
 
 
 
 @app.route('/perfil')
 def perfil():
-    access=check_session(session["email"])
-    if access == False:
+    access = check_session(session.get("email"))
+    if not access:
         return redirect('/login')
     else:
-        name = findUserByEmail(session["email"])
+        name = findUserByEmail(session.get("email"))
         if name is not None:
             name = name[1]
         return render_template('perfil.html', access=access, title="Perfil", name=name)
 
 
-
 if __name__ == '__main__':
-    main()
+    app.run(debug=True)
