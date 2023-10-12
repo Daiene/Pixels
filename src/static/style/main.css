@@ -60,7 +60,7 @@
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
-    z-index: 99;
+    z-index: 1001;
     /* estilos */ 
     background: var(--Fundo-Principal, #004618);
 }
@@ -114,24 +114,44 @@
     word-wrap: break-word;
 }
 
+.menuzin {
+    display: inline;
+}
 
 .tela_perfil_nome {
-    display: none;
-    border: 1px solid #ccc;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    min-width: 255px;
+    min-height: 255px;
+    background-color: #F4F4F4;
     padding: 10px;
-    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 0 0 0 10px;
 }
-.tela_perfil_nom ul {
+
+.tela_perfil_nome ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.tela_perfil_nom li {
-    margin: 5px 0;
-    cursor: pointer;
+.tela_perfil_nome li {
+    margin-bottom: 10px;
 }
 
-.tela_perfil_nom li:hover {
-    background-color: #eee;
+.tela_perfil_nome a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
 }
 
+.perfil_content {
+    display: flex;
+}
+
+.perfil_text {
+    margin-left: 10px;
+    display: inline;
+}

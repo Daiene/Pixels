@@ -10,11 +10,14 @@ def home():
     access = check_session(session.get("email"))
     if access:
         name = findUserByEmail(session.get("email"))
+        email = findUserByEmail(session.get("email"))
         if name is not None:
             name = name[1]
-        return render_template('index.html', access=access, title="Home", name=name)
+            email = email[2]
+        return render_template('index.html', access=access, title="Home", name=name, email=email)
     else:
         return render_template('index.html', access=access, title="Home", name=name)
+
 
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
@@ -66,10 +69,11 @@ def esqueceu_senha():
 def blog():
     name = ""
     access = check_session(session.get("email"))
-    name = findUserByEmail(session.get("email"))
-    if name is not None:
-        name = name[1]
-    return render_template('blog.html', access=access, title="Blog", name=name)
+    cad = findUserByEmail(session.get("email"))
+    if cad is not None:
+        name = cad[1]
+        email = cad[2]
+    return render_template('blog.html', access=access, title="Blog", name=name, email=email)
 
 
 
@@ -88,8 +92,12 @@ def proadi_sus():
 
 @app.route('/dados')
 def dados():
+    name = ""
+    cad = findUserByEmail(session.get("email"))
+    name = cad[1]
+    email = cad[2]
     access = check_session(session.get("email"))
-    return render_template('dados_nefrologia.html', access=access, title="Dados")
+    return render_template('dados_nefrologia.html', access=access, title="Dados", name=name, email=email)
 
 
 

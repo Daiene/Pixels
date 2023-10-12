@@ -13,6 +13,7 @@
 
     {% if access == True %}
     
+    <div class="menuzin">
     <header class="navbar">
         
         <img class="navbar__logo" src="{{url_for('static', filename='img/logoph.png')}}" alt="logo do site">
@@ -24,15 +25,30 @@
             <a class="navbar__links__link" style="border-right: 1px solid #FFF; padding-right: 50px;" href="/">Proadi-SUS</a>
             <a id="perfil_nome" class="navbar__links__link" href="#">{{name}}</a>
         </nav>
+        
+    </header>
         <div class="tela_perfil_nome">
             <ul>
-                <li>Opção 1</li>
-                <li>Opção 2</li>
-                <li>Opção 3</li>
+                <div class="perfil_content">
+                    <img src="../static/img/foto_de_perfil.png" width="54px" height="54px" alt="foto de perfil">
+                    <div class="perfil_text">
+                        <b><li>{{name}}</li></b>
+                        <li>{{email}}</li>
+                    </div>
+                </div>
+                <div style="display: flex;">
+                    <img src="../static/img/User.png" width="16px" height="16px" alt="user">
+                    <a href="/perfil"><li>Perfil</li></a>
+                </div>
+                <hr>
+                <div style="display: flex;">
+                    <img src="../static/img/SignOut.png" width="16px" height="16px" alt="logout">
+                    <a href="/logout"><li>Sair</li></a>
+                </div>
             </ul>
         </div>
-        <script src="{{url_for('static', filename='tela_perfil.js') }}"></script>
-    </header>
+    <script src="{{url_for('static', filename='tela_perfil.js') }}"></script>
+    </div>
     {% endif %}
 
     {% if access == False %}
