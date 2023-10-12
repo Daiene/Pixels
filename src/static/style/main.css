@@ -25,6 +25,7 @@
 /* normalização do layout do navegador */
 
 * {
+    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
     border: 0;
@@ -119,6 +120,7 @@
 }
 
 .tela_perfil_nome {
+    display: none;
     position: fixed;
     right: 0;
     top: 50px;
