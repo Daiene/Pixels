@@ -1,0 +1,174 @@
+.conteudo__capa__texto {
+    /* layout */
+
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    
+    position: absolute;
+    top: 548px; 
+    left: 48px;
+}
+
+.conteudo__capa {
+
+
+    position: relative;
+    gap: 25px;
+    flex: 1 0 0;
+
+    display: inline-block;
+    align-self: stretch;
+    width: 100%;
+}
+
+.espaçamento_corpo{
+    align-self: stretch;
+    height: 1746px;
+    background: #F4F4F4;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+}
+
+.formato_capa{
+    align-self: stretch;
+    height: 730px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: inline-flex;
+}
+
+.espaçamento_capa{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; 
+    gap: 25px;
+    display: inline-flex;
+}
+
+.texto_capa{
+    align-self: stretch;
+    color: white;
+    font-size: 32px;
+    font-family: Raleway;
+    font-weight: 700;
+    line-height: 38.40px;
+    word-wrap: break-word;
+}
+
+.button_lermais{
+    width: 155px;
+    height: 40px;
+    padding: 10px;
+    background: #004618;
+    border-radius: 10px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    color: white;
+    font-size: 14px;
+    font-family: Roboto;
+    font-weight: 700;
+    line-height: 14px;
+    word-wrap: break-word;
+}
+
+.espaço_texto{
+    align-self: stretch;
+    height: 970px;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: #F4F4F4;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    display: flex;
+}
+
+.espaço_texto2{
+    align-self: stretch;
+    height: 100px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    display: flex;
+}
+
+.titulo{
+    width: 384px;
+    height: 23px;
+    color: #111827;
+    font-size: 28px;
+    font-family: Raleway;
+    font-weight: 700;
+    line-height: 28px;
+    word-wrap: break-word;
+}
+
+.style_texto{
+    color: #374151;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 19.20px;
+    word-wrap: break-word;
+}
+
+.espaço_texto3{
+    align-self: stretch;
+    height: 101px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    display: flex;
+}
+
+.espaço_texto4{
+    align-self: stretch;
+    height: 120px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    display: flex;
+}
+
+.espaço_texto5{
+    align-self: stretch;
+    height: 383px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+}
+
+.titulo_mortalidade{
+    color: #111827;
+    font-size: 28px;
+    font-family: Raleway;
+    font-weight: 700;
+    line-height: 28px;
+    word-wrap: break-word;
+}
+
+.espaço_texto6{
+    align-self: stretch;
+    height: 86px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    display: flex;
+}
