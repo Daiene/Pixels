@@ -111,29 +111,27 @@
     font-family: var(--roboto);
     font-weight: 400;
     line-height: 16.80px;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
-.tela_perfil_nome{
-    display: none;
-    position: absolute;
-}
 
 .tela_perfil_nome {
+    display: none;
     border: 1px solid #ccc;
     padding: 10px;
     margin-top: 10px;
 }
-.tela_perfil_nome ul {
+.tela_perfil_nom ul {
     list-style: none;
     padding: 0;
 }
 
-.tela_perfil_nome li {
+.tela_perfil_nom li {
     margin: 5px 0;
     cursor: pointer;
 }
 
-.tela_perfil_nome li:hover {
+.tela_perfil_nom li:hover {
     background-color: #eee;
 }
+
