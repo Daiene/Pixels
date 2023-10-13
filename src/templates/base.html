@@ -24,6 +24,7 @@
             <a class="navbar__links__link" href="/blog">Blog</a>
             <a class="navbar__links__link" style="border-right: 1px solid #FFF; padding-right: 50px;" href="/">Proadi-SUS</a>
             <a id="perfil_nome" class="navbar__links__link" href="#">{{name}}</a>
+            
         </nav>
         
     </header>
@@ -49,6 +50,7 @@
         </div>
     <script src="{{url_for('static', filename='tela_perfil.js') }}"></script>
     </div>
+    <div id="fundo-escuro" class="oculto"></div>
     {% endif %}
 
     {% if access == False %}
@@ -64,14 +66,13 @@
         </nav>
     </header>
     {%endif %}
-
-
+    
 
     {% block content %}
-    <!-- Conteudo da pagina -->
+        
     {% endblock %}
 
-
+    
     <footer class="footer">
         <p class="copyright"> &copy; Todos os direitos reservados</p>
     </footer>
