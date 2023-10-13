@@ -112,6 +112,15 @@ def perfil():
         if name is not None:
             name = name[1]
         return render_template('perfil.html', access=access, title="Perfil", name=name)
+    
+@app.route('/hospital')
+def hospital():
+    name = ""
+    cad = findUserByEmail(session.get("email"))
+    name = cad[1]
+    email = cad[2]
+    access = check_session(session.get("email"))
+    return render_template('hospital.html', access=access, title="Hospital", name=name, email=email)
 
 @app.route('/postagem')
 def postagem():
