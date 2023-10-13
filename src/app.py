@@ -113,6 +113,10 @@ def perfil():
             name = name[1]
         return render_template('perfil.html', access=access, title="Perfil", name=name)
 
+@app.route('/postagem')
+def postagem():
+        return render_template('postagem.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

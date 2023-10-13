@@ -4,7 +4,7 @@
 
 :root {
     /* cores */
-    --fundo-principal: #004618;
+    --fundo-principal: #004619;
     --logo: #FFB800;
     --obrigatoriedade: #EA1C24;
     --background-principal: #F4F4F4;
@@ -25,6 +25,7 @@
 /* normalização do layout do navegador */
 
 * {
+
     scroll-behavior: smooth;
     margin: 0;
     padding: 0;
