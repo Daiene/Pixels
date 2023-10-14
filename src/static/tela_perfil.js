@@ -1,6 +1,7 @@
 
 window.onload = function() {
     let botao = document.getElementById('perfil_nome');
+    let botao_es = document.getElementById('click_escuro');
     
     botao.addEventListener('click', () => {
         let escuro = document.getElementById('fundo-escuro');
@@ -13,7 +14,7 @@ window.onload = function() {
             escuro.style.display = 'none';
         }
     });
-    escuro.addEventListener('click', () => {
+    botao_es.addEventListener('click', () => {
         opcoes.style.display = 'none';
         escuro.style.display = 'none';
     })
