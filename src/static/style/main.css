@@ -44,8 +44,8 @@
 }
 
 .btn-custom{
-    background-color: var(--fundo-principal, #004618);
-    color: var(--background-principal, #F4F4F4);
+    background-color: var(--fundo-principal);
+    color: var(--background-principal);
     
 }
 
@@ -64,7 +64,7 @@
     flex-shrink: 0;
     z-index: 1001;
     /* estilos */ 
-    background: var(--Fundo-Principal, #004618);
+    background: var(--Fundo-Principal);
 }
 
 .navbar__logo{
@@ -83,7 +83,7 @@
 .navbar__links__link{
         /* estilizando fontes */
         text-decoration: none;
-        color: var(--Background-secundrio, #F4F4F4);
+        color: var(--Background-secundrio);
         font-family: var(--roboto);
         font-size: 14px;
         font-style: normal;
@@ -103,7 +103,7 @@
     justify-content: end;
     min-height: 100%;
     padding-bottom: 30px; 
-    background: var(--Fundo-Principal, #004618);
+    background: var(--Fundo-Principal);
 }
 
 .copyright {
