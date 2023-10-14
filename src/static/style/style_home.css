@@ -30,7 +30,7 @@
     left: 48px;
 
     /* estilo */ 
-    color: var(--Background-secundario);
+    color: var(--background-secundario);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: var(--raleway);
     font-size: 32px;
@@ -51,8 +51,8 @@
     gap: 10px;
     border-radius: 10px;
     /* estilo */
-    background: var(--Fundo-Principal);
-    color: var(--Background-secundario);
+    background: var(--fundo-principal);
+    color: var(--background-secundario);
     font-family: var(--roboto);
     font-size: 14px;
     font-style: normal;
@@ -75,7 +75,7 @@
     gap: 25px;
     display: inline-flex;
     /* estilo */
-    background: var(--Background-principal);
+    background: var(--background-principal);
 }
 
 .corpo__texto {
@@ -271,7 +271,7 @@
     text-align: justify;
     word-wrap: break-word;
     /* estilo */
-    color: var(--Fundo-Principal);
+    color: var(--fundo-principal);
     font-size: 28px;
     font-family: var(--raleway);
     font-weight: 700;
@@ -310,7 +310,7 @@
     gap: 10px;
     display: inline-flex;
     /* estilo */
-    background: var(--Fundo-Principal);
+    background: var(--fundo-principal);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -320,7 +320,7 @@
     text-align: justify;
     word-wrap: break-word;
     /* estilo */
-    color: var(--Background-principal);
+    color: var(--background-principal);
     font-size: 16px;
     font-family: var(--raleway);
     font-weight: 700;
@@ -337,7 +337,7 @@
     gap: 10px;
     display: inline-flex;
     /* estilo */
-    background: var(--Background-principal);
+    background: var(--background-principal);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }

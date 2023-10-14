@@ -64,7 +64,7 @@
     flex-shrink: 0;
     z-index: 1001;
     /* estilos */ 
-    background: var(--Fundo-Principal);
+    background: var(--fundo-principal);
 }
 
 .navbar__logo{
@@ -83,7 +83,7 @@
 .navbar__links__link{
         /* estilizando fontes */
         text-decoration: none;
-        color: var(--Background-secundrio);
+        color: var(--background-secundario);
         font-family: var(--roboto);
         font-size: 14px;
         font-style: normal;
@@ -103,7 +103,7 @@
     justify-content: end;
     min-height: 100%;
     padding-bottom: 30px; 
-    background: var(--Fundo-Principal);
+    background: var(--fundo-principal);
 }
 
 .copyright {
