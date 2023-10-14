@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 main{
+    padding-top: 80px;
     margin: auto;
     width: 70%;
 }

@@ -81,11 +81,17 @@ def blog():
 # ROTA DE TESTE
 @app.route('/proadisus')
 def proadi_sus():
+    name = ""
     access = check_session(session.get("email"))
-    if not access:
-        return redirect('/login')
+    if access:
+        name = findUserByEmail(session.get("email"))
+        email = findUserByEmail(session.get("email"))
+        if name is not None:
+            name = name[1]
+            email = email[2]
+        return render_template('proadi_sus.html', access=access, name=name, email=email)
     else:
-        return render_template('proadisus.html', access=access, title="ProadiSUS")
+        return render_template('proadi_sus.html', access=access, name=name)
 
 
 
@@ -124,7 +130,18 @@ def hospital():
 
 @app.route('/postagem')
 def postagem():
-        return render_template('postagem.html')
+    name = ""
+    access = check_session(session.get("email"))
+    if access:
+        name = findUserByEmail(session.get("email"))
+        email = findUserByEmail(session.get("email"))
+        if name is not None:
+            name = name[1]
+            email = email[2]
+        return render_template('postagem.html', access=access, name=name, email=email)
+    else:
+        return render_template('postagem.html', access=access, name=name)
+
 
 
 if __name__ == '__main__':

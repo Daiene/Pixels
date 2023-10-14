@@ -30,7 +30,6 @@
     padding: 0;
     border: 0;
 }
-
 .form{
     display: block;
     justify-content: space-around;
@@ -83,7 +82,7 @@
 .navbar__links__link{
         /* estilizando fontes */
         text-decoration: none;
-        color: var(--background-secundario);
+        color: var(--background-principal);
         font-family: var(--roboto);
         font-size: 14px;
         font-style: normal;

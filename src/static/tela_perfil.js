@@ -13,4 +13,8 @@ window.onload = function() {
             escuro.style.display = 'none';
         }
     });
-    };
+    escuro.addEventListener('click', () => {
+        opcoes.style.display = 'none';
+        escuro.style.display = 'none';
+    })
+};

@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='style/proadi_sus.css') }}"
+/>
+{% endblock %} {% block content %}
+    <header>
+        <img src="../static/img/proadisus.png" alt="" style="width: 100%; margin-top: 50px;">
+        <div class="sombra">
+            <h2 style="z-index: 5; color: white; padding-top: 30px; margin-left: 70px;">
+            Conheça mais sobre o Programa de Apoio ao<br>Desenvolvimento Institucional do Sistema Único de Saúde
+        </h2>
+        <button style="background-color: #004618; color: white; width: 180px; margin-left: 70px; border-radius: 10px; height: 40px; margin-top: 10px;">Leia Mais</button>
+    </div>
+    </header>
+    <main>
+        <h2>Defender</h2>
+        <br>
+                <p>Pacientes críticos em Unidades de Terapia Intensiva (UTIs) apresentam elevada mortalidade no Brasil. No Sistema Único de Saúde (SUS), essa taxa está acima de 30%, segundo os resultados de 2021 do projeto UTIs Brasileiras, realizado pela Associação de Medicina Intensiva Brasileira. Especificamente, pacientes admitidos por sepse ou aqueles que apresentam necessidade de substituição renal apresentam mortalidade na UTI superior a 40% quando há disfunção orgânica.
+                Estudos recentes sugerem que inibidores de SGLT2 (nova classe de medicamentos utilizados para controle da diabetes) podem ser benéficos para reverter esse cenário. Eles reduzem a glicemia a partir do estímulo da perda de glicose pela urina, além de diminuírem a produção de mediadores inflamatórios e de lesão de isquemia e reperfusão. Todos esses efeitos são potencialmente úteis em situações críticas, principalmente em pacientes com sepse.
+                O projeto Defender, desenvolvido pelo Hospital Israelita Albert Einstein, no âmbito do PROADI-SUS, em parceria com o Ministério da Saúde, avalia a eficácia da Dapagliflozina (inibidor de baixo custo, disponível no SUS) na redução da mortalidade, necessidade de tratamentos para insuficiência renal e tempo de internação na UTI.</p>
+                <br>
+        <h2>Mais Informações</h2>
+                <p>Projeto PROADI-SUS DEFENDER: <a href="http://hospitais.proadi-sus.org.br/projeto/defender-estudo-clinico-randomizado-avaliando-a-eficacia-de-dapagliflozina-em-pacientes-criticos">http://hospitais.proadi-sus.org.br/projeto/defender-estudo-clinico-randomizado-avaliando-a-eficacia-de-dapagliflozina-em-pacientes-criticos</a> 
+                <br>
+                <br>
+                Nefrologia Hospital Albert Einstein : <a href="https://www.einstein.br/especialidades/pediatria/subespecialidade/nefrologia">https://www.einstein.br/especialidades/pediatria/subespecialidade/nefrologia</a></p>
+                <br>
+        <p>Enfrentar a IRC em um filho é uma jornada desafiadora, mas com amor, informação e apoio, você pode desempenhar um papel fundamental em ajudar seu filho a levar uma vida plena e feliz. Lembre-se de que você não está sozinha e que muitas mães passaram por essa jornada com sucesso.</p>
+
+    </main>
+
+
+
+
+
+{% endblock %}
