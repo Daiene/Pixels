@@ -38,7 +38,19 @@ def cadastro():
         return redirect('/login')
     
     if request.method == 'GET':
-        return render_template('cadastro.html', title="Cadastro", warn="")
+        name = ""
+        email = ""
+        access = check_session(session.get("email"))
+
+        if access:
+            cad = findUserByEmail(session.get("email"))
+            if cad is not None:
+                name = cad[1]
+                email = cad[2]
+                return redirect("/")
+        
+        return render_template('cadastro.html', access=False, title="Home", name=name)
+
 
 
 
@@ -56,7 +68,19 @@ def login():
         return render_template("login.html", warn=warn)
     
     if request.method == "GET":
-        return render_template('login.html', title="Login")
+        name = ""
+        email = ""
+        access = check_session(session.get("email"))
+
+        if access:
+            cad = findUserByEmail(session.get("email"))
+            if cad is not None:
+                name = cad[1]
+                email = cad[2]
+                return render_template('index.html', access=access, title="Home", name=name, email=email)
+
+        return render_template('login.html', access=False, title="Home", name=name)
+
 
 
 
