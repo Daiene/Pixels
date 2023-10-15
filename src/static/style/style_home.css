@@ -1,33 +1,23 @@
 .conteudo {
-    /* layout */
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    height: auto;
+    position: relative;
+    width: 100%;
+    display: inline-block;
 }
 
 .conteudo__capa {
-    /* layout */
-
-    position: relative;
-    gap: 25px;
-    flex: 1 0 0;
-
-    display: inline-block;
-    align-self: stretch;
     width: 100%;
+
+   
 }
 
 .conteudo__capa__texto {
-    /* layout */
-
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    
     position: absolute;
-    top: 548px; 
-    left: 48px;
+    top: 75%;
+    left: 5%;
+    color: #fff; 
+    padding: 10px;
+
+    
 
     /* estilo */ 
     color: var(--background-principal);
