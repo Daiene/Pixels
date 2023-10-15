@@ -6,32 +6,37 @@ app.secret_key = 'kauegatao'
 
 @app.route('/')
 def home():
+
     name = ""
+    email = ""
     access = check_session(session.get("email"))
+
     if access:
-        name = findUserByEmail(session.get("email"))
-        email = findUserByEmail(session.get("email"))
-        if name is not None:
-            name = name[1]
-            email = email[2]
-        return render_template('index.html', access=access, title="Home", name=name, email=email)
-    else:
-        return render_template('index.html', access=access, title="Home", name=name)
+        cad = findUserByEmail(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            return render_template('index.html', access=access, title="Home", name=name, email=email)
+    
+    return render_template('index.html', access=False, title="Home", name=name)
 
 
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
+
     if request.method == "POST":
         name = request.form['name']
         email = request.form['email']
         password = request.form['password']
         confirmPassword = request.form['confirmPassword']
         info, warn = check_cadastro(name, email, password, confirmPassword)
+
         if info:
             createUser(name, email, password)
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
         return redirect('/login')
+    
     if request.method == 'GET':
         return render_template('cadastro.html', title="Cadastro", warn="")
 
@@ -39,14 +44,17 @@ def cadastro():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    
     if request.method == "POST":
         email = request.form['email']
         password = request.form['password']
         info, warn = check_login(email, password)
+        
         if info:
             session["email"] = request.form.get("email")
             return redirect("/")
         return render_template("login.html", warn=warn)
+    
     if request.method == "GET":
         return render_template('login.html', title="Login")
 
@@ -68,12 +76,16 @@ def esqueceu_senha():
 @app.route('/blog')
 def blog():
     name = ""
+    email = ""
     access = check_session(session.get("email"))
-    cad = findUserByEmail(session.get("email"))
-    if cad is not None:
-        name = cad[1]
-        email = cad[2]
-    return render_template('blog.html', access=access, title="Blog", name=name, email=email)
+    if access:
+        cad = findUserByEmail(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            return render_template('blog.html', access=access, title="Home", name=name, email=email)
+    
+    return render_template('blog.html', access=False, title="Home", name=name)
 
 
 
@@ -81,17 +93,19 @@ def blog():
 # ROTA DE TESTE
 @app.route('/proadisus')
 def proadi_sus():
+
     name = ""
+    email = ""
     access = check_session(session.get("email"))
+
     if access:
-        name = findUserByEmail(session.get("email"))
-        email = findUserByEmail(session.get("email"))
-        if name is not None:
-            name = name[1]
-            email = email[2]
-        return render_template('proadi_sus.html', access=access, name=name, email=email)
-    else:
-        return render_template('proadi_sus.html', access=access, name=name)
+        cad = findUserByEmail(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            return render_template('proadi_sus.html', access=access, title="Home", name=name, email=email)
+    
+    return redirect('/login')
 
 
 
@@ -99,48 +113,69 @@ def proadi_sus():
 @app.route('/dados')
 def dados():
     name = ""
-    cad = findUserByEmail(session.get("email"))
-    name = cad[1]
-    email = cad[2]
+    email = ""
     access = check_session(session.get("email"))
-    return render_template('dados_nefrologia.html', access=access, title="Dados", name=name, email=email)
+
+    if access:
+        cad = findUserByEmail(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            return render_template('dados_nefrologia.html', access=access, title="Home", name=name, email=email)
+    
+    return render_template('dados_nefrologia.html', access=False, title="Home", name=name)
 
 
 
 
 @app.route('/perfil')
 def perfil():
+    name = ""
+    email = ""
     access = check_session(session.get("email"))
-    if not access:
-        return redirect('/login')
-    else:
-        name = findUserByEmail(session.get("email"))
-        if name is not None:
-            name = name[1]
-        return render_template('perfil.html', access=access, title="Perfil", name=name)
+
+    if access:
+        cad = findUserByEmail(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            return render_template('perfil.html', access=access, title="Home", name=name, email=email)
     
+    return redirect('/login')
+    
+
+
 @app.route('/hospital')
 def hospital():
     name = ""
-    cad = findUserByEmail(session.get("email"))
-    name = cad[1]
-    email = cad[2]
+    email = ""
     access = check_session(session.get("email"))
-    return render_template('hospital.html', access=access, title="Hospital", name=name, email=email)
+
+    if access:
+        cad = findUserByEmail(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            return render_template('hospital.html', access=access, title="Home", name=name, email=email)
+    
+    return render_template('hospital.html', access=False, title="Home", name=name)
+
+
 
 @app.route('/postagem')
 def postagem():
     name = ""
+    email = ""
     access = check_session(session.get("email"))
+    
     if access:
-        name = findUserByEmail(session.get("email"))
-        email = findUserByEmail(session.get("email"))
-        if name is not None:
-            name = name[1]
-            email = email[2]
-        return render_template('postagem.html', access=access, name=name, email=email)
-    else:
-        return render_template('postagem.html', access=access, name=name)
+        cad = findUserByEmail(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            return render_template('postagem.html', access=access, title="Home", name=name, email=email)
+    
+    return render_template('postagem.html', access=False, title="Home", name=name)
 
 
 
