@@ -59,7 +59,7 @@
 <br>
 
 ## Backlog do Produto
-![Backlog](./docs/readme/backlog%20cortado.png)
+![Backlog](./docs/readme/Backlog.png)
 
 ### Backlog por Sprint
 ![Backlog_por_sprint](./docs/readme/Sprint%20backlog.png)
