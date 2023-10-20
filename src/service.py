@@ -1,10 +1,12 @@
+from flask import Response
 import mysql.connector
 from datetime import datetime
+import cv2
 
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="",
+passwd="fatec",
 
 )
 mycursor = db.cursor()
@@ -19,6 +21,18 @@ def create_db():
 create_db()
 
 
+def sendProfileImage(img):
+    sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo) VALUES (%s, %s, %s, %s)"
+    val = ("erik", "email", "123", img)
+    mycursor.execute(sql, val) 
+    
+
+
+def getProfileImage(email):
+    user = findUserByEmail(email)
+    imagem_binaria = user[5]
+
+    return Response(imagem_binaria, mimetype='image/png')
 
 
 def findUserByEmail(email):

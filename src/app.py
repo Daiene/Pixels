@@ -1,8 +1,29 @@
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, Response, redirect, render_template, request, session
 from service import *
+import numpy as np
 
 app = Flask(__name__)
 app.secret_key = 'kauegatao'
+
+image_path = "./static/img/foto_de_perfil.png"
+
+image = cv2.imread(image_path)
+
+image_data = cv2.imencode('.png', image)[1].tobytes()
+
+@app.route('/definir')
+def definir():
+    sendProfileImage(image_data)
+
+    return "<p>Hello, World!</p>"
+
+
+@app.route('/imagem')
+def exibir_imagem():
+
+    img = getProfileImage("email")
+
+    return img
 
 @app.route('/')
 def home():
