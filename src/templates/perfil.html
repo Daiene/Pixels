@@ -12,23 +12,28 @@
         <div class="foto_perfil">
             <img src="{{ url_for('exibir_imagem') }}" alt="Imagem">
         </div>
+
+        <form method="POST" action="{{ url_for('definir') }} " enctype="multipart/form-data">
+          <input type="file" name="imagem" accept="image/*" ><br>
+          <input type="submit" value="Enviar Imagem">
+        </form>
+
         <div class="input">
           <div class="form_name">Nome</div>
-          <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
+          <input type="text" name="name" class="form-control" value="{{ name }}" id="exampleFormControlInput1" disabled>
           <div class="coluna"></div>
         </div>
         <div class="input">
           <div class="form_name">Email</div>
-          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="usuario@dominio.com">
+          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ email }}" disabled>
           <div class="coluna">
 
           </div>
         </div>
-        <div class="button_save">
-          <button type="submit" class="btn btn-block btn-custom">Salvar</button>
-        </div>
       </div>
     </div>
+
+  <form method="POST" action="{{ url_for('troca_passwd') }}">    
     <div class="forma" >
       <div class="button_form_save">
         <div class="form_atualizacao">
@@ -37,13 +42,13 @@
         </div>
         <div class="form_senha">
           <div class="form_name">Senha Atual</div>
-          <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
+          <input type="password" name="senha_atual" class="form-control" id="exampleFormControlInput1">
           <div>
           </div>
         </div>
         <div class="form_senha">
           <div class="form_name">Nova Senha</div>
-          <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
+          <input type="password" name="nova_senha" class="form-control" id="exampleFormControlInput1">
           <div class="coluna">
             <div></div>
             <div style="width: 20px; height: 13.33px; background: white"></div>
@@ -51,7 +56,7 @@
         </div>
         <div class="form_senha">
           <div class="form_name">Confirme sua Nova Senha</div>
-          <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
+          <input type="password" name="conf_nova_senha" class="form-control" id="exampleFormControlInput1">
           <div class="coluna">
       
           </div>
@@ -62,6 +67,9 @@
         </div>
       </div>
     </div>
+  </form>
+
+  <form method="POST" action="{{ url_for('delete') }}">
     <div class="forma1">
       <div class="deletar_conta">
         <div class="form_deletar">
@@ -69,7 +77,8 @@
           <div class="texto">Depois que sua conta for excluida, todos os seus recursos e dados serão excluidos permanentemente. Antes de excluir sua conta, baixe todos os dados ou informações que deseja reter.</div>
         </div>
         <div class="button_deletar">   
-            <button type="submit" class="btn btn-block btn-custom" style="background-color: #D50C0C; color: white;">Deletar Conta</button>
+        <button type="submit" class="btn btn-block btn-custom" style="background-color: #D50C0C; color: white;">Deletar Conta</button>
+    </form>
 
 
           

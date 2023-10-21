@@ -31,7 +31,7 @@
         <div class="tela_perfil_nome">
             <ul>
                 <div class="perfil_content">
-                    <img src="../static/img/foto_de_perfil.png" width="54px" height="54px" alt="foto de perfil">
+                    <img src="{{ url_for('exibir_imagem') }}" width="54px" height="54px" alt="foto de perfil">
                     <div class="perfil_text">
                         <b><li>{{name}}</li></b>
                         <li>{{email}}</li>

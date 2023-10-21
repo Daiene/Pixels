@@ -2,13 +2,15 @@ from flask import Response
 import mysql.connector
 from datetime import datetime
 import cv2
+from PIL import Image
+from io import BytesIO
 
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="fatec",
-
+passwd="",
 )
+
 mycursor = db.cursor()
 now = datetime.now()
 
@@ -21,9 +23,10 @@ def create_db():
 create_db()
 
 
-def sendProfileImage(img):
-    sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo) VALUES (%s, %s, %s, %s)"
-    val = ("erik", "email", "123", img)
+def sendProfileImage(user, img):
+    email = user[2]
+    sql = "UPDATE usuario SET user_photo = %s WHERE user_email = %s"
+    val = (img, email)
     mycursor.execute(sql, val) 
     
 
@@ -45,9 +48,17 @@ def findUserByEmail(email):
 
 
 def createUser(name, email, password):
+    default_img = "/home/kaue/Documentos/projetos/FATEC/API/Pixels/src/static/img/User.png"
+    
+    with Image.open(default_img) as img:
+        img = img.resize((128, 128))
+        img_bytes = BytesIO()
+        img.save(img_bytes, format='png')  # Escolha o formato apropriado
+        img_bytes = img_bytes.getvalue()
 
-    sql = "INSERT INTO usuario (user_name, user_email, user_password) VALUES (%s, %s, %s)"
-    val = (name, email, password)
+    sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo) VALUES (%s, %s, %s, %s)"
+    val = (name, email, password, img_bytes)
+    print(val)
     print("USUARIO CADASTRADO COM SUCESSO!")
     mycursor.execute(sql, val)
     return True
@@ -109,3 +120,18 @@ def check_login(email, password):
     else:
         warn=""
         return True, warn
+
+
+def atualizando_senha(email, nova_senha):
+    sql = "UPDATE usuario SET user_password = %s WHERE user_email = %s"
+    val = (nova_senha, email)
+    mycursor.execute(sql, val)
+    print("SENHA ALTERADA COM SUCESSO!")
+
+
+def deletando_conta(email):
+    sql = "DELETE FROM usuario WHERE user_email = %s"
+    val = (email,)
+    mycursor.execute(sql, val)
+    print("CONTA DELETADA!")
+    

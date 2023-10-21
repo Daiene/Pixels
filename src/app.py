@@ -1,29 +1,40 @@
 from flask import Flask, Response, redirect, render_template, request, session
 from service import *
 import numpy as np
+from io import BytesIO
+from PIL import Image
 
 app = Flask(__name__)
+
 app.secret_key = 'kauegatao'
 
-image_path = "./static/img/foto_de_perfil.png"
 
-image = cv2.imread(image_path)
-
-image_data = cv2.imencode('.png', image)[1].tobytes()
-
-@app.route('/definir')
+@app.route('/definir', methods=["POST", "GET"])
 def definir():
-    sendProfileImage(image_data)
+    if request.method == "POST":
+        imagem = request.files['imagem']
+        user = findUserByEmail(session.get("email"))
 
-    return "<p>Hello, World!</p>"
+        if imagem:
+            with Image.open(imagem) as img:
+                img = img.resize((128, 128))
+                img_bytes = BytesIO()
+                img.save(img_bytes, format='png')  # Escolha o formato apropriado
+                img_bytes = img_bytes.getvalue()
+            sendProfileImage(user, img_bytes)
+    else:
+        pass
+    return redirect('/perfil')
 
 
 @app.route('/imagem')
 def exibir_imagem():
-
-    img = getProfileImage("email")
+    user = findUserByEmail(session.get("email"))
+    email = user[2]
+    img = getProfileImage(email)
 
     return img
+
 
 @app.route('/')
 def home():
@@ -56,7 +67,9 @@ def cadastro():
             createUser(name, email, password)
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
-        return redirect('/login')
+        
+        session["email"] = request.form.get("email")
+        return redirect("/")
     
     if request.method == 'GET':
         name = ""
@@ -223,6 +236,32 @@ def postagem():
     return render_template('postagem.html', access=False, title="Home", name=name)
 
 
+@app.route('/troca_passwd', methods=["POST"])
+def troca_passwd():
+    user = findUserByEmail(session.get("email"))
+    senha = user[3]
+    email = user[2]
+    if request.method == "POST":
+        senha_atual = request.form["senha_atual"]
+        nova_senha = request.form["nova_senha"]
+        conf_senha = request.form["conf_nova_senha"]
+
+        if senha_atual == senha and nova_senha == conf_senha:
+            atualizando_senha(email, nova_senha)
+    
+    return redirect('/perfil')
+
+
+@app.route("/delete", methods=["POST"])
+def delete():
+    user = findUserByEmail(session.get("email"))
+    email = user[2]
+    print(type(email))
+    if request.method == "POST":
+        deletando_conta(email)
+    
+    return redirect("/")
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
