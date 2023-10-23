@@ -48,7 +48,7 @@ def findUserByEmail(email):
 
 
 def createUser(name, email, password):
-    default_img = "/home/kaue/Documentos/projetos/FATEC/API/Pixels/src/static/img/User.png"
+    default_img = "../src/static/img/User.png"
     
     with Image.open(default_img) as img:
         img = img.resize((128, 128))
