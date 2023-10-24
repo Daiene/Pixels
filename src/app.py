@@ -61,10 +61,15 @@ def cadastro():
         email = request.form['email']
         password = request.form['password']
         confirmPassword = request.form['confirmPassword']
-        info, warn = check_cadastro(name, email, password, confirmPassword)
+        dn= request.form['dn']
+        cpf = request.form['cpf']
+        parentesco = request.form['parentesco']
+        profissao = request.form['profissao']
+        como_chegou = request.form['como_chegou']
+        info, warn = check_cadastro(name, email, password, confirmPassword, dn, cpf, parentesco, profissao, como_chegou)
 
         if info:
-            createUser(name, email, password)
+            createUser(name, email, password, dn, cpf, parentesco, profissao, como_chegou)
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
         

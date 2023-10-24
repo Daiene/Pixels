@@ -8,7 +8,7 @@ from io import BytesIO
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="",
+passwd="fatec",
 )
 
 mycursor = db.cursor()
@@ -47,7 +47,7 @@ def findUserByEmail(email):
 
 
 
-def createUser(name, email, password):
+def createUser(name, email, password, dn, cpf, parentesco, profissao, como_chegou):
     default_img = "../src/static/img/User.png"
     
     with Image.open(default_img) as img:
@@ -56,8 +56,8 @@ def createUser(name, email, password):
         img.save(img_bytes, format='png')  # Escolha o formato apropriado
         img_bytes = img_bytes.getvalue()
 
-    sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo) VALUES (%s, %s, %s, %s)"
-    val = (name, email, password, img_bytes)
+    sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo, user_dn, user_cpf, user_grau_parentesco, user_profissao, user_como_chegou) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    val = (name, email, password, img_bytes, dn, cpf, parentesco, profissao, como_chegou)
     print(val)
     print("USUARIO CADASTRADO COM SUCESSO!")
     mycursor.execute(sql, val)
@@ -66,10 +66,10 @@ def createUser(name, email, password):
 
 
 
-def createPost(title, content, email):
+def createPost(title, content, email, img, category):
     user = findUserByEmail(email)
-    sql = "INSERT into post (post_title, post_content, post_date, user_id)"
-    val = (title, content, now, user[0])
+    sql = "INSERT into post (post_title, post_content, post_date, post_img,post_category, user_id)"
+    val = (title, content, now, img, category, user[0])
 
 
 
@@ -82,7 +82,7 @@ def check_session(session):
     return access
 
 
-def check_cadastro(name, email, password, confirmPassword):
+def check_cadastro(name, email, password, confirmPassword,  dn, cpf, parentesco, profissao, como_chegou):
     
     user = findUserByEmail(email)
     print(user)
@@ -90,16 +90,16 @@ def check_cadastro(name, email, password, confirmPassword):
         warn = "Email já cadastrado!"
         return False, warn
 
-    elif name == "" or email == "" or password == "" or confirmPassword == "":
+    elif name == "" or email == "" or password == "" or confirmPassword == "" or dn == "" or cpf == "" or parentesco == "" or profissao == "" or como_chegou == "":
         warn = "Preencha todos os campos!"
+        return False, warn
+    
+    elif len(cpf) != 11:
+        warn = "CPF inválido"
         return False, warn
     
     elif password != confirmPassword:
         warn = "As senhas não estão iguais!"
-        return False, warn
-    
-    elif password != confirmPassword:
-        warn = "Senha não confere!" 
         return False, warn
         
     warn=""
