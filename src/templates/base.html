@@ -22,31 +22,39 @@
             <a class="navbar__links__link" href="/hospital">Hospitais</a>
             <a class="navbar__links__link" href="/dados">Dados gerais</a>
             <a class="navbar__links__link" href="/blog">Blog</a>
-            <a class="navbar__links__link" style="border-right: 1px solid #FFF; padding-right: 50px;" href="/proadisus">Proadi-SUS</a>
-            <a id="perfil_nome" class="navbar__links__link" href="#">{{name}}</a>
-            
+            <a class="navbar__links__link" href="/proadisus">Proadi-SUS</a>
+            <label style="
+            color: #FFF; 
+            padding: 0 1.5rem;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 120%; /* 16.8px */
+            letter-spacing: -0.14px;">
+            |
+            </label>
+            <a id="perfil_nome" class="navbar__links__link" href="#" style="padding-right: 1.2rem;" >{{name}}</a>
         </nav>
         
     </header>
         <div class="tela_perfil_nome">
-            <ul>
-                <div class="perfil_content">
-                    <img src="../static/img/foto_de_perfil.png" width="54px" height="54px" alt="foto de perfil">
-                    <div class="perfil_text">
-                        <b><li>{{name}}</li></b>
-                        <li>{{email}}</li>
-                    </div>
+            <div class="d-flex gap-3 m-3 align-items-center">
+                <img src="../static/img/foto_de_perfil.png" width="70px" height="70px" alt="foto de perfil">
+                <div class="d-flex flex-column">
+                            <b>{{name}}</b>
+                            <b>{{email}}</b>
                 </div>
-                <div style="display: flex;">
+            </div>
+            <div class="pb-2">
+                <div class="d-flex gap-3 align-items-center">
                     <img src="../static/img/User.png" width="16px" height="16px" alt="user">
-                    <a href="/perfil"><li>Perfil</li></a>
+                    <a href="/perfil">Perfil</a>
                 </div>
                 <hr>
-                <div style="display: flex;">
+                <div class="d-flex gap-3 align-items-center">
                     <img src="../static/img/SignOut.png" width="16px" height="16px" alt="logout">
-                    <a href="/logout"><li>Sair</li></a>
+                    <a href="/logout">Sair</a>
                 </div>
-            </ul>
+            </div>
         </div>
     <script src="{{url_for('static', filename='tela_perfil.js') }}"></script>
     </div>
