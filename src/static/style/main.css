@@ -169,3 +169,13 @@
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
 }
+
+a{
+    color: var(--texto);
+}
+
+a:hover{
+    color: var(--fundo-principal);
+    text-decoration: none;
+    font-weight: bold;
+}

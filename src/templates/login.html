@@ -11,7 +11,7 @@
         <div class="login-form col-12 col-xl-6">
             <form method="POST" action="{{ url_for('login') }}">
               <h1>Bem Vindo!</h1>
-              <p>Insira seu email para acessar sua conta.</p>
+              <p>Insira seus dados para acessar sua conta.</p>
   
               <div class="form-group">
                 <label for="exampleInputEmail1">Email*</label>
@@ -29,7 +29,9 @@
               {% endif %}
   
               <button type="submit" class="btn btn-custom btn-block">Entrar</button>
-              <p>Ainda não tem uma conta? <a class="hyperlink" href="/cadastro">Registre-se</a></p>
+              <div class="d-flex flex-column align-items-center mt-3">
+                <p>Ainda não tem uma conta? <a class="hyperlink" href="/cadastro">Registre-se</a></p>
+              </div>
             </form>
         </div>
     </div>
