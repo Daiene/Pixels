@@ -90,6 +90,10 @@ def logout():
     return redirect("/")
 
 
+@app.route('/bloglogon')
+def bloglogon():
+    return render_template('bloglogon.html')
+
 
 @app.route('/esqueceu_senha')
 def esqueceu_senha():

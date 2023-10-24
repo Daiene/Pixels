@@ -17,8 +17,12 @@
 .flex_row{
     display: flex;
     flex-direction: row;
-    align-items: st;
+    align-items: start;
     justify-content: center;
     flex-wrap: wrap;
     gap: 45px;
+}
+
+.new-post{
+    margin-left: 190px;
 }
