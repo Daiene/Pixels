@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.row{
+    margin: 0;
+}
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -25,7 +29,8 @@
 }
 
 .login-form {
-    padding: 50px;
+    padding: 50px 0;
+    max-width: 376px;
 }
 
 h1{

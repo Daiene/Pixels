@@ -1,7 +1,11 @@
-body {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.row{
+    margin: 0;
 }
 
 .login-container {
@@ -25,7 +29,8 @@ body {
 }
 
 .login-form {
-    padding: 50px;
+    padding: 0;
+    max-width: 376px;
 }
 
 h1{

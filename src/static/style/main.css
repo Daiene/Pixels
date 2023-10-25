@@ -91,12 +91,6 @@
         letter-spacing: -0.14px;
 }
 
-.navbar__links__link:hover{
-    transform: scale(1.5);
-    transition-duration: 500ms;
-}
-
-
 .footer{
     position: relative;
     bottom: 0;
