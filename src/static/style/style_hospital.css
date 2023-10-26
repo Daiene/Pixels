@@ -60,7 +60,7 @@ body{
 
 .divgeral{
     width: 90%;
-    height: 900px;
+    height: 600px;
     display: flex;
     margin: 0 auto;
     border-radius: 10px;
@@ -70,11 +70,12 @@ body{
 
 .divinterna{
     width: 90%;
-    height: 92%;
+    height: 90%;
     margin: 0 auto;
     /* background-color: red; */
 }
 
-.titulos{
-    
+.formularios{
+    display: flex;
+    justify-content: space-between;
 }

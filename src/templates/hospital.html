@@ -20,14 +20,96 @@
 
 <div class="divgeral" style="margin-top: 30px; margin-bottom: 30px">
 
-    <div class="divinterna" style="margin-top: 30px;">
+    <div class="divinterna" style="margin-top: 30px; margin-bottom: 30px;">
 
-        <div class="titulos text-start">
-            <p class="fs-2 fw-semibold">Clínicas e Hospitais para Hemodiálise</p>
+        <div class="d-flex text-start flex-column">
+            <p class="fs-2 fw-semibold" style="color: #004618; margin: 0;">Clínicas e Hospitais para Hemodiálise</p>
             <p class="fs-6">Encontre a Clínica ou Hospital mais próximo de você!</p>
         </div>
 
+        <div clas="formularios" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+
+            <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
+                <p style="margin: 0;">Estado</p>
+                <select class="form-select" aria-label="Default select example" style="display: flex; width: 350px; height: 45px; align-items: center;">
+                    <option selected>Selecione o Estado</option>
+                    <option value="1">Acre</option>
+                    <option value="2">Alagoas</option>
+                    <option value="3">Amapá</option>
+                    <option value="4">Amazonas</option>
+                    <option value="5">Bahia</option>
+                    <option value="6">Ceará</option>
+                    <option value="7">Espírito Santo</option>
+                    <option value="8">Goiás</option>
+                    <option value="9">Maranhão</option>
+                    <option value="10">Mato Grosso</option>
+                    <option value="11">Mato Grosso do Sul</option>
+                    <option value="12">Minas Gerais</option>
+                    <option value="13">Pará</option>
+                    <option value="14">Paraíba</option>
+                    <option value="15">Paraná</option>
+                    <option value="16">Pernambuco</option>
+                    <option value="17">Piauí</option>
+                    <option value="18">Rio de Janeiro</option>
+                    <option value="19">Rio Grande do Norte</option>
+                    <option value="20">Rio Grande do Sul</option>
+                    <option value="21">Rondônia</option>
+                    <option value="22">Roraima</option>
+                    <option value="23">Santa Catarina</option>
+                    <option value="24">São Paulo</option>
+                    <option value="25">Sergipe</option>
+                    <option value="26">Tocantins</option>
+                    <option value="27">Distrito Federal</option>
+
+                </select>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
+                <p style="margin: 0;">Cidade</p>
+                <select class="form-select" aria-label="Default select example" style="display: flex; width: 350px; height: 45px; align-items: center;">
+                    <option selected>Selecione a Cidade</option>
+                    <option value="1">Cidade 1</option>
+                    <option value="2">Cidade 2</option>
+                    <option value="3">Cidade 3</option>
+                </select>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
+                <p style="margin: 0;">Preferência</p>
+                <select class="form-select" aria-label="Default select example" style="display: flex; width: 350px; height: 45px; align-items: center;">
+                    <option selected>Escolha a Preferência</option>
+                    <option value="1">Atendem Crianças Abaixo de 10kg</option>
+                    <option value="2">Atendem Crianças Acima de 10kg</option>
+                    <option value="3">Atendem Todos os Tipos de Pacientes</option>
+                </select>
+            </div>
+        </div>
+
     </div>
+
+</div>
+
+<div style="display: flex; margin: 0 auto; justify-content: center; margin-bottom: 20px; margin-top: 30px;">
+
+    <nav aria-label="Page navigation example" style="display: flex;">
+        <ul class="pagination">
+
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
 
 </div>
 
