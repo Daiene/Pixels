@@ -7,41 +7,38 @@ main{
 .capa_img{
     width: 100%;
     height: 600px;
-}
-.user_post {
-    display: flex; /* Torna os elementos filhos em um layout flexível */
-    align-items: center; /* Alinha verticalmente ao centro */
+    border-radius: 15px;
 }
 
-.user_post img {
-    width: 90px;
-    height: 90px;
-    margin-right: 10px; /* Espaço à direita da imagem */
+.flex-main{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-}
-.botao{
+.flex-comment{
     display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 30px;
+    flex-direction: column;
 }
-button{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    border-radius: 10px;
-    margin: 5px;
+
+.flex-dados{
     display: flex;
-    width: 300px;
-    height: 40px;
-    padding: 10px 30px;
-    justify-content: center;
-    align-items: center;
+    gap: 15px;
+}
+
+.flex-commentbox{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.flex-buttons{
+    display: flex;
+    justify-content: right;
+    flex: 1;
     gap: 10px;
+}
+
+textarea{
+    resize: none;
 }
