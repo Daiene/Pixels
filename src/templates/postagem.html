@@ -5,34 +5,43 @@
 />
 {% endblock %} {% block content %}
     <main>
-      <h1>Clinica de hemodiálise abre no interior do Nordeste</h1>
-      <br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mollis eleifend ultricies. Sed non posuere lacus, sed vehicula arcu. Sed ac scelerisque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mollis eleifend ultricies. Sed non posuere lacus, sed vehicula arcu. Sed ac scelerisque ipsum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mollis eleifend ultricies. Sed non posuere lacus, sed vehicula arcu. Sed ac scelerisque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mollis eleifend ultricies. Sed non posuere lacus, sed vehicula arcu. Sed ac scelerisque ipsum.</p>
-      <br>
+      <div class="flex-main">
+      <div><h1>Título da postagem</h1></div>
+      <div><p>Área de descrição da postagem</p></div>
       <div class="capa">
-        <img src="../static/img/postagem.png" class="capa_img" alt="capa">
+        <img src="../static/img/gray.png" class="capa_img" alt="capa">
       </div>
-      <br>
-      <div class="user_post">
-        <img src="../static/img/foto_de_perfil.png" alt="foto_de_perfil">
-        <div class="descricao">
-          <h3>Patricia Neves</h3>
-          <p style="color: #7C7C7C;">Publicado em 15 de setembro de 2023 às, 08h00.</p>
-          <p style="color: #7C7C7C;">Última atualização em 20 de setembro de 2023 às, 08h07.</p>
-        </div>
-        </div>
+      <div class="flex-comment">
         <br>
-      <div class="comentario">
-        <h2>Comentários</h2>
-        <form action="#" method="post">
-          <textarea name="comentario" placeholder="Digite seu comentário aqui"></textarea>
+        <div class="flex-dados">
+          <div>
+            <img src="../static/img/gray.png" style="width: 5rem; border-radius: 50px;">
+          </div>
+          <div>
+            <h2>Nome</h2>
+            <p>Informação 1</p>
+            <p>Informação 2</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex-commentbox">
+        <div><h2>Comentários</h2></div>
+        <div>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Digite seu comentário</label>
+          </div>
+          <div class="flex-buttons">
+            <div>
+              <button class="btn btn-outline-secondary" type="button">Cancelar</button>
+            </div>
+            <div>
+              <button class="btn btn-success" type="button">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
       <br>
-      </div>
-      <div class="botao">
-        <button  style="background-color: #004618; color: white;">Enviar</button>
-        <button style="border: 1px solid var(--Borda, #BFBFBF); color: #BFBFBF;">Cancelar</button>
-      </div>
-      
     </main>
   {% endblock %}
