@@ -36,9 +36,28 @@ main{
     display: flex;
     justify-content: right;
     flex: 1;
+    flex-wrap: wrap;
     gap: 10px;
+    margin-top: 1rem;
 }
 
 textarea{
     resize: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .flex-buttons{
+        flex-wrap: wrap-reverse;
+        flex: 1;
+        justify-content: center;
+    }
+  }
+
+.btn{
+    width: 15rem;
+    font-weight: bold;
+}
+
+.btn-custom1{
+    background-color: #004618;
 }
