@@ -60,7 +60,7 @@ body{
 
 .divgeral{
     width: 90%;
-    height: 600px;
+    height: 100%;
     display: flex;
     margin: 0 auto;
     border-radius: 10px;
@@ -78,4 +78,26 @@ body{
 .formularios{
     display: flex;
     justify-content: space-between;
+}
+
+.info_hospitais{
+    margin-top: 40px;
+    display: flex;
+    width: 100%;
+}
+
+.table-with-padding-td td {
+    padding-top: 20px;
+}
+
+.table-with-padding-th th {
+    padding-top: 20px;
+}
+
+th {
+    border: none;
+}
+
+td {
+    border: none;
 }
