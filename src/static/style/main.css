@@ -142,6 +142,23 @@
     font-weight: bold;
 }
 
+/* inicio do telaperfilnome 2 */
+
+.tela_perfil_nome2 {
+    overflow: hidden;
+    top: 50px;
+    min-width: 255px;
+    background-color: #004619;
+    width: 100%;
+}
+
+.tela_perfil_nome2 a {
+    text-decoration: none;
+    color: white;
+}
+
+/* fim do telaperfilnome 2 */
+
 #fundo-escuro {
     display: none;
     position: fixed;
@@ -154,3 +171,21 @@
     z-index: 1;
 }
 
+.hr_navbar{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    border-bottom: solid 1px #3ea8636c;
+}
+
+.navbar-dark,
+.navbar[data-bs-theme=dark] {
+  --bs-navbar-color: rgba(255, 255, 255, 0);
+  --bs-navbar-hover-color: rgba(255, 255, 255, 0.75);
+  --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
+  --bs-navbar-active-color: #fff;
+  --bs-navbar-brand-color: #fff;
+  --bs-navbar-brand-hover-color: #fff;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0);
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 255' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
