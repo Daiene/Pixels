@@ -4,40 +4,12 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 
-app = Flask(__name__)
-
-app.secret_key = 'kauegatao'
-
-
-@app.route('/definir', methods=["POST", "GET"])
-def definir():
-    if request.method == "POST":
-        imagem = request.files['imagem']
-        user = findUserByEmail(session.get("email"))
-
-        if imagem:
-            with Image.open(imagem) as img:
-                img = img.resize((128, 128))
-                img_bytes = BytesIO()
-                img.save(img_bytes, format='png')  # Escolha o formato apropriado
-                img_bytes = img_bytes.getvalue()
-            sendProfileImage(user, img_bytes)
-    else:
-        pass
-    return redirect('/perfil')
-
-
-@app.route('/imagem')
-def exibir_imagem():
-    user = findUserByEmail(session.get("email"))
-    email = user[2]
-    img = getProfileImage(email)
-
-    return img
-
 
 @app.route('/')
 def home():
+    '''
+        Página Home
+    '''
 
     name = ""
     email = ""
@@ -53,8 +25,13 @@ def home():
     return render_template('index.html', access=False, title="Home", name=name)
 
 
+
+
 @app.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
+    '''
+        Página Cadastro
+    '''
 
     if request.method == "POST":
         name = request.form['name']
@@ -95,6 +72,9 @@ def cadastro():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    '''
+        Página Login
+    '''
     
     if request.method == "POST":
         email = request.form['email']
@@ -125,19 +105,33 @@ def login():
 
 @app.route("/logout")
 def logout():
+    '''
+        Rota para fazer logout do usuário
+    '''
+
     session["email"] = None
     return redirect("/")
 
 
 
+
 @app.route('/esqueceu_senha')
 def esqueceu_senha():
+    '''
+        Pagina esqueceu senha
+    '''
+
     return render_template('esqueceu_senha.html', title="Esqueceu Senha")
+
 
 
 
 @app.route('/blog')
 def blog():
+    '''
+        Página Blog
+    '''
+
     name = ""
     email = ""
     access = check_session(session.get("email"))
@@ -153,9 +147,13 @@ def blog():
 
 
 
-# ROTA DE TESTE
+
 @app.route('/proadisus')
 def proadi_sus():
+    '''
+        Página Pradisus
+    '''
+
 
     name = ""
     email = ""
@@ -175,6 +173,10 @@ def proadi_sus():
 
 @app.route('/dados')
 def dados():
+    '''
+        Página de Dados
+    '''
+
     name = ""
     email = ""
     access = check_session(session.get("email"))
@@ -193,6 +195,10 @@ def dados():
 
 @app.route('/perfil')
 def perfil():
+    '''
+        Página de Perfil
+    '''
+
     name = ""
     email = ""
     access = check_session(session.get("email"))
@@ -208,8 +214,13 @@ def perfil():
     
 
 
+
 @app.route('/hospital')
 def hospital():
+    '''
+        Página de Hositais
+    '''
+
     name = ""
     email = ""
     access = check_session(session.get("email"))
@@ -225,8 +236,13 @@ def hospital():
 
 
 
+
 @app.route('/postagem')
 def postagem():
+    '''
+        Página de Post
+    '''
+
     name = ""
     email = ""
     access = check_session(session.get("email"))
@@ -241,8 +257,14 @@ def postagem():
     return render_template('postagem.html', access=False, title="Home", name=name)
 
 
+
+
 @app.route('/troca_passwd', methods=["POST"])
 def troca_passwd():
+    '''
+        Rota para trocar a senha do usuário
+    '''
+
     user = findUserByEmail(session.get("email"))
     senha = user[3]
     email = user[2]
@@ -257,8 +279,14 @@ def troca_passwd():
     return redirect('/perfil')
 
 
+
+
 @app.route("/delete", methods=["POST"])
 def delete():
+    '''
+        Rota de deletar a conta do usuário
+    '''
+
     user = findUserByEmail(session.get("email"))
     email = user[2]
     print(type(email))
@@ -266,7 +294,47 @@ def delete():
         deletando_conta(email)
     
     return redirect("/")
-    
+
+
+
+
+@app.route('/definir', methods=["POST", "GET"])
+def definir():
+    '''
+        Rota de para definir a imagem de perfil do usuário
+    '''
+
+    if request.method == "POST":
+        imagem = request.files['imagem']
+        user = findUserByEmail(session.get("email"))
+
+        if imagem:
+            with Image.open(imagem) as img:
+                img = img.resize((128, 128))
+                img_bytes = BytesIO()
+                img.save(img_bytes, format='png')  # Escolha o formato apropriado
+                img_bytes = img_bytes.getvalue()
+            sendProfileImage(user, img_bytes)
+    else:
+        pass
+    return redirect('/perfil')
+
+
+
+
+@app.route('/imagem')
+def exibir_imagem():
+    '''
+        Rota para carregar a imagem do usuário
+    '''
+
+    user = findUserByEmail(session.get("email"))
+    email = user[2]
+    img = getProfileImage(email)
+
+    return img
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

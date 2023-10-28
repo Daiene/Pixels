@@ -1,15 +1,16 @@
-{% extends "base.html" %} {% block style %}
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='style/style_home.css') }}"
-/>
-{% endblock %} {% block content %}
+{% extends "base.html" %} 
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style_home.css') }}"/>
+{% endblock %} 
+
+{% block content %}
 <main style="margin-top: 56.16px">
   <div class="conteudo">
     <section class="conteudo__capa">
       <img
           style="width: 100%;"
-          src="{{ url_for('static', filename='img/capa_home.png') }}"
+          src="{{ url_for('static', filename='img/home_imgs/capa_home.png') }}"
           alt="Foto de capa da página home"
             />
       <div class="conteudo__capa__texto">
@@ -67,7 +68,7 @@
       <div class="corpo2__grade">
         <div class="corpo2__grade__celula">
           <div class="corpo2__grade__celula__imagem">
-            <img style="height: 109.77px" src="{{ url_for('static', filename='img/home_img/info_sec.png') }}">
+            <img style="height: 109.77px" src="{{ url_for('static', filename='img/home_imgs/info_sec.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
 
@@ -85,7 +86,7 @@
             </div>
           </div>
           <div class="corpo2__grade__celula__imagem">
-            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_img/med_team.png') }}">
+            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_imgs/med_team.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
 
@@ -104,7 +105,7 @@
         </div>
         <div class="corpo2__grade__celula">
           <div class="corpo2__grade__celula__imagem">
-            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_img/med_log.png') }}">
+            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_imgs/med_log.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
 
@@ -121,7 +122,7 @@
             </div>
           </div>
           <div class="corpo2__grade__celula__imagem">
-            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_img/help_net.png') }}">
+            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_imgs/help_net.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
 
@@ -141,7 +142,7 @@
         </div>
         <div class="corpo2__grade__celula">
           <div class="corpo2__grade__celula__imagem">
-            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_img/care_plan.png') }}">
+            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_imgs/care_plan.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
 
@@ -158,7 +159,7 @@
             </div>
           </div>
           <div class="corpo2__grade__celula__imagem">
-            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_img/open_comm.png') }}">
+            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_imgs/open_comm.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
 
@@ -178,7 +179,7 @@
         </div>
         <div class="corpo2__grade__celula">
           <div class="corpo2__grade__celula__imagem">
-            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_img/care_opt.png') }}">
+            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_imgs/care_opt.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
 
@@ -196,7 +197,7 @@
             </div>
           </div>
           <div class="corpo2__grade__celula__imagem">
-            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_img/care_ys.png') }}">
+            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_imgs/care_ys.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
 
@@ -215,7 +216,7 @@
         </div>
         <div class="corpo2__grade__celula">
           <div class="corpo2__grade__celula__imagem">
-            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_img/child_dev.png') }}">
+            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_imgs/child_dev.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
 
@@ -232,7 +233,7 @@
             </div>
           </div>
           <div class="corpo2__grade__celula__imagem">
-            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_img/keep_faith.png') }}">
+            <img style="width: 94px; height: 105.95px" src="{{ url_for('static', filename='img/home_imgs/keep_faith.png') }}">
             <div class="corpo2__grade__celula__conteudo">
               <div class="corpo2__grade__celula__conteudo__titulo">
                 
