@@ -4,7 +4,7 @@ from datetime import datetime
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="fatec",
+passwd="",
 
 )
 mycursor = db.cursor()
