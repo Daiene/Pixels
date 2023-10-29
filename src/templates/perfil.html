@@ -10,10 +10,10 @@
           <div class="texto">Atualize as informações de perfil e endereço de e-mail da sua conta</div>
         </div>
         <div class="foto_perfil">
-            <img src="{{ url_for('exibir_imagem') }}" alt="Imagem">
+            <img width="150px" height="150px" style="border-radius: 60px;" src="{{ url_for('exibir_imagem') }}" alt="Imagem">
         </div>
 
-        <form method="POST" action="{{ url_for('definir') }} " enctype="multipart/form-data">
+        <form method="POST" action="{{ url_for('carregar_imagem') }} " enctype="multipart/form-data">
           <input type="file" name="imagem" accept="image/*" ><br>
           <input type="submit" value="Enviar Imagem">
         </form>

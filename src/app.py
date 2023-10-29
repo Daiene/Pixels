@@ -3,6 +3,7 @@ from service import *
 import numpy as np
 from io import BytesIO
 from PIL import Image
+import os
 
 
 @app.route('/')
@@ -16,7 +17,7 @@ def home():
     access = check_session(session.get("email"))
 
     if access:
-        cad = findUserByEmail(session.get("email"))
+        cad = buscar_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -46,7 +47,7 @@ def cadastro():
         info, warn = check_cadastro(name, email, password, confirmPassword, dn, cpf, parentesco, profissao, como_chegou)
 
         if info:
-            createUser(name, email, password, dn, cpf, parentesco, profissao, como_chegou)
+            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou)
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
         
@@ -59,7 +60,7 @@ def cadastro():
         access = check_session(session.get("email"))
 
         if access:
-            cad = findUserByEmail(session.get("email"))
+            cad = buscar_email(session.get("email"))
             if cad is not None:
                 name = cad[1]
                 email = cad[2]
@@ -92,7 +93,7 @@ def login():
         access = check_session(session.get("email"))
 
         if access:
-            cad = findUserByEmail(session.get("email"))
+            cad = buscar_email(session.get("email"))
             if cad is not None:
                 name = cad[1]
                 email = cad[2]
@@ -136,7 +137,7 @@ def blog():
     email = ""
     access = check_session(session.get("email"))
     if access:
-        cad = findUserByEmail(session.get("email"))
+        cad = buscar_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -160,7 +161,7 @@ def proadi_sus():
     access = check_session(session.get("email"))
 
     if access:
-        cad = findUserByEmail(session.get("email"))
+        cad = buscar_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -182,7 +183,7 @@ def dados():
     access = check_session(session.get("email"))
 
     if access:
-        cad = findUserByEmail(session.get("email"))
+        cad = buscar_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -204,10 +205,11 @@ def perfil():
     access = check_session(session.get("email"))
 
     if access:
-        cad = findUserByEmail(session.get("email"))
+        cad = buscar_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
+            print(cad[5])
             return render_template('perfil.html', access=access, title="Home", name=name, email=email)
     
     return redirect('/login')
@@ -226,7 +228,7 @@ def hospital():
     access = check_session(session.get("email"))
 
     if access:
-        cad = findUserByEmail(session.get("email"))
+        cad = buscar_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -248,7 +250,7 @@ def postagem():
     access = check_session(session.get("email"))
     
     if access:
-        cad = findUserByEmail(session.get("email"))
+        cad = buscar_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -265,7 +267,7 @@ def troca_passwd():
         Rota para trocar a senha do usuário
     '''
 
-    user = findUserByEmail(session.get("email"))
+    user = buscar_email(session.get("email"))
     senha = user[3]
     email = user[2]
     if request.method == "POST":
@@ -287,7 +289,7 @@ def delete():
         Rota de deletar a conta do usuário
     '''
 
-    user = findUserByEmail(session.get("email"))
+    user = buscar_email(session.get("email"))
     email = user[2]
     print(type(email))
     if request.method == "POST":
@@ -298,23 +300,22 @@ def delete():
 
 
 
-@app.route('/definir', methods=["POST", "GET"])
-def definir():
+@app.route('/carregar_imagem', methods=["POST", "GET"])
+def carregar_imagem():
     '''
         Rota de para definir a imagem de perfil do usuário
     '''
 
     if request.method == "POST":
         imagem = request.files['imagem']
-        user = findUserByEmail(session.get("email"))
+        user = buscar_email(session.get("email"))
 
         if imagem:
-            with Image.open(imagem) as img:
-                img = img.resize((128, 128))
-                img_bytes = BytesIO()
-                img.save(img_bytes, format='png')  # Escolha o formato apropriado
-                img_bytes = img_bytes.getvalue()
-            sendProfileImage(user, img_bytes)
+            imagem.filename = f"user_{user[0]}.png"
+            image_path = os.path.join("../src/static/img/uploads/", imagem.filename)
+            imagem.save(image_path)
+
+        return redirect('/perfil')
     else:
         pass
     return redirect('/perfil')
@@ -322,15 +323,15 @@ def definir():
 
 
 
-@app.route('/imagem')
+@app.route('/exibir_imagem')
 def exibir_imagem():
     '''
         Rota para carregar a imagem do usuário
     '''
 
-    user = findUserByEmail(session.get("email"))
+    user = buscar_email(session.get("email"))
     email = user[2]
-    img = getProfileImage(email)
+    img = carregando_imagem(email)
 
     return img
 

@@ -33,7 +33,7 @@ def check_cadastro(name, email, password, confirmPassword,  dn, cpf, parentesco,
         Método de validar se todas as informações do cadastro estão corretas
     '''  
 
-    user = findUserByEmail(email)
+    user = buscar_email(email)
     print(user)
     if user != None:
         warn = "Email já cadastrado!"
@@ -62,7 +62,7 @@ def check_login(email, password):
         Método de de validar se as informações de login estão corretas
     '''
 
-    user = findUserByEmail(email)
+    user = buscar_email(email)
 
     if email == "" or password == "":
         warn = "Preencha todos os campos!"
@@ -93,7 +93,7 @@ def check_session(session):
 
 
 
-def findUserByEmail(email):
+def buscar_email(email):
     '''
         Método de encontrar as informações usuário pelo email
     '''
@@ -109,24 +109,30 @@ def findUserByEmail(email):
 # Usuário
 
 
-def createUser(name, email, password, dn, cpf, parentesco, profissao, como_chegou):
+def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou):
     '''
         Método de criar o usuário no banco
     '''
 
-    default_img = "../src/static/img/User.png"
-    
-    with Image.open(default_img) as img:
-        img = img.resize((128, 128))
-        img_bytes = BytesIO()
-        img.save(img_bytes, format='png')  # Escolha o formato apropriado
-        img_bytes = img_bytes.getvalue()
-
+    # Imagem default
+    name_default = "../src/static/img/icons/icon_user.png"
+    img_default = cv2.imread(name_default)
     sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo, user_dn, user_cpf, user_grau_parentesco, user_profissao, user_como_chegou) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    val = (name, email, password, img_bytes, dn, cpf, parentesco, profissao, como_chegou)
-    print(val)
-    print("USUARIO CADASTRADO COM SUCESSO!")
+    val = (name, email, password, name_default, dn, cpf, parentesco, profissao, como_chegou)
     mycursor.execute(sql, val)
+    
+
+    # Imagem com ID
+    user_id = mycursor.lastrowid
+    name_id = f"../src/static/img/uploads/user_{user_id}.png"
+    cv2.imwrite(name_id, img_default)
+
+    update_img_path = "UPDATE usuario SET user_photo = %s WHERE user_id = %s"
+    mycursor.execute(update_img_path, (name_id, user_id))
+    db.commit()
+
+    print("USUARIO CADASTRADO COM SUCESSO!")
+    
     return True
 
 
@@ -161,12 +167,12 @@ def deletando_conta(email):
 # Blog
 
 
-def createPost(title, content, email, img, category):
+def crir_post(title, content, email, img, category):
     '''
         Método de inserir um post no banco de dados
     '''
 
-    user = findUserByEmail(email)
+    user = buscar_email(email)
     sql = "INSERT into post (post_title, post_content, post_date, post_img,post_category, user_id)"
     val = (title, content, now, img, category, user[0])
 
@@ -176,27 +182,17 @@ def createPost(title, content, email, img, category):
 # Imagem Usuário
 
 
-def sendProfileImage(user, img):
-    '''
-        Método de inserrir imagem do perfil ao banco
-    '''
-    
-    email = user[2]
-    sql = "UPDATE usuario SET user_photo = %s WHERE user_email = %s"
-    val = (img, email)
-    mycursor.execute(sql, val) 
-
-
-
-
-def getProfileImage(email):
+def carregando_imagem(email):
     '''
         Método de carregar imagem do perfil do banco
     '''
 
-    user = findUserByEmail(email)
-    imagem_binaria = user[5]
-    return Response(imagem_binaria, mimetype='image/png')
+    user = buscar_email(email)
+    path_img = user[5]
+    img = cv2.imread(path_img)
+    image_data = cv2.imencode('.png', img)[1].tobytes()
+
+    return Response(image_data, mimetype='image/png')
 
 
 
@@ -213,3 +209,10 @@ print('BANCO DE DADOS CRIADO COM SUCESSO!')
 print()
 print('#############################################################################################################################################################################')
 print()
+
+
+#############################################################################################################################################################################
+# Usuários Padroẽs
+
+# admin
+criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais')

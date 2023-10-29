@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS usuario(
     user_email VARCHAR(255) NOT NULL UNIQUE,
     user_password VARCHAR(255) NOT NULL,
     user_type INT NOT NULL DEFAULT '1',
-    user_photo BLOB,
+    user_photo VARCHAR(255),
     user_dn DATE NOT NULL,
     user_cpf VARCHAR(11) NOT NULL,
     user_grau_parentesco VARCHAR(50) NOT NULL,
