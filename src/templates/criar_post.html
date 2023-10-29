@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário de Criação de Post</title>
+</head>
+<body>
+    <h1>Criar um Novo Post</h1>
+    <form action="/post/criar_post" method="post">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required><br>
+
+        <label for="conteudo">Conteúdo:</label>
+        <textarea id="conteudo" name="conteudo" required></textarea><br>
+
+        <label for="img">Imagem:</label>
+        <input type="file" id="img" name="img"><br>
+
+        <label for="categoria">Categoria:</label>
+        <select type="text" name="categoria" id="categoria" placeholder="">
+            <option value=""></option>
+            <option value="relato">Relato</option>
+            <option value="noticia">Noticia</option>
+        </select>
+
+        <input type="submit" value="Criar Post">
+    </form>
+</body>
+</html>

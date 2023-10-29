@@ -17,7 +17,7 @@ def home():
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_email(session.get("email"))
+        cad = buscar_usuario_pelo_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -60,7 +60,7 @@ def cadastro():
         access = check_session(session.get("email"))
 
         if access:
-            cad = buscar_email(session.get("email"))
+            cad = buscar_usuario_pelo_email(session.get("email"))
             if cad is not None:
                 name = cad[1]
                 email = cad[2]
@@ -93,7 +93,7 @@ def login():
         access = check_session(session.get("email"))
 
         if access:
-            cad = buscar_email(session.get("email"))
+            cad = buscar_usuario_pelo_email(session.get("email"))
             if cad is not None:
                 name = cad[1]
                 email = cad[2]
@@ -137,7 +137,7 @@ def blog():
     email = ""
     access = check_session(session.get("email"))
     if access:
-        cad = buscar_email(session.get("email"))
+        cad = buscar_usuario_pelo_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -161,7 +161,7 @@ def proadi_sus():
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_email(session.get("email"))
+        cad = buscar_usuario_pelo_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -183,7 +183,7 @@ def dados():
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_email(session.get("email"))
+        cad = buscar_usuario_pelo_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -205,7 +205,7 @@ def perfil():
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_email(session.get("email"))
+        cad = buscar_usuario_pelo_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -228,7 +228,7 @@ def hospital():
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_email(session.get("email"))
+        cad = buscar_usuario_pelo_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -250,7 +250,7 @@ def postagem():
     access = check_session(session.get("email"))
     
     if access:
-        cad = buscar_email(session.get("email"))
+        cad = buscar_usuario_pelo_email(session.get("email"))
         if cad is not None:
             name = cad[1]
             email = cad[2]
@@ -267,7 +267,7 @@ def troca_passwd():
         Rota para trocar a senha do usuário
     '''
 
-    user = buscar_email(session.get("email"))
+    user = buscar_usuario_pelo_email(session.get("email"))
     senha = user[3]
     email = user[2]
     if request.method == "POST":
@@ -289,7 +289,7 @@ def delete():
         Rota de deletar a conta do usuário
     '''
 
-    user = buscar_email(session.get("email"))
+    user = buscar_usuario_pelo_email(session.get("email"))
     email = user[2]
     print(type(email))
     if request.method == "POST":
@@ -308,7 +308,7 @@ def carregar_imagem():
 
     if request.method == "POST":
         imagem = request.files['imagem']
-        user = buscar_email(session.get("email"))
+        user = buscar_usuario_pelo_email(session.get("email"))
 
         if imagem:
             imagem.filename = f"user_{user[0]}.png"
@@ -329,11 +329,77 @@ def exibir_imagem():
         Rota para carregar a imagem do usuário
     '''
 
-    user = buscar_email(session.get("email"))
+    user = buscar_usuario_pelo_email(session.get("email"))
     email = user[2]
     img = carregando_imagem(email)
 
     return img
+
+
+
+@app.route('/post/<categoria>/<titulo>')
+def mostrar_post(categoria, titulo):
+    '''
+    Rota do post individual, é uma rota dinamica que renderiza o post pela categoria e titulo
+    '''
+
+
+    posts = todos_posts()
+
+    post = None
+    for item in posts:
+        if item[5] == categoria and item[1] == titulo:
+            post = item
+            break
+
+    if post:
+        return render_template('exibir_post.html', post=post)
+    else:
+        return "Post não encontrado", 404
+
+
+
+@app.route('/post/criar_post', methods=["POST", "GET"])
+def rota_post():
+    '''
+        Rota para criação de posts 
+    '''
+
+    if request.method == 'POST':
+        titulo = request.form['titulo']
+        conteudo = request.form['conteudo']
+        img = None
+        categoria = request.form['categoria']
+
+        email = session.get("email") # Pega o email pela sessão, ou seja o autor é definido automaticamente pela sessão.
+
+        criar_post(titulo, conteudo, email, img, categoria)
+
+        url = f'/post/{categoria}/{titulo}'
+        return redirect(url)
+
+    return render_template('criar_post.html')
+
+
+
+@app.route('/post/todos_posts')
+def mostrar_informacoes():
+    '''
+        Rota teste para verificar os posts enviados, podendo usar filtro
+    '''
+    posts = todos_posts()
+    
+
+    categoria_filtro = request.args.get('categoria', default=None)
+
+    if categoria_filtro:
+        posts_filtrados = [post for post in posts if post[5] == categoria_filtro]
+    else:
+        posts_filtrados = posts
+
+    print(posts)
+
+    return render_template('exibir_posts.html', posts=posts_filtrados, categoria_filtro=categoria_filtro)
 
 
 

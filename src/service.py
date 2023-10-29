@@ -33,7 +33,7 @@ def check_cadastro(name, email, password, confirmPassword,  dn, cpf, parentesco,
         Método de validar se todas as informações do cadastro estão corretas
     '''  
 
-    user = buscar_email(email)
+    user = buscar_usuario_pelo_email(email)
     print(user)
     if user != None:
         warn = "Email já cadastrado!"
@@ -62,7 +62,7 @@ def check_login(email, password):
         Método de de validar se as informações de login estão corretas
     '''
 
-    user = buscar_email(email)
+    user = buscar_usuario_pelo_email(email)
 
     if email == "" or password == "":
         warn = "Preencha todos os campos!"
@@ -93,7 +93,7 @@ def check_session(session):
 
 
 
-def buscar_email(email):
+def buscar_usuario_pelo_email(email):
     '''
         Método de encontrar as informações usuário pelo email
     '''
@@ -167,14 +167,27 @@ def deletando_conta(email):
 # Blog
 
 
-def crir_post(title, content, email, img, category):
+def criar_post(titulo, conteudo, email, img, categoria):
     '''
         Método de inserir um post no banco de dados
     '''
 
-    user = buscar_email(email)
-    sql = "INSERT into post (post_title, post_content, post_date, post_img,post_category, user_id)"
-    val = (title, content, now, img, category, user[0])
+    user = buscar_usuario_pelo_email(email)
+    sql = "INSERT into post (post_title, post_content, post_date, post_img, post_category, user_id) VALUES (%s, %s, %s, %s, %s, %s)"
+    val = (titulo, conteudo, now, img, categoria, user[0])
+    mycursor.execute(sql, val)
+    db.commit()
+
+
+def todos_posts():
+
+    # Pega todos os posts para enviar para o front-end  
+    
+    sql = "SELECT p.post_id, p.post_title, p.post_content, p.post_date, p.post_img, p.post_category, u.user_name FROM post p INNER JOIN usuario u ON p.user_id = u.user_id WHERE p.post_status = TRUE ORDER BY p.post_date;"
+    mycursor.execute(sql)
+    posts = mycursor.fetchall()
+
+    return posts
 
 
 
@@ -187,7 +200,7 @@ def carregando_imagem(email):
         Método de carregar imagem do perfil do banco
     '''
 
-    user = buscar_email(email)
+    user = buscar_usuario_pelo_email(email)
     path_img = user[5]
     img = cv2.imread(path_img)
     image_data = cv2.imencode('.png', img)[1].tobytes()

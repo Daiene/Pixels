@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS post(
     post_content TEXT NOT NULL,
     post_date DATE NOT NULL,
     post_img BLOB,
-    post_status BOOLEAN DEFAULT FALSE,
+    post_status BOOLEAN DEFAULT TRUE,
     post_category VARCHAR(200) NOT NULL,
     user_id BIGINT NOT NULL
 );
@@ -67,3 +67,6 @@ ALTER TABLE post ADD (
 ALTER Table endereco ADD (
     FOREIGN KEY (user_id) REFERENCES usuario(user_id)
 );
+
+INSERT INTO usuario (user_name, user_email, user_password, user_type, user_dn, user_cpf, user_grau_parentesco, user_profissao, user_como_chegou)
+VALUES ('admin', 'teste@teste.com', '123', 1, '1990-01-01', '12345678901', 'Pai', 'Engenheiro', 'Google');
