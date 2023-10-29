@@ -1,227 +1,30 @@
-
-.forma{
-    display: flex;
-    width: 665px;
-    padding: 50px 65px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    height: 551.50px;
-    padding-left: 65px;
-    padding-right: 65px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    background: white;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+.box-container {
+    background-color: white;
+    padding: 20px;
+    text-align: left;
     border-radius: 10px;
-    overflow: hidden;
-    border: 1px #BFBFBF solid;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    display: flex;
-}
-
-
-.forma1{
-    display: flex;
-    width: 665px;
-    padding: 50px 65px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    height: 271px;
-    padding-left: 65px;
-    padding-right: 65px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    background: white;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px #BFBFBF solid;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px; display: flex;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
-.content{
-    display: flex;
-    align-items: center;
+.box-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: block;
 }
 
-.container{
-    width: 1440px;
-    height: 1453.50px;
-    padding-top: 80px;
-    padding-bottom: 30px;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    display: inline-flex;
-    }
-
-.header {
-    height: 551.50px;
-    padding-left: 65px;
-    padding-right: 65px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    background: white;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px #BFBFBF solid;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    display: flex;
-}
-
-.header_h1{
-    height: 451.50px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 25px;
-    display: flex;
-}
-
-.header_p{
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 15px;
-    display: flex;
-}
-
-.titulo{
-    color: #004618;
-    font-size: 28px;
-    font-family: Raleway;
-    font-weight: 700;
-    line-height: 28px;
-    word-wrap: break-word;
-}
-.texto{
-    color: #374151;
-    font-size: 14px;
-    font-family: Roboto;
-    font-weight: 400;
-    line-height: 16.80px;
-    word-wrap: break-word;
-}
-.foto_perfil{
-    align-self: stretch;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
-}
-
-.input{
-    align-self: stretch;
-    height: 62px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 5px;
-    display: flex;
-}
-
-.form_name {
-    color: #7C7C7C;
-    font-size: 14px;
-    font-family: Roboto;
-    font-weight: 400;
-    line-height: 16.80px;
-    word-wrap: break-word;
-}
-
-.coluna{
-    justify-content: space-between;
-    align-items: center;
-    display: inline-flex;
-}
-
-.button_save{
-    align-self: stretch;
-    height: 40px;
+.box-container input {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    width: 100%;
     padding: 10px;
-    background: #004618;
-    border-radius: 10px;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-
-.button_form_save{
-    height: 411px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 25px;
-    display: flex;
-}
-
-.form_atualizacao{
-    align-self: stretch;
-    height: 85px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 15px;
-    display: flex;
-}
-
-.form_senha{
-    align-self: stretch;
-    height: 62px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 5px;
-    display: flex;
-}
-
-.deletar_conta{
-    height: 171px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    display: flex;
-}
-
-.form_deletar{
-    align-self: stretch;
-    height: 106px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 15px;
-    display: flex;
-}
-
-
-.button_deletar{
-    align-self: stretch;
-    height: 40px;
-    padding: 10px;
-    background: #D50C0C;
-    border-radius: 10px;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    display: inline-flex;
+#box_1{
+    margin-top: 40px;
 }
