@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/criar_post.css') }}">
+{% endblock %} {% block content %}
+<div class="container">
+    <div class="row" >   
+      <div class="col-md-9 mx-auto mt-5 mb-0" id="box_1">
+        <div class="box-container">
+          <h2 style="color: #004618;">Criar Post</h2>
+          <p style="color: #374151;">Aqui você pode criar um novo post para o blog</p>
+          <label class="form-label" for="">Título</label>
+          <input type="text" name="Titulo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <label class="form-label" for="">Categoria</label>
+          <select  style="margin-bottom: 10px;" class="form-select" aria-label="Default select example">
+            <option selected>Selecione uma categoria</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Capa da Postagem</label>
+            <input class="form-control" type="file" id="formFileMultiple" multiple>
+          </div>
+          <button type="button" class="btn btn-primary btn-lg" style="background-color: #004618;">Salvar</button>
+          <button type="button" class="btn btn-secondary btn-lg">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

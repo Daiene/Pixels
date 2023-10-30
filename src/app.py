@@ -206,6 +206,21 @@ def postagem():
     return render_template('postagem.html', access=False, title="Home", name=name)
 
 
+@app.route('/criar_post')
+def criar_post():
+
+    name = ""
+    email = ""
+    access = check_session(session.get("email"))
+
+    if access:
+        cad = findUserByEmail(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            return render_template('criar_post.html', access=access, title="Home", name=name, email=email)
+    
+    return redirect('/login')
 
 if __name__ == '__main__':
     app.run(debug=True)
