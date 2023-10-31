@@ -137,7 +137,6 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
 
 
 
-
 def atualizando_senha(email, nova_senha):
     '''
         Método de alterar a senha do usuário feita na pagina perfil
@@ -175,6 +174,13 @@ def criar_post(titulo, conteudo, email, img, categoria):
     user = buscar_usuario_pelo_email(email)
     sql = "INSERT into post (post_title, post_content, post_date, post_img, post_category, user_id) VALUES (%s, %s, %s, %s, %s, %s)"
     val = (titulo, conteudo, now, img, categoria, user[0])
+    mycursor.execute(sql, val)
+    db.commit()
+
+def cria_comentario(titulo, comentario, email, post_id):
+    user = buscar_usuario_pelo_email(email)
+    sql = "INSERT into comentario (com_title, com_content, com_date, post_id, user_id ) VALUES (%s, %s, %s, %s, %s, %s)"
+    val = (titulo, comentario, post, now, user[0])
     mycursor.execute(sql, val)
     db.commit()
 

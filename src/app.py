@@ -239,24 +239,16 @@ def hospital():
 
 
 
-@app.route('/postagem')
+@app.route('/postagem', methods=["POST", "GET"])
 def postagem():
     '''
         Página de Post
     '''
+    
 
-    name = ""
-    email = ""
-    access = check_session(session.get("email"))
+    return render_template('postagem.html')
+
     
-    if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
-            return render_template('postagem.html', access=access, title="Home", name=name, email=email)
-    
-    return render_template('postagem.html', access=False, title="Home", name=name)
 
 
 
@@ -337,7 +329,7 @@ def exibir_imagem():
 
 
 
-@app.route('/post/<categoria>/<titulo>')
+@app.route('/post/<categoria>/<titulo>', methods=["POST"])
 def mostrar_post(categoria, titulo):
     '''
     Rota do post individual, é uma rota dinamica que renderiza o post pela categoria e titulo
@@ -351,11 +343,19 @@ def mostrar_post(categoria, titulo):
         if item[5] == categoria and item[1] == titulo:
             post = item
             break
-
     if post:
         return render_template('exibir_post.html', post=post)
     else:
         return "Post não encontrado", 404
+    
+    if request.method == 'POST':
+        com_titulo = request.form['com_titulo']
+        comentario = request.form['conteudo']
+        email = session.get("email")
+
+        cria_comentario(com_titulo, comentario, email)
+        return render_template('postagem.html')
+    
 
 
 

@@ -24,15 +24,19 @@
         </div>
         <br>
       <div class="comentario">
-        <h2>Comentários</h2>
-        <form action="#" method="post">
-          <textarea name="comentario" placeholder="Digite seu comentário aqui"></textarea>
-      <br>
-      </div>
-      <div class="botao">
-        <button  style="background-color: #004618; color: white;">Enviar</button>
-        <button style="border: 1px solid var(--Borda, #BFBFBF); color: #BFBFBF;">Cancelar</button>
-      </div>
+      <h2>Comentários</h2>
+        <form action="/postagem" method="post">
+
+          <label for="com_titulo">Título:</label>
+          <input type="text" id="com_titulo" name="com_titulo" required><br>
+
+          <label for="comentario">Seu comentario:</label>
+          <textarea name="comentario" placeholder="Digite seu comentário aqui"></textarea><br>
+          <input type="submit" value="comentar">
+        </form>
+      
+      
+        </div>
       
     </main>
   {% endblock %}
