@@ -156,11 +156,19 @@ def dados():
 
 
 
-@app.route('/perfil')
+@app.route('/post')
 def perfil():
+<<<<<<< Updated upstream
     name = ""
     email = ""
     access = check_session(session.get("email"))
+=======
+    name = findUserByEmail(session.get("email"))
+    if name is not None:
+        name = name[1]
+    access = check_session(session.get("email"))
+    return render_template('postagem.html', access=access, title="Postagem", name=name)
+>>>>>>> Stashed changes
 
     if access:
         cad = findUserByEmail(session.get("email"))
