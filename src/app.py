@@ -304,7 +304,7 @@ def carregar_imagem():
 
         if imagem:
             imagem.filename = f"user_{user[0]}.png"
-            image_path = os.path.join("../src/static/img/uploads/", imagem.filename)
+            image_path = os.path.join("../src/static/img/user_uploads/", imagem.filename)
             imagem.save(image_path)
 
         return redirect('/perfil')
@@ -327,14 +327,21 @@ def exibir_imagem():
 
     return img
 
+@app.route('/exibir_capa/<int:post_id>')
+def exibir_capa(post_id):
+    '''
+        Rota para carregar capa do post
+    '''
+    print('Passou aqui')
+    img = carregando_capa(post_id)
+    return img
 
 
-@app.route('/post/<categoria>/<titulo>', methods=["POST"])
+@app.route('/post/<categoria>/<titulo>', methods=["POST", "GET"])
 def mostrar_post(categoria, titulo):
     '''
     Rota do post individual, é uma rota dinamica que renderiza o post pela categoria e titulo
     '''
-
 
     posts = todos_posts()
 
@@ -344,7 +351,8 @@ def mostrar_post(categoria, titulo):
             post = item
             break
     if post:
-        return render_template('exibir_post.html', post=post)
+        post_id = post[0]
+        return render_template('postagem.html', post=post, post_id=post_id)
     else:
         return "Post não encontrado", 404
     
@@ -360,25 +368,44 @@ def mostrar_post(categoria, titulo):
 
 
 @app.route('/post/criar_post', methods=["POST", "GET"])
-def rota_post():
+def criar():
     '''
         Rota para criação de posts 
     '''
 
+    name = ""
+    email = ""
+    access = check_session(session.get("email"))
+
     if request.method == 'POST':
         titulo = request.form['titulo']
+        imagem = request.files['imagem']
         conteudo = request.form['conteudo']
-        img = None
         categoria = request.form['categoria']
 
         email = session.get("email") # Pega o email pela sessão, ou seja o autor é definido automaticamente pela sessão.
 
-        criar_post(titulo, conteudo, email, img, categoria)
+        post_id = criar_post(titulo, conteudo, email, categoria)
+
+        if imagem:
+            imagem.filename = f"post_{post_id}.png"
+            image_path = os.path.join("../src/static/img/post_uploads/", imagem.filename)
+            imagem.save(image_path)
+
 
         url = f'/post/{categoria}/{titulo}'
-        return redirect(url)
 
-    return render_template('criar_post.html')
+        return redirect(url)
+    else:
+        if access:
+            cad = buscar_usuario_pelo_email(session.get("email"))
+            if cad is not None:
+                name = cad[1]
+                email = cad[2]
+                return render_template('criar_post.html', access=access, title="Criar post", name=name, email=email)
+        
+        return render_template('criar_post.html', access=False, title="Criar post", name=name)
+
 
 
 
@@ -388,7 +415,6 @@ def mostrar_informacoes():
         Rota teste para verificar os posts enviados, podendo usar filtro
     '''
     posts = todos_posts()
-    
 
     categoria_filtro = request.args.get('categoria', default=None)
 
@@ -399,7 +425,7 @@ def mostrar_informacoes():
 
     print(posts)
 
-    return render_template('exibir_posts.html', posts=posts_filtrados, categoria_filtro=categoria_filtro)
+    return render_template('postagem.html', posts=posts_filtrados, categoria_filtro=categoria_filtro)
 
 
 

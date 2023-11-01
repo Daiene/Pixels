@@ -4,39 +4,54 @@
   href="{{ url_for('static', filename='style/style_postagem.css') }}"
 />
 {% endblock %} {% block content %}
-    <main>
-      <h1>Clinica de hemodiálise abre no interior do Nordeste</h1>
-      <br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mollis eleifend ultricies. Sed non posuere lacus, sed vehicula arcu. Sed ac scelerisque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mollis eleifend ultricies. Sed non posuere lacus, sed vehicula arcu. Sed ac scelerisque ipsum.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mollis eleifend ultricies. Sed non posuere lacus, sed vehicula arcu. Sed ac scelerisque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mollis eleifend ultricies. Sed non posuere lacus, sed vehicula arcu. Sed ac scelerisque ipsum.</p>
-      <br>
-      <div class="capa">
-        <img src="../static/img/postagem.png" class="capa_img" alt="capa">
+<main>
+  <div class="flex-main">
+    <div><h1>{{ post[1] }}</h1></div>
+    <div class="capa">
+      <img src="../../static/img/post_uploads/post_{{post[0]}}.png"  class="capa_img" alt="capa" />
+    </div>
+    <div><p>{{ post[2] }}</p></div>
+    <div class="flex-comment">
+      <br />
+      <div class="flex-dados">
+        <div>
+          <p style="color: gray">Data: {{ post[3] }}</p>
+          <p style="color: gray">Usuário: {{ post[6] }}</p>
+        </div>
       </div>
-      <br>
-      <div class="user_post">
-        <img src="../static/img/foto_de_perfil.png" alt="foto_de_perfil">
-        <div class="descricao">
-          <h3>Patricia Neves</h3>
-          <p style="color: #7C7C7C;">Publicado em 15 de setembro de 2023 às, 08h00.</p>
-          <p style="color: #7C7C7C;">Última atualização em 20 de setembro de 2023 às, 08h07.</p>
+    </div>
+    <div class="flex-commentbox">
+      <div><h2>Comentários</h2></div>
+      <div>
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            style="height: 100px"
+            id="floatingTextarea"
+          ></textarea>
+          <label for="floatingTextarea" style="color: gray"
+            >Digite seu comentário aqui</label
+          >
         </div>
+        <div class="flex-buttons">
+          <div class="btn-content">
+            <button
+              class="d-inline btn btn-outline-secondary btn-custom2"
+              type="button"
+            >
+              Cancelar
+            </button>
+          </div>
+          <div class="btn-content">
+            <button class="btn btn-success btn-custom1" type="button">
+              Enviar
+            </button>
+          </div>
         </div>
-        <br>
-      <div class="comentario">
-      <h2>Comentários</h2>
-        <form action="/postagem" method="post">
-
-          <label for="com_titulo">Título:</label>
-          <input type="text" id="com_titulo" name="com_titulo" required><br>
-
-          <label for="comentario">Seu comentario:</label>
-          <textarea name="comentario" placeholder="Digite seu comentário aqui"></textarea><br>
-          <input type="submit" value="comentar">
-        </form>
-      
-      
-        </div>
-      
-    </main>
-  {% endblock %}
+      </div>
+    </div>
+  </div>
+  <br />
+</main>
+{% endblock %}

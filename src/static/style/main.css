@@ -24,6 +24,9 @@
 
 /* normalização do layout do navegador */
 
+body{
+    background-color: var(--background-principal);
+}
 * {
     scroll-behavior: smooth;
     margin: 0;
