@@ -1,28 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Formulário de Criação de Post</title>
-</head>
-<body>
-    <h1>Criar um Novo Post</h1>
-    <form action="/post/criar_post" method="post">
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" required><br>
-
-        <label for="conteudo">Conteúdo:</label>
-        <textarea id="conteudo" name="conteudo" required></textarea><br>
-
-        <label for="img">Imagem:</label>
-        <input type="file" id="img" name="img"><br>
-
-        <label for="categoria">Categoria:</label>
-        <select type="text" name="categoria" id="categoria" placeholder="">
-            <option value=""></option>
+{% extends "base.html" %} {% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='style/criar_post.css') }}"
+/>
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mx-auto mt-5 mb-0" id="box_1">
+      <div class="box-container">
+        <form action="/post/criar_post" method="POST" enctype="multipart/form-data">
+          <h2 style="color: #004618">Criar Post</h2>
+          <p style="color: #374151">
+            Aqui você pode criar um novo post para o blog
+          </p>
+          <label class="form-label" for="titulo">Título</label>
+          <input
+            type="text"
+            name="titulo"
+            id="titulo"
+            class="form-control"
+            required
+          />
+          <div class="mb-3">
+            <label for="conteudo" class="form-label" 
+              >Descrição</label
+            >
+            <textarea
+              class="form-control"
+              id="conteudo"
+              name="conteudo"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+          <label class="form-label" for="categoria">Categoria</label>
+          <select
+            style="margin-bottom: 10px"
+            class="form-select"
+            type="text"
+            name="categoria"
+            id="categoria"
+            placeholder=""
+          >
+            <option selected>Selecione uma categoria</option>
             <option value="relato">Relato</option>
             <option value="noticia">Noticia</option>
-        </select>
+            <option value="aviso">Aviso</option>
+          </select>
+          <div class="mb-3">
+            <label for="imagem" class="form-label">Capa da Postagem</label>
+            <input type="file" name="imagem" class="form-control">
+          </div>
+          <input type="submit" value="Criar Post">
+          <button type="button" class="btn btn-secondary">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <input type="submit" value="Criar Post">
-    </form>
-</body>
-</html>
+{% endblock %}

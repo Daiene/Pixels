@@ -124,7 +124,7 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
 
     # Imagem com ID
     user_id = mycursor.lastrowid
-    name_id = f"../src/static/img/uploads/user_{user_id}.png"
+    name_id = f"../src/static/img/user_uploads/user_{user_id}.png"
     cv2.imwrite(name_id, img_default)
 
     update_img_path = "UPDATE usuario SET user_photo = %s WHERE user_id = %s"
@@ -165,17 +165,34 @@ def deletando_conta(email):
 #############################################################################################################################################################################
 # Blog
 
+def buscar_post_por_id(post_id):
+    sql = f"SELECT * FROM post WHERE post_id = '{post_id}'"
+    mycursor.execute(sql)   
+    post = mycursor.fetchone()
+    return post
 
-def criar_post(titulo, conteudo, email, img, categoria):
+
+def criar_post(titulo, conteudo, email, categoria):
     '''
         Método de inserir um post no banco de dados
     '''
 
+    name_default = "../src/static/img/icons/icon_user.png"
     user = buscar_usuario_pelo_email(email)
     sql = "INSERT into post (post_title, post_content, post_date, post_img, post_category, user_id) VALUES (%s, %s, %s, %s, %s, %s)"
-    val = (titulo, conteudo, now, img, categoria, user[0])
+    val = (titulo, conteudo, now, name_default, categoria, user[0])
     mycursor.execute(sql, val)
+
+
+    post_id = mycursor.lastrowid
+    name_default = f"../src/static/img/post_uploads/post_{post_id}.png"
+
+    update_img_path = "UPDATE post SET post_img = %s WHERE post_id = %s"
+    mycursor.execute(update_img_path, (name_default, post_id))
     db.commit()
+
+    return post_id
+
 
 def cria_comentario(titulo, comentario, email, post_id):
     user = buscar_usuario_pelo_email(email)
@@ -213,6 +230,23 @@ def carregando_imagem(email):
 
     return Response(image_data, mimetype='image/png')
 
+
+def carregando_capa(post_id):
+    '''
+        Método de carregar imagem do perfil do banco
+    '''
+
+    post = buscar_post_por_id(post_id)
+    path_img = str(post[4]).replace('b', '')
+    img = cv2.imread(path_img)
+    if img is not None:
+        # Tente codificar a imagem em um formato diferente, por exemplo, '.jpeg'
+        image_data = cv2.imencode('.jpeg', img)[1].tobytes()
+        return Response(image_data, mimetype='image/jpeg')
+    else:
+        return "Erro ao carregar a imagem", 500
+
+    return Response(image_data, mimetype='image/png')
 
 
 #############################################################################################################################################################################

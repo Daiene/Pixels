@@ -1,0 +1,28 @@
+.box-container {
+    background-color: white;
+    padding-left:  65px;
+    padding-right: 65px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: left;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.box-container input {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#box_1{
+    margin-top: 40px;
+}
