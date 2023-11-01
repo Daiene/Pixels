@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
 
     {% block style %}{% endblock %}
@@ -12,60 +12,146 @@
 <body>
 
     {% if access == True %}
-    
-    <div class="menuzin">
-    <header class="navbar">
-        
-        <img class="navbar__logo" src="{{url_for('static', filename='img/logoph.png')}}" alt="logo do site">
-        <nav class="navbar__links">
-            <a class="navbar__links__link" href="/">Início</a>
-            <a class="navbar__links__link" href="/hospital">Hospitais</a>
-            <a class="navbar__links__link" href="/dados">Dados gerais</a>
-            <a class="navbar__links__link" href="/blog">Blog</a>
-            <a class="navbar__links__link" style="border-right: 1px solid #FFF; padding-right: 50px;" href="/proadisus">Proadi-SUS</a>
-            <a id="perfil_nome" class="navbar__links__link" href="#">{{name}}</a>
-            
-        </nav>
-        
-    </header>
-        <div class="tela_perfil_nome">
-            <ul>
-                <div class="perfil_content">
-                    <img src="{{ url_for('exibir_imagem') }}" width="54px" style="border-radius: 20px;" height="54px" alt="foto de perfil">
-                    <div class="perfil_text">
-                        <b><li>{{name}}</li></b>
-                        <li>{{email}}</li>
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #004619">
+        <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='img/logoph.png') }}" alt="logo do site">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-row-reverse" id="navbarNav">
+
+            <div class="tela_perfil_nome2 flex-column d-md-none">
+                <div class="d-flex align-items-center" style="padding-top: 16px; padding-bottom: 35px; justify-content: space-between;">
+                    <div class="d-flex flex-row gap-3" style="justify-content: center; align-items: center;">
+                        <img src="{{ url_for('exibir_imagem') }}" width="95px" height="95px" alt="foto de perfil">
+                        <div class="d-flex flex-column">
+                                    <b class="fs-4 fw-semibold" style="color: white;">{{name}}</b>
+                                    <b class="fw-regular" style="color: white; font-size: 15px; font-weight: 400;">{{email}}</b>
+                        </div>
+                    </div>
+                    <a href="/logout"><div class="d-flex gap-2" style="align-items: end;">
+                        <img src="../static/img/icons/sair.png" width="23px" height="23px" alt="logout">
+                        <a href="/logout">Sair</a>
+                    </div></a>
+                </div>
+                <div class="pb-2" style="width: 100%; margin: 0 auto;">
+                    <div class="d-flex gap-2 align-items-center">
+                        <a href="/perfil"><img src="../static/img/icons/perfil.png" width="16px" height="16px" alt="user" style="margin-right: 10px; margin-bottom: 5px;">Perfil</a>
                     </div>
                 </div>
-                <div style="display: flex;">
-                    <img src="../static/img/icons/user.png" width="16px" height="16px" alt="user">
-                    <a href="/perfil"><li>Perfil</li></a>
-                </div>
-                <hr>
-                <div style="display: flex;">
-                    <img src="../static/img/icons/logout.png" width="16px" height="16px" alt="logout">
-                    <a href="/logout"><li>Sair</li></a>
-                </div>
-            </ul>
+            </div>
+          <ul class="navbar-nav">
+            <div class="hr_navbar d-md-none"></div>
+            <li class="nav-item active">
+                <a class="nav-link" style="color: #fff;" href="/"><img src="../static/img/icons/inicio.png" width="16px" height="16px" alt="inicio" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Início</a>
+            </li>
+            <div class="hr_navbar d-md-none"></div>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #fff;" href="/hospital"><img src="../static/img/icons/hospitais.png" width="16px" height="16px" alt="hospitais" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Hospitais</a>
+            </li>
+            <div class="hr_navbar d-md-none"></div>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #fff;"href="/dados"><img src="../static/img/icons/dados.png" width="16px" height="16px" alt="hospital" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Dados Gerais</a>
+            </li>
+            <div class="hr_navbar d-md-none"></div>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #fff;" href="/blog"><img src="../static/img/icons/blog.png" width="16px" height="16px" alt="hospital" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Blog</a>
+            </li>
+            <div class="hr_navbar d-md-none"></div>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #fff;" href="/proadisus"><img src="../static/img/icons/pproadisus.png" width="16px" height="16px" alt="proadisus" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Proadi-SUS</a>
+            </li>
+            <div class="hr_navbar d-md-none" style="margin-bottom: 20px;"></div>
+            <label class="d-none d-md-block" style="
+            color: #FFF; 
+            padding: 10px 1.5rem;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 120%; /* 16.8px */
+            letter-spacing: -0.14px;">
+            |
+            </label>
+            <li class="nav-item d-none d-md-block" style="margin-top: 8px;">
+                <a id="perfil_nome" class="navbar__links__link fs-6" href="#" style="color: #fff; padding: -10px;">{{name}}</a>
+            </li>
+          </ul>
         </div>
-    <script src="{{url_for('static', filename='tela_perfil.js') }}"></script>
+    </nav>
+
+    <div id="minhadiv" class="tela_perfil_nome">
+        <div class="d-flex gap-3 m-3 align-items-center">
+            <img src="{{ url_for('exibir_imagem') }}" width="70px" height="70px" alt="foto de perfil">
+            <div class="d-flex flex-column">
+                        <b>{{name}}</b>
+                        <b>{{email}}</b>
+            </div>
+        </div>
+        <div class="pb-2">
+            <div class="d-flex gap-3 align-items-center">
+                <img src="../static/img/icons/user.png" width="16px" height="16px" alt="user">
+                <a href="/perfil">Perfil</a>
+            </div>
+            <hr>
+            <div class="d-flex gap-3 align-items-center">
+                <img src="../static/img/icons/logout.png" width="16px" height="16px" alt="logout">
+                <a href="/logout">Sair</a>
+            </div>
+        </div>
     </div>
+
+    <script src="{{url_for('static', filename='tela_perfil.js') }}"></script>
+
     <a href="#" id="click_escuro"><div id="fundo-escuro" class="oculto"></div></a>
+
     {% endif %}
 
 
     {% if access == False %}
-    <header class="navbar">
-        <img class="navbar__logo" src="{{ url_for('static', filename='img/logoph.png') }}" alt="logo do site">
-        <nav class="navbar__links">
-            <a class="navbar__links__link" href="/">Início</a>
-            <a class="navbar__links__link" href="/hospital">Hospitais</a>
-            <a class="navbar__links__link" href="/dados">Dados gerais</a>
-            <a class="navbar__links__link" href="/blog">Blog</a>
-            <a class="navbar__links__link" style="border-right: 1px solid #FFF; padding-right: 50px;" href="/proadisus">Proadi-SUS</a>
-            <a class="navbar__links__link" href="/login">Entrar</a>
-        </nav>
-    </header>
+      <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #004619">
+        <a class="navbar-brand" href="/">
+            <img src="{{ url_for('static', filename='img/logoph.png') }}" alt="logo do site">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-row-reverse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" style="color: #fff;" href="/">Início</a>
+            </li>
+            <div class="hr_navbar d-md-none"></div>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #fff;" href="/hospital">Hospitais</a>
+            </li>
+            <div class="hr_navbar d-md-none"></div>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #fff;"href="/dados">Dados Gerais</a>
+            </li>
+            <div class="hr_navbar d-md-none"></div>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #fff;" href="/blog">Blog</a>
+            </li>
+            <div class="hr_navbar d-md-none"></div>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #fff;" href="/proadisus">Proadi-SUS</a>
+            </li>
+            <div class="hr_navbar d-md-none"></div>
+            <label class="d-none d-md-block" style="
+            color: #FFF; 
+            padding: 10px 1.5rem;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 120%; /* 16.8px */
+            letter-spacing: -0.14px;">
+            |
+            </label>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #fff;"href="/login">Entrar</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     {%endif %}
     
 
@@ -78,5 +164,9 @@
         <p class="copyright"> &copy; Todos os direitos reservados</p>
     </footer>
     
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>

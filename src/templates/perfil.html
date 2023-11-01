@@ -1,91 +1,68 @@
 {% extends "base.html" %} {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='style/style_perfil.css') }}">
+
 {% endblock %} {% block content %}
-<div class="content">
-  <div class="container">
-    <div class="forma">
-      <div class="header_h1">
-        <div class="header_p">
-          <div class="titulo">Informações do Perfil</div>
-          <div class="texto">Atualize as informações de perfil e endereço de e-mail da sua conta</div>
-        </div>
-        <div class="foto_perfil">
-            <img width="150px" height="150px" style="border-radius: 60px;" src="{{ url_for('exibir_imagem') }}" alt="Imagem">
-        </div>
+<div class="container" >
+  <div class="row">
+    <div class="col-md-6 mx-auto" id="box_1">
+      <div class="box-container" >
+        <h2 style="color: #004618;">Informações do Perfil</h2>
+        <p style="color: #374151;">Atualize as informações de perfil e endereço de e-mail da sua conta</p>
+        <img src="{{ url_for('exibir_imagem') }}" alt="Imagem" class="img-responsive">
 
         <form method="POST" action="{{ url_for('carregar_imagem') }} " enctype="multipart/form-data">
-          <input type="file" name="imagem" accept="image/*" ><br>
-          <input type="submit" value="Enviar Imagem">
+          
+          <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Capa da Postagem</label>
+            <input class="form-control" type="file" name="imagem" id="formFileMultiple" multiple>
+            <input type="submit" value="Enviar" class="btn btn-primary" style="background-color: #004618; border-color: #004618;">
+          </div>
+          
         </form>
 
-        <div class="input">
-          <div class="form_name">Nome</div>
-          <input type="text" name="name" class="form-control" value="{{ name }}" id="exampleFormControlInput1" disabled>
-          <div class="coluna"></div>
-        </div>
-        <div class="input">
-          <div class="form_name">Email</div>
-          <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ email }}" disabled>
-          <div class="coluna">
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <form method="POST" action="{{ url_for('troca_passwd') }}">    
-    <div class="forma" >
-      <div class="button_form_save">
-        <div class="form_atualizacao">
-          <div class="titulo">Atualizar Senha</div>
-          <div class="texto">Certifique-se de que sua conta esteja usando uma senha longa e aleatória para permanecer segura</div>
-        </div>
-        <div class="form_senha">
-          <div class="form_name">Senha Atual</div>
-          <input type="password" name="senha_atual" class="form-control" id="exampleFormControlInput1">
-          <div>
-          </div>
-        </div>
-        <div class="form_senha">
-          <div class="form_name">Nova Senha</div>
-          <input type="password" name="nova_senha" class="form-control" id="exampleFormControlInput1">
-          <div class="coluna">
-            <div></div>
-            <div style="width: 20px; height: 13.33px; background: white"></div>
-          </div>
-        </div>
-        <div class="form_senha">
-          <div class="form_name">Confirme sua Nova Senha</div>
-          <input type="password" name="conf_nova_senha" class="form-control" id="exampleFormControlInput1">
-          <div class="coluna">
-      
-          </div>
-        </div>
-        <div class="button_save">
-          
-          <button type="submit" class="btn btn-block btn-custom">Salvar</button>
-        </div>
-      </div>
-    </div>
-  </form>
-
-  <form method="POST" action="{{ url_for('delete') }}">
-    <div class="forma1">
-      <div class="deletar_conta">
-        <div class="form_deletar">
-          <div class="titulo">Deletar Conta</div>
-          <div class="texto">Depois que sua conta for excluida, todos os seus recursos e dados serão excluidos permanentemente. Antes de excluir sua conta, baixe todos os dados ou informações que deseja reter.</div>
-        </div>
-        <div class="button_deletar">   
-        <button type="submit" class="btn btn-block btn-custom" style="background-color: #D50C0C; color: white;">Deletar Conta</button>
-    </form>
-
-
-          
-        </div>
+        <label class="form-label" for="">Nome</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="{{ name }}" disabled>
+        <label class="form-label" for="">Email</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="{{ email }}" disabled>   
       </div>
     </div>
   </div>
 </div>
 
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="box-container">
+        <h2 style="color: #004618;">Atualizar Senha</h2>
+        <p style="color: #374151;">Certifique-se de que sua conta esteja usando uma senha longa e aleatória para
+          permanecer segura</p>
+        <label class="form-label" for="">Senha Atual</label>
+        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+        <label class="form-label" for="">Nova Senha</label>
+        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+        <label class="form-label" for="">Confirmar Nova Senha</label>
+        <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+        <div class="d-grid gap-2 col-12 mx-auto">
+          <button type="button" class="btn btn-success" style="background-color: #004619 !important;">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="box-container">
+        <h2>Deletar Conta</h2>
+        <p>Depois que sua conta for excluida, todos os seus recursos e dados serão excluidos permanentemente. Antes de
+          excluir sua conta, baixe todos os dados ou informações que deseja reter.</p>
+            <button type="submit" class="btn btn-block btn-custom" style="background-color: #D50C0C; color: white; width: 100%;">Deletar Conta</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 {% endblock %}

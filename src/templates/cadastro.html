@@ -6,12 +6,15 @@
 {% endblock %}
 
 {% block content %}
-    <div class="login-container">
-        <div class="login-form">
-
+  <div class="row" >
+    <div class="login-container col-12 col-lg-6">
+        <div class="login-form col-12 col-xl-6 mt-5">
+  
+          <h1>Registre-se!</h1>
+          <div class="d-flex flex-column align-items-center">
+            <img class="usericon m-2" id="usericon" src="{{ url_for('static', filename='img/icon_user.png')}}">
+          </div>
             <form method="POST" action="{{ url_for('cadastro') }}">
-              <h1>Registre-se Agora</h1>
-              <img class="usericon" id="usericon" src="{{ url_for('static', filename='img/icon_user.png')}}">
               <div class="form-group">
                   <label for="exampleFormControlInput1">Nome Completo*</label>
                   <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
@@ -79,11 +82,15 @@
                 {% endif %}
 
                 <button type="submit" class="btn btn-block btn-custom">Cadastrar</button>
-                <p>Já possui cadastro? <a href="/login">Entre aqui</a></p>
 
+              <div class="d-flex flex-column align-items-center mt-3">
+                <p>Já possui cadastro? <a href="/login">Entre aqui</a></p>
+              </div>
+  
             </form>
         </div>
     </div>
-
-    <div class="banner"></div>
+  
+    <div class="banner d-none d-lg-block col-lg-6"></div>
+  </div>
 {% endblock %}

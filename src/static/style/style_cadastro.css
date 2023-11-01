@@ -1,25 +1,50 @@
-body {
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    height: 100vh;
+    box-sizing: border-box;
+}
+
+.row{
+    margin: 0;
 }
 
 .login-container {
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    min-height: 100vh;
+    width: 50%;
 }
 
 .banner {
-    flex: 1;
-    background-image: url(../img//login_imgs/capa_login.png);
+    right: 0;
+    position: fixed;
+    height: 100vh;
+    background-image: url(../img/login_imgs/capa_login.png);
     background-size: cover;
     background-position: center;
+    width: 50%;
 }
 
 .login-form {
-    padding: 50px;
+    padding: 50px 0;
+    max-width: 376px;
+}
+
+h1{
+    color: #004619;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+a{
+    color: var(--texto);
+}
+
+a:hover{
+    color: var(--fundo-principal);
+    text-decoration: none;
+    font-weight: bold;
 }
