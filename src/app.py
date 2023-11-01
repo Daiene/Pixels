@@ -343,6 +343,10 @@ def mostrar_post(categoria, titulo):
     Rota do post individual, é uma rota dinamica que renderiza o post pela categoria e titulo
     '''
 
+    name = ""
+    email = ""
+    access = check_session(session.get("email"))
+
     posts = todos_posts()
 
     post = None
@@ -350,9 +354,16 @@ def mostrar_post(categoria, titulo):
         if item[5] == categoria and item[1] == titulo:
             post = item
             break
-    if post:
-        post_id = post[0]
-        return render_template('postagem.html', post=post, post_id=post_id)
+    if post:        
+        if access:
+            cad = buscar_usuario_pelo_email(session.get("email"))
+            if cad is not None:
+                name = cad[1]
+                email = cad[2]
+                return render_template('postagem.html', access=access, title="Criar post", name=name, email=email,  post=post)
+        
+        return render_template('postagem.html', access=False, title="Criar post", name=name,  post=post)
+        
     else:
         return "Post não encontrado", 404
     
@@ -363,6 +374,7 @@ def mostrar_post(categoria, titulo):
 
         cria_comentario(com_titulo, comentario, email)
         return render_template('postagem.html')
+        
     
 
 

@@ -1,8 +1,29 @@
-.card-custom{
-    margin-top: 20px;
+.flex_container1{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
-.cards{
-    display: flexbox;
-    justify-content: start;
+.flex_container2{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.flex_row{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 45px;
+}
+
+.new-post{
+    display: flex;
+    justify-content: center;
 }
