@@ -133,6 +133,8 @@ def blog():
         Página Blog
     '''
 
+    posts = todos_posts()
+
     name = ""
     email = ""
     access = check_session(session.get("email"))
@@ -141,9 +143,9 @@ def blog():
         if cad is not None:
             name = cad[1]
             email = cad[2]
-            return render_template('blog.html', access=access, title="Home", name=name, email=email)
+            return render_template('blog.html', access=access, title="Home", name=name, email=email, posts=posts)
     
-    return render_template('blog.html', access=False, title="Home", name=name)
+    return render_template('blog.html', access=False, title="Home", name=name, posts=posts)
 
 
 
@@ -437,7 +439,7 @@ def mostrar_informacoes():
 
     print(posts)
 
-    return render_template('postagem.html', posts=posts_filtrados, categoria_filtro=categoria_filtro)
+    return render_template('exibir_posts.html', posts=posts_filtrados, categoria_filtro=categoria_filtro)
 
 
 
