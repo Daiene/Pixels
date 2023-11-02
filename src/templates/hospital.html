@@ -31,92 +31,66 @@
             <p class="fs-6">Encontre a Clínica ou Hospital mais próximo de você!</p>
         </div>
 
-        <div class="formularios" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+        <form action="/hospital" method="POST">
+            <div class="formularios" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
 
-            <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
-                <p style="margin: 0;">Estado</p>
-                <select class="form-select" aria-label="Default select example" style="display: flex; width: 350px; height: 45px; align-items: center;">
-                    <option selected>Selecione o Estado</option>
-                    <option value="1">Acre</option>
-                    <option value="2">Alagoas</option>
-                    <option value="3">Amapá</option>
-                    <option value="4">Amazonas</option>
-                    <option value="5">Bahia</option>
-                    <option value="6">Ceará</option>
-                    <option value="7">Espírito Santo</option>
-                    <option value="8">Goiás</option>
-                    <option value="9">Maranhão</option>
-                    <option value="10">Mato Grosso</option>
-                    <option value="11">Mato Grosso do Sul</option>
-                    <option value="12">Minas Gerais</option>
-                    <option value="13">Pará</option>
-                    <option value="14">Paraíba</option>
-                    <option value="15">Paraná</option>
-                    <option value="16">Pernambuco</option>
-                    <option value="17">Piauí</option>
-                    <option value="18">Rio de Janeiro</option>
-                    <option value="19">Rio Grande do Norte</option>
-                    <option value="20">Rio Grande do Sul</option>
-                    <option value="21">Rondônia</option>
-                    <option value="22">Roraima</option>
-                    <option value="23">Santa Catarina</option>
-                    <option value="24">São Paulo</option>
-                    <option value="25">Sergipe</option>
-                    <option value="26">Tocantins</option>
-                    <option value="27">Distrito Federal</option>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
+                    <p style="margin: 0;">Estado</p>
+                    <select name="estado" class="form-select" aria-label="Default select example" style="display: flex; width: 350px; height: 45px; align-items: center;">
+                        <option selected>Selecione o Estado</option>
+                        <option value="Acre">Acre</option>
+                        <option value="Alagoas">Alagoas</option>
+                        <option value="Amapá">Amapá</option>
+                        <option value="Amazonas">Amazonas</option>
+                        <option value="Bahia">Bahia</option>
+                        <option value="Ceará">Ceará</option>
+                        <option value="Espírito Santo">Espírito Santo</option>
+                        <option value="Goiás">Goiás</option>
+                        <option value="Maranhão">Maranhão</option>
+                        <option value="Mato Grosso">Mato Grosso</option>
+                        <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                        <option value="Minas Gerais">Minas Gerais</option>
+                        <option value="Pará">Pará</option>
+                        <option value="Paraíba">Paraíba</option>
+                        <option value="Paraná">Paraná</option>
+                        <option value="Pernambuco">Pernambuco</option>
+                        <option value="Piauí">Piauí</option>
+                        <option value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                        <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                        <option value="Rondônia">Rondônia</option>
+                        <option value="Roraima">Roraima</option>
+                        <option value="Santa Catarina">Santa Catarina</option>
+                        <option value="São Paulo">São Paulo</option>
+                        <option value="Sergipe">Sergipe</option>
+                        <option value="Tocantins">Tocantins</option>
+                        <option value="Distrito Federal">Distrito Federal</option>
 
-                </select>
+                    </select>
+
+                    <input type="submit">
+                </div>
             </div>
-
-            <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
-                <p style="margin: 0;">Cidade</p>
-                <select class="form-select" aria-label="Default select example" style="display: flex; width: 350px; height: 45px; align-items: center;">
-                    <option selected>Selecione a Cidade</option>
-                    <option value="1">Cidade 1</option>
-                    <option value="2">Cidade 2</option>
-                    <option value="3">Cidade 3</option>
-                </select>
-            </div>
-
-            <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
-                <p style="margin: 0;">Preferência</p>
-                <select class="form-select" aria-label="Default select example" style="display: flex; width: 350px; height: 45px; align-items: center;">
-                    <option selected>Escolha a Preferência</option>
-                    <option value="1">Atendem Crianças Abaixo de 10kg</option>
-                    <option value="2">Atendem Crianças Acima de 10kg</option>
-                    <option value="3">Atendem Todos os Tipos de Pacientes</option>
-                </select>
-            </div>
-        </div>
+        </form>
 
         <table class="table table-lg table-with-padding-td table-with-padding-th" style="margin-top: 40px; border-collapse: separate;">
             <thead>
               <tr>
                 <th scope="col">Nome</th>
-                <th scope="col" class="d-none d-md-block">Endereço</th>
-                <th scope="col">Telefone</th>
-                <th scope="col" style="text-align: center;">Maps</th>
+                <th scope="col">Responsável</th>
+                <th scope="col" class="d-none d-md-block">Telefone</th>
+                <th scope="col">Email</th>
               </tr>
             </thead>
             <tbody>
+            {% for hospital in estado %}
               <tr>
-                <th scope="row" class="fw-normal">Hospital Pronto Socorro Vida</th>
-                <td class="d-none d-md-block">Rua Dr Domingos Macedo Custódio</td>
-                <td>12988741254</td>
-                <td style="text-align: center;"><img src="static/img/icons/map_ping.png"></td>
+                <th scope="row" class="fw-normal">{{ hospital['Hospital'] }}</th>
+                <th scope="row" class="fw-normal">{{ hospital['Resposavel'] }}</th>
+                <td class="d-none d-md-block">{{ hospital['Telefone'] }}</td>
+                <td>{{ hospital['Mail'] }}</td>
               </tr>
-              <tr>
-                <th scope="row" class="fw-normal">Hospital das Boas Novas</th>
-                <td class="d-none d-md-block">Videl Castro da Silva Vidal</td>
-                <td>12947926684</td>
-                <td style="text-align: center;"><img src="static/img/icons/map_ping.png"></td>
-              </tr>
-              <tr>
-                <th scope="row" class="fw-normal">Hospital do Centro</th>
-                <td class="d-none d-md-block">Rua da Consolação São Pedro</td>
-                <td>12993659366</td>
-                <td style="text-align: center;"><img src="static/img/icons/map_ping.png"></td>
-              </tr>
+            {% endfor %}
             </tbody>
         </table>
 
@@ -124,28 +98,6 @@
 
 </div>
 
-<div class="min_width_hospital" style="display: flex; margin: 0 auto; justify-content: center; margin-bottom: 20px; margin-top: 30px;">
 
-    <nav aria-label="Page navigation example" style="display: flex;">
-        <ul class="pagination">
-
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-
-        </ul>
-    </nav>
-
-</div>
 
 {% endblock %}

@@ -209,7 +209,6 @@ def perfil():
         if cad is not None:
             name = cad[1]
             email = cad[2]
-            print(cad[5])
             return render_template('perfil.html', access=access, title="Home", name=name, email=email)
     
     return redirect('/login')
@@ -217,24 +216,18 @@ def perfil():
 
 
 
-@app.route('/hospital')
+@app.route('/hospital', methods=["POST", "GET"])
 def hospital():
     '''
         Página de Hositais
     '''
-
-    name = ""
-    email = ""
-    access = check_session(session.get("email"))
-
-    if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
-            return render_template('hospital.html', access=access, title="Home", name=name, email=email)
-    
-    return render_template('hospital.html', access=False, title="Home", name=name)
+    if request.method == "POST":
+        estado_escolhido = request.form["estado"]
+        resultados = filtrar_por_estado(estado_escolhido)
+        return render_template('hospital.html', access=False, title="Hospital", estado=resultados)
+    else:
+        resultados = filtrar_por_estado(estado_escolhido="")
+        return render_template('hospital.html', access=False, title="Hospital", estado=resultados)
 
 
 
@@ -262,15 +255,22 @@ def troca_passwd():
     user = buscar_usuario_pelo_email(session.get("email"))
     senha = user[3]
     email = user[2]
-    if request.method == "POST":
-        senha_atual = request.form["senha_atual"]
-        nova_senha = request.form["nova_senha"]
-        conf_senha = request.form["conf_nova_senha"]
+    access = check_session(session.get("email"))
+    if access:
+        cad = buscar_usuario_pelo_email(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+        if request.method == "POST":
+            senha_atual = request.form["senha_atual"]
+            nova_senha = request.form["nova_senha"]
+            conf_senha = request.form["conf_nova_senha"]
 
-        if senha_atual == senha and nova_senha == conf_senha:
-            atualizando_senha(email, nova_senha)
-    
-    return redirect('/perfil')
+            if senha_atual == senha and nova_senha == conf_senha:
+                atualizando_senha(email, nova_senha)
+
+            return render_template('perfil.html', access=access, title="Home", name=name, email=email)
+            
+    return redirect('/')
 
 
 
