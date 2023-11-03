@@ -195,10 +195,10 @@ def criar_post(titulo, conteudo, email, categoria):
     return post_id
 
 
-def cria_comentario(titulo, comentario, email, post_id):
+def cria_comentario(comentario, email, post_id):
     user = buscar_usuario_pelo_email(email)
-    sql = "INSERT into comentario (com_title, com_content, com_date, post_id, user_id ) VALUES (%s, %s, %s, %s, %s, %s)"
-    val = (titulo, comentario, post, now, user[0])
+    sql = "INSERT into comentario (com_content, com_date, post_id, user_id ) VALUES (%s, %s, %s, %s)"
+    val = (comentario, now,  post_id, user[0])
     mycursor.execute(sql, val)
     db.commit()
 
@@ -212,6 +212,17 @@ def todos_posts():
     posts = mycursor.fetchall()
 
     return posts
+
+def todos_comentarios():
+
+    # Pega todos os comentarios para enviar para o front-end  
+    
+    sql = "SELECT c.com_content, c.com_date, c.post_id, c.user_id, u.user_name FROM comentario c INNER JOIN usuario u ON c.user_id = u.user_id;"
+    mycursor.execute(sql)
+    posts = mycursor.fetchall()
+
+    return posts
+
 
 
 

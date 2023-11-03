@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS post(
 
 CREATE TABLE IF NOT EXISTS comentario(
     com_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    com_title VARCHAR(255) NOT NULL,
     com_content TEXT NOT NULL,
     com_date DATE NOT NULL,
     post_id BIGINT NOT NULL,

@@ -23,32 +23,39 @@
     <div class="flex-commentbox">
       <div><h2>Comentários</h2></div>
       <div>
-        <div class="form-floating">
-          <textarea
-            class="form-control"
-            placeholder="Leave a comment here"
-            style="height: 100px"
-            id="floatingTextarea"
-          ></textarea>
-          <label for="floatingTextarea" style="color: gray"
-            >Digite seu comentário aqui</label
-          >
-        </div>
-        <div class="flex-buttons">
-          <div class="btn-content">
-            <button
-              class="d-inline btn btn-outline-secondary btn-custom2"
-              type="button"
-            >
-              Cancelar
-            </button>
+        <form action="/post/{{ post[5]}}/{{ post[1] }}" method="post">
+            <label for="comentario"></label>
+            <textarea
+              class="form-control"
+              placeholder="Digite seu comentario aqui"
+              style="height: 100px"
+              id="comentario"
+              name="comentario"
+              required
+            ></textarea>
+            
           </div>
-          <div class="btn-content">
-            <button class="btn btn-success btn-custom1" type="button">
-              Enviar
-            </button>
+          <div class="flex-buttons">
+            <div class="btn-content">
+              <button
+                class="d-inline btn btn-outline-secondary btn-custom2"
+                type="button"
+              >
+                Cancelar
+              </button>
+            </div>
+            <div class="btn-content">
+              <input type="submit" value="Comentar" class="btn btn-success btn-custom1">
+            </div>
+          </form>
           </div>
-        </div>
+          {% for comentario in comentarios %}
+            {% if comentario[2] == post[0] %}
+              <p>{{comentario[4]}}</p>
+              <p>{{comentario[0]}}</p>
+              <p>Data: {{comentario[1]}}</p>
+            {% endif %}
+          {% endfor %}
       </div>
     </div>
   </div>

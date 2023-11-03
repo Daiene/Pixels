@@ -348,7 +348,8 @@ def mostrar_post(categoria, titulo):
     access = check_session(session.get("email"))
 
     posts = todos_posts()
-
+    comentarios = todos_comentarios()
+    print(comentarios)
     post = None
     for item in posts:
         if item[5] == categoria and item[1] == titulo:
@@ -358,22 +359,21 @@ def mostrar_post(categoria, titulo):
         if access:
             cad = buscar_usuario_pelo_email(session.get("email"))
             if cad is not None:
+                if request.method == 'POST':
+                    comentario = request.form['comentario']
+                    email = session.get("email")
+                    post_id = item[0]
+                    cria_comentario( comentario, email, post_id)
                 name = cad[1]
                 email = cad[2]
-                return render_template('postagem.html', access=access, title="Criar post", name=name, email=email,  post=post)
+                return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios)
         
-        return render_template('postagem.html', access=False, title="Criar post", name=name,  post=post)
+        return render_template('postagem.html', access=False, title="post", name=name,  post=post, comentarios=comentarios)
         
     else:
         return "Post não encontrado", 404
     
-    if request.method == 'POST':
-        com_titulo = request.form['com_titulo']
-        comentario = request.form['conteudo']
-        email = session.get("email")
-
-        cria_comentario(com_titulo, comentario, email)
-        return render_template('postagem.html')
+    
         
     
 
