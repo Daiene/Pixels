@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Informações</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <form method="get" action="/post/todos_posts">
-        <label for="categoria">Filtrar por Categoria:</label>
-        <select name="categoria" id="categoria">
-            <option value="">Todas as Categorias</option>
-            <option value="relato">Relatos</option>
-            <option value="noticia">Noticia</option>
-        </select>
-        <button type="submit">Filtrar</button>
+      <label for="categoria">Filtrar por Categoria:</label>
+      <select name="categoria" id="categoria">
+        <option value="">Todas as Categorias</option>
+        <option value="relato">Relatos</option>
+        <option value="noticia">Noticia</option>
+      </select>
+      <button type="submit">Filtrar</button>
     </form>
 
     <h1>Informações</h1>
     <ul>
-        {% for post in posts %}
-            <li>
-                <h2>{{ post[1] }}</h2>
-                <p>{{ post[2] }}</p>
-                <p>Data: {{ post[3] }}</p>
-                <p>Categoria: {{ post[5] }}</p>
-                <p>Usuário: {{ post[6] }}</p>
-                <a href="/post/{{ post[5]}}/{{ post[1] }}">Postagem completa</a>
-            </li>
-        {% endfor %}
+      {% for post in posts %}
+      <li>
+        <h2>{{ post[1] }}</h2>
+        <p>{{ post[2] }}</p>
+        <p>Data: {{ post[3] }}</p>
+        <p>Categoria: {{ post[5] }}</p>
+        <p>Usuário: {{ post[6] }}</p>
+        <a href="/post/{{ post[5]}}/{{ post[1] }}">Postagem completa</a>
+      </li>
+      {% endfor %}
     </ul>
-</body>
+  </body>
 </html>

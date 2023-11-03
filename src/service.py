@@ -206,8 +206,7 @@ def cria_comentario(comentario, email, post_id):
 def todos_posts():
 
     # Pega todos os posts para enviar para o front-end  
-    
-    sql = "SELECT p.post_id, p.post_title, p.post_content, p.post_date, p.post_img, p.post_category, u.user_name FROM post p INNER JOIN usuario u ON p.user_id = u.user_id WHERE p.post_status = TRUE ORDER BY p.post_date;"
+    sql = "SELECT p.post_id, p.post_title, p.post_content, p.post_date, p.post_img, p.post_category, u.user_name FROM post p INNER JOIN usuario u ON p.user_id = u.user_id WHERE p.post_status = TRUE ORDER BY p.post_id DESC;"
     mycursor.execute(sql)
     posts = mycursor.fetchall()
 
@@ -296,3 +295,26 @@ print()
 
 # admin
 criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais')
+
+# Post teste 
+
+def postar6():
+    sql = "INSERT into post (post_title, post_content, post_date, post_img, post_category, user_id) VALUES (%s, %s, %s, %s, %s, %s)"
+
+    post_values = [
+        ("Title 1", "Content 1", "2023-11-02", "img1.png", "Category 1", 1),
+        ("Title 2", "Content 2", "2023-11-02", "img2.png", "Category 2", 1),
+        ("Title 3", "Content 3", "2023-11-02", "img3.png", "Category 1", 1),
+        ("Title 4", "Content 4", "2023-11-02", "img4.png", "Category 3", 1),
+        ("Title 5", "Content 5", "2023-11-02", "img5.png", "Category 2", 1),
+        ("Title 6", "Content 6", "2023-11-02", "img6.png", "Category 1", 1),
+    ]
+
+    for values in post_values:
+        mycursor.execute(sql, values)
+
+    # Commit the changes to the database
+    db.commit()
+    print('CRIOU OS POSTS')
+
+postar6()
