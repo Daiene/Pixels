@@ -32,4 +32,4 @@ app.secret_key = 'APIMAES'
 
 # Arquivos de Dados
 
-csv_file = '/Users/kaued/OneDrive/Documentos/projetos/FATEC/API/Pixels/src/static/clinicas.csv'
+csv_file = 'static/clinicas.csv'
