@@ -351,12 +351,12 @@ def mostrar_post(categoria, titulo):
 
     posts = todos_posts()
     comentarios = todos_comentarios()
-    print(comentarios)
     post = None
     for item in posts:
         if item[5] == categoria and item[1] == titulo:
             post = item
             break
+    
     if post:        
         if access:
             cad = buscar_usuario_pelo_email(session.get("email"))
@@ -390,6 +390,9 @@ def criar():
     name = ""
     email = ""
     access = check_session(session.get("email"))
+
+    if not access:
+        return redirect('/login')
 
     if request.method == 'POST':
         titulo = request.form['titulo']
@@ -428,6 +431,7 @@ def mostrar_informacoes():
     '''
         Rota teste para verificar os posts enviados, podendo usar filtro
     '''
+
     posts = todos_posts()
 
     categoria_filtro = request.args.get('categoria', default=None)

@@ -11,7 +11,7 @@
         <div class="conteudo__capa__texto m-4">
     
             <div class="style_letra_capa">
-                Encontre a Clínica ou Hospital para Hemodiálise <br> Pediátrica mais próxima de você
+                Encontre a Clínica ou Hospital de transplante <br>  Mais próxima de você
             </div>
 
             <div class="button_forma">
@@ -27,7 +27,7 @@
     <div class="divinterna" style="margin-top: 30px; margin-bottom: 30px; overflow: auto;">
 
         <div class="d-flex text-start flex-column">
-            <p class="fs-2 fw-semibold" style="color: #004618; margin: 0;">Clínicas e Hospitais para Hemodiálise</p>
+            <p class="fs-2 fw-semibold" style="color: #004618; margin: 0;">Centrais de transplante</p>
             <p class="fs-6">Encontre a Clínica ou Hospital mais próximo de você!</p>
         </div>
 
@@ -68,9 +68,7 @@
 
                     </select>
 
-                    <div class="button_forma" style="margin-top: 10px;">
-                        <input type="submit" class="fw-bold button_submit">
-                    </div>
+                    <input type="submit" value="Consultar" class="button_forma fw-bold button_submit" style="margin-top: 10px;">
 
                 </div>
             </div>
@@ -86,6 +84,11 @@
               </tr>
             </thead>
             <tbody>
+            {% if estado is defined and estado | length < 20 %}
+            <div style="margin-top: 30px;" class="d-flex text-start flex-column">
+                <p class="fs-2 fw-semibold" style="color: #004618; margin: 0;">{{estado[0]['Estado']}}</p>
+            </div>
+            {% endif %}
             {% for hospital in estado %}
               <tr>
                 <td scope="row" class="fw-normal">{{ hospital['Hospital'] }}</td>
