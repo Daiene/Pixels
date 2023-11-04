@@ -265,9 +265,16 @@ def filtrar_por_estado(estado_escolhido):
     with open(csv_file, newline='', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             if estado_escolhido:
-                for row in reader:
-                    if row['Estado'] == estado_escolhido:
+                
+                if estado_escolhido == "Selecione o Estado":
+                    for row in reader:
                         resultados.append(row)
+                
+                else:
+                    for row in reader:
+                        
+                        if row['Estado'] == estado_escolhido:
+                            resultados.append(row)
             else:
                 for row in reader:
                     print("ENTREI AQUI")

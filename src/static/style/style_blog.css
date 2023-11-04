@@ -25,5 +25,24 @@
 
 .new-post{
     display: flex;
+    margin: 20px;
     justify-content: center;
+}
+
+.button_forma{
+    width: 174.38px;
+    height: 45px;
+    padding: 11.25px;
+    background: #004618;
+    border-radius: 11.25px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    gap: 11.25px;
+    display: inline-flex;
+}
+
+.button_submit{
+    background-color: #004618;
+    color: white;
 }

@@ -82,124 +82,116 @@
     </button>
   </div>
   <br />
+
+  <div class="new-post">
+    <a href="/post/criar_post"><input type="submit" value="Novo Post" class="button_forma fw-bold button_submit"></a>
+  </div>
+
   <!-- Post grande  -->
   <div class="flex_container1">
     <div>
-      <div class="card text-bg-dark">
-        <img
-          src="../static/img/post_uploads/post_{{posts[0][0]}}.png"
-          class="card-img"
-          alt="..."
-          style="max-width: 570px"
-        />
-        <div class="card-img-overlay d-flex justify-content-end flex-column">
-          <h2 class="card-title">{{posts[0][1]}}</h2>
-          <p class="card-text">{{posts[0][2]}}</p>
+      <a href="/post/{{posts[0][5]}}/{{posts[0][1]}}">
+        <div class="card text-bg-dark">
+          <img
+            src="../static/img/post_uploads/post_{{posts[0][0]}}.png"
+            class="card-img"
+            alt="..."
+            style="max-width: 570px"
+          />
+          <div class="card-img-overlay d-flex justify-content-end flex-column">
+            <h2 class="card-title">{{posts[0][1]}}</h2>
+          </div>
         </div>
-      </div>
+      </a>
+
     </div>
     <div>
       <!-- Post 2 -->
-      <div class="card mb-3" style="max-width: 540px">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              src="../static/img/post_uploads/post_{{posts[1][0]}}.png"
-              class="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{posts[1][1]}}</h5>
-              <p class="card-text">{{posts[1][2]}}</p>
-              <p class="card-text">
-                <small class="text-body-secondary"></small>
-              </p>
+      <a href="/post/{{posts[1][5]}}/{{posts[1][1]}}">
+        <div class="card mb-3" style="max-width: 540px">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="../static/img/post_uploads/post_{{posts[1][0]}}.png"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{posts[1][1]}}</h5>
+                <p class="card-text">
+                  <small class="text-body-secondary"></small>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
       <!-- Post 3 -->
-      <div class="card mb-3" style="max-width: 540px">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              src="../static/img/post_uploads/post_{{posts[2][0]}}.png"
-              class="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{posts[2][1]}}</h5>
-              <p class="card-text">{{posts[2][2]}}</p>
-              <p class="card-text">
-                <small class="text-body-secondary"></small>
-              </p>
+      <a href="/post/{{posts[2][5]}}/{{posts[2][1]}}">
+        <div class="card mb-3" style="max-width: 540px">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="../static/img/post_uploads/post_{{posts[2][0]}}.png"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{posts[2][1]}}</h5>
+                <p class="card-text">
+                  <small class="text-body-secondary"></small>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
       <!-- Post 4 -->
-      <div class="card mb-3" style="max-width: 540px">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              src="../static/img/post_uploads/post_{{posts[3][0]}}.png"
-              class="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{posts[3][1]}}</h5>
-              <p class="card-text">{{posts[3][2]}}</p>
-              <p class="card-text">
-                <small class="text-body-secondary"></small>
-              </p>
+      <a href="/post/{{posts[3][5]}}/{{posts[3][1]}}">
+        <div class="card mb-3" style="max-width: 540px">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="../static/img/post_uploads/post_{{posts[3][0]}}.png"
+                class="img-fluid rounded-start"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{posts[3][1]}}</h5>
+                <p class="card-text">
+                  <small class="text-body-secondary"></small>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
   <hr />
   <div class="flex_container2">
     <div class="flex_row">
       {% for post in posts[4:] %}
-      <div class="flex_row">
-        <div class="card" style="width: 22rem">
-          <img src="../static/img/post_uploads/post_{{post[0]}}.png" class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">{{ post[1]}}</h5>
-            <p class="card-text">
-                {{ post[2]}}
-            </p>
+      <a href="/post/{{post[5]}}/{{post[1]}}">
+        <div class="flex_row">
+          <div class="card" style="width: 22rem">
+            <img src="../static/img/post_uploads/post_{{post[0]}}.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">{{ post[1]}}</h5>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %}
   </div>
-  <div class="flex_row">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">4</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+  <div>
+
   </div>
 </main>
 {% endblock %}

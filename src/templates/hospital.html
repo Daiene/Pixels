@@ -11,7 +11,7 @@
         <div class="conteudo__capa__texto m-4">
     
             <div class="style_letra_capa">
-                Encontre a Clínica ou Hospital para Hemodiálise <br> Pediátrica mais próxima de você
+                Encontre a Clínica ou Hospital de transplante <br>  Mais próxima de você
             </div>
 
             <div class="button_forma">
@@ -24,15 +24,15 @@
 
 <div class="divgeral min_width_hospital" style="margin-top: 30px; margin-bottom: 30px">
 
-    <div class="divinterna" style="margin-top: 30px; margin-bottom: 30px;">
+    <div class="divinterna" style="margin-top: 30px; margin-bottom: 30px; overflow: auto;">
 
         <div class="d-flex text-start flex-column">
-            <p class="fs-2 fw-semibold" style="color: #004618; margin: 0;">Clínicas e Hospitais para Hemodiálise</p>
+            <p class="fs-2 fw-semibold" style="color: #004618; margin: 0;">Centrais de transplante</p>
             <p class="fs-6">Encontre a Clínica ou Hospital mais próximo de você!</p>
         </div>
 
         <form action="/hospital" method="POST">
-            <div class="formularios" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <div class="formularios" style="display: flex; justify-content: start; flex-wrap: wrap;">
 
                 <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
                     <p style="margin: 0;">Estado</p>
@@ -68,7 +68,8 @@
 
                     </select>
 
-                    <input type="submit">
+                    <input type="submit" value="Consultar" class="button_forma fw-bold button_submit" style="margin-top: 10px;">
+
                 </div>
             </div>
         </form>
@@ -77,17 +78,22 @@
             <thead>
               <tr>
                 <th scope="col">Nome</th>
-                <th scope="col">Responsável</th>
-                <th scope="col" class="d-none d-md-block">Telefone</th>
+                <th scope="col" class="d-none d-md-block">Responsável</th>
+                <th scope="col">Telefone</th>
                 <th scope="col">Email</th>
               </tr>
             </thead>
             <tbody>
+            {% if estado is defined and estado | length < 20 %}
+            <div style="margin-top: 30px;" class="d-flex text-start flex-column">
+                <p class="fs-2 fw-semibold" style="color: #004618; margin: 0;">{{estado[0]['Estado']}}</p>
+            </div>
+            {% endif %}
             {% for hospital in estado %}
               <tr>
-                <th scope="row" class="fw-normal">{{ hospital['Hospital'] }}</th>
-                <th scope="row" class="fw-normal">{{ hospital['Resposavel'] }}</th>
-                <td class="d-none d-md-block">{{ hospital['Telefone'] }}</td>
+                <td scope="row" class="fw-normal">{{ hospital['Hospital'] }}</td>
+                <td class="d-none d-md-block">{{ hospital['Resposavel'] }}</td>
+                <td scope="row" class="fw-normal">{{ hospital['Telefone'] }}</td>
                 <td>{{ hospital['Mail'] }}</td>
               </tr>
             {% endfor %}
