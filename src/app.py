@@ -1,4 +1,4 @@
-from flask import Flask, Response, redirect, render_template, request, session
+from flask import Flask, Response, redirect, render_template, request, session, url_for
 from service import *
 import numpy as np
 from io import BytesIO
@@ -366,11 +366,12 @@ def mostrar_post(categoria, titulo):
                     email = session.get("email")
                     post_id = item[0]
                     cria_comentario( comentario, email, post_id)
+                    return redirect(url_for('mostrar_post', categoria=categoria, titulo=titulo))
                 name = cad[1]
                 email = cad[2]
                 return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios)
         
-        return render_template('postagem.html', access=False, title="post", name=name,  post=post, comentarios=comentarios)
+        return render_template('postagem.html', access=False, title="post", name=name,  post=post)
         
     else:
         return "Post não encontrado", 404
