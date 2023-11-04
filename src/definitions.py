@@ -17,7 +17,7 @@ path_uploads = "/static/img/uploads/"
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="",
+passwd="2dryrr3w7x",
 )
 
 mycursor = db.cursor()

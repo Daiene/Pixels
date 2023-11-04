@@ -344,13 +344,13 @@ def mostrar_post(categoria, titulo):
     '''
     Rota do post individual, é uma rota dinamica que renderiza o post pela categoria e titulo
     '''
-
     name = ""
     email = ""
     access = check_session(session.get("email"))
-
     posts = todos_posts()
     comentarios = todos_comentarios()
+    img = None
+    
     post = None
     for item in posts:
         if item[5] == categoria and item[1] == titulo:
@@ -364,12 +364,13 @@ def mostrar_post(categoria, titulo):
                 if request.method == 'POST':
                     comentario = request.form['comentario']
                     email = session.get("email")
+                    img = carregando_imagem(cad[2])
                     post_id = item[0]
                     cria_comentario( comentario, email, post_id)
                     return redirect(url_for('mostrar_post', categoria=categoria, titulo=titulo))
                 name = cad[1]
                 email = cad[2]
-                return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios)
+                return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img)
         
         return render_template('postagem.html', access=False, title="post", name=name,  post=post)
         

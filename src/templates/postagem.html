@@ -50,9 +50,17 @@
           </div>
           {% for comentario in comentarios %}
             {% if comentario[2] == post[0] %}
-              <p>{{comentario[4]}}</p>
-              <p>{{comentario[0]}}</p>
-              <p>Data: {{comentario[1]}}</p>
+              <div style="margin-top: 30px;">
+                <p style="display: flex; flex-direction: row-reverse; color: rgba(53, 31, 31, 0.685); margin: 0;">Data: {{comentario[1]}}</p>
+                <div style="display: flex; flex-direction: row; margin-bottom: 10px; ">
+                  <img src="../../static/img/user_uploads/user_{{ comentario[5] }}.png" alt="foto usuario" style="width: 80px; height: 80px; border-radius: 50px; margin-top: 2px;">
+                  <div style="display: flex; flex-direction: column; margin-left: 10px;">
+                    <p alt="nome" style="margin-top: 10px; margin-bottom: 5px;">{{ comentario[4] }}</p>
+                    <p alt="comentario" style="margin: 0;">{{ comentario[0] }}</p>
+                  </div>
+                </div>
+                
+              </div>
             {% endif %}
           {% endfor %}
       </div>

@@ -216,11 +216,11 @@ def todos_comentarios():
 
     # Pega todos os comentarios para enviar para o front-end  
     
-    sql = "SELECT c.com_content, c.com_date, c.post_id, c.user_id, u.user_name FROM comentario c INNER JOIN usuario u ON c.user_id = u.user_id;"
+    sql = "SELECT c.com_content, c.com_date, c.post_id, c.user_id, u.user_name, u.user_id FROM comentario c INNER JOIN usuario u ON c.user_id = u.user_id;"
     mycursor.execute(sql)
-    posts = mycursor.fetchall()
+    comentarios = mycursor.fetchall()
 
-    return posts
+    return comentarios
 
 
 
