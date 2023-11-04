@@ -24,7 +24,7 @@
 
 <div class="divgeral min_width_hospital" style="margin-top: 30px; margin-bottom: 30px">
 
-    <div class="divinterna" style="margin-top: 30px; margin-bottom: 30px;">
+    <div class="divinterna" style="margin-top: 30px; margin-bottom: 30px; overflow: auto;">
 
         <div class="d-flex text-start flex-column">
             <p class="fs-2 fw-semibold" style="color: #004618; margin: 0;">Clínicas e Hospitais para Hemodiálise</p>
@@ -32,7 +32,7 @@
         </div>
 
         <form action="/hospital" method="POST">
-            <div class="formularios" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <div class="formularios" style="display: flex; justify-content: start; flex-wrap: wrap;">
 
                 <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
                     <p style="margin: 0;">Estado</p>
@@ -68,7 +68,10 @@
 
                     </select>
 
-                    <input type="submit">
+                    <div class="button_forma" style="margin-top: 10px;">
+                        <input type="submit" class="fw-bold button_submit">
+                    </div>
+
                 </div>
             </div>
         </form>
@@ -77,17 +80,17 @@
             <thead>
               <tr>
                 <th scope="col">Nome</th>
-                <th scope="col">Responsável</th>
-                <th scope="col" class="d-none d-md-block">Telefone</th>
+                <th scope="col" class="d-none d-md-block">Responsável</th>
+                <th scope="col">Telefone</th>
                 <th scope="col">Email</th>
               </tr>
             </thead>
             <tbody>
             {% for hospital in estado %}
               <tr>
-                <th scope="row" class="fw-normal">{{ hospital['Hospital'] }}</th>
-                <th scope="row" class="fw-normal">{{ hospital['Resposavel'] }}</th>
-                <td class="d-none d-md-block">{{ hospital['Telefone'] }}</td>
+                <td scope="row" class="fw-normal">{{ hospital['Hospital'] }}</td>
+                <td class="d-none d-md-block">{{ hospital['Resposavel'] }}</td>
+                <td scope="row" class="fw-normal">{{ hospital['Telefone'] }}</td>
                 <td>{{ hospital['Mail'] }}</td>
               </tr>
             {% endfor %}
