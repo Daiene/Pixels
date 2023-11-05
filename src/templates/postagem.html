@@ -5,13 +5,13 @@
 {% endblock %} 
 
 {% block content %}
-<main>
+<main class="d-flex justify-content-center mb-5 mt-5 ">
   <div class="flex-main">
-    <div><h1>{{ post[1] }}</h1></div>
-    <div class="capa">
+    <div><h1 class="text-center ">{{ post[1] }}</h1></div>
+    <div class="capa d-flex justify-content-center">
       <img src="../../static/img/post_uploads/post_{{post[0]}}.png"  class="capa_img" alt="capa" />
     </div>
-    <div><p>{{ post[2] }}</p></div>
+    <div class="d-flex justify-content-center " ><p style="width: 95%;"> {{ post[2] }}</p></div>
     <div class="flex-comment">
       <br />
       <div class="flex-dados">
