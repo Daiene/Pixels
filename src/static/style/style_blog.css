@@ -46,3 +46,24 @@
     background-color: #004618;
     color: white;
 }
+
+.imagens_pequenas {
+    min-height: 180px;
+    min-width: 180px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.imagens_medias {
+    min-height: 350px;
+    min-width: 322px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.imagem_grande {
+    min-height: 572px;
+    min-width: 572px;
+    object-fit: cover;
+    vertical-align: middle;
+}

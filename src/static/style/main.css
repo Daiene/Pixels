@@ -160,6 +160,12 @@ body{
     color: white;
 }
 
+.foto_perfil {
+    object-fit: cover;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
 /* fim do telaperfilnome 2 */
 
 #fundo-escuro {

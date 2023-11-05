@@ -24,7 +24,7 @@
             <div class="tela_perfil_nome2 flex-column d-md-none">
                 <div class="d-flex align-items-center" style="padding-top: 16px; padding-bottom: 35px; justify-content: space-between;">
                     <div class="d-flex flex-row gap-3" style="justify-content: center; align-items: center;">
-                        <img src="{{ url_for('exibir_imagem') }}" style="border-radius: 50%;" width="95px" height="95px" alt="foto de perfil">
+                        <img src="{{ url_for('exibir_imagem') }}" class="foto_perfil" width="95px" height="95px" alt="foto de perfil">
                         <div class="d-flex flex-column">
                                     <b class="fs-4 fw-semibold" style="color: white;">{{name}}</b>
                                     <b class="fw-regular" style="color: white; font-size: 15px; font-weight: 400;">{{email}}</b>
@@ -81,7 +81,7 @@
 
     <div id="minhadiv" class="tela_perfil_nome">
         <div class="d-flex gap-3 m-3 align-items-center">
-            <img src="{{ url_for('exibir_imagem') }}" style="border-radius: 50%;" width="70px" height="70px" alt="foto de perfil">
+            <img src="{{ url_for('exibir_imagem') }}" class="foto_perfil" width="70px" height="70px" alt="foto de perfil">
             <div class="d-flex flex-column">
                         <b>{{name}}</b>
                         <b>{{email}}</b>
