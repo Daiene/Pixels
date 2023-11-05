@@ -1,5 +1,11 @@
 # Projeto Grupo de Mães
 
+
+
+## Projeto
+![Objetivo](./docs/readme/objetivo.jpeg)
+<br>
+
 <p align="center">
   <a href="#projeto">Projeto</a>  •
   <a href="#proposta">Proposta</a>  •
@@ -8,10 +14,6 @@
   <a href="#backlog-do-produto">Backlog do Produto </a>  •
   <a href="#equipe"> Equipe </a> 
 </p>
-
-## Projeto
-![Objetivo](./docs/readme/objetivo.png)
-<br>
 
 ## Proposta
 **Desenvolver um website para auxiliar mães que possuem filhos com a doença Insuficiência Renal Crônica**<br><br>
@@ -22,11 +24,11 @@
 - ![feito](./docs/readme/check.jpeg) Tela de Recuperação de Senha 
 - ![feito](./docs/readme/check.jpeg) Blog
 - ![afazer](./docs/readme/box.jpeg) Area do ADM
-- ![afazer](./docs/readme/box.jpeg) Area do User
+- ![feito](./docs/readme/check.jpeg) Area do User
 - ![feito](./docs/readme/check.jpeg) Página com Localidades dos hospitais
 - ![afazer](./docs/readme/box.jpeg) Página com Sintomas Comuns e formulário
 - ![afazer](./docs/readme/box.jpeg) Filtro para o Blog
-- ![afazer](./docs/readme/box.jpeg) Área de Comentários
+- ![feito](./docs/readme/check.jpeg) Área de Comentários
 - ![afazer](./docs/readme/box.jpeg) Graficos de Dados Levantados IRC
 
 <br>
@@ -35,7 +37,7 @@
 - ![feito](./docs/readme/check.jpeg) Framework Python Flask
 - ![feito](./docs/readme/check.jpeg) Linguagem Python, Html e CSS
 - ![afazer](./docs/readme/box.jpeg) Banco de Dados Relacional - MySQL
-- ![afazer](./docs/readme/box.jpeg) Levantamento de Dados (Raspagem)
+- ![feito](./docs/readme/check.jpeg) Levantamento de Dados (Raspagem)
 - ![feito](./docs/readme/check.jpeg) Arquitetura no Figma
 
 <br>
@@ -44,24 +46,25 @@
 ## Cronograma das Entregas
 - ![feito](./docs/readme/check.jpeg) Sprint 1 - 04/09/23 a 24/09/23 
 - ![feito](./docs/readme/check.jpeg) Sprint 2 - 25/09/23 a 15/10/23 
-- ![afazer](./docs/readme/box.jpeg) Sprint 3 - 16/10/23 a 05/11/23 
+- ![feito](./docs/readme/check.jpeg) Sprint 3 - 16/10/23 a 05/11/23 
 - ![afazer](./docs/readme/box.jpeg) Sprint 4 - 06/11/23 a 26/11/23 
 
 <br>
 
-## MVP Sprint 1
-[FIGMA](https://www.figma.com/file/c1qNDHxN1TmBP6tWEOKZ63/Pixels?type=design&node-id=312%3A407&mode=design&t=r9D4xpK02DmMHwIT-1)<br>
+## MVP
+[![MVP SPRINT 3](https://cdn-icons-png.flaticon.com/256/1384/1384060.png)](https://youtu.be/R93fpPjgifE)
+
 <br>
 
 ## Tecnologias
-![Tecnologias](./docs/readme/tecnologias.png)
+![Tecnologias](./docs/readme/tecnologias.jpeg)
 <br>
 
 ## Backlog do Produto
-![Backlog](./docs/readme/Backlog.png)
+![Backlog](./docs/readme/backlog.jpeg)
 
 ### Backlog por Sprint
-![Backlog_por_sprint](./docs/readme/Sprint%20backlog.png)
+![Backlog_por_sprint](./docs/readme/backlogsprint.jpeg)
 <br>
 
 ## Como Executar
@@ -103,7 +106,7 @@ $ pip install -r src/requeriments.txt
 $ cd src/
 
 # E execute o seguinte comando:
-$ flask run --debug
+$ flask run
 
 # Depois irá liberar um ip local para você 127.0.0.1:5000
 # Se você digitar este IP no seu navegador ira abrir o projeto!

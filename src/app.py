@@ -229,9 +229,13 @@ def hospital():
 
     if access:
         cad = buscar_usuario_pelo_email(session.get("email"))
+        if cad == None:
+            access = False
+            
         if cad is not None:
             name = cad[1]
             email = cad[2]
+    
 
     if request.method == "POST":
         estado_escolhido = request.form["estado"]
@@ -378,6 +382,7 @@ def mostrar_post(categoria, titulo):
                     post_id = item[0]
                     cria_comentario( comentario, email, post_id)
                     return redirect(url_for('mostrar_post', categoria=categoria, titulo=titulo))
+                
                 name = cad[1]
                 email = cad[2]
                 return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img)

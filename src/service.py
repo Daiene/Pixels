@@ -277,7 +277,6 @@ def filtrar_por_estado(estado_escolhido):
                             resultados.append(row)
             else:
                 for row in reader:
-                    print("ENTREI AQUI")
                     resultados.append(row)
     return resultados
 
