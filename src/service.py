@@ -309,12 +309,11 @@ def postar6():
     sql = "INSERT into post (post_title, post_content, post_date, post_img, post_category, user_id) VALUES (%s, %s, %s, %s, %s, %s)"
 
     post_values = [
-        ("Title 1", "Content 1", "2023-11-02", "img1.png", "Category 1", 1),
-        ("Title 2", "Content 2", "2023-11-02", "img2.png", "Category 2", 1),
-        ("Title 3", "Content 3", "2023-11-02", "img3.png", "Category 1", 1),
-        ("Title 4", "Content 4", "2023-11-02", "img4.png", "Category 3", 1),
-        ("Title 5", "Content 5", "2023-11-02", "img5.png", "Category 2", 1),
-        ("Title 6", "Content 6", "2023-11-02", "img6.png", "Category 1", 1),
+    ("Crianças com Doença Renal Crônica: Causas e Sintomas", "A doença renal crônica em crianças é uma condição séria que afeta o funcionamento dos rins desde cedo. Neste artigo, exploramos as causas e sintomas dessa condição, bem como opções de tratamento disponíveis.", "2023-11-02", "img1.png", "Saúde Infantil", 1),
+    ("Dicas para o Cuidado de Crianças com Doença Renal Crônica", "Cuidar de uma criança com doença renal crônica pode ser desafiador. Este guia fornece dicas úteis para pais e cuidadores sobre como proporcionar o melhor cuidado possível para essas crianças.", "2023-11-02", "img2.png", "Saúde Infantil", 1),
+    ("A Importância da Nutrição para Crianças com Doença Renal Crônica", "A dieta desempenha um papel crucial no gerenciamento da doença renal crônica em crianças. Este artigo explora a importância da nutrição e fornece orientações sobre uma dieta saudável para essas crianças.", "2023-11-02", "img3.png", "Saúde Infantil", 1),
+    ("Superando Desafios: Histórias Inspiradoras de Crianças com Doença Renal Crônica", "Conheça histórias inspiradoras de crianças que enfrentaram a doença renal crônica com coragem e determinação. Suas jornadas oferecem esperança e inspiração a outras famílias enfrentando desafios semelhantes.", "2023-11-02", "img4.png", "Histórias de Sucesso", 1),
+    ("Recursos de Apoio para Famílias de Crianças com Doença Renal Crônica", "Navegar pela jornada da doença renal crônica em crianças pode ser avassalador. Este guia lista recursos de apoio disponíveis para famílias, incluindo grupos de apoio, organizações e informações úteis.", "2023-11-02", "img5.png", "Recursos para Famílias", 1)
     ]
 
     for values in post_values:
