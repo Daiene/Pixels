@@ -1,7 +1,11 @@
-{% extends "base.html" %} {% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='style/style_perfil.css') }}">
+{% extends "base.html" %} 
 
-{% endblock %} {% block content %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style_perfil.css') }}">
+<title>Perfil</title>
+{% endblock %} 
+
+{% block content %}
 <div class="container" >
   <div class="row">
     <div class="col-md-6 mx-auto" id="box_1">

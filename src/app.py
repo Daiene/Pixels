@@ -223,13 +223,23 @@ def hospital():
     '''
         Página de Hositais
     '''
+    name = ""
+    email = ""
+    access = check_session(session.get("email"))
+
+    if access:
+        cad = buscar_usuario_pelo_email(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+
     if request.method == "POST":
         estado_escolhido = request.form["estado"]
         resultados = filtrar_por_estado(estado_escolhido)
-        return render_template('hospital.html', access=False, title="Hospital", estado=resultados)
+        return render_template('hospital.html', access=access, name=name, email=email, title="Hospital", estado=resultados)
     else:
         resultados = filtrar_por_estado(estado_escolhido="")
-        return render_template('hospital.html', access=False, title="Hospital", estado=resultados)
+        return render_template('hospital.html', access=access, name=name, email=email, title="Hospital", estado=resultados)
 
 
 
