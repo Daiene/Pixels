@@ -7,6 +7,8 @@ from PIL import Image
 from io import BytesIO
 from definitions import *
 import csv
+from werkzeug.security import check_password_hash
+
 
 
 #######################################################################################################
@@ -68,8 +70,8 @@ def check_login(email, password):
     if email == "" or password == "":
         warn = "Preencha todos os campos!"
         return False, warn
-        
-    elif user == None or user[3] != password:
+
+    elif user == None or check_password_hash(user[3], password) == False:
         warn = "Email ou Senha incorreta!"
         return False, warn
         
