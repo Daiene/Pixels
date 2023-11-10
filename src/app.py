@@ -4,7 +4,6 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 import os
-from werkzeug.security import generate_password_hash, check_password_hash
 
 @app.route('/')
 def home():
@@ -44,14 +43,12 @@ def cadastro():
         parentesco = request.form['parentesco']
         profissao = request.form['profissao']
         como_chegou = request.form['como_chegou']
+
+
         info, warn = check_cadastro(name, email, password, confirmPassword, dn, cpf, parentesco, profissao, como_chegou)
 
         if info:
-            print(password)
-            hash_password = generate_password_hash(password)
-            print(hash_password)
-
-            criando_usuario(name, email, hash_password, dn, cpf, parentesco, profissao, como_chegou)
+            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou)
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
         

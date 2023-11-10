@@ -7,7 +7,7 @@ from PIL import Image
 from io import BytesIO
 from definitions import *
 import csv
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 
 
 
@@ -59,6 +59,7 @@ def check_cadastro(name, email, password, confirmPassword,  dn, cpf, parentesco,
 
 
 
+from werkzeug.security import check_password_hash
 
 def check_login(email, password):
     '''
@@ -120,8 +121,9 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
     # Imagem default
     name_default = "../src/static/img/icons/icon_user.png"
     img_default = cv2.imread(name_default)
+    hash_password = generate_password_hash(password)
     sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo, user_dn, user_cpf, user_grau_parentesco, user_profissao, user_como_chegou) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    val = (name, email, password, name_default, dn, cpf, parentesco, profissao, como_chegou)
+    val = (name, email, hash_password, name_default, dn, cpf, parentesco, profissao, como_chegou)
     mycursor.execute(sql, val)
     
 
