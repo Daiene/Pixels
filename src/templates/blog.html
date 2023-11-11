@@ -91,11 +91,19 @@
 
   <div class="new-post">
     <a href="/post/criar_post"><input type="submit" value="Novo Post" class="button_forma fw-bold button_submit"></a>
-
-    
+    <form method="get" action="/blog">
+      <label for="categoria" class="form-label">Filtrar por Categoria:</label>
+      <select name="categoria" id="categoria">
+        <option value="">Todas as Categorias</option>
+        <option value="relato">Relatos</option>
+        <option value="noticia">Noticia</option>
+      </select>
+      <button type="submit" class="button_forma fw-bold button_submit">Filtrar</button>
+    </form>
   </div>
 
   <!-- Post grande  -->
+  {% if posts|length > 4 %}
   <div class="flex_container1">
     <div>
       <a href="/post/{{posts[0][5]}}/{{posts[0][1]}}">
@@ -197,8 +205,24 @@
         </div>
       </a>
       {% endfor %}
-  </div>
-  <div>
+    </div>
+{% else %}
+<div class="flex_row">
+  {% for post in posts %}
+  <a href="/post/{{post[5]}}/{{post[1]}}">
+    <div class="flex_row">
+      <div class="card" style="width: 22rem">
+        <img src="../static/img/post_uploads/post_{{post[0]}}.png" class="card-img-top imagens_medias" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">{{ post[1]}}</h5>
+        </div>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
+
 
   </div>
 </main>

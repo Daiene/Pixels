@@ -137,6 +137,15 @@ def blog():
 
     posts = todos_posts()
 
+    categoria_filtro = request.args.get('categoria', default=None)
+    print(categoria_filtro)
+
+    if categoria_filtro:
+        posts_filtrados = [post for post in posts if post[5] == categoria_filtro]
+    else:
+        posts_filtrados = posts
+
+
     name = ""
     email = ""
     access = check_session(session.get("email"))
@@ -145,9 +154,9 @@ def blog():
         if cad is not None:
             name = cad[1]
             email = cad[2]
-            return render_template('blog.html', access=access, title="Home", name=name, email=email, posts=posts)
+            return render_template('blog.html', access=access, title="Home", name=name, email=email, posts=posts_filtrados, categoria_filtro=categoria_filtro)
     
-    return render_template('blog.html', access=False, title="Home", name=name, posts=posts)
+    return render_template('blog.html', access=False, title="Home", name=name, posts=posts_filtrados, categoria_filtro=categoria_filtro)
 
 
 
