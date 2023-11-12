@@ -1,8 +1,5 @@
 from flask import Flask, Response, redirect, render_template, request, session, url_for
 from service import *
-import numpy as np
-from io import BytesIO
-from PIL import Image
 import os
 
 @app.route('/')
@@ -43,17 +40,16 @@ def cadastro():
         parentesco = request.form['parentesco']
         profissao = request.form['profissao']
         como_chegou = request.form['como_chegou']
-
+        status = False
 
         info, warn = check_cadastro(name, email, password, confirmPassword, dn, cpf, parentesco, profissao, como_chegou)
 
         if info:
-            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou)
+            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status)
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
         
-        session["email"] = request.form.get("email")
-        return redirect("/")
+        return redirect("/login")
     
     if request.method == 'GET':
         name = ""

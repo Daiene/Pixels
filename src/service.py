@@ -3,12 +3,12 @@ from flask import Response
 import mysql.connector
 from datetime import datetime
 import cv2
-from PIL import Image
-from io import BytesIO
 from definitions import *
 import csv
 from werkzeug.security import check_password_hash, generate_password_hash
-
+from email.message import EmailMessage
+import ssl
+import smtplib
 
 
 #######################################################################################################
@@ -59,8 +59,6 @@ def check_cadastro(name, email, password, confirmPassword,  dn, cpf, parentesco,
 
 
 
-from werkzeug.security import check_password_hash
-
 def check_login(email, password):
     '''
         Método de de validar se as informações de login estão corretas
@@ -75,7 +73,11 @@ def check_login(email, password):
     elif user == None or check_password_hash(user[3], password) == False:
         warn = "Email ou Senha incorreta!"
         return False, warn
-        
+    
+    elif check_email(user) == False:
+        warn = "Valide seu email para logar!"
+        return False, warn
+
     else:
         warn=""
         return True, warn
@@ -113,7 +115,7 @@ def buscar_usuario_pelo_email(email):
 # Usuário
 
 
-def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou):
+def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status):
     '''
         Método de criar o usuário no banco
     '''
@@ -122,8 +124,8 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
     name_default = "../src/static/img/icons/icon_user.png"
     img_default = cv2.imread(name_default)
     hash_password = generate_password_hash(password)
-    sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo, user_dn, user_cpf, user_grau_parentesco, user_profissao, user_como_chegou) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    val = (name, email, hash_password, name_default, dn, cpf, parentesco, profissao, como_chegou)
+    sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo, user_dn, user_cpf, user_grau_parentesco, user_profissao, user_como_chegou, user_status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    val = (name, email, hash_password, name_default, dn, cpf, parentesco, profissao, como_chegou, status)
     mycursor.execute(sql, val)
     
 
@@ -136,9 +138,9 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
     mycursor.execute(update_img_path, (name_id, user_id))
     db.commit()
 
+    user = buscar_usuario_pelo_email(email)
+    enviando_email(user)
     print("USUARIO CADASTRADO COM SUCESSO!")
-    
-    return True
 
 
 
@@ -303,6 +305,42 @@ def filtrar_por_estado(estado_escolhido):
                     resultados.append(row)
     return resultados
 
+#######################################################################################################
+# Validação de Email
+
+def check_email(user):
+    
+    sql = f"SELECT user_status FROM usuario WHERE user_id = {user[0]}"
+    mycursor.execute(sql)
+    status = mycursor.fetchall()
+    print(type(status))
+    print(status[0])
+    if status[0][0] == 0:
+        return False
+    
+
+
+def enviando_email(user):
+    name = user[1]
+    email = user[2]
+    subject = f'Validação de Email Rim do Amor'
+    body=f'''
+        Olá {name} você esta tentando criar uma conta em nossa site.
+        Para isso por favor acesse o link:
+        127.0.0.1:5000/blog
+    '''
+
+    em = EmailMessage()
+    em['From'] = email_send
+    em['To'] = email
+    em['subject'] = subject
+    em.set_content(body)
+
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+        smtp.login(email_send, email_password)
+        smtp.sendmail(email_password, email, em.as_string())
 
 #######################################################################################################
 # Crinado Banco de Dados:
@@ -323,7 +361,7 @@ print()
 # Usuários Padroẽs
 
 # admin
-criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais')
+criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True)
 
 # Post teste 
 

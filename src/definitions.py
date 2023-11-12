@@ -17,7 +17,7 @@ path_uploads = "/static/img/uploads/"
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="fatec",
+passwd="",
 )
 
 mycursor = db.cursor()
@@ -33,3 +33,8 @@ app.secret_key = 'APIMAES'
 # Arquivos de Dados
 
 csv_file = 'static/clinicas.csv'
+#############################################################################################################################################################################
+
+# Configuração da conta do Email
+email_send = ''
+email_password = ''

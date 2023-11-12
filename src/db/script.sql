@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS usuario(
     user_grau_parentesco VARCHAR(50) NOT NULL,
     user_profissao VARCHAR(100) NOT NULL,
     user_como_chegou VARCHAR(100) NOT NULL,
-    endereco_id BIGINT
+    endereco_id BIGINT,
+    user_status BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS endereco(
