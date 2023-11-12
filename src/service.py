@@ -207,11 +207,24 @@ def cria_comentario(comentario, email, post_id):
     db.commit()
 
 
-def todos_posts():
+def todos_posts_aprovados():
 
     # Pega todos os posts para enviar para o front-end  
     sql = "SELECT p.post_id, p.post_title, p.post_content, p.post_date, p.post_img, p.post_category, u.user_name FROM post p INNER JOIN usuario u ON p.user_id = u.user_id WHERE p.post_status = TRUE ORDER BY p.post_id DESC;"
     mycursor.execute(sql)
+    posts = mycursor.fetchall()
+
+    return posts
+
+def todos_posts():
+
+    # SQL para selecionar todos os posts
+    sql = "SELECT * FROM post"
+
+    # Executando a consulta para obter todos os posts
+    mycursor.execute(sql)
+
+    # Obtendo os resultados da consulta
     posts = mycursor.fetchall()
 
     return posts
@@ -226,7 +239,13 @@ def todos_comentarios():
 
     return comentarios
 
+def aprovar_post(post_id):
+    sql = "UPDATE post SET post_status = TRUE WHERE post_id = %s"
 
+    mycursor.execute(sql, (post_id,))
+
+    db.commit()
+    
 
 
 #######################################################################################################
@@ -309,14 +328,14 @@ criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 
 # Post teste 
 
 def postar6():
-    sql = "INSERT into post (post_title, post_content, post_date, post_img, post_category, user_id) VALUES (%s, %s, %s, %s, %s, %s)"
+    sql = "INSERT INTO post (post_title, post_content, post_date, post_img, post_category, user_id, post_status) VALUES (%s, %s, %s, %s, %s, %s, TRUE)"
 
     post_values = [
-    ("Crianças com Doença Renal Crônica: Causas e Sintomas", "A doença renal crônica em crianças é uma condição séria que afeta o funcionamento dos rins desde cedo. Neste artigo, exploramos as causas e sintomas dessa condição, bem como opções de tratamento disponíveis.", "2023-11-02", "img1.png", "relato", 1),
-    ("Dicas para o Cuidado de Crianças com Doença Renal Crônica", "Cuidar de uma criança com doença renal crônica pode ser desafiador. Este guia fornece dicas úteis para pais e cuidadores sobre como proporcionar o melhor cuidado possível para essas crianças.", "2023-11-02", "img2.png", "relato", 1),
-    ("A Importância da Nutrição para Crianças com Doença Renal Crônica", "A dieta desempenha um papel crucial no gerenciamento da doença renal crônica em crianças. Este artigo explora a importância da nutrição e fornece orientações sobre uma dieta saudável para essas crianças.", "2023-11-02", "img3.png", "relato", 1),
-    ("Superando Desafios: Histórias Inspiradoras de Crianças com Doença Renal Crônica", "Conheça histórias inspiradoras de crianças que enfrentaram a doença renal crônica com coragem e determinação. Suas jornadas oferecem esperança e inspiração a outras famílias enfrentando desafios semelhantes.", "2023-11-02", "img4.png", "relato", 1),
-    ("Recursos de Apoio para Famílias de Crianças com Doença Renal Crônica", "Navegar pela jornada da doença renal crônica em crianças pode ser avassalador. Este guia lista recursos de apoio disponíveis para famílias, incluindo grupos de apoio, organizações e informações úteis.", "2023-11-02", "img5.png", "relato", 1)
+        ("Crianças com Doença Renal Crônica: Causas e Sintomas", "A doença renal crônica em crianças é uma condição séria que afeta o funcionamento dos rins desde cedo. Neste artigo, exploramos as causas e sintomas dessa condição, bem como opções de tratamento disponíveis.", "2023-11-02", "img1.png", "relato", 1),
+        ("Dicas para o Cuidado de Crianças com Doença Renal Crônica", "Cuidar de uma criança com doença renal crônica pode ser desafiador. Este guia fornece dicas úteis para pais e cuidadores sobre como proporcionar o melhor cuidado possível para essas crianças.", "2023-11-02", "img2.png", "relato", 1),
+        ("A Importância da Nutrição para Crianças com Doença Renal Crônica", "A dieta desempenha um papel crucial no gerenciamento da doença renal crônica em crianças. Este artigo explora a importância da nutrição e fornece orientações sobre uma dieta saudável para essas crianças.", "2023-11-02", "img3.png", "relato", 1),
+        ("Superando Desafios: Histórias Inspiradoras de Crianças com Doença Renal Crônica", "Conheça histórias inspiradoras de crianças que enfrentaram a doença renal crônica com coragem e determinação. Suas jornadas oferecem esperança e inspiração a outras famílias enfrentando desafios semelhantes.", "2023-11-02", "img4.png", "relato", 1),
+        ("Recursos de Apoio para Famílias de Crianças com Doença Renal Crônica", "Navegar pela jornada da doença renal crônica em crianças pode ser avassalador. Este guia lista recursos de apoio disponíveis para famílias, incluindo grupos de apoio, organizações e informações úteis.", "2023-11-02", "img5.png", "relato", 1)
     ]
 
     for values in post_values:

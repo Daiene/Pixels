@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS post(
     post_content TEXT NOT NULL,
     post_date DATE NOT NULL,
     post_img BLOB,
-    post_status BOOLEAN DEFAULT TRUE,
+    post_status BOOLEAN DEFAULT FALSE,  
     post_category VARCHAR(200) NOT NULL,
     user_id BIGINT NOT NULL
 );

@@ -135,7 +135,7 @@ def blog():
         Página Blog
     '''
 
-    posts = todos_posts()
+    posts = todos_posts_aprovados()
 
     categoria_filtro = request.args.get('categoria', default=None)
     print(categoria_filtro)
@@ -158,6 +158,21 @@ def blog():
     
     return render_template('blog.html', access=False, title="Home", name=name, posts=posts_filtrados, categoria_filtro=categoria_filtro)
 
+
+@app.route('/aprovacoes')
+def aprovacoes():
+
+    posts = todos_posts()
+    return render_template('aprovacoes.html', posts=posts)
+
+
+
+@app.route('/atualizar_status/<int:post_id>', methods=['GET'])
+def atualizar_status(post_id):
+    print(post_id)
+    aprovar_post(post_id)
+
+    return redirect('/aprovacoes')
 
 
 
@@ -372,7 +387,7 @@ def mostrar_post(categoria, titulo):
     name = ""
     email = ""
     access = check_session(session.get("email"))
-    posts = todos_posts()
+    posts = todos_posts_aprovados()
     comentarios = todos_comentarios()
     img = None
     
@@ -438,9 +453,7 @@ def criar():
             imagem.save(image_path)
 
 
-        url = f'/post/{categoria}/{titulo}'
-
-        return redirect(url)
+        return redirect('/blog')
     else:
         if access:
             cad = buscar_usuario_pelo_email(session.get("email"))
@@ -450,28 +463,6 @@ def criar():
                 return render_template('criar_post.html', access=access, title="Criar post", name=name, email=email)
         
         return render_template('criar_post.html', access=False, title="Criar post", name=name)
-
-
-
-
-@app.route('/post/todos_posts')
-def mostrar_informacoes():
-    '''
-        Rota teste para verificar os posts enviados, podendo usar filtro
-    '''
-
-    posts = todos_posts()
-
-    categoria_filtro = request.args.get('categoria', default=None)
-
-    if categoria_filtro:
-        posts_filtrados = [post for post in posts if post[5] == categoria_filtro]
-    else:
-        posts_filtrados = posts
-
-    print(posts)
-
-    return render_template('exibir_posts.html', posts=posts_filtrados, categoria_filtro=categoria_filtro)
 
 
 
