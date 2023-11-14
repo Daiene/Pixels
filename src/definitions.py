@@ -36,5 +36,7 @@ csv_file = 'static/clinicas.csv'
 #############################################################################################################################################################################
 
 # Configuração da conta do Email
-email_send = ''
-email_password = ''
+email_send = 'pixels1dsm@gmail.com'
+email_password = 'hoch orfs trqy wipw'
+
+#Pixels0223!

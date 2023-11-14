@@ -49,7 +49,7 @@ def cadastro():
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
         
-        return redirect("/login")
+        return redirect("/validacao")
     
     if request.method == 'GET':
         name = ""
@@ -67,6 +67,9 @@ def cadastro():
 
 
 
+@app.route('/validacao')
+def validacao():
+    return render_template('/confirme.html')
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -459,6 +462,12 @@ def criar():
                 return render_template('criar_post.html', access=access, title="Criar post", name=name, email=email)
         
         return render_template('criar_post.html', access=False, title="Criar post", name=name)
+    
+@app.route('/validacao/<link_unico>')
+def validacao_link(link_unico):
+    email = validar_email(link_unico)
+    session['email'] = email
+    return redirect('/')
 
 
 

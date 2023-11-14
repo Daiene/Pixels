@@ -1,0 +1,24 @@
+{% extends "acesso.html" %}
+
+{% block style %}
+      <link rel="stylesheet" href="{{ url_for('static', filename='style/style_login.css') }}">
+      <title>Login</title>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="login-container col-12 col-lg-6">
+        <div class="login-form col-12 col-xl-6">
+           <h1 class="texto">Foi enviado um e-mail de confirmação para a sua conta. Esta etapa é vital para garantir a segurança e o pleno acesso aos recursos do nosso serviço. <br/>
+            <br/>
+            Por favor, verifique a sua caixa de entrada e, caso não encontre o e-mail de confirmação, certifique-se de conferir o spam ou lixeira
+            
+           </h1>
+        </div>
+    </div>
+    
+    <div class="banner d-none d-lg-block col-lg-6"></div>
+  </div>
+</div>
+
+{% endblock %}

@@ -323,11 +323,12 @@ def check_email(user):
 def enviando_email(user):
     name = user[1]
     email = user[2]
+    link_unico = generate_password_hash(str(user[0]))
     subject = f'Validação de Email Rim do Amor'
     body=f'''
         Olá {name} você esta tentando criar uma conta em nossa site.
         Para isso por favor acesse o link:
-        127.0.0.1:5000/blog
+        127.0.0.1:5000/validacao/{link_unico}
     '''
 
     em = EmailMessage()
@@ -341,6 +342,19 @@ def enviando_email(user):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
         smtp.login(email_send, email_password)
         smtp.sendmail(email_password, email, em.as_string())
+
+def validar_email(link_unico):
+    sql = "SELECT * from usuario;"
+    mycursor.execute(sql)
+    usuarios = mycursor.fetchall()
+    for usuario in usuarios:
+        if check_password_hash(link_unico, str(usuario[0])):
+            sql = f"UPDATE usuario SET user_status=TRUE WHERE user_id={usuario[0]}"
+            mycursor.execute(sql)
+
+            return usuario[2]
+
+
 
 #######################################################################################################
 # Crinado Banco de Dados:
