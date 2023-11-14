@@ -105,3 +105,30 @@ td {
 .min_width_hospital{
     min-width: 400px;
 }
+
+.conteudo {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    gap: 20px;
+    width: auto;
+    padding: 3% 5%;
+}
+
+.conteudo__titulo {
+    color: var(--titulo);
+    font-size: 28px;
+    font-family: var(--raleway);
+    font-weight: 700;
+    line-height: 28px;
+    word-wrap: break-word
+}
+
+.conteudo__texto {
+    color: var(--texto);
+    font-size: 16px;
+    font-family: var(--roboto);
+    font-weight: 400;
+    line-height: 19.20px;
+    word-wrap: break-word
+}

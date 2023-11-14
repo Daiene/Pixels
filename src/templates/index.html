@@ -1,221 +1,334 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
 {% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='style/style_home.css') }}"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style_home.css') }}" />
 <title>Home</title>
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
 <main>
   <div class="bg-img min_width_hospital">
     <div class="escuro">
-        <div class="conteudo__capa__texto m-4">
-    
-            <div class="style_letra_capa">
-              Conheça mais sobre a Insuficiência Renal Crônica <br> (IRC), com foco no meio pediátrico. 
-            </div>
+      <div class="conteudo__capa__texto m-4">
 
-            <div class="button_forma">
-                <div class="letra_button">Leia Mais</div>
-            </div>
+        <div class="style_letra_capa">
+          Conheça mais sobre a Insuficiência Renal Crônica <br> (IRC), com foco no meio pediátrico.
+        </div>
 
+        <div class="button_forma">
+          <div class="letra_button">Leia Mais</div>
         </div>
-    </div>
-</div>
 
-<section class="conteudo">
-  <div class="conteudo__titulo">
-    Sobre o projeto
-  </div>
-  <div class="conteudo__texto">
-    O projeto “nome” consiste em um site criado primordialmente a fim de disponibilizar informações acerca da nefrologia, que é a área da medicina especializada no tratamento e prevenção de doenças renais. Além disso, o projeto busca chamar atenção para a Insuficiência Renal Crônica Pediátrica (IRC), também chamada de Doença Renal Crônica Pediátrica (DRC), a fim de orientar mães, pais ou responsáveis que lidam com crianças diagnosticadas com a doença. O site tem como objetivos secundários informar sobre a doença, dados referentes aos casos e locais que são capazes de tratar a IRC. Ademais também existe um blog destinado a comunidade para a disseminação de notícias relevantes e publicação de histórias.
-  </div>
-  <div class="conteudo__titulo">
-    Primeiros passos ao descobrir que seu filho possui IRC
-  </div>
-  <div class="conteudo__texto">
-    Descobrir que seu filho possui a doença renal crônica (IRC) é uma notícia que pode abalar profundamente qualquer mãe. A preocupação com o bem-estar do filho e a incerteza sobre o que o futuro reserva podem ser esmagadoras. No entanto, é importante lembrar que, com o apoio adequado e ações bem orientadas, é possível enfrentar essa situação desafiadora e proporcionar o melhor cuidado possível para o seu filho. Aqui estão os primeiros passos que uma mãe pode considerar ao receber o diagnóstico de IRC em seu filho:
-  </div>
-</section>
-<section class="conteudo__cards">
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img srcset="{{ url_for('static', filename='img/home_imgs/info_sec.png')}}" sizes="(max-width: 600px) 150px, 400px class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Busque Informações Confiáveis:</h5>
-          <p class="card-text">A primeira coisa a fazer é obter informações sobre a IRC. Consulte o médico do seu filho para entender a condição, causas, sintomas e opções de tratamento. Educar-se sobre a doença ajudará você a tomar decisões informadas.</p>
-        </div>
       </div>
     </div>
   </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ url_for('static', filename='img/home_imgs/med_team.png')}}" class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Comunique-se com a Equipe Médica:</h5>
-          <p class="card-text">Estabeleça uma comunicação aberta e eficaz com a equipe médica que cuidará do seu filho. Faça perguntas, esclareça dúvidas e participe ativamente do plano de tratamento.</p>
+
+  <section class="conteudo">
+    <div class="conteudo__titulo">
+      Sobre o projeto
+    </div>
+    <div class="conteudo__texto">
+      O projeto “nome” consiste em um site criado primordialmente a fim de disponibilizar informações acerca da
+      nefrologia, que é a área da medicina especializada no tratamento e prevenção de doenças renais. Além disso, o
+      projeto busca chamar atenção para a Insuficiência Renal Crônica Pediátrica (IRC), também chamada de Doença Renal
+      Crônica Pediátrica (DRC), a fim de orientar mães, pais ou responsáveis que lidam com crianças diagnosticadas com a
+      doença. O site tem como objetivos secundários informar sobre a doença, dados referentes aos casos e locais que são
+      capazes de tratar a IRC. Ademais também existe um blog destinado a comunidade para a disseminação de notícias
+      relevantes e publicação de histórias.
+    </div>
+    <div class="conteudo__titulo">
+      O que é IRC?
+    </div>
+    <div class="conteudo__texto">
+      De acordo com a Dra. Vera Maria Santoro Belangero, até recentemente, a IRC (Insuficiência Renal Crônica) era
+      descrita como a perda permanente da capacidade dos rins (avaliada clinicamente pelo clearance de creatinina)
+      abaixo dos valores de 50 ou 60 ml/min/1,73²M¹². Contudo, em 2002, a National Kidney Foundation apresentou
+      diretrizes para definir e tratar a doença renal na infância, publicadas no Pediatrics em 2003. A insuficiência
+      renal crônica é agora definida pela existência de lesão nos rins ou pela perda de função renal. A cronicidade é
+      estabelecida pela persistência da lesão renal ou da perda de função por mais de três meses. </div>
+    <div class="conteudo__titulo">
+      Primeiros passos ao descobrir que seu filho possui IRC
+    </div>
+    <div class="conteudo__texto">
+      Descobrir que seu filho possui a doença renal crônica (IRC) é uma notícia que pode abalar profundamente qualquer
+      mãe. A preocupação com o bem-estar do filho e a incerteza sobre o que o futuro reserva podem ser esmagadoras. No
+      entanto, é importante lembrar que, com o apoio adequado e ações bem orientadas, é possível enfrentar essa situação
+      desafiadora e proporcionar o melhor cuidado possível para o seu filho. Aqui estão os primeiros passos que uma mãe
+      pode considerar ao receber o diagnóstico de IRC em seu filho:
+    </div>
+  </section>
+  <section class="conteudo__cards">
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img srcset="{{ url_for('static', filename='img/home_imgs/info_sec.png')}}"
+            sizes="(max-width: 600px) 150px, 400px class=" img-fluid rounded-start" alt="informações seguras">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Busque Informações Confiáveis:</h5>
+            <p class="card-text">A primeira coisa a fazer é obter informações sobre a IRC. Consulte o médico do seu
+              filho para entender a condição, causas, sintomas e opções de tratamento. Educar-se sobre a doença ajudará
+              você a tomar decisões informadas.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ url_for('static', filename='img/home_imgs/med_log.png')}}" class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Mantenha Registros Médicos: </h5>
-          <p class="card-text">Mantenha um registro detalhado das consultas médicas, resultados de exames e tratamentos. Isso facilitará o acompanhamento da evolução da condição do seu filho.</p>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ url_for('static', filename='img/home_imgs/med_team.png')}}" class="img-fluid rounded-start"
+            alt="informações seguras">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Comunique-se com a Equipe Médica:</h5>
+            <p class="card-text">Estabeleça uma comunicação aberta e eficaz com a equipe médica que cuidará do seu
+              filho. Faça perguntas, esclareça dúvidas e participe ativamente do plano de tratamento.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ url_for('static', filename='img/home_imgs/help_net.png')}}" class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Crie uma Rede de Apoio:</h5>
-          <p class="card-text">Procure grupos de apoio local ou online onde você possa se conectar com outras mães e pais que estão passando pela mesma situação. O compartilhamento de experiências pode ser reconfortante e informativo.</p>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ url_for('static', filename='img/home_imgs/med_log.png')}}" class="img-fluid rounded-start"
+            alt="informações seguras">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Mantenha Registros Médicos: </h5>
+            <p class="card-text">Mantenha um registro detalhado das consultas médicas, resultados de exames e
+              tratamentos. Isso facilitará o acompanhamento da evolução da condição do seu filho.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ url_for('static', filename='img/home_imgs/care_plan.png')}}" class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Desenvolva um Plano de Cuidados:</h5>
-          <p class="card-text">Trabalhe com a equipe médica para criar um plano de cuidados abrangente para o seu filho. Isso pode incluir mudanças na dieta, medicações e acompanhamento médico regular.</p>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ url_for('static', filename='img/home_imgs/help_net.png')}}" class="img-fluid rounded-start"
+            alt="informações seguras">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Crie uma Rede de Apoio:</h5>
+            <p class="card-text">Procure grupos de apoio local ou online onde você possa se conectar com outras mães e
+              pais que estão passando pela mesma situação. O compartilhamento de experiências pode ser reconfortante e
+              informativo.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ url_for('static', filename='img/home_imgs/open_comm.png')}}" class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Mantenha uma Comunicação Aberta com Seu Filho:</h5>
-          <p class="card-text">Dependendo da idade do seu filho, explique de maneira adequada à sua compreensão o que é a IRC e o que esperar. Mantenha um ambiente aberto para que ele possa compartilhar sentimentos e preocupações.</p>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ url_for('static', filename='img/home_imgs/care_plan.png')}}" class="img-fluid rounded-start"
+            alt="informações seguras">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Desenvolva um Plano de Cuidados:</h5>
+            <p class="card-text">Trabalhe com a equipe médica para criar um plano de cuidados abrangente para o seu
+              filho. Isso pode incluir mudanças na dieta, medicações e acompanhamento médico regular.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ url_for('static', filename='img/home_imgs/care_opt.png')}}" class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Pesquise Opções de Tratamento: </h5>
-          <p class="card-text">Dependendo do estágio da IRC, pode ser necessário considerar opções de tratamento, como diálise ou transplante renal. Converse com a equipe médica sobre as melhores opções para o seu filho.</p>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ url_for('static', filename='img/home_imgs/open_comm.png')}}" class="img-fluid rounded-start"
+            alt="informações seguras">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Mantenha uma Comunicação Aberta com Seu Filho:</h5>
+            <p class="card-text">Dependendo da idade do seu filho, explique de maneira adequada à sua compreensão o que
+              é a IRC e o que esperar. Mantenha um ambiente aberto para que ele possa compartilhar sentimentos e
+              preocupações.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ url_for('static', filename='img/home_imgs/care_ys.png')}}" class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Cuide de Si Mesma.</h5>
-          <p class="card-text">A saúde emocional e física da mãe desempenha um papel importante no bem-estar da família. Tire tempo para descansar e procurar apoio emocional quando necessário.</p>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ url_for('static', filename='img/home_imgs/care_opt.png')}}" class="img-fluid rounded-start"
+            alt="informações seguras">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Pesquise Opções de Tratamento: </h5>
+            <p class="card-text">Dependendo do estágio da IRC, pode ser necessário considerar opções de tratamento, como
+              diálise ou transplante renal. Converse com a equipe médica sobre as melhores opções para o seu filho.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ url_for('static', filename='img/home_imgs/child_dev.png')}}" class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Apoie o Desenvolvimento do seu Filho: </h5>
-          <p class="card-text">Certifique-se de que seu filho possa continuar a se desenvolver e crescer normalmente, dentro do possível. Isso inclui educação e atividades adequadas à sua idade.</p>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ url_for('static', filename='img/home_imgs/care_ys.png')}}" class="img-fluid rounded-start"
+            alt="informações seguras">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Cuide de Si Mesma.</h5>
+            <p class="card-text">A saúde emocional e física da mãe desempenha um papel importante no bem-estar da
+              família. Tire tempo para descansar e procurar apoio emocional quando necessário.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{ url_for('static', filename='img/home_imgs/keep_faith.png')}}" class="img-fluid rounded-start" alt="informações seguras">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Mantenha a Esperança:</h5>
-          <p class="card-text">Lembre-se de que muitas crianças com IRC levam vidas saudáveis e produtivas com o tratamento adequado. Mantenha a esperança e a positividade.</p>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ url_for('static', filename='img/home_imgs/child_dev.png')}}" class="img-fluid rounded-start"
+            alt="informações seguras">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Apoie o Desenvolvimento do seu Filho: </h5>
+            <p class="card-text">Certifique-se de que seu filho possa continuar a se desenvolver e crescer normalmente,
+              dentro do possível. Isso inclui educação e atividades adequadas à sua idade.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<section class="conteudo" style="margin-bottom: 2%;">
-  <div class="conteudo__texto">
-    Enfrentar a IRC em um filho é uma jornada desafiadora, mas com amor, informação e apoio, você pode desempenhar um papel fundamental em ajudar seu filho a levar uma vida plena e feliz. Lembre-se de que você não está sozinha e que muitas mães passaram por essa jornada com sucesso.
-  </div>
-</section>
-<section>
-  <div class="perguntas">
-    <div class="titulo">
-      <div class="titulo__titulo">
-        <h1>Perguntas Frequentes</h1>
-      </div>
-    </div>
-    <div class="perguntas__cards">
-      <div class="card">
-        <div class="card-header">
-          O que é a DRC?
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{ url_for('static', filename='img/home_imgs/keep_faith.png')}}" class="img-fluid rounded-start"
+            alt="informações seguras">
         </div>
-        <div class="card-body">
-          <p class="card-text">A DRC é uma condição médica em que os rins não funcionam de maneira eficaz ao longo do tempo, resultando na perda gradual da função renal.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Tem cura?
-        </div>
-        <div class="card-body">
-          <p class="card-text">Em muitos casos, a DRC não tem cura completa, mas o tratamento pode ajudar a retardar a progressão da doença e melhorar a qualidade de vida.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Qual o tratamento?
-        </div>
-        <div class="card-body">
-          <p class="card-text">O tratamento da DRC em crianças depende da causa subjacente, do estágio da doença e das necessidades individuais da criança. Pode incluir medicamentos para controlar a pressão arterial, dieta controlada, tratamento de doenças subjacentes, diálise (peritoneal ou hemodiálise) e, em alguns casos, transplante renal.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          Qual sua origem? Motivo?
-        </div>
-        <div class="card-body">
-          <p class="card-text">As causas da DRC pediátrica podem variar, mas algumas origens comuns incluem doenças renais congênitas, infecções renais, lesões nos rins, doenças autoimunes, anomalias do trato urinário, entre outras. A origem específica da DRC pode ser determinada por exames médicos.</p>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Mantenha a Esperança:</h5>
+            <p class="card-text">Lembre-se de que muitas crianças com IRC levam vidas saudáveis e produtivas com o
+              tratamento adequado. Mantenha a esperança e a positividade.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+  <section class="conteudo" style="margin-bottom: 2%;">
+    <div class="conteudo__texto">
+      Enfrentar a IRC em um filho é uma jornada desafiadora, mas com amor, informação e apoio, você pode desempenhar um
+      papel fundamental em ajudar seu filho a levar uma vida plena e feliz. Lembre-se de que você não está sozinha e que
+      muitas mães passaram por essa jornada com sucesso.
+    </div>
+  </section>
+  <section>
+    <div class="perguntas">
+      <div class="titulo">
+        <div class="titulo__titulo">
+          <h1>Perguntas Frequentes</h1>
+        </div>
+      </div>
+      <div class="perguntas__cards">
+        <div class="card">
+          <div class="card-header">
+            Pode se alimentar normalmente?
+          </div>
+          <div class="card-body">
+            <p class="card-text">A alimentação de crianças com DRC requer planejamento detalhado, variando conforme o
+              estágio da doença. Restrições nutricionais podem ser necessárias, como a limitação de potássio para
+              adolescentes em hemodiálise. Em lactentes, o foco está na oferta calórica para impulsionar o crescimento.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            Tem cura?
+          </div>
+          <div class="card-body">
+            <p class="card-text">Em muitos casos, a DRC não tem cura completa, mas o tratamento pode ajudar a retardar a
+              progressão da doença e melhorar a qualidade de vida.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            Qual o tratamento?
+          </div>
+          <div class="card-body">
+            <p class="card-text">O tratamento da DRC em crianças depende da causa subjacente, do estágio da doença e das
+              necessidades individuais da criança. Pode incluir medicamentos para controlar a pressão arterial, dieta
+              controlada, tratamento de doenças subjacentes, diálise (peritoneal ou hemodiálise) e, em alguns casos,
+              transplante renal.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            Qual sua origem? Motivo?
+          </div>
+          <div class="card-body">
+            <p class="card-text">As causas da DRC pediátrica podem variar, mas algumas origens comuns incluem doenças
+              renais congênitas, infecções renais, lesões nos rins, doenças autoimunes, anomalias do trato urinário,
+              entre outras. A origem específica da DRC pode ser determinada por exames médicos.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            Pode se hidratar normalmente?
+          </div>
+          <div class="card-body">
+            <p class="card-text">A ingestão de líquidos em crianças com DRC requer monitoramento, adaptando-se à
+              capacidade de diurese. O controle da quantidade de líquidos é determinado por exames médicos, como
+              clearance de creatinina, para avaliar a função renal. Essas diretrizes são gerais, sendo crucial buscar
+              orientação personalizada de um profissional de saúde para cada caso específico. </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            A criança vai crescer e se desenvolver normalmente?
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Crianças com IRC podem ter crescimento mais lento, baixa estatura e problemas ósseos graves, como fraturas
+              e deformidades. A condição, conhecida como osteodistrofia renal, descreve as mudanças ósseas na DRC. A
+              perda de cálcio e nutrientes essenciais na doença afeta drasticamente o desenvolvimento infantil.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            Qual a probabilidade de sobrevivência?
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              A expectativa de vida de crianças com DRC é influenciada por vários fatores, incluindo o estágio da
+              doença, estado de saúde geral, qualidade do tratamento e acesso a cuidados médicos especializados. Avanços
+              na diálise têm aumentado a sobrevida, mas a expectativa varia de forma significativa entre os casos
+              individuais.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            Pode tomar vacinas normalmente?
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              O calendário de vacinação para crianças com DRC segue a faixa etária, exceto para aquelas em
+              imunossupressão, onde vacinas com vírus vivos são desencorajadas. Para transplante, vacinas como MMR,
+              febre amarela e varicela devem ser administradas até seis semanas antes. A vacinação precoce para Hepatite
+              B é crucial, pois a soroconversão pode ser baixa em estágios avançados da DRC. A vacinação anual contra
+              influenza (preferencialmente com a vacina quadrivalente) é recomendada mesmo após o transplante.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            Pode tomar vacinas normalmente?
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              Médico nefro pediatra.
+              Lembre-se de que estas são apenas orientações gerais e cada caso é único. É
+              importante consultar um profissional de saúde para obter conselhos
+              personalizados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 {% endblock %}
