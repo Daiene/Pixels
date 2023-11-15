@@ -10,14 +10,18 @@ def home():
 
     name = ""
     email = ""
+    permissao = False
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
-            return render_template('index.html', access=access, title="Home", name=name, email=email)
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user is not None:
+            name = user[1]
+            email = user[2]
+            permissao = user[4]
+
+
+            return render_template('index.html', access=access, title="Home", name=name, email=email, permissao=permissao)
     
     return render_template('index.html', access=False, title="Home", name=name)
 
@@ -41,11 +45,12 @@ def cadastro():
         profissao = request.form['profissao']
         como_chegou = request.form['como_chegou']
         status = False
+        permissao = 0
 
         info, warn = check_cadastro(name, email, password, confirmPassword, dn, cpf, parentesco, profissao, como_chegou)
 
         if info:
-            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status)
+            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status, permissao)
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
         
@@ -54,13 +59,15 @@ def cadastro():
     if request.method == 'GET':
         name = ""
         email = ""
+        permissao = False
         access = check_session(session.get("email"))
 
         if access:
-            cad = buscar_usuario_pelo_email(session.get("email"))
-            if cad is not None:
-                name = cad[1]
-                email = cad[2]
+            user = buscar_usuario_pelo_email(session.get("email"))
+            if user is not None:
+                name = user[1]
+                email = user[2]
+                permissao = user[4]
                 return redirect("/")
         
         return render_template('cadastro.html', access=False, title="Home", name=name)
@@ -91,14 +98,16 @@ def login():
     if request.method == "GET":
         name = ""
         email = ""
+        permissao = False
         access = check_session(session.get("email"))
 
         if access:
-            cad = buscar_usuario_pelo_email(session.get("email"))
-            if cad is not None:
-                name = cad[1]
-                email = cad[2]
-                return render_template('index.html', access=access, title="Home", name=name, email=email)
+            user = buscar_usuario_pelo_email(session.get("email"))
+            if user is not None:
+                name = user[1]
+                email = user[2]
+                permissao = user[4]
+                return render_template('index.html', access=access, title="Home", name=name, email=email, permissao=permissao)
 
         return render_template('login.html', access=False, title="Home", name=name)
 
@@ -147,13 +156,15 @@ def blog():
 
     name = ""
     email = ""
+    permissao = False
     access = check_session(session.get("email"))
     if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
-            return render_template('blog.html', access=access, title="Home", name=name, email=email, posts=posts_filtrados, categoria_filtro=categoria_filtro)
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user is not None:
+            name = user[1]
+            email = user[2]
+            permissao = user[4]
+            return render_template('blog.html', access=access, title="Home", name=name, email=email, posts=posts_filtrados, categoria_filtro=categoria_filtro, permissao=permissao)
     
     return render_template('blog.html', access=False, title="Home", name=name, posts=posts_filtrados, categoria_filtro=categoria_filtro)
 
@@ -185,14 +196,16 @@ def proadi_sus():
 
     name = ""
     email = ""
+    permissao = False
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
-            return render_template('proadi_sus.html', access=access, title="Home", name=name, email=email)
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user is not None:
+            name = user[1]
+            email = user[2]
+            permissao = user[4]
+            return render_template('proadi_sus.html', access=access, title="Home", name=name, email=email, permissao=permissao)
     
     return redirect('/login')
 
@@ -207,14 +220,16 @@ def dados():
 
     name = ""
     email = ""
+    permissao = False
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
-            return render_template('dados_nefrologia.html', access=access, title="Home", name=name, email=email)
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user is not None:
+            name = user[1]
+            email = user[2]
+            permissao = user[4]
+            return render_template('dados_nefrologia.html', access=access, title="Home", name=name, email=email, permissao=permissao)
     
     return render_template('dados_nefrologia.html', access=False, title="Home", name=name)
 
@@ -229,14 +244,16 @@ def perfil():
 
     name = ""
     email = ""
+    permissao = False
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
-            return render_template('perfil.html', access=access, title="Home", name=name, email=email)
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user is not None:
+            name = user[1]
+            email = user[2]
+            permissao = user[4]
+            return render_template('perfil.html', access=access, title="Home", name=name, email=email, permissao=permissao)
     
     return redirect('/login')
     
@@ -250,25 +267,27 @@ def hospital():
     '''
     name = ""
     email = ""
+    permissao = False
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad == None:
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user == None:
             access = False
             
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
+        if user is not None:
+            name = user[1]
+            email = user[2]
+            permissao = user[4]
     
 
     if request.method == "POST":
         estado_escolhido = request.form["estado"]
         resultados = filtrar_por_estado(estado_escolhido)
-        return render_template('hospital.html', access=access, name=name, email=email, title="Hospital", estado=resultados)
+        return render_template('hospital.html', access=access, name=name, email=email, title="Hospital", estado=resultados, permissao=permissao)
     else:
         resultados = filtrar_por_estado(estado_escolhido="")
-        return render_template('hospital.html', access=access, name=name, email=email, title="Hospital", estado=resultados)
+        return render_template('hospital.html', access=access, name=name, email=email, title="Hospital", estado=resultados, permissao=permissao)
 
 
 
@@ -293,25 +312,24 @@ def troca_passwd():
         Rota para trocar a senha do usuário
     '''
 
-    user = buscar_usuario_pelo_email(session.get("email"))
-    senha = user[3]
-    email = user[2]
     access = check_session(session.get("email"))
     if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-        if request.method == "POST":
-            senha_atual = request.form["senha_atual"]
-            nova_senha = request.form["nova_senha"]
-            conf_senha = request.form["conf_nova_senha"]
+        user = buscar_usuario_pelo_email(session.get("email"))
+        name = user[1]
+        email = user[2]
+        permissao = user[4]
+        if user is not None:
 
-            if senha_atual == senha and nova_senha == conf_senha:
-                atualizando_senha(email, nova_senha)
+            if request.method == "POST":
+                senha_atual = request.form["senha_atual"]
+                nova_senha = request.form["nova_senha"]
+                conf_senha = request.form["conf_nova_senha"]
+                
+                atualizando_senha(user, senha_atual, nova_senha, conf_senha)
 
-            return render_template('perfil.html', access=access, title="Home", name=name, email=email)
+                return render_template('perfil.html', access=access, title="Home", name=name, email=email, permissao=permissao)
             
-    return redirect('/')
+    return redirect('/login')
 
 
 
@@ -324,7 +342,6 @@ def delete():
 
     user = buscar_usuario_pelo_email(session.get("email"))
     email = user[2]
-    print(type(email))
     if request.method == "POST":
         deletando_conta(email)
     
@@ -398,19 +415,20 @@ def mostrar_post(categoria, titulo):
     
     if post:        
         if access:
-            cad = buscar_usuario_pelo_email(session.get("email"))
-            if cad is not None:
+            user = buscar_usuario_pelo_email(session.get("email"))
+            if user is not None:
                 if request.method == 'POST':
                     comentario = request.form['comentario']
                     email = session.get("email")
-                    img = carregando_imagem(cad[2])
+                    img = carregando_imagem(user[2])
                     post_id = item[0]
                     cria_comentario( comentario, email, post_id)
                     return redirect(url_for('mostrar_post', categoria=categoria, titulo=titulo))
                 
-                name = cad[1]
-                email = cad[2]
-                return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img)
+                name = user[1]
+                email = user[2]
+                permissao = user[4]
+                return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img, permissao=permissao)
         
         return render_template('postagem.html', access=False, title="post", name=name,  post=post)
         
@@ -431,6 +449,7 @@ def criar():
 
     name = ""
     email = ""
+    permissao = False
     access = check_session(session.get("email"))
 
     if not access:
@@ -455,11 +474,12 @@ def criar():
         return redirect('/blog')
     else:
         if access:
-            cad = buscar_usuario_pelo_email(session.get("email"))
-            if cad is not None:
-                name = cad[1]
-                email = cad[2]
-                return render_template('criar_post.html', access=access, title="Criar post", name=name, email=email)
+            user = buscar_usuario_pelo_email(session.get("email"))
+            if user is not None:
+                name = user[1]
+                email = user[2]
+                permissao = user[4]
+                return render_template('criar_post.html', access=access, title="Criar post", name=name, email=email, permissao=permissao)
         
         return render_template('criar_post.html', access=False, title="Criar post", name=name)
     

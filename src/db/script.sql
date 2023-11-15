@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS usuario(
     user_name VARCHAR(255) NOT NULL,
     user_email VARCHAR(255) NOT NULL UNIQUE,
     user_password VARCHAR(255) NOT NULL,
-    user_type INT NOT NULL DEFAULT '1',
+    user_type INT NOT NULL DEFAULT '0',
     user_photo VARCHAR(255),
     user_dn DATE NOT NULL,
     user_cpf VARCHAR(11) NOT NULL,

@@ -47,6 +47,7 @@
             <li class="nav-item active">
                 <a class="nav-link" style="color: #fff;" href="/"><img src="../static/img/icons/inicio.png" width="16px" height="16px" alt="inicio" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Início</a>
             </li>
+            
             <div class="hr_navbar d-md-none"></div>
             <li class="nav-item">
                 <a class="nav-link" style="color: #fff;" href="/hospital"><img src="../static/img/icons/hospitais.png" width="16px" height="16px" alt="hospitais" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Hospitais</a>
@@ -63,6 +64,12 @@
             <li class="nav-item">
                 <a class="nav-link" style="color: #fff;" href="/proadisus"><img src="../static/img/icons/pproadisus.png" width="16px" height="16px" alt="proadisus" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Proadi-SUS</a>
             </li>
+            {% if permissao == 1 %}
+            <div class="hr_navbar d-md-none"></div>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: #fff;" href="/"><img src="../static/img/icons/eng.png" width="16px" height="16px" alt="gerenciando" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Gerenciando Posts</a>
+                </li>
+            {% endif %}
             <div class="hr_navbar d-md-none" style="margin-bottom: 20px;"></div>
             <label class="d-none d-md-block" style="
             color: #FFF; 
@@ -93,6 +100,13 @@
                 <img src="../static/img/icons/user.png" width="16px" height="16px" alt="user">
                 <a href="/perfil">Perfil</a>
             </div>
+            {% if permissao == 1 %}
+            <hr>
+            <div class="d-flex gap-3 align-items-center">
+                <img src="../static/img/icons/engrenagem.png" width="16px" height="16px" alt="user">
+                <a href="/perfil">Gerenciador de Posts</a>
+            </div>
+            {% endif %}
             <hr>
             <div class="d-flex gap-3 align-items-center">
                 <img src="../static/img/icons/logout.png" width="16px" height="16px" alt="logout">

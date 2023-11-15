@@ -115,7 +115,7 @@ def buscar_usuario_pelo_email(email):
 # Usuário
 
 
-def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status):
+def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status, permissao):
     '''
         Método de criar o usuário no banco
     '''
@@ -124,9 +124,10 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
     name_default = "../src/static/img/icons/icon_user.png"
     img_default = cv2.imread(name_default)
     hash_password = generate_password_hash(password)
-    sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo, user_dn, user_cpf, user_grau_parentesco, user_profissao, user_como_chegou, user_status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    val = (name, email, hash_password, name_default, dn, cpf, parentesco, profissao, como_chegou, status)
+    sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo, user_dn, user_cpf, user_grau_parentesco, user_profissao, user_como_chegou, user_status, user_type) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    val = (name, email, hash_password, name_default, dn, cpf, parentesco, profissao, como_chegou, status, permissao)
     mycursor.execute(sql, val)
+    print(val)
     
 
     # Imagem com ID
@@ -139,20 +140,28 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
     db.commit()
 
     user = buscar_usuario_pelo_email(email)
-    enviando_email(user)
+    if not user[-1]:
+        enviando_email(user)
     print("USUARIO CADASTRADO COM SUCESSO!")
 
 
 
-def atualizando_senha(email, nova_senha):
+def atualizando_senha(user, senha_atual, nova_senha, conf_senha):
     '''
         Método de alterar a senha do usuário feita na pagina perfil
     '''
 
-    sql = "UPDATE usuario SET user_password = %s WHERE user_email = %s"
-    val = (nova_senha, email)
-    mycursor.execute(sql, val)
-    print("SENHA ALTERADA COM SUCESSO!")
+    sql = "SELECT * from usuario;"
+    mycursor.execute(sql)
+    usuarios = mycursor.fetchall()
+    
+    for usuario in usuarios:
+        if check_password_hash(usuario[3], senha_atual):
+            if nova_senha == conf_senha:
+                sql = "UPDATE usuario SET user_password = %s WHERE user_email = %s"
+                val = (generate_password_hash(nova_senha), user[2])
+                mycursor.execute(sql, val)
+                print("SENHA ALTERADA COM SUCESSO!")
 
 
 
@@ -375,7 +384,7 @@ print()
 # Usuários Padroẽs
 
 # admin
-criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True)
+criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True, 1)
 
 # Post teste 
 
