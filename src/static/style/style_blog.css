@@ -71,3 +71,39 @@
 a{
     text-decoration: none;
 }
+
+@media screen and (max-width:800px) {
+    .imagens_pequenas{
+        width: 100%;
+    }
+
+    .new-post{
+        display: flexbox;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .submit_btn{
+        width: 15%;
+    }
+
+    .carousel-item{
+        width: 100%;
+    }
+    
+    html, body {
+        overflow-x: hidden;
+      }
+    
+    
+    .main-card-title{
+        width: 60%;
+        align-self: center;
+        text-align: justify;
+    }
+
+    .carousel-control-next, .carousel-control-prev{
+        filter: opacity(0);
+    }
+}
