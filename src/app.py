@@ -489,7 +489,25 @@ def validacao_link(link_unico):
     session['email'] = email
     return redirect('/')
 
+@app.route('/gerenciamento_post_adm')
+def post_adm():
+    '''
+        Página de Gerenciamento de Post para Adms
+    '''
+    posts = gerenciamento_post()
 
+    name = ""
+    email = ""
+    access = check_session(session.get("email"))
+
+    if access:
+        cad = buscar_usuario_pelo_email(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            return render_template('gerenciamento_post_adm.html', access=access, title="Home", name=name, email=email, posts=posts)
+    
+    return redirect('/login')
 
 if __name__ == '__main__':
     app.run(debug=True)

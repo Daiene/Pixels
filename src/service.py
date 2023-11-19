@@ -254,7 +254,18 @@ def todos_posts():
 
     return posts
 
+def gerenciamento_post():
 
+    # SQL para selecionar todos os posts
+    sql = "select p.*, u.user_name as autor From post as p, usuario as u where p.user_id=u.user_id;"
+
+    # Executando a consulta para obter todos os posts
+    mycursor.execute(sql)
+
+    # Obtendo os resultados da consulta
+    posts = mycursor.fetchall()
+
+    return posts
 
 
 def todos_comentarios():
