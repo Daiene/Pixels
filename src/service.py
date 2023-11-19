@@ -161,6 +161,7 @@ def atualizando_senha(user, senha_atual, nova_senha, conf_senha):
                 val = (generate_password_hash(nova_senha), user[2])
                 mycursor.execute(sql, val)
                 print("SENHA ALTERADA COM SUCESSO!")
+                return True
 
 
 

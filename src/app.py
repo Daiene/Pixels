@@ -1,4 +1,4 @@
-from flask import Flask, Response, redirect, render_template, request, session, url_for
+from flask import redirect, render_template, request, session, url_for, flash
 from service import *
 import os
 
@@ -91,6 +91,7 @@ def login():
         info, warn = check_login(email, password)
         
         if info:
+            flash('Login bem-sucedido!', 'success')
             session["email"] = request.form.get("email")
             return redirect("/")
         return render_template("login.html", warn=warn)
@@ -325,8 +326,9 @@ def troca_passwd():
                 nova_senha = request.form["nova_senha"]
                 conf_senha = request.form["conf_nova_senha"]
                 
-                atualizando_senha(user, senha_atual, nova_senha, conf_senha)
-
+                if atualizando_senha(user, senha_atual, nova_senha, conf_senha):
+                    flash('Sua senha foi atualizada!', 'success')
+                
                 return render_template('perfil.html', access=access, title="Home", name=name, email=email, permissao=permissao)
             
     return redirect('/login')
@@ -364,7 +366,7 @@ def carregar_imagem():
             imagem.filename = f"user_{user[0]}.png"
             image_path = os.path.join("../src/static/img/user_uploads/", imagem.filename)
             imagem.save(image_path)
-
+            flash('Sua foto foi atualizada!', 'success')
         return redirect('/perfil')
     else:
         pass
