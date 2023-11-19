@@ -7,6 +7,16 @@
 
 {% block content %}
 <main>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <div id="flash-messages" class="alert alert-success fixed-top mx-auto" role="alert" style="max-width: 400px;">
+          {% for message in messages %}
+              <p>{{ message }}</p>
+          {% endfor %}
+      </div>
+  {% endif %}
+{% endwith %}
+
   <div class="bg-img min_width_hospital">
     <div class="escuro">
       <div class="conteudo__capa__texto m-4">

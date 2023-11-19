@@ -6,6 +6,16 @@
 {% endblock %} 
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <div id="flash-messages" class="alert alert-success fixed-top mx-auto" role="alert" style="max-width: 400px;">
+          {% for message in messages %}
+              <p>{{ message }}</p>
+          {% endfor %}
+      </div>
+  {% endif %}
+{% endwith %}
+
 <div class="container" >
   <div class="row">
     <div class="col-md-6 mx-auto" id="box_1">
