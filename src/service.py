@@ -1,5 +1,5 @@
 # Importando biblioteca e arquivos
-from flask import Response
+from flask import Response, request
 import mysql.connector
 from datetime import datetime
 import cv2
@@ -401,12 +401,13 @@ def enviando_email(user):
 
     name = user[1]
     email = user[2]
+    ip = request.host.split(':')[0]
     link_unico = generate_password_hash(str(user[0]))
     subject = f'Validação de Email Rim do Amor'
     body=f'''
         Olá {name} você esta tentando criar uma conta em nossa site.
         Para isso por favor acesse o link:
-        127.0.0.1:5000/validacao/{link_unico}
+        {ip}:5000/validacao/{link_unico}
     '''
 
     em = EmailMessage()
