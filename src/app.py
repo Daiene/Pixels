@@ -514,6 +514,7 @@ def post_adm():
         Página de Gerenciamento de Post para Adms
     '''
     posts = gerenciamento_post()
+    denuncias = todas_denuncias()
 
     name = ""
     email = ""
@@ -526,11 +527,10 @@ def post_adm():
                 name = user[1]
                 email = user[2]
                 permissao =  user[4]
-                return render_template('gerenciamento_post_adm.html', access=access, title="Home", name=name, email=email, posts=posts, permissao=permissao)
+                return render_template('gerenciamento_post_adm.html', access=access, title="Home", name=name, email=email, posts=posts, permissao=permissao, denuncias=denuncias)
             return redirect('/meus_posts')
     
     return redirect('/login')
-
 
 
 
@@ -557,6 +557,32 @@ def meu_post():
             return redirect('/gerenciamento_post_adm')
     
     return redirect('/login')
+
+
+@app.route('/deletar_post/<int:post_id>', methods=['DELETE'])
+def deletar_post(post_id):
+    print(post_id)
+    deleta_post(post_id)
+
+    return redirect('/gerenciamento_post_adm')
+
+
+
+@app.route('/deletar_comentario/<int:com_id>', methods=['DELETE'])
+def deletar_comentario(com_id):
+    print(com_id)
+    deleta_comentario(com_id)
+    return redirect('/gerenciamento_post_adm')
+
+
+
+@app.route('/denunciar/<categoria>/<titulo>/<int:com_id>', methods=['POST'])
+def denunciar_comentario(com_id, categoria, titulo):
+    print('chamou')
+    denuncia_comentario(com_id)
+
+
+    return redirect(f'/post/{categoria}/{titulo}')
 
 
 

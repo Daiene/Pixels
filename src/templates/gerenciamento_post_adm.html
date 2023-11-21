@@ -47,22 +47,66 @@
             </table>
             <div class="button_forma">
 
-              <button class="button_forma" onclick="atualizarStatus('{{ post[0] }}')">Aprovar Post</button>
+              <button class="button_forma" onclick="aprovarPost('{{ post[0] }}')">Aprovar Post</button>
             </div>
             <div class="button_forma">
-
               <button class="button_forma" onclick="deleta_post('{{ post[0] }}')">Reprovar Post</button>
             </div>
             </li>
       {% endfor %}
   </ul>
 
+  <ul>
+    <h2> Denuncias </h2>
+    {% for denuncia in denuncias %}
+    <p>{{denuncia[1]}}</p>
+    <div class="button_forma">
+      <button class="button_forma" onclick="delete_comentario('{{ denuncia[0] }}')">Deletar comentário</button>
+    </div>
+    {% endfor %}
+  </ul>
+
+
   <script>
-      function atualizarStatus(postId) {
-          fetch(`/atualizar_status/${postId}`, {
-              method: 'GET',
-          })
+      function aprovarPost(postId) {
+              fetch(`/atualizar_status/${postId}`)
       }
+
+      function deleta_post(postId) {
+            fetch(`/deletar_post/${postId}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    // A postagem foi deletada com sucesso, atualize a interface conforme necessário
+                    location.reload();  // Recarrega a página (substitua isso conforme necessário)
+                } else {
+                    // Trate os casos em que a exclusão falhou
+                    console.error('Falha ao deletar postagem');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao tentar deletar postagem:', error);
+            });
+        }
+
+        function delete_comentario(comID) {
+            fetch(`/deletar_comentario/${comID}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    // A postagem foi deletada com sucesso, atualize a interface conforme necessário
+                      location.reload();  // Recarrega a página (substitua isso conforme necessário)
+                  } else {
+                    // Trate os casos em que a exclusão falhou
+                    console.error('Falha ao deletar postagem');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao tentar deletar postagem:', error);
+            });
+        }
       </script>
     </form>
 </div>

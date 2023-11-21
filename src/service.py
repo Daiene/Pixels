@@ -222,10 +222,11 @@ def criar_post(titulo, conteudo, email, categoria):
 
 
 def deleta_post(post_id):
+    print('PASSOO')
     sql = "DELETE FROM post WHERE post_id = %s"
-    val = (post_id)
+    val = (post_id,)
     mycursor.execute(sql, val)
-    db.commit
+    print();print("POST DELETADO!");print()
 
 
 
@@ -293,25 +294,41 @@ def todos_comentarios():
 
     # Pega todos os comentarios para enviar para o front-end  
     
-    sql = "SELECT c.com_content, c.com_date, c.post_id, c.user_id, u.user_name, u.user_id FROM comentario c INNER JOIN usuario u ON c.user_id = u.user_id;"
+    sql = "SELECT c.com_content, c.com_date, c.post_id, c.user_id, u.user_name, u.user_id, c.com_id FROM comentario c INNER JOIN usuario u ON c.user_id = u.user_id;"
     mycursor.execute(sql)
     comentarios = mycursor.fetchall()
 
     return comentarios
 
-def deleta_comentario(comentario_id):
 
-    sql = "DELETE FROM comentario WHERE comentario_id = %s"
-    val = (comentario_id)
+def todas_denuncias():
+    sql = "SELECT * FROM comentario WHERE denunciado = TRUE"
+    mycursor.execute(sql)
+    denuncias = mycursor.fetchall()
+    
+    return denuncias
 
 
+def denuncia_comentario(com_id):
+    print('passou aqui')
+    sql = "UPDATE comentario SET denunciado = TRUE WHERE com_id = %s"
+    val = (com_id)
+    mycursor.execute(sql, (val,))
+    db.commit()
+
+
+
+def deleta_comentario(com_id):
+    sql = "DELETE FROM comentario WHERE com_id = %s"
+    val = (com_id)
+    mycursor.execute(sql, (val,))
+    db.commit()
 
 
 def aprovar_post(post_id):
     sql = "UPDATE post SET post_status = TRUE WHERE post_id = %s"
-
-    mycursor.execute(sql, (post_id,))
-
+    val = (post_id)
+    mycursor.execute(sql, (val,))
     db.commit()
     
 

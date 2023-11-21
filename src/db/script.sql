@@ -47,7 +47,8 @@ CREATE TABLE IF NOT EXISTS comentario(
     com_content TEXT NOT NULL,
     com_date DATE NOT NULL,
     post_id BIGINT NOT NULL,
-    user_id BIGINT NOT NULL
+    user_id BIGINT NOT NULL,
+    denunciado BOOLEAN DEFAULT FALSE
 );
 
 
