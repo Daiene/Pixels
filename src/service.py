@@ -170,7 +170,7 @@ def deletando_conta(email):
     '''
         Método de deletar a conta do usuário feito na pagina perfil
     '''
-
+    print('PASSOO')
     sql = "DELETE FROM usuario WHERE user_email = %s"
     val = (email,)
     mycursor.execute(sql, val)

@@ -336,7 +336,7 @@ def troca_passwd():
 
 
 
-@app.route("/delete", methods=["POST"])
+@app.route("/delete")
 def delete():
     '''
         Rota de deletar a conta do usuário
@@ -344,8 +344,9 @@ def delete():
 
     user = buscar_usuario_pelo_email(session.get("email"))
     email = user[2]
-    if request.method == "POST":
-        deletando_conta(email)
+    deletando_conta(email)
+    session["email"] = None
+
     
     return redirect("/")
 
