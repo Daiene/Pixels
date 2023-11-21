@@ -299,6 +299,11 @@ def todos_comentarios():
 
     return comentarios
 
+def deleta_comentario(comentario_id):
+
+    sql = "DELETE FROM comentario WHERE comentario_id = %s"
+    val = (comentario_id)
+
 
 
 
@@ -447,6 +452,7 @@ print();print('BANCO DE DADOS CRIADO COM SUCESSO!');print()
 
 # admin
 criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True, 1)
+criando_usuario('Maria', 'maria@maria.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0)
 
 # Post teste 
 
