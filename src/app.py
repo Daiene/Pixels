@@ -511,5 +511,28 @@ def post_adm():
     
     return redirect('/login')
 
+
+@app.route('/meus_posts')
+def meu_post():
+    '''
+        Página de Gerenciamento do Usuário
+    '''
+
+    name = ""
+    email = ""
+    access = check_session(session.get("email"))
+
+
+    if access:
+        cad = buscar_usuario_pelo_email(session.get("email"))
+        if cad is not None:
+            name = cad[1]
+            email = cad[2]
+            user_id =cad[0]
+            posts = posts_usuario(user_id) 
+            return render_template('meus_posts.html', access=access, title="Home", name=name, email=email, posts=posts)
+    
+    return redirect('/login')
+
 if __name__ == '__main__':
     app.run(debug=True)

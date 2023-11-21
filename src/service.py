@@ -221,6 +221,13 @@ def criar_post(titulo, conteudo, email, categoria):
     return post_id
 
 
+def deleta_post(post_id):
+    sql = "DELETE FROM post WHERE post_id = %s"
+    val = (post_id)
+    mycursor.execute(sql, val)
+    db.commit
+
+
 
 
 def cria_comentario(comentario, email, post_id):
@@ -259,6 +266,19 @@ def gerenciamento_post():
 
     # SQL para selecionar todos os posts
     sql = "select p.*, u.user_name as autor From post as p, usuario as u where p.user_id=u.user_id;"
+
+    # Executando a consulta para obter todos os posts
+    mycursor.execute(sql)
+
+    # Obtendo os resultados da consulta
+    posts = mycursor.fetchall()
+
+    return posts
+
+def posts_usuario(user_id):
+
+    # SQL para selecionar todos os posts
+    sql = f"SELECT * FROM post WHERE user_id ={user_id};"
 
     # Executando a consulta para obter todos os posts
     mycursor.execute(sql)

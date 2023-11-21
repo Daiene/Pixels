@@ -1,38 +1,30 @@
-{% extends "base.html" %}
-
-{% block style %}
+{% extends "base.html" %} {% block style %}
 <link
   rel="stylesheet"
-  href="{{ url_for('static', filename='style/gerenciamento_post_adm.css') }}"
+  href="{{ url_for('static', filename='style/meus_posts.css') }}"
 />
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="container">
     <div class="row">
       <div class="col-md-9 mx-auto mt-5 mb-0" id="box_1">
         <div class="box-container">
           <form style="width: 100%;">
-            <h2 style="color: #004618">Gerenciamento de Posts</h2>
+            <h2 style="color: #004618">Meus Posts</h2>
             <p style="color: #374151">
-                Gerencie os posts do jeito que precisar  
+                Veja seus posts
             </p>
 
     <ul>
       {% for post in posts %}
-          <li style="flex-flow: row !important; list-style: none;">
+          <li style="flex-flow: row !important;">
             <table class="table table-light table-bordered align-middle text-center" style="margin-top: 40px; border-collapse: separate;">
               <thead>
                 <tr class="table-secondary table-bordered align-middle text-center">
-                  <th>#</th>
-                  <th>Autor</th>
                   <th class="col-lg-6">Título</th>
                   <th>Criado em</th>
                   <th>Status</th>
                 </tr>
                 <tr class="table table-bordered align-middle text-center">
-                  <th scope="col">{{ post[0] }}</th>
-                  <th scope="col">{{ post[-1] }}</th>
                   <th scope="col"><a href="/post/{{post[6]}}/{{ post[1] }}">{{ post[1] }}</a></th>
                   <th scope="col">{{ post[3] }}</th>
                   <th scope="col">
@@ -45,15 +37,6 @@
                 </tr>
               </thead>
             </table>
-            <div class="button_forma">
-
-              <button class="button_forma" onclick="atualizarStatus('{{ post[0] }}')">Aprovar Post</button>
-            </div>
-            <div class="button_forma">
-
-              <button class="button_forma" onclick="deleta_post('{{ post[0] }}')">Reprovar Post</button>
-            </div>
-            </li>
       {% endfor %}
   </ul>
 
