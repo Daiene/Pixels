@@ -11,6 +11,8 @@
     {% endblock %}
 </head>
 <body>
+    
+    <!-- Esta é a Navbar de caso o usuário esteja logado! -->
 
     {% if access == True %}
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #004619">
@@ -64,12 +66,23 @@
             <li class="nav-item">
                 <a class="nav-link" style="color: #fff;" href="/proadisus"><img src="{{url_for('static', filename='img/icons/pproadisus.png')}}" width="16px" height="16px" alt="proadisus" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Proadi-SUS</a>
             </li>
+
+
+            <!-- Esta é a opção de caso o usuário seja sum administrador -->
             {% if permissao == 1 %}
             <div class="hr_navbar d-md-none"></div>
                 <li class="nav-item active">
-                    <a class="nav-link" style="color: #fff;" href="/gerenciamento_post_adm"><img src="{{url_for('static', filename='img/icons/eng.png')}}" width="16px" height="16px" alt="gerenciando" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Gerenciando Posts</a>
+                    <a class="nav-link" style="color: #fff;" href="/gerenciamento_post_adm"><img src="{{url_for('static', filename='img/icons/eng.png')}}" width="16px" height="16px" alt="gerenciando" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Gerenciando de Posts</a>
                 </li>
+
+            {% else %}
+                <div class="hr_navbar d-md-none"></div>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: #fff;" href="/meus_posts"><img src="{{url_for('static', filename='img/icons/eng.png')}}" width="16px" height="16px" alt="gerenciando" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Meus Posts</a>
+                </li>
+
             {% endif %}
+
             <div class="hr_navbar d-md-none" style="margin-bottom: 20px;"></div>
             <label class="d-none d-md-block" style="
             color: #FFF; 
@@ -100,13 +113,26 @@
                 <img src="{{url_for('static', filename='img/icons/user.png')}}" width="16px" height="16px" alt="user">
                 <a href="/perfil">Perfil</a>
             </div>
+
+            <!-- Esta é a opção de caso o usuário seja sum administrador -->
             {% if permissao == 1 %}
             <hr>
             <div class="d-flex gap-3 align-items-center">
                 <img src="{{url_for('static', filename='img/icons/engrenagem.png')}}" width="16px" height="16px" alt="user">
                 <a href="/gerenciamento_post_adm">Gerenciador de Posts</a>
             </div>
+
+
+            {% else %}
+            <hr>
+            <div class="d-flex gap-3 align-items-center">
+                <img src="{{url_for('static', filename='img/icons/engrenagem.png')}}" width="16px" height="16px" alt="user">
+                <a href="/meus_posts">Meus Posts</a>
+            </div>
+
             {% endif %}
+
+
             <hr>
             <div class="d-flex gap-3 align-items-center">
                 <img src="{{url_for('static', filename='img/icons/logout.png')}}" width="16px" height="16px" alt="logout">
@@ -122,6 +148,8 @@
     {% endif %}
 
 
+
+    <!-- Esta é a Navbar de caso o usuário esteja deslogado -->
     {% if access == False %}
       <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #004619">
         <a class="navbar-brand" href="/">

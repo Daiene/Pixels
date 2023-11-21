@@ -2,6 +2,7 @@ from flask import redirect, render_template, request, session, url_for, flash
 from service import *
 import os
 
+
 @app.route('/')
 def home():
     '''
@@ -74,9 +75,13 @@ def cadastro():
 
 
 
+
 @app.route('/validacao')
 def validacao():
     return render_template('/confirme.html')
+
+
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -170,11 +175,14 @@ def blog():
     return render_template('blog.html', access=False, title="Home", name=name, posts=posts_filtrados, categoria_filtro=categoria_filtro)
 
 
+
+
 @app.route('/aprovacoes')
 def aprovacoes():
 
     posts = todos_posts()
     return render_template('aprovacoes.html', posts=posts)
+
 
 
 
@@ -266,6 +274,7 @@ def hospital():
     '''
         Página de Hositais
     '''
+
     name = ""
     email = ""
     permissao = False
@@ -303,8 +312,6 @@ def postagem():
     return render_template('postagem.html')
 
     
-
-
 
 
 @app.route('/troca_passwd', methods=["POST"])
@@ -347,7 +354,6 @@ def delete():
     deletando_conta(email)
     session["email"] = None
 
-    
     return redirect("/")
 
 
@@ -369,8 +375,7 @@ def carregar_imagem():
             imagem.save(image_path)
             flash('Sua foto foi atualizada!', 'success')
         return redirect('/perfil')
-    else:
-        pass
+        
     return redirect('/perfil')
 
 
@@ -388,14 +393,19 @@ def exibir_imagem():
 
     return img
 
+
+
+
 @app.route('/exibir_capa/<int:post_id>')
 def exibir_capa(post_id):
     '''
         Rota para carregar capa do post
     '''
-    print('Passou aqui')
+
     img = carregando_capa(post_id)
     return img
+
+
 
 
 @app.route('/post/<categoria>/<titulo>', methods=["POST", "GET"])
@@ -464,7 +474,7 @@ def criar():
         conteudo = request.form['conteudo']
         categoria = request.form['categoria']
 
-        email = session.get("email") # Pega o email pela sessão, ou seja o autor é definido automaticamente pela sessão.
+        email = session.get("email")
 
         post_id = criar_post(titulo, conteudo, email, categoria)
 
@@ -485,12 +495,18 @@ def criar():
                 return render_template('criar_post.html', access=access, title="Criar post", name=name, email=email, permissao=permissao)
         
         return render_template('criar_post.html', access=False, title="Criar post", name=name)
-    
+
+
+
+
 @app.route('/validacao/<link_unico>')
 def validacao_link(link_unico):
     email = validar_email(link_unico)
     session['email'] = email
     return redirect('/')
+
+
+
 
 @app.route('/gerenciamento_post_adm')
 def post_adm():
@@ -504,13 +520,18 @@ def post_adm():
     access = check_session(session.get("email"))
 
     if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
-            return render_template('gerenciamento_post_adm.html', access=access, title="Home", name=name, email=email, posts=posts)
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user is not None:
+            if user[4] == 1:
+                name = user[1]
+                email = user[2]
+                permissao =  user[4]
+                return render_template('gerenciamento_post_adm.html', access=access, title="Home", name=name, email=email, posts=posts, permissao=permissao)
+            return redirect('/meus_posts')
     
     return redirect('/login')
+
+
 
 
 @app.route('/meus_posts')
@@ -525,15 +546,19 @@ def meu_post():
 
 
     if access:
-        cad = buscar_usuario_pelo_email(session.get("email"))
-        if cad is not None:
-            name = cad[1]
-            email = cad[2]
-            user_id =cad[0]
-            posts = posts_usuario(user_id) 
-            return render_template('meus_posts.html', access=access, title="Home", name=name, email=email, posts=posts)
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user is not None:
+            if user[4] == 0:
+                name = user[1]
+                email = user[2]
+                user_id =user[0]
+                posts = posts_usuario(user_id) 
+                return render_template('meus_posts.html', access=access, title="Home", name=name, email=email, posts=posts)
+            return redirect('/gerenciamento_post_adm')
     
     return redirect('/login')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
