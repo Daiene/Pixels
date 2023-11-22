@@ -199,7 +199,7 @@ def atualizar_status(post_id):
 @app.route('/proadisus')
 def proadi_sus():
     '''
-        Página Pradisus
+        Página Proadisus
     '''
 
 
