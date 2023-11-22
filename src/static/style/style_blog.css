@@ -50,6 +50,7 @@
 .imagens_pequenas {
     min-height: 180px;
     min-width: 180px;
+    max-height: 10rem;
     object-fit: cover;
     vertical-align: middle;
 }
@@ -73,8 +74,15 @@ a{
 }
 
 @media screen and (max-width:800px) {
+        
     .imagens_pequenas{
         width: 100%;
+    }
+
+    .imagens_medias{
+        max-height: 10rem;
+        min-height: 180px;
+        min-width: 180px;
     }
 
     .new-post{
@@ -85,7 +93,7 @@ a{
     }
 
     .submit_btn{
-        width: 15%;
+        width: auto;
     }
 
     .carousel-item{
@@ -105,5 +113,13 @@ a{
 
     .carousel-control-next, .carousel-control-prev{
         filter: opacity(0);
+    }
+
+    .card-pequeno{
+        margin: 20px;
+    }
+
+    .card-medio{
+        margin: 15px;
     }
 }
