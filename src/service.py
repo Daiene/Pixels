@@ -1,5 +1,5 @@
 # Importando biblioteca e arquivos
-from flask import Response
+from flask import Response, request
 import mysql.connector
 from datetime import datetime
 import cv2
@@ -37,7 +37,6 @@ def check_cadastro(name, email, password, confirmPassword,  dn, cpf, parentesco,
     '''  
 
     user = buscar_usuario_pelo_email(email)
-    print(user)
     if user != None:
         warn = "Email já cadastrado!"
         return False, warn
@@ -56,6 +55,7 @@ def check_cadastro(name, email, password, confirmPassword,  dn, cpf, parentesco,
         
     warn=""
     return True, warn
+
 
 
 
@@ -127,7 +127,6 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
     sql = "INSERT INTO usuario (user_name, user_email, user_password, user_photo, user_dn, user_cpf, user_grau_parentesco, user_profissao, user_como_chegou, user_status, user_type) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     val = (name, email, hash_password, name_default, dn, cpf, parentesco, profissao, como_chegou, status, permissao)
     mycursor.execute(sql, val)
-    print(val)
     
 
     # Imagem com ID
@@ -142,7 +141,9 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
     user = buscar_usuario_pelo_email(email)
     if not user[-1]:
         enviando_email(user)
-    print("USUARIO CADASTRADO COM SUCESSO!")
+
+    print();print(f"USUARIO {user[1]} CADASTRADO COM SUCESSO!");print()
+
 
 
 
@@ -151,9 +152,7 @@ def atualizando_senha(user, senha_atual, nova_senha, conf_senha):
         Método de alterar a senha do usuário feita na pagina perfil
     '''
 
-    sql = "SELECT * from usuario;"
-    mycursor.execute(sql)
-    usuarios = mycursor.fetchall()
+    usuarios = chamando_todos_usuarios()
     
     for usuario in usuarios:
         if check_password_hash(usuario[3], senha_atual):
@@ -162,6 +161,7 @@ def atualizando_senha(user, senha_atual, nova_senha, conf_senha):
                 val = (generate_password_hash(nova_senha), user[2])
                 mycursor.execute(sql, val)
                 print("SENHA ALTERADA COM SUCESSO!")
+                return True
 
 
 
@@ -170,12 +170,21 @@ def deletando_conta(email):
     '''
         Método de deletar a conta do usuário feito na pagina perfil
     '''
-
+    print('PASSOO')
     sql = "DELETE FROM usuario WHERE user_email = %s"
     val = (email,)
     mycursor.execute(sql, val)
-    print("CONTA DELETADA!")
+    print();print("CONTA DELETADA!");print()
 
+
+
+
+def chamando_todos_usuarios():
+    sql = "SELECT * from usuario;"
+    mycursor.execute(sql)
+    usuarios = mycursor.fetchall()
+
+    return usuarios
 
 
 #######################################################################################################
@@ -186,6 +195,8 @@ def buscar_post_por_id(post_id):
     mycursor.execute(sql)   
     post = mycursor.fetchone()
     return post
+
+
 
 
 def criar_post(titulo, conteudo, email, categoria):
@@ -210,12 +221,24 @@ def criar_post(titulo, conteudo, email, categoria):
     return post_id
 
 
+def deleta_post(post_id):
+    print('PASSOO')
+    sql = "DELETE FROM post WHERE post_id = %s"
+    val = (post_id,)
+    mycursor.execute(sql, val)
+    print();print("POST DELETADO!");print()
+
+
+
+
 def cria_comentario(comentario, email, post_id):
     user = buscar_usuario_pelo_email(email)
     sql = "INSERT into comentario (com_content, com_date, post_id, user_id ) VALUES (%s, %s, %s, %s)"
     val = (comentario, now,  post_id, user[0])
     mycursor.execute(sql, val)
     db.commit()
+
+
 
 
 def todos_posts_aprovados():
@@ -240,22 +263,74 @@ def todos_posts():
 
     return posts
 
+def gerenciamento_post():
+
+    # SQL para selecionar todos os posts
+    sql = "select p.*, u.user_name as autor From post as p, usuario as u where p.user_id=u.user_id;"
+
+    # Executando a consulta para obter todos os posts
+    mycursor.execute(sql)
+
+    # Obtendo os resultados da consulta
+    posts = mycursor.fetchall()
+
+    return posts
+
+def posts_usuario(user_id):
+
+    # SQL para selecionar todos os posts
+    sql = f"SELECT * FROM post WHERE user_id ={user_id};"
+
+    # Executando a consulta para obter todos os posts
+    mycursor.execute(sql)
+
+    # Obtendo os resultados da consulta
+    posts = mycursor.fetchall()
+
+    return posts
+
+
 def todos_comentarios():
 
     # Pega todos os comentarios para enviar para o front-end  
     
-    sql = "SELECT c.com_content, c.com_date, c.post_id, c.user_id, u.user_name, u.user_id FROM comentario c INNER JOIN usuario u ON c.user_id = u.user_id;"
+    sql = "SELECT c.com_content, c.com_date, c.post_id, c.user_id, u.user_name, u.user_id, c.com_id FROM comentario c INNER JOIN usuario u ON c.user_id = u.user_id;"
     mycursor.execute(sql)
     comentarios = mycursor.fetchall()
 
     return comentarios
 
+
+def todas_denuncias():
+    sql = "SELECT * FROM comentario WHERE denunciado = TRUE"
+    mycursor.execute(sql)
+    denuncias = mycursor.fetchall()
+    
+    return denuncias
+
+
+def denuncia_comentario(com_id):
+    print('passou aqui')
+    sql = "UPDATE comentario SET denunciado = TRUE WHERE com_id = %s"
+    val = (com_id)
+    mycursor.execute(sql, (val,))
+    db.commit()
+
+
+
+def deleta_comentario(com_id):
+    sql = "DELETE FROM comentario WHERE com_id = %s"
+    val = (com_id)
+    mycursor.execute(sql, (val,))
+    db.commit()
+
+
 def aprovar_post(post_id):
     sql = "UPDATE post SET post_status = TRUE WHERE post_id = %s"
-
-    mycursor.execute(sql, (post_id,))
-
+    val = (post_id,)  # Adicionando vírgula para criar uma tupla
+    mycursor.execute(sql, val)
     db.commit()
+
     
 
 
@@ -276,6 +351,8 @@ def carregando_imagem(email):
     return Response(image_data, mimetype='image/png')
 
 
+
+
 def carregando_capa(post_id):
     '''
         Método de carregar imagem do perfil do banco
@@ -290,6 +367,7 @@ def carregando_capa(post_id):
         return Response(image_data, mimetype='image/jpeg')
     else:
         return "Erro ao carregar a imagem", 500
+
 
 #######################################################################################################
 # Hospitais
@@ -314,30 +392,40 @@ def filtrar_por_estado(estado_escolhido):
                     resultados.append(row)
     return resultados
 
+
 #######################################################################################################
 # Validação de Email
 
 def check_email(user):
+    '''
+        Método de chegar se o email do usuário está válido ou não
+    '''
     
     sql = f"SELECT user_status FROM usuario WHERE user_id = {user[0]}"
     mycursor.execute(sql)
     status = mycursor.fetchall()
-    print(type(status))
-    print(status[0])
     if status[0][0] == 0:
         return False
     
+    return True
+
+
 
 
 def enviando_email(user):
+    '''
+        Método de enviar email de validação para o usuário em que cria conta
+    '''
+
     name = user[1]
     email = user[2]
+    ip = request.host.split(':')[0]
     link_unico = generate_password_hash(str(user[0]))
     subject = f'Validação de Email Rim do Amor'
     body=f'''
         Olá {name} você esta tentando criar uma conta em nossa site.
         Para isso por favor acesse o link:
-        127.0.0.1:5000/validacao/{link_unico}
+        {ip}:5000/validacao/{link_unico}
     '''
 
     em = EmailMessage()
@@ -352,10 +440,15 @@ def enviando_email(user):
         smtp.login(email_send, email_password)
         smtp.sendmail(email_password, email, em.as_string())
 
+
+
 def validar_email(link_unico):
-    sql = "SELECT * from usuario;"
-    mycursor.execute(sql)
-    usuarios = mycursor.fetchall()
+    '''
+        Método de validar o email do usuário com o link enviado pelo email
+    '''
+
+    usuarios = chamando_todos_usuarios()
+
     for usuario in usuarios:
         if check_password_hash(link_unico, str(usuario[0])):
             sql = f"UPDATE usuario SET user_status=TRUE WHERE user_id={usuario[0]}"
@@ -364,20 +457,13 @@ def validar_email(link_unico):
             return usuario[2]
 
 
-
 #######################################################################################################
 # Crinado Banco de Dados:
 
 create_db()
 
 
-print()
-print('#######################################################################################################')
-print()
-print('BANCO DE DADOS CRIADO COM SUCESSO!')
-print()
-print('#######################################################################################################')
-print()
+print();print('BANCO DE DADOS CRIADO COM SUCESSO!');print()
 
 
 #######################################################################################################
@@ -385,6 +471,7 @@ print()
 
 # admin
 criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True, 1)
+criando_usuario('Maria', 'maria@maria.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0)
 
 # Post teste 
 
@@ -404,6 +491,5 @@ def postar6():
 
     # Commit the changes to the database
     db.commit()
-    print('CRIOU OS POSTS')
 
 postar6()

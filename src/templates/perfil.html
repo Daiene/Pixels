@@ -6,6 +6,16 @@
 {% endblock %} 
 
 {% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <div id="flash-messages" class="alert alert-success fixed-top mx-auto" role="alert" style="max-width: 400px;">
+          {% for message in messages %}
+              <p>{{ message }}</p>
+          {% endfor %}
+      </div>
+  {% endif %}
+{% endwith %}
+
 <div class="container" >
   <div class="row">
     <div class="col-md-6 mx-auto" id="box_1">
@@ -65,7 +75,7 @@
         <h2>Deletar Conta</h2>
         <p>Depois que sua conta for excluida, todos os seus recursos e dados serão excluidos permanentemente. Antes de
           excluir sua conta, baixe todos os dados ou informações que deseja reter.</p>
-            <button type="submit" class="btn btn-block btn-custom" style="background-color: #D50C0C; color: white; width: 100%;">Deletar Conta</button>
+            <button type="submit" class="btn btn-block btn-custom" style="background-color: #D50C0C; color: white; width: 100%;"><a href="/delete">Deletar conta</a></button>
       </div>
     </div>
   </div>

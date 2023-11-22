@@ -17,7 +17,11 @@ path_uploads = "/static/img/uploads/"
 db = mysql.connector.connect(
 host="localhost",
 user="root",
+<<<<<<< Updated upstream
+passwd="12345678",
+=======
 passwd="",
+>>>>>>> Stashed changes
 )
 
 mycursor = db.cursor()
@@ -36,7 +40,5 @@ csv_file = 'static/clinicas.csv'
 #############################################################################################################################################################################
 
 # Configuração da conta do Email
-email_send = 'pixels1dsm@gmail.com'
-email_password = 'hoch orfs trqy wipw'
-
-#Pixels0223!
+email_send = ''
+email_password = ''

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='style/gerenciamento_post_adm.css') }}"
+/>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-9 mx-auto mt-5 mb-0" id="box_1">
+        <div class="box-container">
+          <form style="width: 100%;">
+            <h2 style="color: #004618">Gerenciamento de Posts</h2>
+            <p style="color: #374151">
+                Gerencie os posts do jeito que precisar  
+            </p>
+
+    <ul>
+      {% for post in posts %}
+          <li style="flex-flow: row !important; list-style: none;">
+            <table class="table table-light table-bordered align-middle text-center" style="margin-top: 40px; border-collapse: separate;">
+              <thead>
+                <tr class="table-secondary table-bordered align-middle text-center">
+                  <th>#</th>
+                  <th>Autor</th>
+                  <th class="col-lg-6">Título</th>
+                  <th>Criado em</th>
+                  <th>Status</th>
+                </tr>
+                <tr class="table table-bordered align-middle text-center">
+                  <th scope="col">{{ post[0] }}</th>
+                  <th scope="col">{{ post[-1] }}</th>
+                  <th scope="col"><a href="/post/{{post[6]}}/{{ post[1] }}">{{ post[1] }}</a></th>
+                  <th scope="col">{{ post[3] }}</th>
+                  <th scope="col">
+                    {% if post[5] == 1 %}
+                        <p class="aprovado">Aprovado</p>
+                    {% elif post[5] == 0 %}
+                        <p class="pendente">Pendente</p>
+                    {% endif %}
+                </th>
+                </tr>
+              </thead>
+            </table>
+            <div class="button_forma">
+
+              <button class="button_forma" onclick="aprovarPost('{{ post[0] }}')">Aprovar Post</button>
+            </div>
+            <div class="button_forma">
+              <button class="button_forma" onclick="deleta_post('{{ post[0] }}')">Reprovar Post</button>
+            </div>
+            </li>
+      {% endfor %}
+  </ul>
+
+  <ul>
+    <h2> Denuncias </h2>
+    {% for denuncia in denuncias %}
+    <p>{{denuncia[1]}}</p>
+    <div class="button_forma">
+      <button class="button_forma" onclick="delete_comentario('{{ denuncia[0] }}')">Deletar comentário</button>
+    </div>
+    {% endfor %}
+  </ul>
+
+
+  <script>
+      function aprovarPost(postId) {
+              fetch(`/atualizar_status/${postId}`)
+      }
+
+      function deleta_post(postId) {
+            fetch(`/deletar_post/${postId}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    // A postagem foi deletada com sucesso, atualize a interface conforme necessário
+                    location.reload();  // Recarrega a página (substitua isso conforme necessário)
+                } else {
+                    // Trate os casos em que a exclusão falhou
+                    console.error('Falha ao deletar postagem');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao tentar deletar postagem:', error);
+            });
+        }
+
+        function delete_comentario(comID) {
+            fetch(`/deletar_comentario/${comID}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    // A postagem foi deletada com sucesso, atualize a interface conforme necessário
+                      location.reload();  // Recarrega a página (substitua isso conforme necessário)
+                  } else {
+                    // Trate os casos em que a exclusão falhou
+                    console.error('Falha ao deletar postagem');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao tentar deletar postagem:', error);
+            });
+        }
+      </script>
+    </form>
+</div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -47,23 +47,25 @@ CREATE TABLE IF NOT EXISTS comentario(
     com_content TEXT NOT NULL,
     com_date DATE NOT NULL,
     post_id BIGINT NOT NULL,
-    user_id BIGINT NOT NULL
+    user_id BIGINT NOT NULL,
+    denunciado BOOLEAN DEFAULT FALSE
 );
 
 
+-- Adicione a cláusula ON DELETE CASCADE nas chaves estrangeiras relevantes
+
+-- Tabela de comentários
 ALTER TABLE comentario ADD (
-    FOREIGN KEY (user_id) REFERENCES usuario(user_id),
-    FOREIGN KEY (post_id) REFERENCES post(post_id)
+    FOREIGN KEY (user_id) REFERENCES usuario(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES post(post_id) ON DELETE CASCADE
 );
 
-ALTER TABLE usuario ADD (
-    FOREIGN KEY (endereco_id) REFERENCES endereco(endereco_id)
-);
-
+-- Tabela de posts
 ALTER TABLE post ADD (
-    FOREIGN KEY (user_id) REFERENCES usuario(user_id)
+    FOREIGN KEY (user_id) REFERENCES usuario(user_id) ON DELETE CASCADE
 );
 
+-- Tabela de endereços
 ALTER Table endereco ADD (
-    FOREIGN KEY (user_id) REFERENCES usuario(user_id)
+    FOREIGN KEY (user_id) REFERENCES usuario(user_id) ON DELETE CASCADE
 );

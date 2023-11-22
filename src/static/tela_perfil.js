@@ -19,3 +19,10 @@ window.onload = function() {
         escuro.style.display = 'none';
     });
 };
+
+setTimeout(function() {
+    var flashMessages = document.getElementById('flash-messages');
+    if (flashMessages) {
+        flashMessages.style.display = 'none';
+    }
+}, 2000);

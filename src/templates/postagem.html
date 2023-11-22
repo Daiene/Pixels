@@ -60,7 +60,9 @@
                     <p alt="comentario" style="margin: 0;">{{ comentario[0] }}</p>
                   </div>
                 </div>
-                
+                <form method="post" action="/denunciar/{{post[5]}}/{{post[1]}}/{{ comentario[6] }}">
+                  <button type="submit" class="btn btn-primary">Denunciar</button>
+              </form>
               </div>
             {% endif %}
           {% endfor %}

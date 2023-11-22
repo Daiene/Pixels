@@ -1,6 +1,7 @@
-from flask import Flask, Response, redirect, render_template, request, session, url_for
+from flask import redirect, render_template, request, session, url_for, flash
 from service import *
 import os
+
 
 @app.route('/')
 def home():
@@ -74,9 +75,13 @@ def cadastro():
 
 
 
+
 @app.route('/validacao')
 def validacao():
     return render_template('/confirme.html')
+
+
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -91,6 +96,7 @@ def login():
         info, warn = check_login(email, password)
         
         if info:
+            flash('Login bem-sucedido!', 'success')
             session["email"] = request.form.get("email")
             return redirect("/")
         return render_template("login.html", warn=warn)
@@ -169,11 +175,14 @@ def blog():
     return render_template('blog.html', access=False, title="Home", name=name, posts=posts_filtrados, categoria_filtro=categoria_filtro)
 
 
+
+
 @app.route('/aprovacoes')
 def aprovacoes():
 
     posts = todos_posts()
     return render_template('aprovacoes.html', posts=posts)
+
 
 
 
@@ -190,7 +199,7 @@ def atualizar_status(post_id):
 @app.route('/proadisus')
 def proadi_sus():
     '''
-        Página Pradisus
+        Página Proadisus
     '''
 
 
@@ -265,6 +274,7 @@ def hospital():
     '''
         Página de Hositais
     '''
+
     name = ""
     email = ""
     permissao = False
@@ -304,8 +314,6 @@ def postagem():
     
 
 
-
-
 @app.route('/troca_passwd', methods=["POST"])
 def troca_passwd():
     '''
@@ -325,8 +333,9 @@ def troca_passwd():
                 nova_senha = request.form["nova_senha"]
                 conf_senha = request.form["conf_nova_senha"]
                 
-                atualizando_senha(user, senha_atual, nova_senha, conf_senha)
-
+                if atualizando_senha(user, senha_atual, nova_senha, conf_senha):
+                    flash('Sua senha foi atualizada!', 'success')
+                
                 return render_template('perfil.html', access=access, title="Home", name=name, email=email, permissao=permissao)
             
     return redirect('/login')
@@ -334,7 +343,7 @@ def troca_passwd():
 
 
 
-@app.route("/delete", methods=["POST"])
+@app.route("/delete")
 def delete():
     '''
         Rota de deletar a conta do usuário
@@ -342,9 +351,9 @@ def delete():
 
     user = buscar_usuario_pelo_email(session.get("email"))
     email = user[2]
-    if request.method == "POST":
-        deletando_conta(email)
-    
+    deletando_conta(email)
+    session["email"] = None
+
     return redirect("/")
 
 
@@ -364,10 +373,9 @@ def carregar_imagem():
             imagem.filename = f"user_{user[0]}.png"
             image_path = os.path.join("../src/static/img/user_uploads/", imagem.filename)
             imagem.save(image_path)
-
+            flash('Sua foto foi atualizada!', 'success')
         return redirect('/perfil')
-    else:
-        pass
+        
     return redirect('/perfil')
 
 
@@ -385,14 +393,19 @@ def exibir_imagem():
 
     return img
 
+
+
+
 @app.route('/exibir_capa/<int:post_id>')
 def exibir_capa(post_id):
     '''
         Rota para carregar capa do post
     '''
-    print('Passou aqui')
+
     img = carregando_capa(post_id)
     return img
+
+
 
 
 @app.route('/post/<categoria>/<titulo>', methods=["POST", "GET"])
@@ -461,7 +474,7 @@ def criar():
         conteudo = request.form['conteudo']
         categoria = request.form['categoria']
 
-        email = session.get("email") # Pega o email pela sessão, ou seja o autor é definido automaticamente pela sessão.
+        email = session.get("email")
 
         post_id = criar_post(titulo, conteudo, email, categoria)
 
@@ -482,7 +495,10 @@ def criar():
                 return render_template('criar_post.html', access=access, title="Criar post", name=name, email=email, permissao=permissao)
         
         return render_template('criar_post.html', access=False, title="Criar post", name=name)
-    
+
+
+
+
 @app.route('/validacao/<link_unico>')
 def validacao_link(link_unico):
     email = validar_email(link_unico)
@@ -491,5 +507,84 @@ def validacao_link(link_unico):
 
 
 
+
+@app.route('/gerenciamento_post_adm')
+def post_adm():
+    '''
+        Página de Gerenciamento de Post para Adms
+    '''
+    posts = gerenciamento_post()
+    denuncias = todas_denuncias()
+
+    name = ""
+    email = ""
+    access = check_session(session.get("email"))
+
+    if access:
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user is not None:
+            if user[4] == 1:
+                name = user[1]
+                email = user[2]
+                permissao =  user[4]
+                return render_template('gerenciamento_post_adm.html', access=access, title="Home", name=name, email=email, posts=posts, permissao=permissao, denuncias=denuncias)
+            return redirect('/meus_posts')
+    
+    return redirect('/login')
+
+
+
+@app.route('/meus_posts')
+def meu_post():
+    '''
+        Página de Gerenciamento do Usuário
+    '''
+
+    name = ""
+    email = ""
+    access = check_session(session.get("email"))
+
+
+    if access:
+        user = buscar_usuario_pelo_email(session.get("email"))
+        if user is not None:
+            if user[4] == 0:
+                name = user[1]
+                email = user[2]
+                user_id =user[0]
+                posts = posts_usuario(user_id) 
+                return render_template('meus_posts.html', access=access, title="Home", name=name, email=email, posts=posts)
+            return redirect('/gerenciamento_post_adm')
+    
+    return redirect('/login')
+
+
+@app.route('/deletar_post/<int:post_id>', methods=['DELETE'])
+def deletar_post(post_id):
+    print(post_id)
+    deleta_post(post_id)
+
+    return redirect('/gerenciamento_post_adm')
+
+
+
+@app.route('/deletar_comentario/<int:com_id>', methods=['DELETE'])
+def deletar_comentario(com_id):
+    print(com_id)
+    deleta_comentario(com_id)
+    return redirect('/gerenciamento_post_adm')
+
+
+
+@app.route('/denunciar/<categoria>/<titulo>/<int:com_id>', methods=['POST'])
+def denunciar_comentario(com_id, categoria, titulo):
+    print('chamou')
+    denuncia_comentario(com_id)
+
+
+    return redirect(f'/post/{categoria}/{titulo}')
+
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
