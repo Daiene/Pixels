@@ -327,9 +327,10 @@ def deleta_comentario(com_id):
 
 def aprovar_post(post_id):
     sql = "UPDATE post SET post_status = TRUE WHERE post_id = %s"
-    val = (post_id)
-    mycursor.execute(sql, (val,))
+    val = (post_id,)  # Adicionando vírgula para criar uma tupla
+    mycursor.execute(sql, val)
     db.commit()
+
     
 
 
