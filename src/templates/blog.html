@@ -4,7 +4,6 @@
 <title>Blog</title>
 {% endblock %}
 
-
 {% block content %}
 <main>
   <div id="carouselExampleCaptions" class="carousel slide">
@@ -108,7 +107,7 @@
   <div class="flex_container1">
     <div>
       <a href="/post/{{posts[0][5]}}/{{posts[0][1]}}">
-        <div class="card card-grande text-bg-dark">
+        <div class="card text-bg-dark">
           <img
             src="../static/img/post_uploads/post_{{posts[0][0]}}.png"
             class="card-img imagem_grande"
@@ -125,12 +124,12 @@
     <div>
       <!-- Post 2 -->
       <a href="/post/{{posts[1][5]}}/{{posts[1][1]}}">
-        <div class="card mb-3 card-pequeno" style="max-width: 540px; max-height: fit-content;">
+        <div class="card mb-3" style="max-width: 540px">
           <div class="row g-0">
             <div class="col-md-4">
               <img
                 src="../static/img/post_uploads/post_{{posts[1][0]}}.png"
-                class="img-fluid rounded-start imagens_pequenas" 
+                class="img-fluid rounded-start imagens_pequenas"
                 alt="..."
               />
             </div>
@@ -147,7 +146,7 @@
       </a>
       <!-- Post 3 -->
       <a href="/post/{{posts[2][5]}}/{{posts[2][1]}}">
-        <div class="card mb-3 card-pequeno" style="max-width: 540px">
+        <div class="card mb-3" style="max-width: 540px">
           <div class="row g-0">
             <div class="col-md-4">
               <img
@@ -169,13 +168,13 @@
       </a>
       <!-- Post 4 -->
       <a href="/post/{{posts[3][5]}}/{{posts[3][1]}}">
-        <div class="card mb-3 card-pequeno" style="max-width: 540px">
+        <div class="card mb-3" style="max-width: 540px">
           <div class="row g-0">
             <div class="col-md-4">
               <img
                 src="../static/img/post_uploads/post_{{posts[3][0]}}.png"
                 class="img-fluid rounded-start imagens_pequenas"
-                alt="..." style="max-height: 10rem;"
+                alt="..."
               />
             </div>
             <div class="col-md-8">
@@ -193,11 +192,11 @@
   </div>
   <hr />
   <div class="flex_container2">
-    <div class="flex_row mb-5">
+    <div class="flex_row">
       {% for post in posts[4:] %}
       <a href="/post/{{post[5]}}/{{post[1]}}">
         <div class="flex_row">
-          <div class="card card-medio" style="width: 22rem">
+          <div class="card" style="width: 22rem">
             <img src="../static/img/post_uploads/post_{{post[0]}}.png" class="card-img-top imagens_medias" alt="..." />
             <div class="card-body">
               <h5 class="card-title">{{ post[1]}}</h5>
@@ -212,7 +211,7 @@
   {% for post in posts %}
   <a href="/post/{{post[5]}}/{{post[1]}}">
     <div class="flex_row">
-      <div class="card card-medio" style="width: 22rem">
+      <div class="card" style="width: 22rem">
         <img src="../static/img/post_uploads/post_{{post[0]}}.png" class="card-img-top imagens_medias" alt="..." />
         <div class="card-body">
           <h5 class="card-title">{{ post[1]}}</h5>
@@ -226,6 +225,5 @@
 
 
   </div>
-  <br>
 </main>
 {% endblock %}

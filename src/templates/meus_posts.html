@@ -16,7 +16,7 @@
 
     <ul>
       {% for post in posts %}
-          <li style="flex-flow: row !important;">
+          <a href="/post/{{ post[6]}}/{{ post[1] }}"><li style="flex-flow: row !important;">
             <table class="table table-light table-bordered align-middle text-center" style="margin-top: 40px; border-collapse: separate;">
               <thead>
                 <tr class="table-secondary table-bordered align-middle text-center">
@@ -37,6 +37,7 @@
                 </tr>
               </thead>
             </table>
+          </a>
       {% endfor %}
   </ul>
 

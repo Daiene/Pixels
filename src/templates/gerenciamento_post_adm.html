@@ -20,17 +20,20 @@
 
     <ul>
       {% for post in posts %}
-          <li style="flex-flow: row !important; list-style: none;">
-            <table class="table table-light table-bordered align-middle text-center" style="margin-top: 40px; border-collapse: separate;">
-              <thead>
-                <tr class="table-secondary table-bordered align-middle text-center">
-                  <th>#</th>
-                  <th>Autor</th>
-                  <th class="col-lg-6">Título</th>
-                  <th>Criado em</th>
-                  <th>Status</th>
-                </tr>
-                <tr class="table table-bordered align-middle text-center">
+      <li style="flex-flow: row !important; list-style: none;">
+        
+        <a href="/post/{{post[6]}}/{{post[1]}}">
+        <table class="table table-light table-bordered align-middle text-center" style="margin-top: 40px; border-collapse: separate;">
+          <thead>
+            <tr class="table-secondary table-bordered align-middle text-center">
+              <th>#</th>
+              <th>Autor</th>
+              <th class="col-lg-6">Título</th>
+              <th>Criado em</th>
+              <th>Status</th>
+            </tr>
+            
+                  <tr class="table table-bordered align-middle text-center">
                   <th scope="col">{{ post[0] }}</th>
                   <th scope="col">{{ post[-1] }}</th>
                   <th scope="col"><a href="/post/{{post[6]}}/{{ post[1] }}">{{ post[1] }}</a></th>
@@ -43,15 +46,17 @@
                     {% endif %}
                 </th>
                 </tr>
+              </a>
               </thead>
             </table>
-            <div class="button_forma">
-
-              <button class="button_forma" onclick="aprovarPost('{{ post[0] }}')">Aprovar Post</button>
-            </div>
-            <div class="button_forma">
-              <button class="button_forma" onclick="deleta_post('{{ post[0] }}')">Reprovar Post</button>
-            </div>
+            {% if post[5] == 0 %}
+              <div class="button_forma">
+                <button class="button_forma" onclick="aprovarPost('{{ post[0] }}')">Aprovar Post</button>
+              </div>
+              <div class="button_forma">
+                <button class="button_forma" onclick="deleta_post('{{ post[0] }}')">Reprovar Post</button>
+              </div>
+            {% endif %}
             </li>
       {% endfor %}
   </ul>

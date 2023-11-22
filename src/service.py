@@ -244,7 +244,7 @@ def cria_comentario(comentario, email, post_id):
 def todos_posts_aprovados():
 
     # Pega todos os posts para enviar para o front-end  
-    sql = "SELECT p.post_id, p.post_title, p.post_content, p.post_date, p.post_img, p.post_category, u.user_name FROM post p INNER JOIN usuario u ON p.user_id = u.user_id WHERE p.post_status = TRUE ORDER BY p.post_id DESC;"
+    sql = "SELECT p.post_id, p.post_title, p.post_content, p.post_date, p.post_img, p.post_category, u.user_name, u.user_id, p.post_status FROM post p INNER JOIN usuario u ON p.user_id = u.user_id ORDER BY p.post_id DESC;"
     mycursor.execute(sql)
     posts = mycursor.fetchall()
 
@@ -266,7 +266,7 @@ def todos_posts():
 def gerenciamento_post():
 
     # SQL para selecionar todos os posts
-    sql = "select p.*, u.user_name as autor From post as p, usuario as u where p.user_id=u.user_id;"
+    sql = "SELECT p.*, u.user_name FROM post AS p, usuario AS u where p.user_id=u.user_id;"
 
     # Executando a consulta para obter todos os posts
     mycursor.execute(sql)
@@ -294,7 +294,7 @@ def todos_comentarios():
 
     # Pega todos os comentarios para enviar para o front-end  
     
-    sql = "SELECT c.com_content, c.com_date, c.post_id, c.user_id, u.user_name, u.user_id, c.com_id FROM comentario c INNER JOIN usuario u ON c.user_id = u.user_id;"
+    sql = "SELECT c.com_content, c.com_date, c.post_id, c.user_id, u.user_name, u.user_id, c.com_id FROM comentario AS c INNER JOIN usuario AS u ON c.user_id = u.user_id;"
     mycursor.execute(sql)
     comentarios = mycursor.fetchall()
 
@@ -327,10 +327,9 @@ def deleta_comentario(com_id):
 
 def aprovar_post(post_id):
     sql = "UPDATE post SET post_status = TRUE WHERE post_id = %s"
-    val = (post_id,)  # Adicionando vírgula para criar uma tupla
+    val = ((post_id),)
     mycursor.execute(sql, val)
     db.commit()
-
     
 
 
@@ -472,6 +471,7 @@ print();print('BANCO DE DADOS CRIADO COM SUCESSO!');print()
 # admin
 criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True, 1)
 criando_usuario('Maria', 'maria@maria.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0)
+criando_usuario('Kaue', 'a@a.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0)
 
 # Post teste 
 

@@ -155,9 +155,9 @@ def blog():
     print(categoria_filtro)
 
     if categoria_filtro:
-        posts_filtrados = [post for post in posts if post[5] == categoria_filtro]
+        posts_filtrados = [post for post in posts if post[5] == categoria_filtro and post[-1] == True]
     else:
-        posts_filtrados = posts
+        posts_filtrados = [post for post in posts if post[-1] == True]
 
 
     name = ""
@@ -199,7 +199,7 @@ def atualizar_status(post_id):
 @app.route('/proadisus')
 def proadi_sus():
     '''
-        Página Proadisus
+        Página Pradisus
     '''
 
 
@@ -298,18 +298,6 @@ def hospital():
     else:
         resultados = filtrar_por_estado(estado_escolhido="")
         return render_template('hospital.html', access=access, name=name, email=email, title="Hospital", estado=resultados, permissao=permissao)
-
-
-
-
-@app.route('/postagem', methods=["POST", "GET"])
-def postagem():
-    '''
-        Página de Post
-    '''
-    
-
-    return render_template('postagem.html')
 
     
 
@@ -411,16 +399,17 @@ def exibir_capa(post_id):
 @app.route('/post/<categoria>/<titulo>', methods=["POST", "GET"])
 def mostrar_post(categoria, titulo):
     '''
-    Rota do post individual, é uma rota dinamica que renderiza o post pela categoria e titulo
+        Rota do post individual, é uma rota dinamica que renderiza o post pela categoria e titulo
     '''
+
     name = ""
     email = ""
     access = check_session(session.get("email"))
     posts = todos_posts_aprovados()
     comentarios = todos_comentarios()
     img = None
-    
     post = None
+
     for item in posts:
         if item[5] == categoria and item[1] == titulo:
             post = item
@@ -437,12 +426,22 @@ def mostrar_post(categoria, titulo):
                     post_id = item[0]
                     cria_comentario( comentario, email, post_id)
                     return redirect(url_for('mostrar_post', categoria=categoria, titulo=titulo))
-                
+
                 name = user[1]
                 email = user[2]
                 permissao = user[4]
-                return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img, permissao=permissao)
-        
+                status_post = post[-1]
+                if status_post == False:
+                    print(post[-2])
+                    print(user[0])
+                    if permissao == True or post[-2] == user[0]:
+                        return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img, permissao=permissao, status_post=status_post)
+                    else:
+                        return redirect('/blog')
+                else:
+                    return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img, permissao=permissao, status_post=status_post)
+                
+
         return render_template('postagem.html', access=False, title="post", name=name,  post=post)
         
     else:
@@ -587,4 +586,4 @@ def denunciar_comentario(com_id, categoria, titulo):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=8080)

@@ -17,11 +17,7 @@ path_uploads = "/static/img/uploads/"
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-<<<<<<< Updated upstream
-passwd="12345678",
-=======
 passwd="",
->>>>>>> Stashed changes
 )
 
 mycursor = db.cursor()
