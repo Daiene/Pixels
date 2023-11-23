@@ -1,91 +1,22 @@
 {% extends "base.html" %}
 
 {% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style_blog.css') }}" />
 <title>Blog</title>
 {% endblock %}
 
 {% block content %}
 <main>
-  <div id="carouselExampleCaptions" class="carousel slide">
-    <link rel="stylesheet" href="../static/style/style_blog.css" />
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-          <img
-            src="../static/img/blog_imgs/Carrousel.png"
-            class="d-block w-100 "
-            alt="..."
-            style="max-height: 450px"
-          />
-        <div class="carousel-caption d-none d-md-block">
-          <h2>Rim do amor</h2>
-          <p>Tudo sobre Doença Renal Crônica em Crianças</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img
-          src="../static/img/gray.png"
-          class="d-block w-100"
-          alt="..."
-          style="max-height: 450px"
-        />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img
-          src="..."
-          class="d-block w-100"
-          alt="..."
-          style="max-height: 450px"
-        />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
+  <div class="bg-img min_width_hospital">
+
+    <div class="escuro">
+      <div class="conteudo__capa__texto m-4">
+
+        <div class="style_letra_capa">
+         Rim do Amor <br> Tudo sobre Doença Renal Crônica em crianças
         </div>
       </div>
     </div>
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleCaptions"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleCaptions"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
   <br />
 
@@ -225,5 +156,6 @@
 
 
   </div>
+  <div class="mb-5"></div>
 </main>
 {% endblock %}

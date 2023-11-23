@@ -3,6 +3,10 @@ main{
     background-color: var(--background-principal);
 }
 
+strong {
+    font-weight: 700;
+}
+
 .bg-img {
     height: 100vh;
     width: 100%;
@@ -75,7 +79,16 @@ main{
     font-family: var(--raleway);
     font-weight: 700;
     line-height: 28px;
-    word-wrap: break-word
+    word-wrap: break-word;
+}
+
+.conteudo__sub {
+    color: var(--titulo);
+    font-size: 22px;
+    font-family: var(--raleway);
+    font-weight: 700;
+    line-height: 22px;
+    word-wrap: break-word;
 }
 
 .conteudo__texto {
@@ -84,7 +97,7 @@ main{
     font-family: var(--roboto);
     font-weight: 400;
     line-height: 19.20px;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 .conteudo__cards {
@@ -120,6 +133,7 @@ main{
     
 }
 
+
 .perguntas__cards {
     display: flex;
     flex-flow: row wrap;
@@ -141,7 +155,7 @@ main{
     font-family: var(--raleway);
     font-weight: 700;
     line-height: 16px;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 .card-title {
@@ -150,7 +164,7 @@ main{
     font-family: var(--raleway);
     font-weight: 700;
     line-height: 28px;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 .card-text {
@@ -159,7 +173,7 @@ main{
     font-family: var(--roboto);
     font-weight: 400;
     line-height: 19.20px;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 .col-md-4 {
