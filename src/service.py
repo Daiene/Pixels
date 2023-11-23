@@ -310,8 +310,15 @@ def todas_denuncias():
 
 
 def denuncia_comentario(com_id):
-    print('passou aqui')
     sql = "UPDATE comentario SET denunciado = TRUE WHERE com_id = %s"
+    val = (com_id)
+    mycursor.execute(sql, (val,))
+    db.commit()
+
+
+
+def deleta_denuncia(com_id):
+    sql = "UPDATE comentario SET denunciado = FALSE WHERE com_id = %s"
     val = (com_id)
     mycursor.execute(sql, (val,))
     db.commit()
@@ -477,6 +484,9 @@ criando_usuario('Kaue', 'a@a.com', '123', '2000-10-31', '11111111111', 'mae', 'd
 
 def postar6():
     sql = "INSERT INTO post (post_title, post_content, post_date, post_img, post_category, user_id, post_status) VALUES (%s, %s, %s, %s, %s, %s, TRUE)"
+    sql2 = "INSERT INTO post (post_title, post_content, post_date, post_img, post_category, user_id, post_status) VALUES (%s, %s, %s, %s, %s, %s, FALSE)"
+
+
 
     post_values = [
         ("Crianças com Doença Renal Crônica: Causas e Sintomas", "A doença renal crônica em crianças é uma condição séria que afeta o funcionamento dos rins desde cedo. Neste artigo, exploramos as causas e sintomas dessa condição, bem como opções de tratamento disponíveis.", "2023-11-02", "img1.png", "relato", 1),
@@ -486,8 +496,23 @@ def postar6():
         ("Recursos de Apoio para Famílias de Crianças com Doença Renal Crônica", "Navegar pela jornada da doença renal crônica em crianças pode ser avassalador. Este guia lista recursos de apoio disponíveis para famílias, incluindo grupos de apoio, organizações e informações úteis.", "2023-11-02", "img5.png", "relato", 1)
     ]
 
+
+    post_values2 = [
+        ("1", "A doença renal crônica em crianças é uma condição séria que afeta o funcionamento dos rins desde cedo. Neste artigo, exploramos as causas e sintomas dessa condição, bem como opções de tratamento disponíveis.", "2023-11-02", "img1.png", "relato", 1),
+        ("2", "Cuidar de uma criança com doença renal crônica pode ser desafiador. Este guia fornece dicas úteis para pais e cuidadores sobre como proporcionar o melhor cuidado possível para essas crianças.", "2023-11-02", "img2.png", "relato", 1),
+        ("3", "A dieta desempenha um papel crucial no gerenciamento da doença renal crônica em crianças. Este artigo explora a importância da nutrição e fornece orientações sobre uma dieta saudável para essas crianças.", "2023-11-02", "img3.png", "relato", 1),
+        ("4", "Conheça histórias inspiradoras de crianças que enfrentaram a doença renal crônica com coragem e determinação. Suas jornadas oferecem esperança e inspiração a outras famílias enfrentando desafios semelhantes.", "2023-11-02", "img4.png", "relato", 1),
+        ("5", "Navegar pela jornada da doença renal crônica em crianças pode ser avassalador. Este guia lista recursos de apoio disponíveis para famílias, incluindo grupos de apoio, organizações e informações úteis.", "2023-11-02", "img5.png", "relato", 1)
+    ]
+
     for values in post_values:
         mycursor.execute(sql, values)
+
+    for values in post_values2:
+        mycursor.execute(sql2, values)
+
+
+
 
     # Commit the changes to the database
     db.commit()

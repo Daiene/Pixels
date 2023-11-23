@@ -20,6 +20,7 @@
 
     <ul>
       {% for post in posts %}
+        {% if post[5] == 0 %}
       <li style="flex-flow: row !important; list-style: none;">
         <a href="/post/{{post[6]}}/{{post[1]}}">
           <div class="table-responsive">
@@ -61,6 +62,7 @@
               </div>
             {% endif %}
             </li>
+          {% endif %}
       {% endfor %}
   </ul>
 
@@ -71,13 +73,24 @@
     <div class="button_forma">
       <button class="button_forma" onclick="delete_comentario('{{ denuncia[0] }}')">Deletar comentário</button>
     </div>
+    <div class="button_forma">
+      <button class="button_forma" onclick="deleta_denuncia('{{ denuncia[0] }}')">Deletar denuncia</button>
+    </div>
     {% endfor %}
   </ul>
 
 
   <script>
       function aprovarPost(postId) {
-              fetch(`/atualizar_status/${postId}`)
+              fetch(`/atualizar_status/${postId}`,{
+                method: 'PUT',
+              })
+      }
+
+      function deleta_denuncia(com_id) {
+              fetch(`/deletar_denuncia/${com_id}`,{
+                method: 'PUT',
+              })
       }
 
       function deleta_post(postId) {

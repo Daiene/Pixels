@@ -176,22 +176,12 @@ def blog():
 
 
 
-
-@app.route('/aprovacoes')
-def aprovacoes():
-
-    posts = todos_posts()
-    return render_template('aprovacoes.html', posts=posts)
-
-
-
-
-@app.route('/atualizar_status/<int:post_id>', methods=['GET'])
+@app.route('/atualizar_status/<int:post_id>', methods=['PUT'])
 def atualizar_status(post_id):
     print(post_id)
     aprovar_post(post_id)
 
-    return redirect('/aprovacoes')
+    return redirect('/gerenciamento_post_adm')
 
 
 
@@ -572,6 +562,16 @@ def deletar_comentario(com_id):
     print(com_id)
     deleta_comentario(com_id)
     return redirect('/gerenciamento_post_adm')
+
+
+
+
+@app.route('/deletar_denuncia/<int:com_id>', methods=['PUT'])
+def deletar_denuncia(com_id):
+    deleta_denuncia(com_id)
+
+    return redirect('/gerenciamento_post_adm')
+
 
 
 
