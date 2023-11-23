@@ -45,17 +45,13 @@ def cadastro():
         parentesco = request.form['parentesco']
         profissao = request.form['profissao']
         como_chegou = request.form['como_chegou']
-        cep = request.form['cep']
-        rua = request.form['logradouro']
-        estado = request.form['estado']
-        cidade = request.form['cidade']
         status = False
         permissao = 0
 
         info, warn = check_cadastro(name, email, password, confirmPassword, dn, cpf, parentesco, profissao, como_chegou)
 
         if info:
-            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status, permissao, cep, rua, estado, cidade)
+            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status, permissao)
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
         
@@ -509,6 +505,19 @@ def post_adm():
     posts = gerenciamento_post()
     denuncias = todas_denuncias()
 
+
+    categoria_filtro = request.args.get('estado', default=None)
+    print(categoria_filtro)
+    for post in posts:
+        print(type(post[5]), type(categoria_filtro))
+        if post[5] == categoria_filtro:
+            print("=")
+
+    if categoria_filtro:
+        posts_filtrados = [post for post in posts if post[5] == int(categoria_filtro)]
+    else:
+        posts_filtrados = posts
+
     name = ""
     email = ""
     access = check_session(session.get("email"))
@@ -520,7 +529,7 @@ def post_adm():
                 name = user[1]
                 email = user[2]
                 permissao =  user[4]
-                return render_template('gerenciamento_post_adm.html', access=access, title="Home", name=name, email=email, posts=posts, permissao=permissao, denuncias=denuncias)
+                return render_template('gerenciamento_post_adm.html', access=access, title="Home", name=name, email=email, posts=posts_filtrados, permissao=permissao, denuncias=denuncias)
             return redirect('/meus_posts')
     
     return redirect('/login')
