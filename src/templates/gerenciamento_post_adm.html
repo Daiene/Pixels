@@ -1,138 +1,142 @@
 {% extends "base.html" %}
 
 {% block style %}
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='style/gerenciamento_post_adm.css') }}"
-/>
+<link rel="stylesheet" href="{{ url_for('static', filename='style/gerenciamento_post_adm.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style_hospital.css') }}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <div class="row">
-      <div class="col-md-9 mx-auto mt-5 mb-0" id="box_1">
-        <div class="box-container">
-          <form style="width: 100%;">
-            <h2 style="color: #004618">Gerenciamento de Posts</h2>
-            <p style="color: #374151">
-                Gerencie os posts do jeito que precisar  
-            </p>
+  <div class="row">
+    <div class="col-md-9 mx-auto mt-5 mb-0" id="box_1">
+      <div class="box-container">
+        <form style="width: 100%;">
+          <h2 style="color: #004618">Gerenciamento de Posts</h2>
+          <p style="color: #374151">
+            Gerencie os posts do jeito que precisar
+          </p>
+          <form action="/hospital" method="POST">
+            <div class="formularios" style="display: flex; justify-content: start; flex-wrap: wrap;">
 
-    <ul>
-      {% for post in posts %}
-        {% if post[5] == 0 %}
-      <li style="flex-flow: row !important; list-style: none;">
-        <a href="/post/{{post[6]}}/{{post[1]}}">
-          <div class="table-responsive">
+                <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
+                    <p style="margin: 0;">Estado</p>
+                    <select name="estado" class="form-select" aria-label="Default select example" style="display: flex; width: 350px; height: 45px; align-items: center;">
+                        <option value="">Todos os Posts</option>
+                        <option value="0">Pendentes</option>
+                        <option value="1">Aprovados</option>
+                    </select>
 
-            <table class="table table-light table-bordered align-middle text-center" style="border-collapse: separate;">
-              <thead>
-                <tr class="table-secondary table-bordered align-middle text-center">
-                  <th>#</th>
-                  <th>Autor</th>
-                  <th class="col-lg-6">Título</th>
-                  <th>Criado em</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table table-bordered align-middle text-center">
-                  <th scope="col">{{ post[0] }}</th>
-                  <th scope="col">{{ post[-1] }}</th>
-                  <th scope="col"><a href="/post/{{post[6]}}/{{ post[1] }}">{{ post[1] }}</a></th>
-                  <th scope="col">{{ post[3] }}</th>
-                  <th scope="col">
-                    {% if post[5] == 1 %}
-                    <p class="aprovado">Aprovado</p>
-                    {% elif post[5] == 0 %}
-                    <p class="pendente">Pendente</p>
-                    {% endif %}
-                  </th>
-                </tr>
+                    <input type="submit" value="Consultar" class="button_forma fw-bold button_submit" style="margin-top: 10px;">
+
+                </div>
+            </div>
+        </form>
+
+          <ul class="list-unstyled">
+            {% for post in posts %}
+            <li class="mb-4">
+              <div class="card">
+                <div class="card-header">
+                  <a href="/post/{{post[6]}}/{{post[1]}}">
+                  <strong>{{ post[1] }}</strong>
+                </div>
               </a>
-            </tbody>
-          </table>
-        </div>
-            {% if post[5] == 0 %}
-              <div class="button_forma">
-                <button class="button_forma" onclick="aprovarPost('{{ post[0] }}')">Aprovar Post</button>
+                <div class="card-body d-flex justify-content-between align-items-start">
+                  <div>
+                    <p class="card-text">
+                      <strong>Autor:</strong> {{ post[-1] }}<br>
+                      <strong>Criado em:</strong> {{ post[3] }}<br>
+                      <strong>Status:</strong>
+                      {% if post[5] == 1 %}
+                      <span class="badge badge-success">Aprovado</span>
+                      {% elif post[5] == 0 %}
+                      <span class="badge badge-warning">Pendente</span>
+                      {% endif %}
+                    </p>
+                  </div>
+                  <div class="text-right">
+                    <div class="mt-3">
+                    {% if post[5] == 0 %}
+                        <button class="btn btn-outline-success" onclick="aprovarPost('{{ post[0] }}')">Aprovar Post</button>
+                        <button class="btn btn-outline-danger" onclick="deleta_post('{{ post[0] }}')">Reprovar Post</button>
+                      </div>
+                    {% else%}
+                        <button class="btn btn-outline-danger" onclick="deleta_post('{{ post[0] }}')">Deletar Post</button>
+                    {% endif %}
+                  </div>
+                </div>
               </div>
-              <div class="button_forma">
-                <button class="button_forma" onclick="deleta_post('{{ post[0] }}')">Reprovar Post</button>
-              </div>
-            {% endif %}
             </li>
-          {% endif %}
-      {% endfor %}
-  </ul>
+            {% endfor %}
+          </ul>
+          
+          
+        <h2> Denuncias </h2>
+        {% for denuncia in denuncias %}
+        <p>{{denuncia[1]}}</p>
+        <div class="button_forma">
+          <button class="button_forma" onclick="delete_comentario('{{ denuncia[0] }}')">Deletar comentário</button>
+        </div>
+        <div class="button_forma">
+          <button class="button_forma" onclick="deleta_denuncia('{{ denuncia[0] }}')">Deletar denuncia</button>
+        </div>
+        {% endfor %}
+      </ul>
 
-  <ul>
-    <h2> Denuncias </h2>
-    {% for denuncia in denuncias %}
-    <p>{{denuncia[1]}}</p>
-    <div class="button_forma">
-      <button class="button_forma" onclick="delete_comentario('{{ denuncia[0] }}')">Deletar comentário</button>
-    </div>
-    <div class="button_forma">
-      <button class="button_forma" onclick="deleta_denuncia('{{ denuncia[0] }}')">Deletar denuncia</button>
-    </div>
-    {% endfor %}
-  </ul>
 
+      <script>
+        function aprovarPost(postId) {
+          fetch(`/atualizar_status/${postId}`, {
+            method: 'PUT',
+          })
+        }
 
-  <script>
-      function aprovarPost(postId) {
-              fetch(`/atualizar_status/${postId}`,{
-                method: 'PUT',
-              })
-      }
+        function deleta_denuncia(com_id) {
+          fetch(`/deletar_denuncia/${com_id}`, {
+            method: 'PUT',
+          })
+        }
 
-      function deleta_denuncia(com_id) {
-              fetch(`/deletar_denuncia/${com_id}`,{
-                method: 'PUT',
-              })
-      }
-
-      function deleta_post(postId) {
-            fetch(`/deletar_post/${postId}`, {
-                method: 'DELETE',
-            })
+        function deleta_post(postId) {
+          fetch(`/deletar_post/${postId}`, {
+            method: 'DELETE',
+          })
             .then(response => {
-                if (response.ok) {
-                    // A postagem foi deletada com sucesso, atualize a interface conforme necessário
-                    location.reload();  // Recarrega a página (substitua isso conforme necessário)
-                } else {
-                    // Trate os casos em que a exclusão falhou
-                    console.error('Falha ao deletar postagem');
-                }
+              if (response.ok) {
+                // A postagem foi deletada com sucesso, atualize a interface conforme necessário
+                location.reload();  // Recarrega a página (substitua isso conforme necessário)
+              } else {
+                // Trate os casos em que a exclusão falhou
+                console.error('Falha ao deletar postagem');
+              }
             })
             .catch(error => {
-                console.error('Erro ao tentar deletar postagem:', error);
+              console.error('Erro ao tentar deletar postagem:', error);
             });
         }
 
         function delete_comentario(comID) {
-            fetch(`/deletar_comentario/${comID}`, {
-                method: 'DELETE',
-            })
+          fetch(`/deletar_comentario/${comID}`, {
+            method: 'DELETE',
+          })
             .then(response => {
-                if (response.ok) {
-                    // A postagem foi deletada com sucesso, atualize a interface conforme necessário
-                      location.reload();  // Recarrega a página (substitua isso conforme necessário)
-                  } else {
-                    // Trate os casos em que a exclusão falhou
-                    console.error('Falha ao deletar postagem');
-                }
+              if (response.ok) {
+                // A postagem foi deletada com sucesso, atualize a interface conforme necessário
+                location.reload();  // Recarrega a página (substitua isso conforme necessário)
+              } else {
+                // Trate os casos em que a exclusão falhou
+                console.error('Falha ao deletar postagem');
+              }
             })
             .catch(error => {
-                console.error('Erro ao tentar deletar postagem:', error);
+              console.error('Erro ao tentar deletar postagem:', error);
             });
         }
       </script>
-    </form>
-</div>
-      </div>
+      </form>
     </div>
   </div>
+</div>
+</div>
 
 {% endblock %}

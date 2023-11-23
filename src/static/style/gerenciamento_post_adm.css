@@ -61,3 +61,27 @@ a{
     text-decoration: none;
     color:#374151 ;
 }
+
+.button_aprovar{
+    background-color: green;
+    color: white;
+    width: 20%;
+    height: 40px;
+    font-weight: bold;
+}
+
+.button_reprovar{
+    background-color: red;
+    color: white;
+    width: 20%;
+    height: 40px;
+    font-weight: bold;
+}
+
+.aprovacao {
+    min-width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
