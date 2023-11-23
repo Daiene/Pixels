@@ -23,9 +23,9 @@ CREATE TABLE IF NOT EXISTS usuario(
 CREATE TABLE IF NOT EXISTS endereco(
     endereco_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     rua VARCHAR(100),
-    bairro VARCHAR(100),
     cidade VARCHAR(100),
     estado VARCHAR(100),
+    cep CHAR(8),
     user_id BIGINT NOT NULL
 );
 

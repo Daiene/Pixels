@@ -45,13 +45,17 @@ def cadastro():
         parentesco = request.form['parentesco']
         profissao = request.form['profissao']
         como_chegou = request.form['como_chegou']
+        cep = request.form['cep']
+        rua = request.form['logradouro']
+        estado = request.form['estado']
+        cidade = request.form['cidade']
         status = False
         permissao = 0
 
         info, warn = check_cadastro(name, email, password, confirmPassword, dn, cpf, parentesco, profissao, como_chegou)
 
         if info:
-            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status, permissao)
+            criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status, permissao, cep, rua, estado, cidade)
         else:
             return render_template('cadastro.html', title="Cadastro", warn=warn)
         

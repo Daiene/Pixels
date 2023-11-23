@@ -115,7 +115,7 @@ def buscar_usuario_pelo_email(email):
 # Usuário
 
 
-def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status, permissao):
+def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status, permissao, cep, rua, estado, cidade):
     '''
         Método de criar o usuário no banco
     '''
@@ -140,9 +140,19 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
 
     user = buscar_usuario_pelo_email(email)
     if not user[-1]:
+        adicionando_endereco(cep, rua, estado, cidade)
         enviando_email(user)
 
     print();print(f"USUARIO {user[1]} CADASTRADO COM SUCESSO!");print()
+
+
+
+def adicionando_endereco(cep, rua, estado, cidade):
+    sql = "INSERT INTO endereco (rua, cidade, estado, cep) VALUES (%s, %s, %s, %s)"
+    val = (rua, cidade, estado, cep)
+    mycursor.execute(sql, val)
+    db.commit()
+
 
 
 
@@ -476,9 +486,9 @@ print();print('BANCO DE DADOS CRIADO COM SUCESSO!');print()
 # Usuários Padroẽs
 
 # admin
-criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True, 1)
-criando_usuario('Maria', 'maria@maria.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0)
-criando_usuario('Kaue', 'a@a.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0)
+criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True, 1, '', '', '', '')
+criando_usuario('Maria', 'maria@maria.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
+criando_usuario('Kaue', 'a@a.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
 
 # Post teste 
 
