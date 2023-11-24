@@ -299,7 +299,7 @@ def gerenciamento_post():
 def posts_usuario(user_id):
 
     # SQL para selecionar todos os posts
-    sql = f"SELECT * FROM post WHERE user_id ={user_id};"
+    sql = f"SELECT p.*, u.user_name FROM post AS p, usuario AS u WHERE p.user_id ={user_id} AND p.user_id = u.user_id;"
 
     # Executando a consulta para obter todos os posts
     mycursor.execute(sql)
@@ -534,7 +534,7 @@ print();print('BANCO DE DADOS CRIADO COM SUCESSO!');print()
 
 # admin
 criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True, 1, '', '', '', '')
-criando_usuario('Maria', 'maria@maria.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
+criando_usuario('Maria', 'kauedanka@gmail.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
 criando_usuario('Kaue', 'yokota860@gmail.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
 
 # Post teste 
