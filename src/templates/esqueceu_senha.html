@@ -11,14 +11,14 @@
     <div class="row">
         <div class="login-container col-12 col-lg-6">
             <div class="login-form col-12 col-xl-6 mt-5">
-                <form>
+                <form action="/esqueceu_senha" method="POST" >
                   <h1>Esqueceu a senha?</h1>
                     <p>Insira seu email para redefinir sua senha</p>
                     <div class="form-group">
-                    <label for="exampleInputEmail1">Email*</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="usuario@dominio.com">
+                    <label for="email">Email*</label>
+                    <input name="email" type="email" class="form-control" autocomplete="off" aria-describedby="emailHelp" placeholder="usuario@dominio.com">
               </div>
-                    <button type="button" class="btn btn-custom btn-block">Continuar</button>
+                    <button type="submit" class="btn btn-custom btn-block">Continuar</button>
                     <p><a href="/login">Voltar para o login</a></p>
                 </form>
             </div>

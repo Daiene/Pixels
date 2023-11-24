@@ -3,6 +3,19 @@ from service import *
 import os
 
 
+from itsdangerous import URLSafeTimedSerializer
+
+# Chave secreta usada para a geração e verificação do token
+SECRET_KEY = 'sua_chave_secreta'
+
+# Salt usado para a geração e verificação do token
+SALT = 'link_temporario'
+
+# Crie o serializer com a chave secreta e o salt
+serializer = URLSafeTimedSerializer(SECRET_KEY, salt=SALT)
+
+
+
 @app.route('/')
 def home():
     '''
@@ -136,14 +149,20 @@ def logout():
 
 
 
-@app.route('/esqueceu_senha')
+@app.route('/esqueceu_senha', methods=['POST', 'GET'])
 def esqueceu_senha():
     '''
         Pagina esqueceu senha
     '''
 
+    if request.method == "POST":
+        email = request.form['email']
+        print(email)
+        user = buscar_usuario_pelo_email(email)
+        enviar_email_senha(user)
+        
     return render_template('esqueceu_senha.html', title="Esqueceu Senha")
-
+    
 
 
 
@@ -599,6 +618,36 @@ def denunciar_comentario(com_id, categoria, titulo):
 
 
     return redirect(f'/post/{categoria}/{titulo}')
+
+
+@app.route('/redefinir_senha/<token>', methods=['POST','GET'])
+def esqueceu_senha_redefinir(token):
+
+    try:
+        email = serializer.loads(token, salt='link_temporario', max_age=3600)
+        print(email)
+        session['email'] = email
+        user = buscar_usuario_pelo_email(email)
+    
+        
+        if request.method == "POST":
+            nova_senha = request.form["nova_senha"]
+            conf_senha = request.form["conf_nova_senha"]
+
+            if redefinir_senha(user,nova_senha, conf_senha):
+                flash('Sua senha foi atualizada!', 'success')
+                session['email'] = None
+
+                return redirect('/login')
+
+
+        if request.method == "GET":
+
+            return render_template('redefinir_senha.html', token=token)
+    except:
+        return render_template('link_invalido.html')
+
+
 
 
 

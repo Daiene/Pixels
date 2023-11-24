@@ -2,6 +2,7 @@ from pathlib import Path
 from flask import Flask
 import mysql.connector
 from datetime import datetime
+from itsdangerous import URLSafeTimedSerializer
 
 
 #############################################################################################################################################################################
@@ -17,7 +18,7 @@ path_uploads = "/static/img/uploads/"
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="",
+passwd="12345678",
 )
 
 mycursor = db.cursor()
@@ -28,6 +29,8 @@ now = datetime.now()
 
 app = Flask(__name__)
 app.secret_key = 'APIMAES'
+app.config['SECRET_KEY'] = 'sua_chave_secreta'
+serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 #############################################################################################################################################################################
 
 # Arquivos de Dados
