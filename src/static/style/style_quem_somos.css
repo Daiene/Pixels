@@ -1,0 +1,107 @@
+body{
+    background-color: var(--background-principal);
+}
+
+.bg-img {
+    height: 100vh;
+    width: 100%;
+    background-image: url(../img/quem_somos_imgs/banner.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+.escuro{
+    background-color: rgba(0, 0, 0, 0.226);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.min_width_hospital{
+    min-width: 400px;
+}
+
+/* -- CONTEUDO NOVO -- */
+
+.conteudo {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    gap: 20px;
+    width: auto;
+    padding: 3% 5%;
+}
+
+.perguntas{
+    display: flex;
+    flex-flow: column wrap;
+    padding: 3% 5%;
+}
+
+.fundo_escuro{
+    background-color: rgba(0, 70, 25, 0.05);
+}
+
+.conteudo__titulo {
+    color: var(--titulo);
+    font-size: 28px;
+    font-family: var(--raleway);
+    font-weight: 700;
+    line-height: 28px;
+    word-wrap: break-word
+}
+
+.conteudo__texto {
+    color: var(--texto);
+    font-size: 16px;
+    font-family: var(--roboto);
+    font-weight: 400;
+    line-height: 19.20px;
+    word-wrap: break-word
+}
+
+/* --- CARDS MAES --- */
+
+.foto{
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.text_content{
+    align-items: start;
+    max-width: 65%;
+}
+
+.card_content{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    align-items: center;
+    padding: 40px;
+}
+
+@media (width <= 1200px) {
+
+    /* \/ HOME \/ */
+
+    .card_content{
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 80%;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .text_content{
+        align-items: center;
+        max-width: 65%;
+    }
+
+}

@@ -50,7 +50,6 @@ body{
 .btn-custom{
     background-color: var(--fundo-principal);
     color: var(--background-principal);
-    
 }
 
 .navbar{
