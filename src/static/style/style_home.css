@@ -145,7 +145,7 @@ strong {
     max-width: 540px;
     border: var(--background-principal);
     background-color: var(--background-principal);
-    margin-bottom: 1%;
+    margin-bottom: 3vh;
 }
 
 .card-header {
