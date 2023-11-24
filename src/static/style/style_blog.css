@@ -123,6 +123,7 @@
 .imagem_grande {
     min-height: 572px;
     min-width: 572px;
+    max-height: 527px;
     object-fit: cover;
     vertical-align: middle;
 }
