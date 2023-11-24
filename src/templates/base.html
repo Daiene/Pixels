@@ -26,13 +26,13 @@
 
             <div class="tela_perfil_nome2 flex-column d-md-none">
                 <div class="d-flex align-items-center" style="padding-top: 16px; padding-bottom: 35px; justify-content: space-between;">
-                    <div class="d-flex flex-row gap-3" style="justify-content: center; align-items: center;">
+                    <a href="/perfil"><div class="d-flex flex-row gap-3" style="justify-content: center; align-items: center;">
                         <img src="{{ url_for('exibir_imagem') }}" class="foto_perfil" width="95px" height="95px" alt="foto de perfil">
                         <div class="d-flex flex-column">
                                     <b class="fs-4 fw-semibold" style="color: white;">{{name}}</b>
                                     <b class="fw-regular" style="color: white; font-size: 15px; font-weight: 400;">{{email}}</b>
                         </div>
-                    </div>
+                    </div></a>
                     <a href="/logout"><div class="d-flex gap-2" style="align-items: end;">
                         <img src="{{url_for('static', filename='img/icons/sair.png')}}" width="23px" height="23px" alt="logout">
                         <a href="/logout">Sair</a>
@@ -64,7 +64,7 @@
             </li>
             <div class="hr_navbar d-md-none"></div>
             <li class="nav-item">
-                <a class="nav-link" style="color: #fff;" href="/proadisus"><img src="{{url_for('static', filename='img/icons/pproadisus.png')}}" width="16px" height="16px" alt="proadisus" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Proadi-SUS</a>
+                <a class="nav-link" style="color: #fff;" href="/quem_somos"><img src="{{url_for('static', filename='img/icons/quemsomos.png')}}" width="16px" height="16px" alt="quem_somos" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Quem Somos</a>
             </li>
 
 
@@ -161,23 +161,23 @@
         <div class="collapse navbar-collapse flex-row-reverse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" style="color: #fff;" href="/">Início</a>
+                <a class="nav-link" style="color: #fff;" href="/"><img src="{{url_for('static', filename='img/icons/inicio.png')}}" width="16px" height="16px" alt="inicio" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Início</a>
             </li>
             <div class="hr_navbar d-md-none"></div>
             <li class="nav-item">
-                <a class="nav-link" style="color: #fff;" href="/hospital">Hospitais</a>
+                <a class="nav-link" style="color: #fff;" href="/hospital"><img src="{{url_for('static', filename='img/icons/hospitais.png')}}" width="16px" height="16px" alt="hospitais" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Hospitais</a>
             </li>
             <div class="hr_navbar d-md-none"></div>
             <li class="nav-item">
-                <a class="nav-link" style="color: #fff;"href="/dados">Dados Gerais</a>
+                <a class="nav-link" style="color: #fff;"href="/dados"><img src="{{url_for('static', filename='img/icons/dados.png')}}" width="16px" height="16px" alt="dados" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Dados Gerais</a>
             </li>
             <div class="hr_navbar d-md-none"></div>
             <li class="nav-item">
-                <a class="nav-link" style="color: #fff;" href="/blog">Blog</a>
+                <a class="nav-link" style="color: #fff;" href="/blog"><img src="{{url_for('static', filename='img/icons/blog.png')}}" width="16px" height="16px" alt="blog" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Blog</a>
             </li>
             <div class="hr_navbar d-md-none"></div>
             <li class="nav-item">
-                <a class="nav-link" style="color: #fff;" href="/proadisus">Proadi-SUS</a>
+                <a class="nav-link" style="color: #fff;" href="/quem_somos"><img src="{{url_for('static', filename='img/icons/quemsomos.png')}}" width="16px" height="16px" alt="quem_somos" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Quem Somos</a>
             </li>
             <div class="hr_navbar d-md-none"></div>
             <label class="d-none d-md-block" style="
@@ -190,7 +190,7 @@
             |
             </label>
             <li class="nav-item">
-                <a class="nav-link" style="color: #fff;"href="/login">Entrar</a>
+                <a class="nav-link" style="color: #fff;"href="/login"><img src="{{url_for('static', filename='img/icons/entrar.png')}}" width="16px" height="16px" alt="entrar" style="margin-right: 10px; margin-bottom: 5px;" class="d-md-none">Entrar</a>
             </li>
             <div class="hr_navbar d-md-none" style="margin-bottom: 20px;"></div>
           </ul>

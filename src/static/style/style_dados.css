@@ -50,6 +50,7 @@ body{
 }
 
 .letra_button{
+    text-decoration: none;
     color: white;
     font-size: 15.75px;
     font-family: Roboto;

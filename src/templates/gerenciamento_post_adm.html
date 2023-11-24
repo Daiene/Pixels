@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="container">
-  <div class="row">
+  <div class="row" style="min-height: 100vh;">
     <div class="col-md-9 mx-auto mt-5 mb-0" id="box_1">
       <div class="box-container">
         <form style="width: 100%;">
@@ -48,9 +48,9 @@
                       <strong>Criado em:</strong> {{ post[3] }}<br>
                       <strong>Status:</strong>
                       {% if post[5] == 1 %}
-                      <span class="badge badge-success">Aprovado</span>
+                        <span class="badge badge-success" style="color: green;">Aprovado</span>
                       {% elif post[5] == 0 %}
-                      <span class="badge badge-warning">Pendente</span>
+                        <span class="badge badge-warning" style="color: yellow;">Pendente</span>
                       {% endif %}
                     </p>
                   </div>

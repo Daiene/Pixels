@@ -96,7 +96,7 @@ strong {
     font-size: 16px;
     font-family: var(--roboto);
     font-weight: 400;
-    line-height: 19.20px;
+    line-height: 3.5vh;
     word-wrap: break-word;
 }
 
@@ -130,7 +130,6 @@ strong {
     font-weight: 700;
     line-height: 28px;
     word-wrap: break-word
-    
 }
 
 
@@ -145,7 +144,7 @@ strong {
     max-width: 540px;
     border: var(--background-principal);
     background-color: var(--background-principal);
-    margin-bottom: 1%;
+    margin-bottom: 3vh;
 }
 
 .card-header {

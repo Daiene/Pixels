@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style/style_quem_somos.css') }}">
+<title>Quem Somos</title>
+{% endblock %} 
+
+{% block content %}
+
+<div class="bg-img min_width_hospital">
+    <div class="escuro">
+    </div>
+</div>
+
+<section class="conteudo perguntas mt-3">
+    <div class="conteudo__titulo">
+        Quem Somos
+    </div>
+    <div class="conteudo__texto">
+        Bem-vindos ao site Criança Renal formada por mães atípicas, defensoras incansáveis dos direitos das famílias e pacientes renais crônicos pediátricos. Aqui, encontramo-nos como uma comunidade que compartilha laços profundos e experiências únicas.
+        Somos mulheres que abraçam o desafio diário de criar e amar crianças extraordinárias com DRC (Doença Renal Crônica). Cada uma de nós encontrou força nas adversidades e, mais do que isso, descobrimos o poder transformador do apoio mútuo.
+    </div>
+</section>
+
+<section class="conteudo perguntas fundo_escuro mt-3 pt-3">
+    <div class="conteudo__titulo">
+      Sobre o projeto
+    </div>
+    <div class="conteudo__texto">
+      O site Crinaça Renal foi criado primordialmente a fim de disponibilizar informações acerca da
+      nefrologia, que é a área da medicina especializada no tratamento e prevenção de doenças renais.
+      Além disso, o projeto busca chamar atenção para a Insuficiência Renal Crônica Pediátrica (IRC), também chamada de Doença Renal Crônica Pediátrica (DRC), a fim de orientar mães, pais ou responsáveis que lidam com crianças diagnosticadas com a doença.
+      Ademais também existe um blog destinado a comunidade para a disseminação de notícias relevantes e publicação de histórias.
+    </div>
+</section>
+
+<section class="conteudo perguntas mt-3">
+    <div class="conteudo__titulo">
+      Objetivo
+    </div>
+    <ul class="conteudo__texto">
+        <li>Guiar famílias com pequenos guerreiros enfrentando a Doença Renal Crônica (DRC);</li>
+        <li>Oferecer orientação sobre diagnóstico, cuidados e terapias;</li>
+        <li>Advogar por avanços nas esferas pública e privada, assegurando que políticas sejam implementadas para garantir assistência, acolhimento e atendimento integral em todo o país para os pacientes Renais Crônicos Pediátricos.</li>
+    </ul>
+</section>
+
+
+<div class="d-flex flex-wrap">
+    {% for mae in maes %}
+
+    <div class="card_content min_width_hospital">
+
+        <img class="foto" src="{{ mae['imagem_src'] }}" alt="{{ mae['alt_mae'] }}">
+
+        <div class="text_content">
+            <h1 class="conteudo__titulo">{{ mae['nome'] }}</h1>
+            <h2 class="conteudo__texto">{{ mae['desc_mae'] }}</h2>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+<section class="conteudo perguntas fundo_escuro mt-3 pt-3">
+
+    <div class="conteudo__titulo">
+      Contato & Redes
+    </div>
+
+    <div class="conteudo__texto">
+        <img src="{{url_for('static', filename='img/icons/mail.png')}}" width="24px" height="18px" alt="instagram" style="margin-right: 10px; margin-bottom: 5px;"><strong>criancarenal23@gmail.com</strong><br>
+        <a href="https://www.instagram.com/rimdoamor" style="text-decoration: none; color: var(--texto);"><img src="{{url_for('static', filename='img/icons/insta.png')}}" width="20px" height="20px" alt="instagram" style="margin-right: 10px; margin-bottom: 5px;"><strong>@rimdoamor</strong></a>
+    </div>
+
+</section>
+
+
+{% endblock %}
