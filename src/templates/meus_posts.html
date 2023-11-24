@@ -5,7 +5,7 @@
 />
 {% endblock %} {% block content %}
 <div class="container">
-    <div class="row">
+    <div class="row" style="min-height: 100vh;">
       <div class="col-md-9 mx-auto mt-5 mb-0" id="box_1">
         <div class="box-container">
           <form style="width: 100%;">
@@ -14,29 +14,30 @@
                 Veja seus posts
             </p>
 
-    <ul>
+    <ul class="list-unstyled">
       {% for post in posts %}
           <a href="/post/{{ post[6]}}/{{ post[1] }}"><li style="flex-flow: row !important;">
-            <table class="table table-light table-bordered align-middle text-center" style="margin-top: 40px; border-collapse: separate;">
-              <thead>
-                <tr class="table-secondary table-bordered align-middle text-center">
-                  <th class="col-lg-6">Título</th>
-                  <th>Criado em</th>
-                  <th>Status</th>
-                </tr>
-                <tr class="table table-bordered align-middle text-center">
-                  <th scope="col"><a href="/post/{{post[6]}}/{{ post[1] }}">{{ post[1] }}</a></th>
-                  <th scope="col">{{ post[3] }}</th>
-                  <th scope="col">
-                    {% if post[5] == 1 %}
-                        <p class="aprovado">Aprovado</p>
-                    {% elif post[5] == 0 %}
-                        <p class="pendente">Pendente</p>
-                    {% endif %}
-                </th>
-                </tr>
-              </thead>
-            </table>
+            <li class="mb-4">
+              <div class="card">
+                <div class="card-header">
+                  <strong>{{ post[1] }}</strong>
+                </div>
+                <div class="card-body d-flex justify-content-between align-items-start">
+                  <div>
+                    <p class="card-text">
+                      <strong>Autor:</strong> {{ post[-1] }}<br>
+                      <strong>Criado em:</strong> {{ post[3] }}<br>
+                      <strong>Status: </strong>
+                      {% if post[5] == 1 %}
+                        <span class="badge badge-success" style="color: green;">Aprovado</span>
+                      {% elif post[5] == 0 %}
+                        <span class="badge badge-warning" style="color: yellow;">Pendente</span>
+                      {% endif %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
           </a>
       {% endfor %}
   </ul>
