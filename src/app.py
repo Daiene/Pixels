@@ -184,7 +184,7 @@ def blog():
 def atualizar_status(post_id):
     print(post_id)
     aprovar_post(post_id)
-
+    print("ESTOU PASSANDO POR AQUI")
     return redirect('/gerenciamento_post_adm')
 
 
@@ -531,7 +531,7 @@ def validacao_link(link_unico):
 
 
 
-@app.route('/gerenciamento_post_adm')
+@app.route('/gerenciamento_post_adm', methods=["GET", "POST", "PUT", "DELETE"])
 def post_adm():
     '''
         Página de Gerenciamento de Post para Adms
@@ -541,11 +541,6 @@ def post_adm():
 
 
     categoria_filtro = request.args.get('estado', default=None)
-    print(categoria_filtro)
-    for post in posts:
-        print(type(post[5]), type(categoria_filtro))
-        if post[5] == categoria_filtro:
-            print("=")
 
     if categoria_filtro:
         posts_filtrados = [post for post in posts if post[5] == int(categoria_filtro)]
@@ -555,7 +550,7 @@ def post_adm():
     name = ""
     email = ""
     access = check_session(session.get("email"))
-
+    
     if access:
         user = buscar_usuario_pelo_email(session.get("email"))
         if user is not None:
@@ -570,7 +565,7 @@ def post_adm():
 
 
 
-@app.route('/meus_posts')
+@app.route('/meus_posts', methods=["GET", "POST", "PUT"])
 def meu_post():
     '''
         Página de Gerenciamento do Usuário
