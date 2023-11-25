@@ -649,7 +649,16 @@ def denunciar_comentario(com_id, categoria, titulo):
 def esqueceu_senha_redefinir(token):
 
     try:
-        email = serializer.loads(token, salt='link_temporario', max_age=900)
+        if token in tokens_invalidos:
+            try:
+                serializer.loads(token, salt='link_temporario', max_age=60)
+            except:
+                tokens_invalidos.remove(token)
+            return render_template('link_invalido.html')
+        
+        
+        email = serializer.loads(token, salt='link_temporario', max_age=60)
+        
         print(email)
         session['email'] = email
         user = buscar_usuario_pelo_email(email)
@@ -660,8 +669,8 @@ def esqueceu_senha_redefinir(token):
             conf_senha = request.form["conf_nova_senha"]
 
             if redefinir_senha(user,nova_senha, conf_senha):
-                flash('Sua senha foi atualizada!', 'success')
                 session['email'] = None
+                tokens_invalidos.add(token)
 
                 return redirect('/login')
 

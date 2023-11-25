@@ -18,7 +18,7 @@ path_uploads = "/static/img/uploads/"
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="fatec",
+passwd="",
 )
 
 mycursor = db.cursor()
@@ -41,3 +41,4 @@ csv_file = 'static/clinicas.csv'
 # Configuração da conta do Email
 email_send = 'pixels1dsm@gmail.com'
 email_password = 'hoch orfs trqy wipw'
+tokens_invalidos = set()
