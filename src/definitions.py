@@ -2,6 +2,7 @@ from pathlib import Path
 from flask import Flask
 import mysql.connector
 from datetime import datetime
+from itsdangerous import URLSafeTimedSerializer
 
 
 #############################################################################################################################################################################
@@ -28,6 +29,8 @@ now = datetime.now()
 
 app = Flask(__name__)
 app.secret_key = 'APIMAES'
+app.config['SECRET_KEY'] = 'sua_chave_secreta'
+serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 #############################################################################################################################################################################
 
 # Arquivos de Dados
@@ -38,3 +41,4 @@ csv_file = 'static/clinicas.csv'
 # Configuração da conta do Email
 email_send = 'pixels1dsm@gmail.com'
 email_password = 'hoch orfs trqy wipw'
+tokens_invalidos = set()

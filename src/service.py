@@ -172,8 +172,18 @@ def atualizando_senha(user, senha_atual, nova_senha, conf_senha):
                 mycursor.execute(sql, val)
                 print("SENHA ALTERADA COM SUCESSO!")
                 return True
+            
 
 
+
+def redefinir_senha(user, nova_senha, conf_senha):
+
+    if nova_senha == conf_senha:
+        sql = "UPDATE usuario SET user_password = %s WHERE user_email = %s"
+        val = (generate_password_hash(nova_senha), user[2])
+        mycursor.execute(sql, val)
+        print("SENHA ALTERADA COM SUCESSO!")
+        return True
 
 
 def deletando_conta(email):
@@ -289,7 +299,7 @@ def gerenciamento_post():
 def posts_usuario(user_id):
 
     # SQL para selecionar todos os posts
-    sql = f"SELECT * FROM post WHERE user_id ={user_id};"
+    sql = f"SELECT p.*, u.user_name FROM post AS p, usuario AS u WHERE p.user_id ={user_id} AND p.user_id = u.user_id;"
 
     # Executando a consulta para obter todos os posts
     mycursor.execute(sql)
@@ -458,6 +468,39 @@ def enviando_email(user):
 
 
 
+def enviar_email_senha(user):
+    '''
+        Método de enviar email de troca de senha
+    '''
+
+    name = user[1]
+    email = user[2]
+    ip = request.host.split(':')[0]
+    token = gerar_token(user[2])
+    subject = f'Validação de Email Rim do Amor'
+    body=f'''
+        Olá {name} você esta tentando redefinir uma senha em nossa site.
+        Para isso por favor acesse o link:
+        {ip}:5000/redefinir_senha/{token}
+    '''
+
+    em = EmailMessage()
+    em['From'] = email_send
+    em['To'] = email
+    em['subject'] = subject
+    em.set_content(body)
+
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+        smtp.login(email_send, email_password)
+        smtp.sendmail(email_password, email, em.as_string())
+
+
+
+
+
+
 def validar_email(link_unico):
     '''
         Método de validar o email do usuário com o link enviado pelo email
@@ -471,6 +514,10 @@ def validar_email(link_unico):
             mycursor.execute(sql)
 
             return usuario[2]
+        
+
+def gerar_token(email):
+    return serializer.dumps(email, salt='link_temporario')
 
 
 #######################################################################################################
@@ -487,8 +534,8 @@ print();print('BANCO DE DADOS CRIADO COM SUCESSO!');print()
 
 # admin
 criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True, 1, '', '', '', '')
-criando_usuario('Maria', 'maria@maria.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
-criando_usuario('Kaue', 'a@a.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
+criando_usuario('Maria', 'kauedanka@gmail.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
+criando_usuario('Kaue', 'yokota860@gmail.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
 
 # Post teste 
 
