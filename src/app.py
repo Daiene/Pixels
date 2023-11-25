@@ -488,7 +488,7 @@ def mostrar_post(categoria, titulo):
         return render_template('postagem.html', access=False, title="post", name=name,  post=post)
         
     else:
-        return "Post não encontrado", 404
+        return render_template('link_invalido.html')
     
     
         
@@ -649,7 +649,7 @@ def denunciar_comentario(com_id, categoria, titulo):
 def esqueceu_senha_redefinir(token):
 
     try:
-        email = serializer.loads(token, salt='link_temporario', max_age=3600)
+        email = serializer.loads(token, salt='link_temporario', max_age=900)
         print(email)
         session['email'] = email
         user = buscar_usuario_pelo_email(email)
