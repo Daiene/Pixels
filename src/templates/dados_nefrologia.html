@@ -24,35 +24,73 @@
     </div>
 </div>
 
-<section class="conteudo min_width">
+<section class="conteudo perguntas mt-3">
     <div class="conteudo__titulo">
-        Crianças em Hemodiálise
+        DRC Atualmente
     </div>
 
-  <!-- <div id="columnchart_values" style="height: 300px;"></div> -->
-
     <div class="conteudo__texto">
-        A Doença Renal Crônica (DRC) é relativamente rara em crianças, com uma incidência anual de 5 a 15 pacientes por milhão na população infantil. Em um censo publicado em janeiro de 2006 pela Sociedade Brasileira de Nefrologia, estima-se que há 70.872 pacientes em modalidades dialíticas no país, e, destes, 1.153 são pacientes com idade menor que 18 anos.    </div>
-        
-    <div class="conteudo__titulo">
-        Fila de Transplante
+        A Doença Renal Crônica (DRC) nos dias atuais é uma preocupação crescente, afetando uma parcela significativa de crianças. Não impactando somente a saúde das mesmas, mas também representa um desafio significativo para suas famílias.
     </div>
     <div class="conteudo__texto">
-        Das 66.273 pessoas que aguardam por um transplante no Brasil, 1.477 são crianças e adolescentes de 0 a 17 anos. A maioria (62%) aguarda por córneas, enquanto 24,2% estão na espera por rins. As informações são do Ministério da Saúde, com dados do Sistema Nacional de Transplantes (SNT). Em 2020, foram realizados no Brasil 242 transplantes de rim em crianças, sendo dez de doadores vivos e 232 de doadores falecidos.    
+        A falta de conscientização e recursos adequados para o diagnóstico precoce e tratamento eficaz é uma questão urgente. Muitas vezes, as crianças com DRC e suas famílias enfrentam barreiras de acesso a serviços médicos especializados, agravando a situação. 
     </div>
-    <div class="conteudo__titulo">
-        Tratamento Conservador
-    </div>
-    <div class="conteudo__texto">
-        Tratamento conservador é o tratamento realizado por meio de orientações importantes, medicamentos e dieta, visando conservar a função dos rins que já têm perda crônica e irreversível, tentando evitar, o máximo possível, o início da diálise - tratamento realizado para substituir algumas das funções dos rins. O tratamento conservador consiste em todas as medidas clínicas (remédios, modificações na dieta e estilo de vida) que podem ser utilizadas para retardar a piora da função renal, reduzir os sintomas e prevenir complicações ligadas à doença renal crônica.    
-    </div>
-    <div class="conteudo__titulo">
-        Mortalidade em Crianças com Doença Crônica Renal
-    </div>
-    <div class="conteudo__texto">
-        A taxa de mortalidade em crianças portadoras de DRC em tratamento dialítico é 30 a 150% maior do que a da população pediátrica geral e a expectativa de vida para uma criança de zero a quatorze anos em diálise é de somente 20 anos.    </div>
-   
 </section>
+
+
+<section class="conteudo perguntas">
+    <div class="conteudo__titulo text-center">
+        Regiões que mais Transplantam no País
+    </div>
+
+    <img class="grafico" src="{{url_for('static', filename='img/dados_imgs/grafico_transplante.jpeg')}}">
+
+        <div class="conteudo__texto">
+            O gráfico de transplante de rim no Brasil entre janeiro e junho de 2023 apresenta uma visão abrangente da distribuição dessa atividade pelos estados. São Paulo lidera com um total de 926 transplantes, dos quais 183 foram de doadores vivos e 743 de doadores falecidos. Este estado destaca-se como um polo significativo para a realização desses procedimentos.
+        </div>
+        <div class="conteudo__texto">
+            Por outro lado, Alagoas registra o menor índice, com apenas 2 transplantes no mesmo período, ambos provenientes de doadores falecidos. Esta disparidade entre estados sugere variações significativas na disponibilidade de órgãos e recursos médicos especializados.
+        </div>
+        <div class="conteudo__texto">
+            No período total do semestre, o Brasil realizou um total de 2.847 transplantes de rim. Destes, 382 foram de doadores vivos e 2.465 de doadores falecidos.
+        </div>
+</section>
+
+
+<section class="conteudo perguntas">
+    <div class="conteudo__titulo text-center">
+        Número de Crianças em Fila de Transplante no Brasil por Estado
+    </div>
+
+    <img class="grafico" src="{{url_for('static', filename='img/dados_imgs/grafico_espera.png')}}">
+
+        <div class="conteudo__texto">
+            O gráfico sobre Pacientes Ativos em Lista de Espera de Rim no Brasil destaca uma disparidade significativa nos números entre os estados. São Paulo lidera, com 16.225 pacientes adultos e 178 pacientes pediátricos aguardando um transplante renal. Esse número expressivo ressalta a necessidade urgente de órgãos nessa região.
+        </div>
+        <div class="conteudo__texto">
+            Minas Gerais aparece em segundo lugar, com 2.986 pacientes adultos e 145 pediátricos em lista de espera. Essa discrepância em relação a São Paulo destaca as variações nas demandas por transplantes de rim em diferentes partes do país.
+        </div>
+        <div class="conteudo__texto">
+            No contexto nacional, o total de pacientes adultos na lista de espera é de 31.541, indicando uma necessidade considerável por transplantes renais em todo o Brasil. Os 490 pacientes pediátricos também enfatizam a importância de políticas e recursos que atendam às necessidades específicas dessa população vulnerável, garantindo acesso equitativo aos transplantes de rim.
+        </div>
+</section>
+
+
+<section class="conteudo perguntas mb-3">
+    <div class="conteudo__titulo text-center">
+        Índice de Ingressantes na Fila e Mortalidade no Brasil
+    </div>
+
+    <img class="grafico" src="{{url_for('static', filename='img/dados_imgs/grafico_mortalidade.jpeg')}}">
+
+        <div class="conteudo__texto">
+            O gráfico sobre o Pacientes que Ingressaram na Lista de Espera de Rim e a Mortalidade no primeiro semestre de 2023 revela dados impactantes. São Paulo lidera com 3.540 novos pacientes adultos na lista de espera e 75 pacientes pediátricos, refletindo uma demanda expressiva por transplantes renais nessa região. No entanto, a mortalidade associada de 379 pacientes adultos e 5 pacientes pediátricos, embora relativamente baixa em comparação ao ingresso, destaca a urgência em acelerar o processo de transplante.
+        </div>
+        <div class="conteudo__texto">
+            No geral, o Brasil registrou um ingresso total de 7.254 pacientes adultos e 158 pacientes pediátricos na lista de espera de rim durante o primeiro semestre de 2023. No entanto, a mortalidade de 831 pacientes adultos e 10 pediátricos ressalta a importância crítica de otimizar a eficiência do processo de transplante para garantir resultados positivos para aqueles que estão aguardando esse procedimento vital.
+        </div>
+</section>
+
 
 
 {% endblock %}
