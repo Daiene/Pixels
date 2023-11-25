@@ -101,13 +101,13 @@
     </nav>
 
     <div id="minhadiv" class="tela_perfil_nome">
-        <div class="d-flex gap-3 m-3 align-items-center">
+        <a href="/perfil"><div class="d-flex gap-3 m-3 align-items-center">
             <img src="{{ url_for('exibir_imagem') }}" class="foto_perfil" width="70px" height="70px" alt="foto de perfil">
             <div class="d-flex flex-column">
                         <b>{{name}}</b>
                         <b>{{email}}</b>
             </div>
-        </div>
+        </div></a>
         <div class="pb-2">
             <div class="d-flex gap-3 align-items-center">
                 <img src="{{url_for('static', filename='img/icons/user.png')}}" width="16px" height="16px" alt="user">

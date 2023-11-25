@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="bg-img min_width_hospital">
+<div class="bg-img min_width">
     <div class="escuro">
     </div>
 </div>
@@ -17,7 +17,7 @@
         Quem Somos
     </div>
     <div class="conteudo__texto">
-        Bem-vindos ao site Criança Renal formada por mães atípicas, defensoras incansáveis dos direitos das famílias e pacientes renais crônicos pediátricos. Aqui, encontramo-nos como uma comunidade que compartilha laços profundos e experiências únicas.
+        Bem-vindo(a) ao site Criança Renal formada por mães atípicas, defensoras incansáveis dos direitos das famílias e pacientes renais crônicos pediátricos. Aqui, encontramo-nos como uma comunidade que compartilha laços profundos e experiências únicas.
         Somos mulheres que abraçam o desafio diário de criar e amar crianças extraordinárias com DRC (Doença Renal Crônica). Cada uma de nós encontrou força nas adversidades e, mais do que isso, descobrimos o poder transformador do apoio mútuo.
     </div>
 </section>
@@ -46,10 +46,10 @@
 </section>
 
 
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap justify-content-center">
     {% for mae in maes %}
 
-    <div class="card_content min_width_hospital">
+    <div class="card_content min_width">
 
         <img class="foto" src="{{ mae['imagem_src'] }}" alt="{{ mae['alt_mae'] }}">
 
@@ -69,8 +69,13 @@
     </div>
 
     <div class="conteudo__texto">
-        <img src="{{url_for('static', filename='img/icons/mail.png')}}" width="24px" height="18px" alt="instagram" style="margin-right: 10px; margin-bottom: 5px;"><strong>criancarenal23@gmail.com</strong><br>
-        <a href="https://www.instagram.com/rimdoamor" style="text-decoration: none; color: var(--texto);"><img src="{{url_for('static', filename='img/icons/insta.png')}}" width="20px" height="20px" alt="instagram" style="margin-right: 10px; margin-bottom: 5px;"><strong>@rimdoamor</strong></a>
+
+        <div class="conteudo__texto mb-4 ">
+            Precisando de apoio ou perguntas? Estamos aqui para ajudar! Entre em contato conosco através do nosso Instagram ou envie-nos um e-mail. Juntos, construímos uma comunidade dedicada a apoiar um ao outro nesta jornada única.
+          </div>
+
+        <p><img src="{{url_for('static', filename='img/icons/mail.png')}}" width="24px" height="18px" alt="instagram" style="margin-right: 10px; margin-bottom: 5px;"><strong>criancarenal23@gmail.com</strong></p>
+        <p><a href="https://www.instagram.com/rimdoamor" target="_blank" style="text-decoration: none; color: var(--texto);"><img src="{{url_for('static', filename='img/icons/insta.png')}}" width="20px" height="20px" alt="instagram" style="margin-right: 10px; margin-bottom: 5px;"><strong>@rimdoamor</strong></a></p>
     </div>
 
 </section>

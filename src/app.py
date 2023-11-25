@@ -267,7 +267,7 @@ def hospital():
         resultados = filtrar_por_estado(estado_escolhido="")
         return render_template('hospital.html', access=access, name=name, email=email, title="Hospital", estado=resultados, permissao=permissao)
 
-######################################
+
 
 maes = [
     {
@@ -323,7 +323,6 @@ def quem_somos():
     
     return render_template('quem_somos.html', access=False, title="Quem Somos", name=name, maes=maes)
 
-######################################
 
 
 @app.route('/troca_passwd', methods=["POST"])
