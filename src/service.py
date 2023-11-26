@@ -534,8 +534,8 @@ print();print('BANCO DE DADOS CRIADO COM SUCESSO!');print()
 
 # admin
 criando_usuario('admin', 'admin@admin.com', '123', '2000-10-31', '11111111111', 'pai', 'dev', 'redes_sociais', True, 1, '', '', '', '')
-criando_usuario('Maria', 'kauedanka@gmail.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
-criando_usuario('Kaue', 'yokota860@gmail.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
+criando_usuario('Maria', 'maria@gmail.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
+criando_usuario('Kaue', 'kauedanka@gmail.com', '123', '2000-10-31', '11111111111', 'mae', 'dev', 'redes_sociais', True, 0, '', '', '', '')
 
 # Post teste 
 

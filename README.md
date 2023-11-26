@@ -23,20 +23,20 @@
 - ![feito](./docs/readme/check.jpeg) Tela de Cadastro
 - ![feito](./docs/readme/check.jpeg) Tela de Recuperação de Senha 
 - ![feito](./docs/readme/check.jpeg) Blog
-- ![afazer](./docs/readme/box.jpeg) Area do ADM
+- ![feito](./docs/readme/check.jpeg) Area do ADM
 - ![feito](./docs/readme/check.jpeg) Area do User
 - ![feito](./docs/readme/check.jpeg) Página com Localidades dos hospitais
-- ![afazer](./docs/readme/box.jpeg) Página com Sintomas Comuns e formulário
-- ![afazer](./docs/readme/box.jpeg) Filtro para o Blog
+- ![feito](./docs/readme/check.jpeg) Página com Sintomas Comuns
+- ![feito](./docs/readme/check.jpeg) Filtro para o Blog
 - ![feito](./docs/readme/check.jpeg) Área de Comentários
-- ![afazer](./docs/readme/box.jpeg) Graficos de Dados Levantados IRC
+- ![feito](./docs/readme/check.jpeg) Graficos de Dados Levantados IRC
 
 <br>
 
 > **Requisitos Não Funcionais**
 - ![feito](./docs/readme/check.jpeg) Framework Python Flask
 - ![feito](./docs/readme/check.jpeg) Linguagem Python, Html e CSS
-- ![afazer](./docs/readme/box.jpeg) Banco de Dados Relacional - MySQL
+- ![feito](./docs/readme/check.jpeg) Banco de Dados Relacional - MySQL
 - ![feito](./docs/readme/check.jpeg) Levantamento de Dados (Raspagem)
 - ![feito](./docs/readme/check.jpeg) Arquitetura no Figma
 
@@ -47,12 +47,12 @@
 - ![feito](./docs/readme/check.jpeg) Sprint 1 - 04/09/23 a 24/09/23 
 - ![feito](./docs/readme/check.jpeg) Sprint 2 - 25/09/23 a 15/10/23 
 - ![feito](./docs/readme/check.jpeg) Sprint 3 - 16/10/23 a 05/11/23 
-- ![afazer](./docs/readme/box.jpeg) Sprint 4 - 06/11/23 a 26/11/23 
+- ![feito](./docs/readme/check.jpeg) Sprint 4 - 06/11/23 a 26/11/23 
 
 <br>
 
 ## MVP
-[![MVP SPRINT 3](https://cdn-icons-png.flaticon.com/256/1384/1384060.png)](https://youtu.be/R93fpPjgifE)
+[![MVP SPRINT 4](https://cdn-icons-png.flaticon.com/256/1384/1384060.png)](https://youtu.be/ABOGftJAD0A?si=lbFesrLnPFxRXtep)
 
 <br>
 
