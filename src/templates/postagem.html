@@ -6,13 +6,17 @@
 {% endblock %} 
 
 {% block content %}
-<main class="d-flex justify-content-center mb-5 mt-5 ">
+<main class="d-flex justify-content-center mb-5 mt-5">
   <div class="flex-main">
-    <div><h1 class="text-center ">{{ post[1] }}</h1></div>
+    <div class="post-title-container" style="width: 100%;">
+      <h1 class="text-center">{{ post[1] }}</h1>
+    </div>
     <div class="capa d-flex justify-content-center">
       <img src="../../static/img/post_uploads/post_{{post[0]}}.png"  class="capa_img" alt="capa" />
     </div>
-    <div class="d-flex justify-content-center " ><p style="width: 95%;"> {{ post[2] }}</p></div>
+    <div class="post-content-container d-flex justify-content-center">
+      <p style="width: 95%;">{{ post[2] }}</p>
+    </div>
     <div class="flex-comment">
       <br />
       <div class="flex-dados">
@@ -53,17 +57,15 @@
           </div>
           {% for comentario in comentarios %}
             {% if comentario[2] == post[0] %}
-              <div style="margin-top: 30px;">
-                <p style="display: flex; flex-direction: row-reverse; color: rgba(53, 31, 31, 0.685); margin: 0;">Data: {{comentario[1]}}</p>
-                <div style="display: flex; flex-direction: row; margin-bottom: 10px; ">
-                  <img src="../../static/img/user_uploads/user_{{ comentario[5] }}.png" alt="foto usuario" style="width: 80px; height: 80px; border-radius: 50px; margin-top: 2px;">
-                  <div style="display: flex; flex-direction: column; margin-left: 10px;">
-                    <p alt="nome" style="margin-top: 10px; margin-bottom: 5px;"><strong>{{ comentario[4] }}</strong></p>
-                    <p alt="comentario" style="margin: 0;">{{ comentario[0] }}</p>
-                  </div>
-                </div>
+            <div class="comment-container" style="display: flex; flex-direction: row; margin-bottom: 20px; width: 100%;">
+              <img src="../../static/img/user_uploads/user_{{ comentario[5] }}.png" alt="foto usuario" class="comment-image">
+              <div class="comment-content">
+                  <p class="comment-name"><strong>{{ comentario[4] }}</strong></p>
+                  <p class="comment-text">{{ comentario[0] }}</p>
+              </div>
+          </div> 
                 <form method="post" action="/denunciar/{{post[5]}}/{{post[1]}}/{{ comentario[6] }}">
-                  <button type="submit" class="btn btn-primary">Denunciar</button>
+                  <button type="submit" class="btn btn-danger">Denunciar</button>
               </form>
               </div>
             {% endif %}

@@ -85,3 +85,11 @@ a{
     flex-direction: column;
 }
 
+.comment-container {
+    margin-bottom: 20px; /* Adiciona espaço entre os comentários */
+ }
+
+ .comment-container p {
+    max-width: 100%; /* Define a largura máxima para o parágrafo dentro do contêiner */
+    overflow-wrap: break-word; /* Quebra a palavra para evitar que comentários longos ultrapassem as margens */
+ }

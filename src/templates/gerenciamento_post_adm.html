@@ -2,7 +2,6 @@
 
 {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='style/gerenciamento_post_adm.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='style/style_hospital.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -73,14 +72,16 @@
           
         <h2> Denuncias </h2>
         {% for denuncia in denuncias %}
-        <p>{{denuncia[1]}}</p>
-        <div class="button_forma">
-          <button class="button_forma" onclick="delete_comentario('{{ denuncia[0] }}')">Deletar comentário</button>
+        <div class="comment-container">
+          <p>{{denuncia[1]}}</p>
+          <div class="button_forma">
+            <button class="btn btn-outline-success" onclick="delete_comentario('{{ denuncia[0] }}')">Deletar comentário</button>
+          </div>
+          <div class="button_forma">
+            <button class="btn btn-outline-danger" onclick="deleta_denuncia('{{ denuncia[0] }}')">Deletar denuncia</button>
+          </div>
         </div>
-        <div class="button_forma">
-          <button class="button_forma" onclick="deleta_denuncia('{{ denuncia[0] }}')">Deletar denuncia</button>
-        </div>
-        {% endfor %}
+          {% endfor %}
       </ul>
 
 
