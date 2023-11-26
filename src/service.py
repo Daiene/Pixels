@@ -264,7 +264,7 @@ def cria_comentario(comentario, email, post_id):
 def todos_posts_aprovados():
 
     # Pega todos os posts para enviar para o front-end  
-    sql = "SELECT p.post_id, p.post_title, p.post_content, p.post_date, p.post_img, p.post_category, u.user_name, u.user_id, p.post_status FROM post p INNER JOIN usuario u ON p.user_id = u.user_id ORDER BY p.post_id DESC;"
+    sql = "SELECT p.post_id, p.post_title, p.post_content, p.post_date, p.post_img, p.post_category, u.user_name, u.user_id, p.post_status, u.user_photo FROM post p INNER JOIN usuario u ON p.user_id = u.user_id ORDER BY p.post_id DESC;"
     mycursor.execute(sql)
     posts = mycursor.fetchall()
 
@@ -451,7 +451,7 @@ def enviando_email(user):
     body=f'''
         Olá {name} você esta tentando criar uma conta em nossa site.
         Para isso por favor acesse o link:
-        {ip}:5000/validacao/{link_unico}
+        {ip}/validacao/{link_unico}
     '''
 
     em = EmailMessage()
@@ -481,7 +481,7 @@ def enviar_email_senha(user):
     body=f'''
         Olá {name} você esta tentando redefinir uma senha em nossa site.
         Para isso por favor acesse o link:
-        {ip}:5000/redefinir_senha/{token}
+        {ip}/redefinir_senha/{token}
     '''
 
     em = EmailMessage()

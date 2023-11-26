@@ -12,7 +12,7 @@
       <h1 class="text-center">{{ post[1] }}</h1>
     </div>
     <div class="capa d-flex justify-content-center">
-      <img src="../../static/img/post_uploads/post_{{post[0]}}.png"  class="capa_img" alt="capa" />
+      <img src="../../static/img/post_uploads/post_{{post[0]}}.png" style="object-fit: cover;" class="capa_img" alt="capa" />
     </div>
     <div class="post-content-container d-flex justify-content-center">
       <p style="width: 95%;">{{ post[2] }}</p>
@@ -21,8 +21,9 @@
       <br />
       <div class="flex-dados">
         <div>
-          <p style="color: gray">Data: {{ post[3] }}</p>
+          <img src="../../{{post[-1][6:]}}" alt="../../{{post[-1][6:]}}" style="object-fit: cover;" class="comment-image">
           <p style="color: gray">Usuário: {{ post[6] }}</p>
+          <p style="color: gray">Data: {{ post[3] }}</p>
         </div>
       </div>
     </div>
@@ -31,7 +32,7 @@
     <div class="flex-commentbox">
       <div><h2>Comentários</h2></div>
       <div>
-        <form action="/post/{{ post[5]}}/{{ post[1] }}" method="post">
+        <form action="/post/{{ post[5]}}/{{ post[1] }}"  method="post">
             <label for="comentario"></label>
             <textarea
               class="form-control"
@@ -58,7 +59,7 @@
           {% for comentario in comentarios %}
             {% if comentario[2] == post[0] %}
             <div class="comment-container" style="display: flex; flex-direction: row; margin-bottom: 20px; width: 100%;">
-              <img src="../../static/img/user_uploads/user_{{ comentario[5] }}.png" alt="foto usuario" class="comment-image">
+              <img src="../../static/img/user_uploads/user_{{ comentario[5] }}.png" style="object-fit: cover;" alt="foto usuario" class="comment-image">
               <div class="comment-content">
                   <p class="comment-name"><strong>{{ comentario[4] }}</strong></p>
                   <p class="comment-text">{{ comentario[0] }}</p>

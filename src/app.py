@@ -178,9 +178,9 @@ def blog():
     print(categoria_filtro)
 
     if categoria_filtro:
-        posts_filtrados = [post for post in posts if post[5] == categoria_filtro and post[-1] == True]
+        posts_filtrados = [post for post in posts if post[5] == categoria_filtro and post[-2] == True]
     else:
-        posts_filtrados = [post for post in posts if post[-1] == True]
+        posts_filtrados = [post for post in posts if post[-2] == True]
 
 
     name = ""
@@ -470,14 +470,15 @@ def mostrar_post(categoria, titulo):
                     return redirect(url_for('mostrar_post', categoria=categoria, titulo=titulo))
 
                 name = user[1]
+                foto_usuario = user[5]
                 email = user[2]
                 permissao = user[4]
-                status_post = post[-1]
+                status_post = post[-2]
                 if status_post == False:
                     print(post[-2])
                     print(user[0])
                     if permissao == True or post[-2] == user[0]:
-                        return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img, permissao=permissao, status_post=status_post)
+                        return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img, permissao=permissao, status_post=status_post, foto_usuario=foto_usuario)
                     else:
                         return redirect('/blog')
                 else:
@@ -685,4 +686,4 @@ def esqueceu_senha_redefinir(token):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=80)
