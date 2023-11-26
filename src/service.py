@@ -449,9 +449,9 @@ def enviando_email(user):
     link_unico = generate_password_hash(str(user[0]))
     subject = f'Validação de Email Rim do Amor'
     body=f'''
-        Olá {name} você esta tentando criar uma conta em nossa site.
+        Olá {name}! Tudo bem? Você esta tentando criar uma conta em nossa site.
         Para isso por favor acesse o link:
-        {ip}/validacao/{link_unico}
+        {ip}:5000/validacao/{link_unico}
     '''
 
     em = EmailMessage()
@@ -479,9 +479,9 @@ def enviar_email_senha(user):
     token = gerar_token(user[2])
     subject = f'Validação de Email Rim do Amor'
     body=f'''
-        Olá {name} você esta tentando redefinir uma senha em nossa site.
+        Olá {name} você esta tentando redefinir sua senha em nossa site.
         Para isso por favor acesse o link:
-        {ip}/redefinir_senha/{token}
+        {ip}:5000/redefinir_senha/{token}
     '''
 
     em = EmailMessage()
