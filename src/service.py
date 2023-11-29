@@ -139,17 +139,18 @@ def criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_
     db.commit()
 
     user = buscar_usuario_pelo_email(email)
+    adicionando_endereco(cep, rua, estado, cidade, user[0])
     if not user[-1]:
-        adicionando_endereco(cep, rua, estado, cidade)
         enviando_email(user)
+
 
     print();print(f"USUARIO {user[1]} CADASTRADO COM SUCESSO!");print()
 
 
 
-def adicionando_endereco(cep, rua, estado, cidade):
-    sql = "INSERT INTO endereco (rua, cidade, estado, cep) VALUES (%s, %s, %s, %s)"
-    val = (rua, cidade, estado, cep)
+def adicionando_endereco(cep, rua, estado, cidade, user_id):
+    sql = "INSERT INTO endereco (rua, cidade, estado, cep, user_id) VALUES (%s, %s, %s, %s, %s)"
+    val = (rua, cidade, estado, cep, user_id)
     mycursor.execute(sql, val)
     db.commit()
 
