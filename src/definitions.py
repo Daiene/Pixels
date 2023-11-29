@@ -17,7 +17,7 @@ path_uploads = "/static/img/uploads/"
 db = mysql.connector.connect(
 host="localhost",
 user="root",
-passwd="",
+passwd="fatec",
 )
 
 mycursor = db.cursor()
@@ -71,5 +71,13 @@ maes = [
         'alt_mae': 'foto-mãe-4',
         'desc_mae': 'Olá, meu nome é Vandressa tenho 33 anos e sou natural de Mauá-SP porém moro em Alagoas desde 2005, onde tive três filhos: Kauana 15 anos, Ágatha 13 anos e Mateus 8 anos. Atualmente trabalho de maneira informal com empreendedorismo devido ao grande fluxo de exames ,consultas e terapias no meu dia a dia sendo mãe duplamente atípica (além da doença renal Agatha tem autismo) e ainda me divido aos cuidados das outras duas crianças, escola e afazeres domésticos.',
     },
+
+        {
+        'nome': 'Thaís Ferreira',
+        'imagem_src': '../static/img/quem_somos_imgs/Imagem5.jpg',
+        'alt_mae': 'foto-mãe-5',
+        'desc_mae': 'Olá, meu nome é Thaís, tenho 31 anos, sou natural de Brasília, porém resido em Luziânia-G. Tenho 4 filhos, Dhomynyky 15 anos, Douglas 14 anos, Dhomini 8 anos e Daylon 7 anos. Atualmente trabalho como manicure informalmente faço curso Técnico em enfermagem com muita dificuldade, devido ao tratamento do Dhomini que é renal crônico atualmente transplantado e necessita de acompanhamento hospitalar frequente em São Paulo, ainda me desdobro para cuidar de casa e dos outros 3 filhos!',
+    },
+
 
 ]
