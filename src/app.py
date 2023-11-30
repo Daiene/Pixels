@@ -54,18 +54,18 @@ def cadastro():
         password = request.form['password']
         confirmPassword = request.form['confirmPassword']
         dn= request.form['dn']
-        cpf = request.form['cpf']
+        cpf = request.form['cpf'].replace('.', '').replace('-', '').replace(' ', '').replace(',', '')
         parentesco = request.form['parentesco']
         profissao = request.form['profissao']
         como_chegou = request.form['como_chegou']
-        cep = request.form['cep']
+        cep = request.form['cep'].replace('.', '').replace('-', '').replace(' ', '').replace(',', '')
         rua = request.form['logradouro']
         estado = request.form['estado'] 
         cidade = request.form['cidade']
         status = False
         permissao = 0
 
-        info, warn = check_cadastro(name, email, password, confirmPassword, dn, cpf, parentesco, profissao, como_chegou)
+        info, warn = check_cadastro(name, email, password, confirmPassword, dn, cpf, cep, rua, estado, cidade)
 
         if info:
             criando_usuario(name, email, password, dn, cpf, parentesco, profissao, como_chegou, status, permissao,  cep, rua, estado, cidade)
@@ -159,7 +159,9 @@ def esqueceu_senha():
         email = request.form['email']
         print(email)
         user = buscar_usuario_pelo_email(email)
-        enviar_email_senha(user)
+        if user != None:
+            enviar_email_senha(user)
+        return redirect('/esqueceu_senha')
         
     return render_template('esqueceu_senha.html', title="Esqueceu Senha")
     
@@ -448,9 +450,8 @@ def mostrar_post(categoria, titulo):
                 permissao = user[4]
                 status_post = post[-2]
                 if status_post == False:
-                    print(post[-2])
-                    print(user[0])
-                    if permissao == True or post[-2] == user[0]:
+
+                    if permissao == True or post[-3] == user[0]:
                         return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img, permissao=permissao, status_post=status_post, foto_usuario=foto_usuario)
                     else:
                         return redirect('/blog')

@@ -31,22 +31,28 @@ def create_db():
 # Validar informações
 
 
-def check_cadastro(name, email, password, confirmPassword,  dn, cpf, parentesco, profissao, como_chegou):
+def check_cadastro(name, email, password, confirmPassword,  dn, cpf, cep, rua, estado, cidade):
     '''
         Método de validar se todas as informações do cadastro estão corretas
     '''  
+
+    users = chamando_todos_usuarios()
 
     user = buscar_usuario_pelo_email(email)
     if user != None:
         warn = "Email já cadastrado!"
         return False, warn
-
-    elif name == "" or email == "" or password == "" or confirmPassword == "" or dn == "" or cpf == "" or parentesco == "" or profissao == "" or como_chegou == "":
-        warn = "Preencha todos os campos!"
-        return False, warn
     
     elif len(cpf) != 11:
         warn = "CPF inválido"
+        return False, warn
+
+    elif len(cpf) != 11:
+        warn = "CPF inválido"
+        return False, warn
+    
+    elif cpf in [user[7] for user in users]:
+        warn = "CPF já cadastrado!"
         return False, warn
     
     elif password != confirmPassword:
@@ -66,11 +72,7 @@ def check_login(email, password):
 
     user = buscar_usuario_pelo_email(email)
 
-    if email == "" or password == "":
-        warn = "Preencha todos os campos!"
-        return False, warn
-
-    elif user == None or check_password_hash(user[3], password) == False:
+    if user == None or check_password_hash(user[3], password) == False:
         warn = "Email ou Senha incorreta!"
         return False, warn
     
@@ -556,12 +558,13 @@ def postar6():
 
 
     post_values2 = [
-        ("1", "A doença renal crônica em crianças é uma condição séria que afeta o funcionamento dos rins desde cedo. Neste artigo, exploramos as causas e sintomas dessa condição, bem como opções de tratamento disponíveis.", "2023-11-02", "img1.png", "relato", 1),
-        ("2", "Cuidar de uma criança com doença renal crônica pode ser desafiador. Este guia fornece dicas úteis para pais e cuidadores sobre como proporcionar o melhor cuidado possível para essas crianças.", "2023-11-02", "img2.png", "relato", 1),
-        ("3", "A dieta desempenha um papel crucial no gerenciamento da doença renal crônica em crianças. Este artigo explora a importância da nutrição e fornece orientações sobre uma dieta saudável para essas crianças.", "2023-11-02", "img3.png", "relato", 1),
-        ("4", "Conheça histórias inspiradoras de crianças que enfrentaram a doença renal crônica com coragem e determinação. Suas jornadas oferecem esperança e inspiração a outras famílias enfrentando desafios semelhantes.", "2023-11-02", "img4.png", "relato", 1),
-        ("5", "Navegar pela jornada da doença renal crônica em crianças pode ser avassalador. Este guia lista recursos de apoio disponíveis para famílias, incluindo grupos de apoio, organizações e informações úteis.", "2023-11-02", "img5.png", "relato", 1)
+        ("Descoberta de Nova Terapia para Tratar Doença Renal Crônica em Crianças", "Uma recente descoberta abre novas possibilidades no tratamento da doença renal crônica em crianças. Saiba mais sobre essa promissora terapia.", "2023-11-03", "img6.png", "noticia", 1),
+        ("Importante Aviso: Atualização nas Diretrizes de Tratamento para Crianças com Doença Renal Crônica", "Fique informado sobre as últimas atualizações nas diretrizes de tratamento para crianças enfrentando a doença renal crônica. Essa informação é crucial para cuidadores e profissionais de saúde.", "2023-11-04", "img7.png", "aviso", 1),
+        ("Histórias de Esperança: Crianças Superam Desafios da Doença Renal Crônica", "Conheça inspiradoras histórias de crianças que superaram desafios relacionados à doença renal crônica. Suas jornadas são fontes de esperança e coragem.", "2023-11-05", "img8.png", "relatos", 1),
+        ("Descubra Novas Pesquisas sobre Nutrição e Doença Renal Crônica em Crianças", "Explore as últimas pesquisas sobre a relação entre nutrição e doença renal crônica em crianças. Descubra insights valiosos para uma abordagem mais eficaz no cuidado desses pequenos pacientes.", "2023-11-06", "img9.png", "noticia", 1),
+        ("Aviso Importante: Webinar sobre Cuidados Especiais para Crianças com Doença Renal Crônica", "Participe do nosso webinar especial, onde especialistas discutirão cuidados especiais e estratégias para melhor gerenciar a doença renal crônica em crianças. Uma oportunidade imperdível para pais e cuidadores.", "2023-11-07", "img10.png", "aviso", 1)
     ]
+
 
     for values in post_values:
         mycursor.execute(sql, values)
