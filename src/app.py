@@ -451,7 +451,7 @@ def mostrar_post(categoria, titulo):
                 status_post = post[-2]
                 if status_post == False:
 
-                    if permissao == True or post[-3] == user[0]:
+                    if permissao == True or post[-3 ] == user[0]:
                         return render_template('postagem.html', access=access, title="post", name=name, email=email,  post=post, comentarios=comentarios, img=img, permissao=permissao, status_post=status_post, foto_usuario=foto_usuario)
                     else:
                         return redirect('/blog')

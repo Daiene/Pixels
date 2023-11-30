@@ -43,6 +43,10 @@ def check_cadastro(name, email, password, confirmPassword,  dn, cpf, cep, rua, e
         warn = "Email já cadastrado!"
         return False, warn
     
+    if len(cep) != 8:
+        warn = "CEP inválido"
+        return False, warn
+
     elif len(cpf) != 11:
         warn = "CPF inválido"
         return False, warn
